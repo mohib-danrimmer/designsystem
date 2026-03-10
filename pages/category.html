@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electrical Components — Category | TradeNest Design System</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* ============================================================
+       CATEGORY PAGE — PAGE-SPECIFIC STYLES
+       ============================================================ */
+
+    /* ── Site Header (marketplace) ── */
+    .site-header {
+      width: 100%;
+      height: 64px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 24px;
+      position: relative;
+      z-index: 140;
+    }
+
+    .site-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .site-header-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Search bar */
+    .site-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      height: 40px;
+      max-width: 640px;
+      background: var(--bg-page);
+      transition: border-color var(--transition-fast);
+    }
+
+    .site-search:focus-within {
+      border-color: var(--color-primary-300);
+    }
+
+    .site-search-category {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 14px;
+      height: 100%;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-right: 1px solid var(--border);
+      cursor: pointer;
+      white-space: nowrap;
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .site-search-category:hover {
+      color: var(--text-primary);
+    }
+
+    .site-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      padding: 0 14px;
+      height: 100%;
+    }
+
+    .site-search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .site-search-btn {
+      width: 44px;
+      height: 100%;
+      background: var(--color-primary);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      flex-shrink: 0;
+      transition: background var(--transition-fast);
+    }
+
+    .site-search-btn:hover {
+      background: var(--color-primary-700);
+    }
+
+    /* Header right actions */
+    .site-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-icon-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .header-icon-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+    }
+
+    .header-notif-dot {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .header-cart-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .header-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: var(--radius-md);
+      transition: background var(--transition-fast);
+    }
+
+    .header-user:hover {
+      background: var(--bg-subtle);
+    }
+
+    .header-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-100);
+      color: var(--color-primary);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+    }
+
+    .header-username {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .header-post-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--transition-fast);
+    }
+
+    .header-post-btn:hover {
+      background: var(--color-primary-700);
+    }
+
+    /* ── Mobile Header (hidden on desktop) ── */
+    .mobile-header {
+      display: none;
+    }
+
+    /* ── Page Header ── */
+    .page-header {
+      width: 100%;
+      background: var(--bg-page);
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .breadcrumb a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .breadcrumb-sep {
+      color: var(--text-muted);
+    }
+
+    .breadcrumb-current {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .page-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .page-header-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .page-header-count {
+      font-size: 14px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* ── Horizontal Filter Bar (sticky) ── */
+    .filter-bar {
+      position: sticky;
+      top: 56px;
+      z-index: 150;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .filter-bar-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-bar-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .filter-pill:hover {
+      border-color: var(--color-primary-300);
+      color: var(--color-primary);
+    }
+
+    .filter-pill.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    .filter-pill.active:hover {
+      background: var(--color-primary-700);
+      border-color: var(--color-primary-700);
+    }
+
+    .filter-bar-sep {
+      font-size: 16px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .filter-clear-all {
+      font-size: 12px;
+      color: var(--color-primary);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-weight: 500;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    .filter-clear-all:hover {
+      text-decoration: underline;
+    }
+
+    .filter-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .filter-bar-count {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .sort-dropdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: var(--font-body);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .sort-dropdown:hover {
+      border-color: var(--color-primary-300);
+      color: var(--color-primary);
+    }
+
+    /* Mobile filter bar */
+    .filter-bar-mobile {
+      display: none;
+    }
+
+    /* ── Main Content Layout ── */
+    .main-layout {
+      display: flex;
+      gap: 24px;
+      padding: 24px 32px;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar ── */
+    .filter-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 4px 0;
+      position: sticky;
+      top: calc(56px + 49px + 12px);
+      max-height: calc(100vh - 56px - 49px - 24px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .filter-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .filter-sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .filter-sidebar::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: var(--radius-full);
+    }
+
+    .filter-sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-sidebar-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .filter-reset-btn {
+      font-size: 12px;
+      color: var(--color-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-weight: 500;
+      padding: 0;
+    }
+
+    .filter-reset-btn:hover {
+      text-decoration: underline;
+    }
+
+    .filter-section {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-section:last-child {
+      border-bottom: none;
+    }
+
+    .filter-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    .filter-section-header:hover {
+      color: var(--color-primary);
+    }
+
+    .filter-section-arrow {
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: transform var(--transition-fast);
+    }
+
+    .filter-section.collapsed .filter-section-arrow {
+      transform: rotate(-90deg);
+    }
+
+    .filter-section.collapsed .filter-section-body {
+      display: none;
+    }
+
+    .filter-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .filter-checkbox-row:hover {
+      color: var(--text-primary);
+    }
+
+    .filter-check {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      background: var(--bg-card);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .filter-check.checked {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+      font-size: 10px;
+    }
+
+    .filter-count {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .filter-show-more {
+      font-size: 12px;
+      color: var(--color-primary);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px 0 0 0;
+      font-family: var(--font-body);
+      font-weight: 500;
+      display: block;
+    }
+
+    .filter-show-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Price range slider */
+    .price-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .price-range-track {
+      position: relative;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 8px 6px 14px 6px;
+    }
+
+    .price-range-fill {
+      position: absolute;
+      top: 0;
+      left: 5%;
+      right: 35%;
+      height: 100%;
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+
+    .price-range-handle {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: var(--color-primary);
+      border: 2px solid #fff;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      cursor: grab;
+      transition: box-shadow var(--transition-fast);
+    }
+
+    .price-range-handle:hover {
+      box-shadow: 0 0 0 3px var(--color-primary-200);
+    }
+
+    .price-range-handle-left {
+      left: 5%;
+    }
+
+    .price-range-handle-right {
+      left: 65%;
+    }
+
+    .price-inputs {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .price-input-group {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 32px;
+      transition: border-color var(--transition-fast);
+    }
+
+    .price-input-group:focus-within {
+      border-color: var(--color-primary-300);
+    }
+
+    .price-input-prefix {
+      padding: 0 6px 0 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .price-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: var(--bg-card);
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-primary);
+      padding: 0 8px;
+      height: 100%;
+      min-width: 0;
+    }
+
+    .price-input-sep {
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Rating filter */
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .rating-row:hover {
+      color: var(--text-primary);
+    }
+
+    .stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .star {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .star.filled {
+      color: #f59e0b;
+    }
+
+    .star.empty {
+      color: var(--border);
+    }
+
+    .rating-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Products Main ── */
+    .products-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .products-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .products-toolbar-left {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .products-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-toggle {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .view-toggle-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .view-toggle-btn.active {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+    }
+
+    .view-toggle-btn:hover:not(.active) {
+      background: var(--bg-subtle);
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--color-primary-200);
+    }
+
+    .product-card-img {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card-emoji {
+      font-size: 36px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .product-card-wishlist {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      background: var(--bg-card);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      font-size: 14px;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-card:hover .product-card-wishlist {
+      opacity: 1;
+    }
+
+    .product-card-wishlist:hover {
+      color: var(--color-error);
+      border-color: var(--color-error);
+    }
+
+    .product-card-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 6px;
+    }
+
+    .product-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 500;
+      align-self: flex-start;
+    }
+
+    .product-cat-badge.elec {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+    }
+
+    .product-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-seller {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .product-seller-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-100);
+      color: var(--color-primary);
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+    }
+
+    .product-seller-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .product-seller-name {
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-seller-city {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .product-rating-stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .product-rating-star {
+      font-size: 11px;
+      color: #f59e0b;
+    }
+
+    .product-rating-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .product-rating-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .product-price {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .product-price-unit {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+
+    .product-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .product-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .product-badge.verified {
+      background: var(--color-info-bg);
+      color: var(--color-info);
+    }
+
+    .product-badge.manufacturer {
+      background: var(--color-success-bg);
+      color: var(--color-success);
+    }
+
+    .product-badge.dealer {
+      background: var(--color-warning-bg);
+      color: var(--color-warning);
+    }
+
+    .product-badge.exporter {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+    }
+
+    .product-card-footer {
+      padding: 0 12px 12px 12px;
+      margin-top: auto;
+    }
+
+    .btn-add-cart {
+      width: 100%;
+      height: 34px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--color-primary-700);
+    }
+
+    /* ── Pagination ── */
+    .pagination-section {
+      padding: 32px 32px;
+      text-align: center;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .page-btn {
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-body);
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+      padding: 0 6px;
+    }
+
+    .page-btn.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .page-btn:hover:not(.active) {
+      background: var(--bg-subtle);
+    }
+
+    .page-btn.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .page-ellipsis {
+      color: var(--text-muted);
+      font-size: 14px;
+      padding: 0 4px;
+      user-select: none;
+    }
+
+    /* ── MOBILE VIEW OVERRIDES ── */
+    .surface-mobile .site-header {
+      display: none !important;
+    }
+
+    .surface-mobile .mobile-header {
+      display: flex !important;
+    }
+
+    .surface-mobile .page-header {
+      padding: 16px !important;
+    }
+
+    .surface-mobile .page-header-title {
+      font-size: 22px !important;
+    }
+
+    .surface-mobile .filter-sidebar {
+      display: none !important;
+    }
+
+    .surface-mobile .filter-bar {
+      display: none !important;
+    }
+
+    .surface-mobile .filter-bar-mobile {
+      display: flex !important;
+    }
+
+    .surface-mobile .main-layout {
+      flex-direction: column !important;
+      padding: 0 !important;
+      gap: 0 !important;
+    }
+
+    .surface-mobile .products-main {
+      padding: 0 !important;
+    }
+
+    .surface-mobile .products-toolbar {
+      padding: 10px 12px 0 12px;
+    }
+
+    .surface-mobile .products-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      padding: 10px 12px !important;
+    }
+
+    .surface-mobile .pagination-section {
+      padding: 20px 16px !important;
+    }
+
+    .surface-mobile .ds-container {
+      padding: 0 !important;
+    }
+
+    /* Responsive grid for medium screens */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DS Design System Navigation Bar -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+      <div class="ds-nav-links">
+        <a href="../components/foundations.html" class="ds-nav-link">Foundations</a>
+        <a href="../components/atoms.html" class="ds-nav-link">Atoms</a>
+        <a href="../components/molecules.html" class="ds-nav-link">Molecules</a>
+        <a href="../components/organisms.html" class="ds-nav-link">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="homepage.html" class="ds-nav-link">Home</a>
+        <a href="pdp.html" class="ds-nav-link">PDP</a>
+        <a href="category.html" class="ds-nav-link active" data-page="category">Category</a>
+        <a href="seller-profile.html" class="ds-nav-link">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main DS Page Wrapper -->
+  <div class="ds-page" id="ds-page-container">
+
+    <!-- Mobile Header (shown only in mobile view) -->
+    <div class="mobile-header">
+      <div style="background:var(--color-primary);height:56px;padding:0 16px;display:flex;align-items:center;gap:12px;color:#fff;width:100%;">
+        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;">&#8592;</button>
+        <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;flex:1;">Electrical Components</span>
+        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">&#128269;</button>
+        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;letter-spacing:-1px;font-weight:700;">&#8942;</button>
+      </div>
+    </div>
+
+    <!-- Site Header (marketplace bar) -->
+    <header class="site-header">
+      <a href="#" class="site-header-logo">
+        <div class="site-header-logo-icon">TN</div>
+        <span class="site-header-logo-name">TradeNest</span>
+      </a>
+
+      <div class="site-search">
+        <button class="site-search-category">
+          All Categories
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <input class="site-search-input" type="text" placeholder="Search products, suppliers, HSN codes..." />
+        <button class="site-search-btn" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <div class="site-header-actions">
+        <!-- Notifications -->
+        <button class="header-icon-btn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="header-notif-dot"></span>
+        </button>
+
+        <!-- Cart -->
+        <button class="header-icon-btn" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="header-cart-badge">2</span>
+        </button>
+
+        <!-- User -->
+        <div class="header-user" role="button" tabindex="0" aria-label="User menu">
+          <div class="header-avatar">RK</div>
+          <span class="header-username">Rahul K.</span>
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </div>
+
+        <!-- Post Requirement -->
+        <button class="header-post-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Post Requirement
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Filter Bar (shown only in mobile view) -->
+    <div class="filter-bar-mobile" style="overflow-x:auto; padding:10px 16px; gap:8px; border-bottom:1px solid var(--border); background:var(--bg-card); scrollbar-width:none; align-items:center;">
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-subtle);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:600;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filters
+      </button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Price &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Location &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Rating &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--color-primary);border:1.5px solid var(--color-primary);border-radius:var(--radius-full);font-size:13px;font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Mumbai &times;</button>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Electrical Components</span>
+      </nav>
+      <div class="page-header-row">
+        <h1 class="page-header-title">Electrical Components</h1>
+        <span class="page-header-count">847 products found</span>
+      </div>
+    </div>
+
+    <!-- Horizontal Filter Bar (sticky) -->
+    <div class="filter-bar" role="toolbar" aria-label="Filter options">
+      <div class="filter-bar-pills">
+        <button class="filter-pill">
+          Category
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <button class="filter-pill">
+          Price Range
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <button class="filter-pill">
+          Location
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <button class="filter-pill">
+          Supplier Type
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <button class="filter-pill">
+          Rating
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2 4 6 8 10 4"/></svg>
+        </button>
+        <button class="filter-pill active">
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+          Verified Only
+        </button>
+
+        <span class="filter-bar-sep">·</span>
+
+        <!-- Active filter pills -->
+        <button class="filter-pill active">
+          Electrical Components &times;
+        </button>
+        <button class="filter-pill active">
+          Mumbai &times;
+        </button>
+        <button class="filter-pill active">
+          Verified Only &times;
+        </button>
+
+        <button class="filter-clear-all">Clear all</button>
+      </div>
+
+      <div class="filter-bar-right">
+        <span class="filter-bar-count">Showing 847 products</span>
+        <select class="sort-dropdown" aria-label="Sort by">
+          <option>Relevance ▼</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest First</option>
+          <option>Top Rated</option>
+          <option>Most Orders</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-layout">
+
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar" aria-label="Filters">
+        <div class="filter-sidebar-header">
+          <span class="filter-sidebar-title">Filters</span>
+          <button class="filter-reset-btn">Reset all</button>
+        </div>
+
+        <!-- 1. Category -->
+        <div class="filter-section" id="filter-category">
+          <div class="filter-section-header" onclick="toggleFilter('filter-category')">
+            <span>Category</span>
+            <span class="filter-section-arrow">&#9660;</span>
+          </div>
+          <div class="filter-section-body">
+            <label class="filter-checkbox-row">
+              <span class="filter-check">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              <span>MCB &amp; Switchgear</span>
+              <span class="filter-count">234</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check checked">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              <span style="color:var(--color-primary);font-weight:500;">Cables &amp; Wires</span>
+              <span class="filter-count" style="color:var(--color-primary);">189</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Lighting Solutions</span>
+              <span class="filter-count">145</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Control Panels</span>
+              <span class="filter-count">98</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Wiring Accessories</span>
+              <span class="filter-count">76</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Industrial Switchgear</span>
+              <span class="filter-count">65</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Cable Management</span>
+              <span class="filter-count">54</span>
+            </label>
+            <button class="filter-show-more">Show 3 more &#8595;</button>
+          </div>
+        </div>
+
+        <!-- 2. Price Range -->
+        <div class="filter-section" id="filter-price">
+          <div class="filter-section-header" onclick="toggleFilter('filter-price')">
+            <span>Price Range</span>
+            <span class="filter-section-arrow">&#9660;</span>
+          </div>
+          <div class="filter-section-body">
+            <div class="price-range-labels">
+              <span>&#8377;0</span>
+              <span>&#8377;50,000</span>
+            </div>
+            <div class="price-range-track">
+              <div class="price-range-fill"></div>
+              <div class="price-range-handle price-range-handle-left"></div>
+              <div class="price-range-handle price-range-handle-right"></div>
+            </div>
+            <div class="price-inputs">
+              <div class="price-input-group">
+                <span class="price-input-prefix">&#8377;</span>
+                <input class="price-input" type="number" value="0" min="0" max="50000" aria-label="Minimum price" />
+              </div>
+              <span class="price-input-sep">—</span>
+              <div class="price-input-group">
+                <span class="price-input-prefix">&#8377;</span>
+                <input class="price-input" type="number" value="30000" min="0" max="50000" aria-label="Maximum price" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Location -->
+        <div class="filter-section" id="filter-location">
+          <div class="filter-section-header" onclick="toggleFilter('filter-location')">
+            <span>Location</span>
+            <span class="filter-section-arrow">&#9660;</span>
+          </div>
+          <div class="filter-section-body">
+            <label class="filter-checkbox-row">
+              <span class="filter-check checked">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              <span style="color:var(--color-primary);font-weight:500;">Mumbai</span>
+              <span class="filter-count" style="color:var(--color-primary);">312</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Bengaluru</span>
+              <span class="filter-count">198</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Delhi</span>
+              <span class="filter-count">156</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Pune</span>
+              <span class="filter-count">89</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Hyderabad</span>
+              <span class="filter-count">67</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Chennai</span>
+              <span class="filter-count">54</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Supplier Type -->
+        <div class="filter-section" id="filter-supplier">
+          <div class="filter-section-header" onclick="toggleFilter('filter-supplier')">
+            <span>Supplier Type</span>
+            <span class="filter-section-arrow">&#9660;</span>
+          </div>
+          <div class="filter-section-body">
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Manufacturer</span>
+              <span class="filter-count">289</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Distributor &amp; Trader</span>
+              <span class="filter-count">431</span>
+            </label>
+            <label class="filter-checkbox-row">
+              <span class="filter-check"></span>
+              <span>Authorized Dealer</span>
+              <span class="filter-count">127</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. Rating -->
+        <div class="filter-section" id="filter-rating">
+          <div class="filter-section-header" onclick="toggleFilter('filter-rating')">
+            <span>Rating</span>
+            <span class="filter-section-arrow">&#9660;</span>
+          </div>
+          <div class="filter-section-body">
+            <div class="rating-row">
+              <div class="stars">
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+              </div>
+              <span class="rating-label">4&#9733; &amp; above</span>
+              <span class="filter-count">412</span>
+            </div>
+            <div class="rating-row">
+              <div class="stars">
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star empty">&#9733;</span>
+              </div>
+              <span class="rating-label">3&#9733; &amp; above</span>
+              <span class="filter-count">623</span>
+            </div>
+            <div class="rating-row">
+              <div class="stars">
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star filled">&#9733;</span>
+                <span class="star empty">&#9733;</span>
+                <span class="star empty">&#9733;</span>
+              </div>
+              <span class="rating-label">2&#9733; &amp; above</span>
+              <span class="filter-count">711</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Products Main -->
+      <main class="products-main">
+
+        <!-- Toolbar -->
+        <div class="products-toolbar">
+          <span class="products-toolbar-left">
+            Showing <strong>847 products</strong> &nbsp;&#183;&nbsp; Page 1 of 95
+          </span>
+          <div class="products-toolbar-right">
+            <div class="view-toggle">
+              <button class="view-toggle-btn active" aria-label="Grid view" title="Grid view">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </button>
+              <button class="view-toggle-btn" aria-label="List view" title="List view">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+            <select class="sort-dropdown" aria-label="Sort products">
+              <option>Sort: Relevance &#9660;</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-grid">
+
+          <!-- Card 1: MCB Circuit Breaker -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #eef0fb, #d4d7f5);">
+              <span class="product-card-emoji">&#9889;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">MCB &amp; Switchgear</span>
+              <p class="product-name">MCB Circuit Breaker 32A Single Pole</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">SE</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">Shree Electricals Pvt. Ltd.</div>
+                  <div class="product-seller-city">Mumbai</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.6</span>
+                <span class="product-rating-count">(312 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;245</span>
+                <span class="product-price-unit">/pc</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge verified">
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                  Verified Supplier
+                </span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: PVC Conduit Pipe -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #f0fdf4;">
+              <span class="product-card-emoji">&#128268;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Cables &amp; Wires</span>
+              <p class="product-name">PVC Conduit Pipe 25mm (Box of 30m)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">FC</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">Finolex Cables Distributor</div>
+                  <div class="product-seller-city">Pune</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.4</span>
+                <span class="product-rating-count">(89 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;1,840</span>
+                <span class="product-price-unit">/box</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge dealer">Authorized Dealer</span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Industrial Switchgear Panel -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #fefce8;">
+              <span class="product-card-emoji">&#9881;&#65039;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Control Panels</span>
+              <p class="product-name">Industrial Switchgear Panel 100A (IP54)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">PL</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">PowerLink Systems</div>
+                  <div class="product-seller-city">Delhi</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.7</span>
+                <span class="product-rating-count">(43 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;8,500</span>
+                <span class="product-price-unit">/unit</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge manufacturer">Manufacturer</span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: LED Driver -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #f0fdf4;">
+              <span class="product-card-emoji">&#128161;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Lighting Solutions</span>
+              <p class="product-name">LED Driver 40W Constant Current (Dimmable)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">LT</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">LightTech India</div>
+                  <div class="product-seller-city">Bengaluru</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.5</span>
+                <span class="product-rating-count">(156 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;380</span>
+                <span class="product-price-unit">/pc</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge verified">
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                  Verified Supplier
+                </span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Motor Starter DOL -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #eef0fb;">
+              <span class="product-card-emoji">&#128295;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Industrial Switchgear</span>
+              <p class="product-name">Motor Starter DOL 7.5HP (415V)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">BC</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">Bharat Controls</div>
+                  <div class="product-seller-city">Mumbai</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.3</span>
+                <span class="product-rating-count">(67 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;2,200</span>
+                <span class="product-price-unit">/unit</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge verified">
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                  Verified Supplier
+                </span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6: Cable Tray -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #f8fafc;">
+              <span class="product-card-emoji">&#128230;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Cable Management</span>
+              <p class="product-name">Cable Tray 100×50mm Perforated (3m)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">MP</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">MetalPro Industries</div>
+                  <div class="product-seller-city">Faridabad</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.2</span>
+                <span class="product-rating-count">(34 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;780</span>
+                <span class="product-price-unit">/piece</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge manufacturer">Manufacturer</span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 7: Control Panel Box -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #fef3c7;">
+              <span class="product-card-emoji">&#127981;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Control Panels</span>
+              <p class="product-name">Control Panel Box IP65 (300×200×150mm)</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">SE</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">SafeElec Enclosures</div>
+                  <div class="product-seller-city">Chennai</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.6</span>
+                <span class="product-rating-count">(78 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;3,600</span>
+                <span class="product-price-unit">/unit</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge manufacturer">Manufacturer</span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 8: Armoured Power Cable -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #dcfce7;">
+              <span class="product-card-emoji">&#128268;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Cables &amp; Wires</span>
+              <p class="product-name">Armoured Power Cable 4-Core 10mm²</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">CC</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">CableCraft Industries</div>
+                  <div class="product-seller-city">Bengaluru</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.5</span>
+                <span class="product-rating-count">(112 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;185</span>
+                <span class="product-price-unit">/meter</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge verified">
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>
+                  Verified Supplier
+                </span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 9: Junction Box -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: #e0f2fe;">
+              <span class="product-card-emoji">&#128230;</span>
+              <button class="product-card-wishlist" aria-label="Add to wishlist">&#9825;</button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-cat-badge elec">Wiring Accessories</span>
+              <p class="product-name">Junction Box Polycarbonate IP66</p>
+              <div class="product-seller">
+                <div class="product-seller-avatar">EH</div>
+                <div class="product-seller-info">
+                  <div class="product-seller-name">ElecHousing</div>
+                  <div class="product-seller-city">Ahmedabad</div>
+                </div>
+              </div>
+              <div class="product-rating">
+                <div class="product-rating-stars">
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star">&#9733;</span>
+                  <span class="product-rating-star" style="color:var(--border);">&#9733;</span>
+                </div>
+                <span class="product-rating-num">4.4</span>
+                <span class="product-rating-count">(56 reviews)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">&#8377;420</span>
+                <span class="product-price-unit">/piece</span>
+              </div>
+              <div class="product-badges-row">
+                <span class="product-badge exporter">Verified Exporter</span>
+              </div>
+            </div>
+            <div class="product-card-footer">
+              <button class="btn-add-cart">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /products-grid -->
+
+        <!-- Pagination -->
+        <div class="pagination-section">
+          <nav class="pagination" aria-label="Product pages">
+            <a href="#" class="page-btn disabled" aria-label="Previous page">&#8592; Prev</a>
+            <a href="#" class="page-btn active" aria-current="page">1</a>
+            <a href="#" class="page-btn">2</a>
+            <a href="#" class="page-btn">3</a>
+            <a href="#" class="page-btn">4</a>
+            <a href="#" class="page-btn">5</a>
+            <span class="page-ellipsis">&#8230;</span>
+            <a href="#" class="page-btn">95</a>
+            <a href="#" class="page-btn" aria-label="Next page">Next &#8594;</a>
+          </nav>
+        </div>
+
+      </main><!-- /products-main -->
+
+    </div><!-- /main-layout -->
+
+  </div><!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+  <script>
+    // ── Filter section collapse/expand ──
+    function toggleFilter(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.classList.toggle('collapsed');
+      }
+    }
+
+    // ── View toggle (grid/list) ──
+    const viewBtns = document.querySelectorAll('.view-toggle-btn');
+    viewBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        viewBtns.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // ── Filter checkbox interactivity ──
+    document.querySelectorAll('.filter-checkbox-row').forEach(function(row) {
+      row.addEventListener('click', function() {
+        const check = this.querySelector('.filter-check');
+        if (!check) return;
+        const isChecked = check.classList.toggle('checked');
+        const label = this.querySelector('span:not(.filter-check):not(.filter-count)');
+        const count = this.querySelector('.filter-count');
+        if (isChecked) {
+          if (label) { label.style.color = 'var(--color-primary)'; label.style.fontWeight = '500'; }
+          if (count) { count.style.color = 'var(--color-primary)'; }
+          check.innerHTML = '<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg>';
+        } else {
+          if (label) { label.style.color = ''; label.style.fontWeight = ''; }
+          if (count) { count.style.color = ''; }
+          check.innerHTML = '';
+        }
+      });
+    });
+
+    // ── Rating row highlight ──
+    document.querySelectorAll('.rating-row').forEach(function(row) {
+      row.addEventListener('click', function() {
+        document.querySelectorAll('.rating-row').forEach(function(r) {
+          r.style.color = '';
+          r.style.fontWeight = '';
+        });
+        this.style.color = 'var(--color-primary)';
+        this.style.fontWeight = '500';
+      });
+    });
+
+    // ── Sort dropdown (toolbar sync) ──
+    const sortDropdowns = document.querySelectorAll('.sort-dropdown');
+    sortDropdowns.forEach(function(dd) {
+      dd.addEventListener('change', function() {
+        sortDropdowns.forEach(function(other) {
+          other.value = dd.value;
+        });
+      });
+    });
+
+    // ── Filter pill toggle ──
+    document.querySelectorAll('.filter-pill:not(.active)').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        // Dropdown pills — just visual toggle for demo
+        this.style.borderColor = 'var(--color-primary-300)';
+        this.style.color = 'var(--color-primary)';
+        setTimeout(function() {}, 0);
+      });
+    });
+
+    // ── Clear all active filters ──
+    document.querySelector('.filter-clear-all').addEventListener('click', function() {
+      document.querySelectorAll('.filter-pill.active').forEach(function(pill) {
+        // Keep the "Verified Only" toggle pill as toggleable demo only
+      });
+    });
+
+    // ── Wishlist heart toggle ──
+    document.querySelectorAll('.product-card-wishlist').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isWished = this.dataset.wished === 'true';
+        this.dataset.wished = isWished ? 'false' : 'true';
+        this.innerHTML = isWished ? '&#9825;' : '&#9829;';
+        this.style.color = isWished ? '' : 'var(--color-error)';
+        this.style.borderColor = isWished ? '' : 'var(--color-error)';
+      });
+    });
+
+    // ── Theme toggle icon init (handled by nav.js, but set initial icon) ──
+    const themeToggle = document.getElementById('ds-theme-toggle');
+    if (themeToggle) {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+    }
+  </script>
+</body>
+</html>

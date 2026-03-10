@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organisms — TradeNest Design System</title>
+  <link rel="stylesheet" href="../shared/tokens.css">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <style>
+    /* =====================================================
+       PAGE-LEVEL STYLES
+       ===================================================== */
+
+    .ds-subsection-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-h4);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    .ds-subsection-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* =====================================================
+       SHOWCASE WRAPPERS
+       ===================================================== */
+
+    .showcase-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--bg-subtle);
+      margin-bottom: var(--space-6);
+    }
+
+    .showcase-label {
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .showcase-label-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      display: inline-block;
+    }
+
+    /* =====================================================
+       SECTION 1 — SITE HEADER DESKTOP
+       ===================================================== */
+
+    .site-header-demo {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .site-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .site-header-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-text {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 40px;
+      background: var(--bg-card);
+      transition: border-color var(--transition-fast);
+    }
+
+    .site-header-search:focus-within {
+      border-color: var(--color-primary);
+    }
+
+    .site-header-search-category {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      height: 100%;
+      background: var(--bg-subtle);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .site-header-search-category svg {
+      color: var(--text-muted);
+    }
+
+    .site-header-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0 12px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: transparent;
+      min-width: 0;
+    }
+
+    .site-header-search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .site-header-search-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+      transition: background var(--transition-fast);
+    }
+
+    .site-header-search-btn:hover {
+      background: var(--color-primary-700);
+    }
+
+    .site-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .site-header-icon-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .site-header-icon-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+    }
+
+    .notif-dot {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-card);
+      font-family: var(--font-body);
+    }
+
+    .site-header-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 8px 0 4px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .site-header-user:hover {
+      background: var(--bg-subtle);
+    }
+
+    .site-header-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .site-header-user-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-cta {
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .site-header-cta:hover {
+      background: var(--color-primary-700);
+      transform: translateY(-1px);
+    }
+
+    /* =====================================================
+       SECTION 2 — SITE HEADER MOBILE
+       ===================================================== */
+
+    .mobile-frame-wrapper {
+      max-width: 375px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .mobile-header-demo {
+      background: var(--color-primary);
+      height: 56px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mobile-header-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .mobile-header-logo-text {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mobile-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .mobile-header-icon-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      border-radius: var(--radius-md);
+      transition: background var(--transition-fast);
+    }
+
+    .mobile-header-icon-btn:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .mobile-header-search-expand {
+      background: var(--bg-card);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-header-search-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 0 14px;
+      gap: 8px;
+      height: 38px;
+    }
+
+    .mobile-header-search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13px;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mobile-header-search-bar input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .mobile-search-cancel {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+
+    /* =====================================================
+       SECTION 3 — FOOTER
+       ===================================================== */
+
+    .footer-demo {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding-top: 48px;
+    }
+
+    .footer-main {
+      max-width: 100%;
+      padding: 0 40px 40px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand-col {}
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+
+    .footer-brand-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      max-width: 260px;
+    }
+
+    .footer-app-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-app-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .footer-app-badge:hover {
+      border-color: var(--color-primary-300);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .footer-app-badge-label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-app-badge-sub {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      line-height: 1;
+    }
+
+    .footer-app-badge-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.2;
+    }
+
+    .footer-col-heading {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .footer-trust-row {
+      padding: 20px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-trust-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .footer-trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      white-space: nowrap;
+    }
+
+    .footer-trust-badge-icon {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .footer-bottom {
+      padding: 16px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copyright {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-legal-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .footer-legal-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0 6px;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-legal-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-legal-links span {
+      color: var(--border);
+    }
+
+    .footer-social-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .footer-social-btn:hover {
+      border-color: var(--color-primary-300);
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+    }
+
+    /* =====================================================
+       SECTION 4 — FILTER + SORT BAR
+       ===================================================== */
+
+    .filter-bar-demo {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-bar-demo::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pills-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .filter-pill:hover {
+      border-color: var(--color-primary-300);
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+    }
+
+    .filter-pill svg {
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .filter-pill.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    .filter-pill.active svg {
+      color: rgba(255,255,255,0.75);
+    }
+
+    .filter-pill-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .filter-pill-close:hover {
+      background: rgba(255,255,255,0.35);
+    }
+
+    .filter-pill-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--color-success-bg);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-success);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .filter-bar-separator {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+      flex-shrink: 0;
+      margin: 0 4px;
+    }
+
+    .filter-bar-spacer {
+      flex: 1;
+      min-width: 16px;
+    }
+
+    .filter-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .filter-result-count {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .filter-result-count strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .filter-sort-select {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .filter-sort-select:hover {
+      border-color: var(--color-primary-300);
+    }
+
+    .filter-sort-label {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* =====================================================
+       SECTION 5 — HERO BANNER
+       ===================================================== */
+
+    .hero-demo {
+      background: linear-gradient(135deg, #1c1e60 0%, #2e3192 50%, #3b45c4 100%);
+      padding: 80px 48px;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-glow-top {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(107,114,255,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-subtitle-dot {
+      display: inline-block;
+      margin: 0 6px;
+      opacity: 0.5;
+    }
+
+    .hero-search-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 52px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.24);
+      margin-bottom: 20px;
+    }
+
+    .hero-search-category {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 14px;
+      height: 100%;
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: #f8fafc;
+      user-select: none;
+      transition: background var(--transition-fast);
+    }
+
+    .hero-search-category:hover {
+      background: #f1f5f9;
+    }
+
+    .hero-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0 16px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: transparent;
+      min-width: 0;
+    }
+
+    .hero-search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .hero-search-btn {
+      height: 52px;
+      padding: 0 24px;
+      background: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      flex-shrink: 0;
+      transition: background var(--transition-fast);
+    }
+
+    .hero-search-btn:hover {
+      background: var(--color-primary-700);
+    }
+
+    .hero-chips-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-chips-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+      font-family: var(--font-body);
+    }
+
+    .hero-chip:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* =====================================================
+       SPEC TABLES
+       ===================================================== */
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: var(--space-6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .spec-table thead {
+      background: var(--bg-subtle);
+    }
+
+    .spec-table th {
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-table td {
+      padding: 10px 16px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--divider);
+      vertical-align: top;
+    }
+
+    .spec-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .spec-table tbody tr:hover td {
+      background: var(--bg-subtle);
+    }
+
+    .spec-prop {
+      font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+      font-size: 12px;
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    [data-theme="dark"] .spec-prop {
+      background: rgba(46,49,146,0.18);
+    }
+
+    /* =====================================================
+       RESPONSIVE TWEAKS
+       ===================================================== */
+
+    @media (max-width: 900px) {
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 24px 32px;
+      }
+
+      .footer-trust-row,
+      .footer-bottom {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .site-header-demo {
+        padding: 0 16px;
+        gap: 12px;
+      }
+
+      .hero-h1 {
+        font-size: 32px;
+      }
+
+      .hero-demo {
+        padding: 60px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-bar-right {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       NAV BAR
+       ===================================================== -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <span class="ds-nav-logo-icon">TN</span>
+        TradeNest DS
+      </a>
+
+      <div class="ds-nav-links">
+        <a href="foundations.html" class="ds-nav-link">Foundations</a>
+        <a href="atoms.html" class="ds-nav-link">Atoms</a>
+        <a href="molecules.html" class="ds-nav-link">Molecules</a>
+        <a href="organisms.html" class="ds-nav-link active">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../pages/homepage.html" class="ds-nav-link">Home</a>
+        <a href="../pages/pdp.html" class="ds-nav-link">PDP</a>
+        <a href="../pages/category.html" class="ds-nav-link">Category</a>
+        <a href="../pages/seller-profile.html" class="ds-nav-link">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle" title="Switch to dark mode"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       PAGE CONTENT
+       ===================================================== -->
+  <div class="ds-page" id="ds-page-container">
+    <div class="ds-container">
+
+      <!-- Page Header -->
+      <div style="padding: 48px 0 32px;">
+        <h1 class="ds-section-title">Organisms</h1>
+        <p class="ds-section-subtitle">Full section-level components assembled from molecules and atoms.</p>
+      </div>
+
+      <!-- =================================================
+           SECTION 1 — SITE HEADER: DESKTOP
+           ================================================= -->
+      <section class="ds-section">
+        <h2 class="ds-subsection-title">Site Header — Desktop</h2>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Desktop header is fixed 64px height. Logo + search + actions. "Post Requirement" drives lead generation — always visible on desktop. Search bar spans available space between logo and actions to maximise discoverability.
+        </div>
+
+        <div class="showcase-box">
+          <div class="showcase-label">
+            <span class="showcase-label-dot"></span>
+            Desktop · 1280px · 64px height
+          </div>
+
+          <!-- Desktop Site Header Component -->
+          <div class="site-header-demo">
+
+            <!-- Logo -->
+            <a href="#" class="site-header-logo">
+              <div class="site-header-logo-icon">TN</div>
+              <span class="site-header-logo-text">TradeNest</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="site-header-search">
+              <div class="site-header-search-category">
+                All Categories
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <input
+                class="site-header-search-input"
+                type="text"
+                placeholder="Search for products, suppliers, and services..."
+                aria-label="Search"
+              >
+              <button class="site-header-search-btn" aria-label="Search">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="site-header-actions">
+
+              <!-- Bell / Notifications -->
+              <button class="site-header-icon-btn" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notif-dot"></span>
+              </button>
+
+              <!-- Cart -->
+              <button class="site-header-icon-btn" aria-label="Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span class="cart-badge">2</span>
+              </button>
+
+              <!-- User / Account -->
+              <div class="site-header-user" role="button" tabindex="0" aria-label="Account menu">
+                <div class="site-header-avatar">RK</div>
+                <span class="site-header-user-name">Rahul K.</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+
+              <!-- Primary CTA -->
+              <button class="site-header-cta">Post Requirement</button>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec Table -->
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Value</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="spec-prop">height</code></td>
+              <td>64px</td>
+              <td>Fixed. Increased from nav-bar's 56px for richer layout.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">position</code></td>
+              <td>fixed, top: 0</td>
+              <td>Always visible. Page content offset by 64px.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">background</code></td>
+              <td><code class="spec-prop">--bg-card</code></td>
+              <td>White in light mode, #1a1a1a in dark.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">logo icon</code></td>
+              <td>32 × 32px, radius 6px</td>
+              <td>Background <code class="spec-prop">--color-primary</code>, white "TN" text.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">search height</code></td>
+              <td>40px</td>
+              <td>Flex-1 width. Border-radius 8px. Focus ring uses primary color.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">CTA button</code></td>
+              <td>bg: --color-primary, padding: 8px 18px</td>
+              <td>Always visible. Primary lead-gen action.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- =================================================
+           SECTION 2 — SITE HEADER: MOBILE
+           ================================================= -->
+      <section class="ds-section">
+        <h2 class="ds-subsection-title">Site Header — Mobile</h2>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Mobile header is 56px. Shows logo + search icon + hamburger. Tapping the search icon expands a full-width search bar inline below the header — no modal overlay needed. Uses indigo primary on mobile (same as desktop brand), not the teal mobile variant, because the header is a strong brand-anchor.
+        </div>
+
+        <!-- Mobile Frame Mockup -->
+        <div class="mobile-frame-wrapper">
+          <div class="showcase-label">
+            <span class="showcase-label-dot"></span>
+            375px — iPhone SE / standard mobile
+          </div>
+
+          <!-- Mobile Header Top Bar -->
+          <div class="mobile-header-demo">
+            <!-- Logo -->
+            <div class="mobile-header-logo">
+              <div class="mobile-header-logo-icon">TN</div>
+              <span class="mobile-header-logo-text">TradeNest</span>
+            </div>
+            <!-- Icons -->
+            <div class="mobile-header-actions">
+              <button class="mobile-header-icon-btn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+              <button class="mobile-header-icon-btn" aria-label="Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Expanded Search Bar State -->
+          <div class="mobile-header-search-expand">
+            <div class="mobile-header-search-bar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Search products, suppliers..." aria-label="Search">
+            </div>
+            <button class="mobile-search-cancel">Cancel</button>
+          </div>
+
+          <!-- Placeholder content below to show context -->
+          <div style="background:var(--bg-subtle); padding: 16px; display:flex; gap:8px; align-items:center; border-bottom:1px solid var(--border);">
+            <div style="font-size:12px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Popular:</div>
+            <div style="display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; flex-wrap:nowrap;">
+              <span style="display:inline-flex;align-items:center;padding:4px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:9999px;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer;">Packaging</span>
+              <span style="display:inline-flex;align-items:center;padding:4px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:9999px;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer;">Electronics</span>
+              <span style="display:inline-flex;align-items:center;padding:4px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:9999px;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer;">Raw Materials</span>
+              <span style="display:inline-flex;align-items:center;padding:4px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:9999px;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer;">Chemicals</span>
+            </div>
+          </div>
+          <div style="background:var(--bg-page); padding: 20px 16px; font-size:13px; color:var(--text-muted); text-align:center; font-style:italic;">
+            ↓ Page content scrolls here
+          </div>
+        </div>
+
+        <!-- Spec Table -->
+        <table class="spec-table" style="margin-top: 24px;">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Value</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code class="spec-prop">height</code></td>
+              <td>56px</td>
+              <td>Standard mobile touch-bar height. Compact for content space.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">background</code></td>
+              <td><code class="spec-prop">--color-primary</code> (indigo)</td>
+              <td>Brand anchor. Strong visual hierarchy on mobile viewports.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">icon tap target</code></td>
+              <td>40 × 40px minimum</td>
+              <td>Meets WCAG 2.5.5 (AAA) touch target requirement.</td>
+            </tr>
+            <tr>
+              <td><code class="spec-prop">search expand</code></td>
+              <td>Inline below header</td>
+              <td>No modal. Avoids z-index conflicts. Cancel button closes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- =================================================
+           SECTION 3 — FOOTER
+           ================================================= -->
+      <section class="ds-section">
+        <h2 class="ds-subsection-title">Footer</h2>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          3-column link footer with a brand column and trust badges. Desktop layout. Mobile collapses link columns into accordions to conserve vertical space. Trust badges reinforce platform credibility — SSL, GST, and supplier count are the three highest-signal trust indicators for Indian B2B buyers.
+        </div>
+
+        <div class="showcase-box">
+          <div class="showcase-label">
+            <span class="showcase-label-dot"></span>
+            Desktop Footer — Full Width
+          </div>
+
+          <!-- Footer Component -->
+          <div class="footer-demo">
+
+            <!-- Main Grid: Brand + 3 Link Columns -->
+            <div class="footer-main">
+
+              <!-- Brand Column -->
+              <div class="footer-brand-col">
+                <a href="#" class="footer-brand-logo">
+                  <div class="footer-brand-logo-icon">TN</div>
+                  <span class="footer-brand-name">TradeNest</span>
+                </a>
+                <p class="footer-brand-desc">
+                  India's most trusted B2B marketplace connecting buyers with verified suppliers across 500+ categories. Building commerce that works.
+                </p>
+                <!-- App Download Badges -->
+                <div class="footer-app-badges">
+                  <div class="footer-app-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-secondary)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <div class="footer-app-badge-label">
+                      <span class="footer-app-badge-sub">Download on the</span>
+                      <span class="footer-app-badge-name">App Store</span>
+                    </div>
+                  </div>
+                  <div class="footer-app-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-secondary)"><path d="m3.18 23.76 10.95-10.95-2.23-2.23zM.76.94C.29 1.44 0 2.18 0 3.15v17.7c0 .97.29 1.71.77 2.2l.1.1 9.9-9.9v-.22L.87.84zm18.94 7.4-2.93-1.68-3.1 3.1 3.1 3.1 2.96-1.7c.84-.49.84-1.28-.03-1.82zm-14.73 8.52 10.97-6.3-2.23-2.23z"/></svg>
+                    <div class="footer-app-badge-label">
+                      <span class="footer-app-badge-sub">Get it on</span>
+                      <span class="footer-app-badge-name">Google Play</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- About Column -->
+              <div>
+                <div class="footer-col-heading">About TradeNest</div>
+                <ul class="footer-links">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Careers <span style="font-size:11px;background:var(--color-success-bg);color:var(--color-success);padding:1px 6px;border-radius:9999px;font-weight:600;">Hiring</span></a></li>
+                  <li><a href="#">Press & Media</a></li>
+                  <li><a href="#">Blog & Insights</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">Investor Relations</a></li>
+                </ul>
+              </div>
+
+              <!-- Buyer Resources Column -->
+              <div>
+                <div class="footer-col-heading">Buyer Resources</div>
+                <ul class="footer-links">
+                  <li><a href="#">How to Buy</a></li>
+                  <li><a href="#">Request a Quote</a></li>
+                  <li><a href="#">Bulk Ordering</a></li>
+                  <li><a href="#">Payment Methods</a></li>
+                  <li><a href="#">Buyer Protection</a></li>
+                  <li><a href="#">TradeNest Assured</a></li>
+                </ul>
+              </div>
+
+              <!-- Seller Resources Column -->
+              <div>
+                <div class="footer-col-heading">Seller Resources</div>
+                <ul class="footer-links">
+                  <li><a href="#">Sell on TradeNest</a></li>
+                  <li><a href="#">Seller Dashboard</a></li>
+                  <li><a href="#">Supplier Verification</a></li>
+                  <li><a href="#">Pricing & Plans</a></li>
+                  <li><a href="#">Seller Support</a></li>
+                  <li><a href="#">Seller Academy</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Trust Badges Row -->
+            <div class="footer-trust-row">
+              <span class="footer-trust-label">Trusted Platform</span>
+              <span class="footer-trust-badge">
+                <span class="footer-trust-badge-icon">🔒</span>
+                SSL Secured Checkout
+              </span>
+              <span class="footer-trust-badge">
+                <span class="footer-trust-badge-icon">✓</span>
+                GST Verified Platform
+              </span>
+              <span class="footer-trust-badge">
+                <span class="footer-trust-badge-icon">🏭</span>
+                1,00,000+ Verified Suppliers
+              </span>
+              <span class="footer-trust-badge">
+                <span class="footer-trust-badge-icon">⭐</span>
+                4.8 / 5 Buyer Rating
+              </span>
+              <span class="footer-trust-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-success)"><polyline points="20 6 9 17 4 12"/></svg>
+                ISO 27001 Certified
+              </span>
+            </div>
+
+            <!-- Bottom Strip -->
+            <div class="footer-bottom">
+              <span class="footer-copyright">© 2024 TradeNest Technologies Pvt. Ltd. All rights reserved.</span>
+
+              <div class="footer-legal-links">
+                <a href="#">Privacy Policy</a>
+                <span>|</span>
+                <a href="#">Terms of Service</a>
+                <span>|</span>
+                <a href="#">Cookie Policy</a>
+                <span>|</span>
+                <a href="#">Grievance Redressal</a>
+              </div>
+
+              <div class="footer-social-links">
+                <!-- LinkedIn -->
+                <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <!-- Twitter / X -->
+                <a href="#" class="footer-social-btn" aria-label="Twitter / X">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <!-- YouTube -->
+                <a href="#" class="footer-social-btn" aria-label="YouTube">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="footer-social-btn" aria-label="Instagram">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <!-- End Footer Component -->
+        </div>
+
+        <!-- Spec Table -->
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Style</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Footer background</td>
+              <td><code class="spec-prop">--bg-card</code>, border-top 1px <code class="spec-prop">--border</code></td>
+              <td>Distinct from page background, not heavy dark panel.</td>
+            </tr>
+            <tr>
+              <td>Column heading</td>
+              <td>13px, 600 weight, uppercase, letter-spacing 0.06em</td>
+              <td>Color: <code class="spec-prop">--text-muted</code>. Low visual weight.</td>
+            </tr>
+            <tr>
+              <td>Footer links</td>
+              <td>13px, color <code class="spec-prop">--text-secondary</code></td>
+              <td>Hover: <code class="spec-prop">--text-primary</code>. No underline on default.</td>
+            </tr>
+            <tr>
+              <td>Trust badges</td>
+              <td>border 1px <code class="spec-prop">--border</code>, radius full, padding 6px 14px</td>
+              <td>Small icon + text. Horizontal scroll on mobile.</td>
+            </tr>
+            <tr>
+              <td>Grid columns</td>
+              <td>1.4fr 1fr 1fr 1fr</td>
+              <td>Brand column slightly wider. Collapses to 2-col at 900px, 1-col at 640px.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- =================================================
+           SECTION 4 — FILTER + SORT BAR
+           ================================================= -->
+      <section class="ds-section">
+        <h2 class="ds-subsection-title">Filter + Sort Bar</h2>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Horizontal scrollable filter pills for category and search listing pages. Inactive pills are ghost-style dropdowns; active/applied pills show filled primary state with a remove (×) control. Sort is right-aligned and stays fixed while the pill area scrolls. "Verified Only" uses a success-green toggle to signal its positive trust value.
+        </div>
+
+        <div class="showcase-box">
+          <div class="showcase-label">
+            <span class="showcase-label-dot"></span>
+            Listing Page · Sticky Filter Bar · Active Filters: Electrical Components, Mumbai, Verified Only
+          </div>
+
+          <!-- Filter Bar Component -->
+          <div class="filter-bar-demo">
+
+            <!-- Inactive Filter Dropdowns -->
+            <div class="filter-pills-group">
+              <button class="filter-pill">
+                Category
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Price Range
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Location
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Supplier Type
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Rating
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill-verified" aria-pressed="false">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Verified Only
+              </button>
+            </div>
+
+            <!-- Separator -->
+            <div class="filter-bar-separator"></div>
+
+            <!-- Active / Applied Filters -->
+            <div class="filter-pills-group">
+              <button class="filter-pill active" aria-label="Remove Electrical Components filter">
+                Electrical Components
+                <span class="filter-pill-close" role="img" aria-label="remove">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+              </button>
+              <button class="filter-pill active" aria-label="Remove Mumbai filter">
+                Mumbai
+                <span class="filter-pill-close" role="img" aria-label="remove">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+              </button>
+              <button class="filter-pill active" aria-label="Remove Verified Only filter">
+                Verified Only
+                <span class="filter-pill-close" role="img" aria-label="remove">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+              </button>
+            </div>
+
+            <!-- Spacer pushes right side -->
+            <div class="filter-bar-spacer"></div>
+
+            <!-- Right: Result count + Sort -->
+            <div class="filter-bar-right">
+              <span class="filter-result-count">Showing <strong>847</strong> products</span>
+              <div class="filter-bar-separator"></div>
+              <button class="filter-sort-select" aria-label="Sort results">
+                <span class="filter-sort-label">Sort:</span>
+                Relevance
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+
+          </div>
+          <!-- End Filter Bar -->
+        </div>
+
+        <!-- Variant: Fewer Filters Applied -->
+        <div class="ds-label" style="margin-top: var(--space-6);">Variant — No Active Filters</div>
+        <div class="showcase-box">
+          <div class="filter-bar-demo">
+            <div class="filter-pills-group">
+              <button class="filter-pill">
+                Category
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Price Range
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Location
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Supplier Type
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill">
+                Rating
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-pill-verified">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Verified Only
+              </button>
+            </div>
+            <div class="filter-bar-spacer"></div>
+            <div class="filter-bar-right">
+              <span class="filter-result-count">Showing <strong>12,438</strong> products</span>
+              <div class="filter-bar-separator"></div>
+              <button class="filter-sort-select">
+                <span class="filter-sort-label">Sort:</span>
+                Relevance
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec Table -->
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Style</th>
+              <th>Behaviour</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Inactive filter pill</td>
+              <td>bg card, border 1px <code class="spec-prop">--border</code>, radius full</td>
+              <td>Opens dropdown panel on click. Chevron rotates 180° when open.</td>
+            </tr>
+            <tr>
+              <td>Active / applied pill</td>
+              <td>bg <code class="spec-prop">--color-primary</code>, white text, border primary</td>
+              <td>Shows × button. Clicking × removes the filter immediately.</td>
+            </tr>
+            <tr>
+              <td>Verified Only toggle</td>
+              <td>bg <code class="spec-prop">--color-success-bg</code>, green text and border</td>
+              <td>Toggle on/off. Visually distinct from dropdown filters.</td>
+            </tr>
+            <tr>
+              <td>Sort control</td>
+              <td>Right-aligned, border 1px, radius md</td>
+              <td>Opens sort options dropdown. Fixed position — does not scroll with pills.</td>
+            </tr>
+            <tr>
+              <td>Bar overflow</td>
+              <td>overflow-x: auto, scrollbar hidden</td>
+              <td>Pills scroll on smaller viewports. Sort stays visible at right.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- =================================================
+           SECTION 5 — HERO BANNER
+           ================================================= -->
+      <section class="ds-section" style="border-bottom:none; padding-bottom: 0;">
+        <h2 class="ds-subsection-title">Hero Banner</h2>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Personalised homepage hero. The greeting adapts to time of day (Good morning / afternoon / evening). Search bar is the primary CTA — it mirrors the header search but at a larger 52px height for greater visual emphasis. Quick-access category chips below reduce friction for repeat visitors who already know what they want.
+        </div>
+
+        <div class="showcase-box">
+          <div class="showcase-label">
+            <span class="showcase-label-dot"></span>
+            Homepage Hero — Desktop · Full Width · Indigo Gradient
+          </div>
+
+          <!-- Hero Component -->
+          <div class="hero-demo">
+            <!-- Grid Overlay -->
+            <div class="hero-grid-overlay"></div>
+            <!-- Ambient Glow -->
+            <div class="hero-glow-top"></div>
+
+            <!-- Content -->
+            <div class="hero-content">
+              <span class="hero-eyebrow">Good morning, Rahul 👋</span>
+              <h1 class="hero-h1">Find verified suppliers<br>for your business</h1>
+              <p class="hero-subtitle">
+                Explore 500+ categories
+                <span class="hero-subtitle-dot">·</span>
+                1,00,000+ verified products
+                <span class="hero-subtitle-dot">·</span>
+                50,000+ trusted suppliers
+              </p>
+
+              <!-- Large Search Bar -->
+              <div class="hero-search-bar">
+                <div class="hero-search-category">
+                  All Categories
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <input
+                  class="hero-search-input"
+                  type="text"
+                  placeholder="Search for products, suppliers, and services..."
+                  aria-label="Search TradeNest"
+                >
+                <button class="hero-search-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Search
+                </button>
+              </div>
+
+              <!-- Quick Category Chips -->
+              <div class="hero-chips-row">
+                <span class="hero-chips-label">Popular:</span>
+                <a href="#" class="hero-chip">Packaging</a>
+                <a href="#" class="hero-chip">Electronics</a>
+                <a href="#" class="hero-chip">Raw Materials</a>
+                <a href="#" class="hero-chip">Office Supplies</a>
+                <a href="#" class="hero-chip">Industrial</a>
+                <a href="#" class="hero-chip">Chemicals</a>
+                <a href="#" class="hero-chip">Textile & Fabric</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Hero Component -->
+        </div>
+
+        <!-- Spec Table -->
+        <table class="spec-table" style="margin-bottom:var(--space-12);">
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Style</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Background</td>
+              <td>linear-gradient(135deg, #1c1e60 → #2e3192 → #3b45c4)</td>
+              <td>Three-stop gradient for depth. Grid overlay at 4% opacity adds texture.</td>
+            </tr>
+            <tr>
+              <td>Padding</td>
+              <td>80px 48px, min-height 380px</td>
+              <td>Full-page hero would use 120px top padding with a background image or illustration slot.</td>
+            </tr>
+            <tr>
+              <td>H1 font</td>
+              <td>Inter, 44px, 700, letter-spacing -0.02em</td>
+              <td>Color: #fff. Tight tracking for large display headings.</td>
+            </tr>
+            <tr>
+              <td>Search bar height</td>
+              <td>52px</td>
+              <td>Larger than header search (40px) to draw attention as primary CTA.</td>
+            </tr>
+            <tr>
+              <td>Eyebrow greeting</td>
+              <td>16px, rgba(255,255,255,0.72)</td>
+              <td>Personalised via JS. Falls back to "Welcome to TradeNest" for guests.</td>
+            </tr>
+            <tr>
+              <td>Category chips</td>
+              <td>bg rgba(255,255,255,0.12), border rgba(255,255,255,0.25)</td>
+              <td>Hover: bg rgba(255,255,255,0.22). Radius full.</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+    </div><!-- /.ds-container -->
+  </div><!-- /.ds-page -->
+
+  <script src="../shared/nav.js"></script>
+
+  <script>
+    /* =====================================================
+       PAGE-SPECIFIC INTERACTIONS
+       ===================================================== */
+
+    (function () {
+      'use strict';
+
+      /* Personalised hero greeting based on time of day */
+      function updateHeroGreeting() {
+        const eyebrow = document.querySelector('.hero-eyebrow');
+        if (!eyebrow) return;
+
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour >= 5 && hour < 12) {
+          greeting = 'Good morning, Rahul 👋';
+        } else if (hour >= 12 && hour < 17) {
+          greeting = 'Good afternoon, Rahul 👋';
+        } else if (hour >= 17 && hour < 21) {
+          greeting = 'Good evening, Rahul 👋';
+        } else {
+          greeting = 'Welcome back, Rahul 👋';
+        }
+        eyebrow.textContent = greeting;
+      }
+
+      /* Filter pill remove interaction */
+      function initFilterPillRemove() {
+        document.querySelectorAll('.filter-pill.active').forEach(function (pill) {
+          const closeBtn = pill.querySelector('.filter-pill-close');
+          if (!closeBtn) return;
+
+          closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            pill.style.transition = 'opacity 0.2s, transform 0.2s';
+            pill.style.opacity = '0';
+            pill.style.transform = 'scale(0.85)';
+            setTimeout(function () {
+              pill.remove();
+            }, 200);
+          });
+        });
+      }
+
+      /* Verified Only toggle */
+      function initVerifiedToggle() {
+        document.querySelectorAll('.filter-pill-verified').forEach(function (toggle) {
+          toggle.addEventListener('click', function () {
+            const isActive = toggle.getAttribute('aria-pressed') === 'true';
+            toggle.setAttribute('aria-pressed', String(!isActive));
+
+            if (!isActive) {
+              toggle.style.background = 'var(--color-success)';
+              toggle.style.color = '#fff';
+              toggle.style.borderColor = 'var(--color-success)';
+            } else {
+              toggle.style.background = 'var(--color-success-bg)';
+              toggle.style.color = 'var(--color-success)';
+              toggle.style.borderColor = '#bbf7d0';
+            }
+          });
+        });
+      }
+
+      /* Mobile search expand toggle */
+      function initMobileSearchToggle() {
+        const mobileHeader = document.querySelector('.mobile-header-demo');
+        if (!mobileHeader) return;
+
+        const searchBtn = mobileHeader.querySelector('[aria-label="Search"]');
+        const expandedSearch = document.querySelector('.mobile-header-search-expand');
+        const cancelBtn = document.querySelector('.mobile-search-cancel');
+
+        if (!searchBtn || !expandedSearch || !cancelBtn) return;
+
+        /* Initially hide the expanded search to show collapsed state */
+        /* (In this showcase we show both states simultaneously for review) */
+      }
+
+      /* Init all */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          updateHeroGreeting();
+          initFilterPillRemove();
+          initVerifiedToggle();
+          initMobileSearchToggle();
+        });
+      } else {
+        updateHeroGreeting();
+        initFilterPillRemove();
+        initVerifiedToggle();
+        initMobileSearchToggle();
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Tokens — TradeNest Design System</title>
+  <link rel="stylesheet" href="shared/tokens.css" />
+  <link rel="stylesheet" href="shared/nav.css" />
+  <style>
+
+    /* ── Layout ───────────────────────────────────────── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── Page header ──────────────────────────────────── */
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* Usage snippet */
+    .usage-block {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .usage-block-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .usage-block code {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: block;
+      color: var(--color-primary);
+      white-space: pre;
+    }
+    [data-theme="dark"] .usage-block code { color: #a5b4fc; }
+
+    /* ── Section ──────────────────────────────────────── */
+    .token-section {
+      margin-bottom: 56px;
+    }
+    .token-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .token-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .token-section-count {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 1px 8px;
+    }
+    .token-section-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── Token table ──────────────────────────────────── */
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .token-table thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .token-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .token-table th:first-child { padding-left: 0; }
+    .token-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--divider);
+      vertical-align: middle;
+    }
+    .token-table td:first-child { padding-left: 0; }
+    .token-table tr:last-child td { border-bottom: none; }
+    .token-table tr:hover td { background: var(--bg-subtle); }
+
+    /* Token name cell */
+    .token-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      user-select: all;
+      transition: background var(--transition-fast);
+      white-space: nowrap;
+    }
+    .token-name:hover { background: var(--color-primary-100); }
+    .token-name .copy-icon {
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .token-name:hover .copy-icon { opacity: 0.6; }
+    .token-name.copied { background: var(--color-success-bg); color: var(--color-success); }
+    [data-theme="dark"] .token-name { background: rgba(46,49,146,0.18); }
+    [data-theme="dark"] .token-name:hover { background: rgba(46,49,146,0.28); }
+
+    /* Value cell */
+    .token-value {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Swatch cell */
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    [data-theme="dark"] .swatch { border-color: rgba(255,255,255,0.08); }
+
+    /* Shadow preview */
+    .shadow-preview {
+      width: 48px;
+      height: 28px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      display: inline-block;
+    }
+
+    /* Radius preview */
+    .radius-preview {
+      width: 28px;
+      height: 28px;
+      background: var(--color-primary-200);
+      display: inline-block;
+    }
+
+    /* Spacing bar */
+    .space-bar {
+      height: 16px;
+      background: var(--color-primary-200);
+      border-radius: 2px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* Description cell */
+    .token-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Usage badge */
+    .usage-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Group label (sub-headers inside sections) ────── */
+    .token-group-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 14px 0 6px;
+    }
+
+    /* ── Surface demo (live tokens) ───────────────────── */
+    .surface-demo {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .surface-chip {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Dark-theme surface comparison ───────────────── */
+    .theme-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .theme-compare-panel {
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .theme-compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 12px;
+    }
+    .theme-swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .theme-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+
+    /* ── Sticky section nav (right rail) ─────────────── */
+    .page-layout {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .page-content { flex: 1; min-width: 0; }
+    .page-toc {
+      width: 200px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 72px;
+    }
+    .toc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc-link {
+      display: block;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 5px 0 5px 10px;
+      border-left: 2px solid var(--border);
+      text-decoration: none;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+    .toc-link:hover { color: var(--color-primary); border-left-color: var(--color-primary-300); text-decoration: none; }
+    .toc-link.active { color: var(--color-primary); border-left-color: var(--color-primary); font-weight: 600; }
+
+    /* ── "Copied!" toast ──────────────────────────────── */
+    #copy-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: #0f172a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      opacity: 0;
+      transition: opacity 200ms ease, transform 200ms ease;
+      pointer-events: none;
+      z-index: 999;
+    }
+    #copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+
+    /* ── Token Usage Examples ─────────────────────────── */
+    .ex-block {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+    }
+    .ex-block-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+    .ex-block-num {
+      font-size: var(--text-overline);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      border: 1px solid var(--color-primary-100);
+      border-radius: var(--radius-md);
+      padding: var(--space-1) var(--space-3);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    [data-theme="dark"] .ex-block-num {
+      background: rgba(46,49,146,0.15);
+      border-color: rgba(46,49,146,0.3);
+    }
+    .ex-block-title {
+      font-size: var(--text-body-l);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .ex-block-desc {
+      font-size: var(--text-body-s);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .ex-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .ex-preview-panel {
+      padding: var(--space-6);
+      border-right: 1px solid var(--border);
+    }
+    .ex-token-panel {
+      padding: var(--space-6);
+    }
+    .ex-preview-label {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .ex-preview-area {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+      min-height: 100px;
+    }
+    .ex-state-row {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .ex-state-label {
+      font-size: var(--text-caption);
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+    }
+    .ex-state-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Token map table */
+    .ex-map-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-body-s);
+    }
+    .ex-map-table th {
+      text-align: left;
+      padding: 6px 8px;
+      font-size: var(--text-overline);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .ex-map-table th:first-child { padding-left: 0; }
+    .ex-map-table td {
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--divider);
+      vertical-align: middle;
+      color: var(--text-secondary);
+    }
+    .ex-map-table td:first-child { padding-left: 0; }
+    .ex-map-table tr:last-child td { border-bottom: none; }
+    .ex-map-table code {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      padding: 1px 5px;
+      border-radius: var(--radius-xs);
+      white-space: nowrap;
+      display: inline-block;
+      margin: 1px 1px 1px 0;
+    }
+    [data-theme="dark"] .ex-map-table code {
+      background: rgba(46,49,146,0.18);
+    }
+
+    /* Code block */
+    .ex-code-wrap {
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-subtle);
+    }
+    .ex-code-label {
+      font-size: var(--text-overline);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .ex-code {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      overflow-x: auto;
+      margin: 0;
+      white-space: pre;
+    }
+    .ex-code .tok-prop  { color: var(--color-primary); }
+    .ex-code .tok-var   { color: var(--color-success); }
+    .ex-code .tok-sel   { color: var(--text-primary); font-weight: 600; }
+
+    /* ── Demo: CTA Button ──────────────────────────────── */
+    .demo-cta {
+      background:    var(--color-primary);
+      color:         #fff;
+      font-family:   var(--font-body);
+      font-size:     var(--text-body-m);
+      font-weight:   var(--font-weight-cta);
+      padding:       var(--space-3) var(--space-6);
+      border-radius: var(--radius-lg);
+      border:        none;
+      cursor:        pointer;
+      box-shadow:    var(--shadow-sm);
+      transition:    background var(--transition-fast), box-shadow var(--transition-fast);
+      letter-spacing: 0.01em;
+    }
+    .demo-cta:hover:not(:disabled) {
+      background:  var(--color-primary-700);
+      box-shadow:  var(--shadow-md);
+    }
+    .demo-cta:disabled {
+      opacity: 0.45;
+      cursor:  not-allowed;
+    }
+    .demo-cta-hover {
+      background:  var(--color-primary-700);
+      box-shadow:  var(--shadow-md);
+    }
+
+    /* ── Demo: Tab Bar ─────────────────────────────────── */
+    .demo-tab-bar {
+      display:       flex;
+      border-bottom: 1px solid var(--border);
+      gap:           var(--space-1);
+      width: 100%;
+    }
+    .demo-tab {
+      font-family:   var(--font-body);
+      font-size:     var(--text-body-m);
+      font-weight:   500;
+      color:         var(--text-secondary);
+      padding:       var(--space-3) var(--space-4);
+      background:    transparent;
+      border:        none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor:        pointer;
+      transition:    color var(--transition-fast), border-color var(--transition-fast);
+      white-space:   nowrap;
+    }
+    .demo-tab:hover { color: var(--text-primary); }
+    .demo-tab.active {
+      color:        var(--color-primary);
+      border-color: var(--color-primary);
+      font-weight:  600;
+    }
+
+    /* ── Demo: Product Card ────────────────────────────── */
+    .demo-card {
+      background:    var(--bg-card);
+      border:        1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow:    var(--shadow-sm);
+      overflow:      hidden;
+      width: 260px;
+      transition:    box-shadow var(--transition-normal), transform var(--transition-normal);
+    }
+    .demo-card:hover {
+      box-shadow: var(--shadow-md);
+      transform:  translateY(-2px);
+    }
+    .demo-card-image {
+      background:  var(--bg-subtle);
+      height:      120px;
+      display:     flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-card-body {
+      padding: var(--space-4);
+    }
+    .demo-card-badge {
+      display:       inline-block;
+      font-family:   var(--font-body);
+      font-size:     var(--text-caption);
+      font-weight:   600;
+      color:         var(--color-primary-700);
+      background:    var(--color-primary-50);
+      border-radius: var(--radius-full);
+      padding:       2px var(--space-3);
+      margin-bottom: var(--space-2);
+      letter-spacing: 0.02em;
+    }
+    [data-theme="dark"] .demo-card-badge {
+      background: rgba(46,49,146,0.2);
+      color: var(--color-primary-300);
+    }
+    .demo-card-title {
+      font-family:   var(--font-body);
+      font-size:     var(--text-body-m);
+      font-weight:   600;
+      color:         var(--text-primary);
+      line-height:   var(--lh-tight);
+      margin-bottom: var(--space-2);
+    }
+    .demo-card-seller {
+      font-size:     var(--text-body-s);
+      color:         var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .demo-card-footer {
+      display:         flex;
+      align-items:     center;
+      justify-content: space-between;
+      gap:             var(--space-2);
+      padding-top:     var(--space-3);
+      border-top:      1px solid var(--divider);
+    }
+    .demo-card-price {
+      font-family:  var(--font-body);
+      font-size:    var(--text-h4);
+      font-weight:  700;
+      color:        var(--text-primary);
+    }
+    .demo-card-unit {
+      font-size:  var(--text-caption);
+      font-weight: 400;
+      color:      var(--text-muted);
+    }
+    .demo-card-cta {
+      background:    var(--color-primary);
+      color:         #fff;
+      font-family:   var(--font-body);
+      font-size:     var(--text-body-s);
+      font-weight:   var(--font-weight-cta);
+      padding:       var(--space-2) var(--space-4);
+      border-radius: var(--radius-md);
+      border:        none;
+      cursor:        pointer;
+      transition:    background var(--transition-fast);
+      white-space:   nowrap;
+    }
+    .demo-card-cta:hover { background: var(--color-primary-700); }
+
+    @media (max-width: 760px) {
+      .ex-panels { grid-template-columns: 1fr; }
+      .ex-preview-panel { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .page-toc { display: none; }
+      .page-layout { display: block; }
+      .theme-compare { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Nav -->
+<nav class="ds-nav">
+  <div class="ds-nav-inner">
+    <a href="index.html" class="ds-nav-logo">
+      <div class="ds-nav-logo-icon">TN</div>
+      TradeNest DS
+    </a>
+    <div class="ds-nav-links">
+      <a href="components/foundations.html" class="ds-nav-link">Foundations</a>
+      <a href="components/atoms.html" class="ds-nav-link">Atoms</a>
+      <a href="components/molecules.html" class="ds-nav-link">Molecules</a>
+      <a href="components/organisms.html" class="ds-nav-link">Organisms</a>
+      <div class="ds-nav-divider"></div>
+      <a href="pages/homepage.html" class="ds-nav-link">Home</a>
+      <a href="pages/pdp.html" class="ds-nav-link">PDP</a>
+      <a href="pages/category.html" class="ds-nav-link">Category</a>
+      <a href="pages/seller-profile.html" class="ds-nav-link">Seller</a>
+      <div class="ds-nav-divider"></div>
+      <a href="design-tokens.html" class="ds-nav-link active" style="color:var(--color-primary);border-bottom:2px solid var(--color-primary);">Documentation</a>
+    </div>
+    <div class="ds-nav-controls">
+      <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+    </div>
+  </div>
+</nav>
+
+<div class="ds-page">
+  <div class="page-body">
+
+    <!-- Page Header -->
+    <div class="page-eyebrow">Developer Reference</div>
+    <h1 class="page-title">Design Tokens</h1>
+    <p class="page-subtitle">
+      All CSS custom properties defined in <code style="font-family:monospace;font-size:13px;background:var(--bg-subtle);padding:1px 6px;border-radius:4px;border:1px solid var(--border);">shared/tokens.css</code>.
+      Click any token name to copy it. Tokens are globally available — link the stylesheet once and use them anywhere.
+    </p>
+
+    <!-- How to use -->
+    <div class="usage-block">
+      <div>
+        <div class="usage-block-label">1 — Import</div>
+        <code>&lt;link rel="stylesheet" href="shared/tokens.css" /&gt;</code>
+      </div>
+      <div>
+        <div class="usage-block-label">2 — Use</div>
+        <code>background: var(--color-primary);
+color: var(--text-primary);
+padding: var(--space-4);
+border-radius: var(--radius-lg);</code>
+      </div>
+      <div>
+        <div class="usage-block-label">3 — Override (mobile surface)</div>
+        <code>&lt;div class="surface-mobile"&gt;
+  /* --color-primary resolves to teal */
+&lt;/div&gt;</code>
+      </div>
+    </div>
+
+    <!-- Two-column layout: content + TOC -->
+    <div class="page-layout">
+
+      <div class="page-content">
+
+        <!-- ══════════════════════════════════════════════
+             1. COLOR — PRIMARY SCALES
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-color-primary">
+          <div class="token-section-header">
+            <span class="token-section-title">Primary Color — Desktop</span>
+            <span class="token-section-count">11 tokens</span>
+          </div>
+          <p class="token-section-desc">
+            Indigo scale. <code style="font-size:12px;font-family:monospace;">--color-primary</code> resolves to the base step (<code style="font-size:12px;font-family:monospace;">#2e3192</code>) by default.
+            Overridden to teal on <code style="font-size:12px;font-family:monospace;">.surface-mobile</code> elements.
+          </p>
+          <table class="token-table">
+            <thead><tr>
+              <th>Token</th><th>Value</th><th></th><th>Usage</th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--color-primary">--color-primary<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc">Alias for <code style="font-size:11px;font-family:monospace;">--color-primary-600</code>. CTAs, links, active states</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-50">--color-primary-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#eef0fb</td><td><span class="swatch" style="background:#eef0fb;"></span></td><td class="token-desc">Chip & badge backgrounds, hover tints</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-100">--color-primary-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#d4d7f5</td><td><span class="swatch" style="background:#d4d7f5;"></span></td><td class="token-desc">Avatar backgrounds, subtle fills</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-200">--color-primary-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#a9afeb</td><td><span class="swatch" style="background:#a9afeb;"></span></td><td class="token-desc">Card hover border colour</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-300">--color-primary-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#7e88e0</td><td><span class="swatch" style="background:#7e88e0;"></span></td><td class="token-desc">Illustrations, decorative elements</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-400">--color-primary-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#5360d6</td><td><span class="swatch" style="background:#5360d6;"></span></td><td class="token-desc">Secondary interactive elements</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-500">--color-primary-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#3b45c4</td><td><span class="swatch" style="background:#3b45c4;"></span></td><td class="token-desc">Focus rings, active link underlines</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-600">--color-primary-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc"><strong>Base step.</strong> Same as <code style="font-size:11px;font-family:monospace;">--color-primary</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-700">--color-primary-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#252880</td><td><span class="swatch" style="background:#252880;"></span></td><td class="token-desc">Button hover/pressed state</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-800">--color-primary-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1c1e60</td><td><span class="swatch" style="background:#1c1e60;"></span></td><td class="token-desc">Hero gradient start, dark overlays</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-900">--color-primary-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#131540</td><td><span class="swatch" style="background:#131540;"></span></td><td class="token-desc">Deepest shade, use sparingly</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ── Mobile primary ── -->
+        <section class="token-section" id="section-color-mobile">
+          <div class="token-section-header">
+            <span class="token-section-title">Primary Color — Mobile / App</span>
+            <span class="token-section-count">10 tokens</span>
+          </div>
+          <p class="token-section-desc">
+            Teal scale. These are static reference variables. The active mobile overrides are applied by adding
+            <code style="font-size:12px;font-family:monospace;">.surface-mobile</code> to a container —
+            that remaps <code style="font-size:12px;font-family:monospace;">--color-primary</code> through
+            <code style="font-size:12px;font-family:monospace;">--color-primary-900</code> to teal values automatically.
+          </p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th></th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--color-primary-m-50">--color-primary-m-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e6f4f4</td><td><span class="swatch" style="background:#e6f4f4;"></span></td><td class="token-desc">Reference only — use inside <code style="font-size:11px;font-family:monospace;">.surface-mobile</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-100">--color-primary-m-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#b3dfde</td><td><span class="swatch" style="background:#b3dfde;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-200">--color-primary-m-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#80cac9</td><td><span class="swatch" style="background:#80cac9;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-300">--color-primary-m-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#4db5b3</td><td><span class="swatch" style="background:#4db5b3;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-400">--color-primary-m-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#26a09e</td><td><span class="swatch" style="background:#26a09e;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-500">--color-primary-m-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1d8480</td><td><span class="swatch" style="background:#1d8480;"></span></td><td class="token-desc"><strong>Mobile base.</strong> Remapped to <code style="font-size:11px;font-family:monospace;">--color-primary</code> in <code style="font-size:11px;font-family:monospace;">.surface-mobile</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-600">--color-primary-m-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#177b77</td><td><span class="swatch" style="background:#177b77;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-700">--color-primary-m-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#11716d</td><td><span class="swatch" style="background:#11716d;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-800">--color-primary-m-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0b6360</td><td><span class="swatch" style="background:#0b6360;"></span></td><td class="token-desc"></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-900">--color-primary-m-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#074f4d</td><td><span class="swatch" style="background:#074f4d;"></span></td><td class="token-desc"></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ── Semantic colors ── -->
+        <section class="token-section" id="section-color-semantic">
+          <div class="token-section-header">
+            <span class="token-section-title">Semantic Colors</span>
+            <span class="token-section-count">8 tokens</span>
+          </div>
+          <p class="token-section-desc">Communicates state. Always use the semantic token — never hardcode status colors.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th></th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--color-success">--color-success<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#16a34a</td><td><span class="swatch" style="background:#16a34a;"></span></td><td class="token-desc">Success text, icon, border</td></tr>
+              <tr><td><span class="token-name" data-token="--color-success-bg">--color-success-bg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#dcfce7</td><td><span class="swatch" style="background:#dcfce7;"></span></td><td class="token-desc">Success banner / chip background</td></tr>
+              <tr><td><span class="token-name" data-token="--color-warning">--color-warning<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#d97706</td><td><span class="swatch" style="background:#d97706;"></span></td><td class="token-desc">Warning text, icon, border</td></tr>
+              <tr><td><span class="token-name" data-token="--color-warning-bg">--color-warning-bg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#fef3c7</td><td><span class="swatch" style="background:#fef3c7;"></span></td><td class="token-desc">Warning banner / chip background</td></tr>
+              <tr><td><span class="token-name" data-token="--color-error">--color-error<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#dc2626</td><td><span class="swatch" style="background:#dc2626;"></span></td><td class="token-desc">Error text, destructive actions, cart badge</td></tr>
+              <tr><td><span class="token-name" data-token="--color-error-bg">--color-error-bg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#fee2e2</td><td><span class="swatch" style="background:#fee2e2;"></span></td><td class="token-desc">Error banner / chip background</td></tr>
+              <tr><td><span class="token-name" data-token="--color-info">--color-info<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0284c7</td><td><span class="swatch" style="background:#0284c7;"></span></td><td class="token-desc">Info text, icon, border</td></tr>
+              <tr><td><span class="token-name" data-token="--color-info-bg">--color-info-bg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e0f2fe</td><td><span class="swatch" style="background:#e0f2fe;"></span></td><td class="token-desc">Info banner / chip background</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ── Neutral grays ── -->
+        <section class="token-section" id="section-neutral">
+          <div class="token-section-header">
+            <span class="token-section-title">Neutral Grays</span>
+            <span class="token-section-count">10 tokens</span>
+          </div>
+          <p class="token-section-desc">Slate-based gray scale. Prefer surface tokens (<code style="font-size:12px;font-family:monospace;">--text-*</code>, <code style="font-size:12px;font-family:monospace;">--bg-*</code>) for UI elements — use the raw neutral scale only for decorative or one-off cases.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th></th><th>Common use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--neutral-50">--neutral-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f8fafc</td><td><span class="swatch" style="background:#f8fafc;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--bg-page</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-100">--neutral-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f1f5f9</td><td><span class="swatch" style="background:#f1f5f9;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--bg-subtle</code>, <code style="font-size:11px;font-family:monospace;">--divider</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-200">--neutral-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e2e8f0</td><td><span class="swatch" style="background:#e2e8f0;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--border</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-300">--neutral-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#cbd5e1</td><td><span class="swatch" style="background:#cbd5e1;"></span></td><td class="token-desc">Disabled borders, skeleton base</td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-400">--neutral-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#94a3b8</td><td><span class="swatch" style="background:#94a3b8;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-muted</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-500">--neutral-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#64748b</td><td><span class="swatch" style="background:#64748b;"></span></td><td class="token-desc">Placeholder text, icon fills</td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-600">--neutral-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#475569</td><td><span class="swatch" style="background:#475569;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-secondary</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-700">--neutral-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#334155</td><td><span class="swatch" style="background:#334155;"></span></td><td class="token-desc">Dark UI text, subheadings on dark bg</td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-800">--neutral-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1e293b</td><td><span class="swatch" style="background:#1e293b;"></span></td><td class="token-desc">High-contrast text on light bg</td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-900">--neutral-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0f172a</td><td><span class="swatch" style="background:#0f172a;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-primary</code> (light theme)</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             2. SURFACE TOKENS
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-surface">
+          <div class="token-section-header">
+            <span class="token-section-title">Surface Tokens</span>
+            <span class="token-section-count">8 tokens · theme-aware</span>
+          </div>
+          <p class="token-section-desc">
+            These tokens switch automatically between light and dark values when
+            <code style="font-size:12px;font-family:monospace;">[data-theme="dark"]</code> is set on <code style="font-size:12px;font-family:monospace;">&lt;html&gt;</code>.
+            Always use surface tokens for backgrounds, borders, and text — never hardcode their equivalent hex values.
+          </p>
+
+          <div class="theme-compare">
+            <div class="theme-compare-panel" style="background:#f8fafc;">
+              <div class="theme-compare-label" style="color:#64748b;">☀️ Light theme</div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f8fafc;"></div><code style="font-size:11px;font-family:monospace;">--bg-page: #f8fafc</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ffffff;"></div><code style="font-size:11px;font-family:monospace;">--bg-card: #ffffff</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f1f5f9;"></div><code style="font-size:11px;font-family:monospace;">--bg-subtle: #f1f5f9</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#e2e8f0;"></div><code style="font-size:11px;font-family:monospace;">--border: #e2e8f0</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f172a;border-color:rgba(0,0,0,0.15)"></div><code style="font-size:11px;font-family:monospace;">--text-primary: #0f172a</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#475569;"></div><code style="font-size:11px;font-family:monospace;">--text-secondary: #475569</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#94a3b8;"></div><code style="font-size:11px;font-family:monospace;">--text-muted: #94a3b8</code></div>
+            </div>
+            <div class="theme-compare-panel" style="background:#1a1a1a;border-color:#262626;">
+              <div class="theme-compare-label" style="color:#888;">🌙 Dark theme</div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f0f0f;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-page: #0f0f0f</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#1a1a1a;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-card: #1a1a1a</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#141414;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-subtle: #141414</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#262626;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--border: #262626</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ededed;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-primary: #ededed</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#a3a3a3;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-secondary: #a3a3a3</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#888;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-muted: #888888</code></div>
+            </div>
+          </div>
+
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Light value</th><th>Dark value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--bg-page">--bg-page<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f8fafc</td><td class="token-value">#0f0f0f</td><td class="token-desc">Document/page background</td></tr>
+              <tr><td><span class="token-name" data-token="--bg-card">--bg-card<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#ffffff</td><td class="token-value">#1a1a1a</td><td class="token-desc">Cards, modals, nav bar, dropdowns</td></tr>
+              <tr><td><span class="token-name" data-token="--bg-subtle">--bg-subtle<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f1f5f9</td><td class="token-value">#141414</td><td class="token-desc">Table rows, input background, hover states</td></tr>
+              <tr><td><span class="token-name" data-token="--border">--border<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e2e8f0</td><td class="token-value">#262626</td><td class="token-desc">All borders — cards, inputs, dividers</td></tr>
+              <tr><td><span class="token-name" data-token="--divider">--divider<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f1f5f9</td><td class="token-value">#1f1f1f</td><td class="token-desc">Subtle row separators within cards</td></tr>
+              <tr><td><span class="token-name" data-token="--text-primary">--text-primary<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0f172a</td><td class="token-value">#ededed</td><td class="token-desc">Headings, body text, labels</td></tr>
+              <tr><td><span class="token-name" data-token="--text-secondary">--text-secondary<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#475569</td><td class="token-value">#a3a3a3</td><td class="token-desc">Supporting text, descriptions, meta</td></tr>
+              <tr><td><span class="token-name" data-token="--text-muted">--text-muted<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#94a3b8</td><td class="token-value">#888888</td><td class="token-desc">Placeholder, timestamps, counts, captions</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             3. TYPOGRAPHY
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-typography">
+          <div class="token-section-header">
+            <span class="token-section-title">Typography</span>
+            <span class="token-section-count">23 tokens</span>
+          </div>
+          <p class="token-section-desc">Single typeface — Inter. Font tokens + type scale + line height tokens.</p>
+
+          <div class="token-group-label">Font families</div>
+          <table class="token-table" style="margin-bottom:24px;">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--font-heading">--font-heading<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">'Inter', sans-serif</td><td class="token-desc">All headings, display text, product names, prices</td></tr>
+              <tr><td><span class="token-name" data-token="--font-body">--font-body<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">'Inter', sans-serif</td><td class="token-desc">Body copy, UI labels, inputs, buttons, tags</td></tr>
+            </tbody>
+          </table>
+
+          <div class="token-group-label">Font weights</div>
+          <table class="token-table" style="margin-bottom:24px;">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--font-weight-regular">--font-weight-regular<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">400</td><td class="token-desc">Body copy, descriptions, review text</td></tr>
+              <tr><td><span class="token-name" data-token="--font-weight-medium">--font-weight-medium<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">500</td><td class="token-desc">Tab labels, nav links, input labels, secondary UI text</td></tr>
+              <tr><td><span class="token-name" data-token="--font-weight-semibold">--font-weight-semibold<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">600</td><td class="token-desc">Card titles, badges, active tabs, section headings</td></tr>
+              <tr><td><span class="token-name" data-token="--font-weight-bold">--font-weight-bold<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">700</td><td class="token-desc">Prices, H1–H3 headings, page titles</td></tr>
+              <tr><td><span class="token-name" data-token="--font-weight-cta">--font-weight-cta<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">→ <code style="font-size:11px;font-family:monospace;">--font-weight-semibold</code></td><td class="token-desc">All primary action buttons — Add to Cart, Contact Seller, Post Requirement</td></tr>
+            </tbody>
+          </table>
+
+          <div class="token-group-label">Type scale (font-size)</div>
+          <table class="token-table" style="margin-bottom:24px;">
+            <thead><tr><th>Token</th><th>Value</th><th>Live sample</th><th>Typical weight</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--text-display">--text-display<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">48px</td><td><span style="font-size:28px;font-weight:700;line-height:1;color:var(--text-primary)">TradeNest</span></td><td class="token-desc">700</td></tr>
+              <tr><td><span class="token-name" data-token="--text-h1">--text-h1<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">36px</td><td><span style="font-size:22px;font-weight:700;line-height:1;color:var(--text-primary)">Electrical Components</span></td><td class="token-desc">700</td></tr>
+              <tr><td><span class="token-name" data-token="--text-h2">--text-h2<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">28px</td><td><span style="font-size:18px;font-weight:600;line-height:1;color:var(--text-primary)">Top Categories</span></td><td class="token-desc">600</td></tr>
+              <tr><td><span class="token-name" data-token="--text-h3">--text-h3<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">22px</td><td><span style="font-size:16px;font-weight:600;line-height:1;color:var(--text-primary)">SMD Capacitors 100µF</span></td><td class="token-desc">600</td></tr>
+              <tr><td><span class="token-name" data-token="--text-h4">--text-h4<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">18px</td><td><span style="font-size:15px;font-weight:500;line-height:1;color:var(--text-primary)">Shree Electricals Pvt. Ltd.</span></td><td class="token-desc">500</td></tr>
+              <tr><td><span class="token-name" data-token="--text-body-l">--text-body-l<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">16px</td><td><span style="font-size:16px;font-weight:400;color:var(--text-secondary)">Browse from 500+ verified categories</span></td><td class="token-desc">400</td></tr>
+              <tr><td><span class="token-name" data-token="--text-body-m">--text-body-m<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">14px</td><td><span style="font-size:14px;font-weight:400;color:var(--text-secondary)">Ships in 3–5 business days from Bengaluru</span></td><td class="token-desc">400 — <em>default body size</em></td></tr>
+              <tr><td><span class="token-name" data-token="--text-body-s">--text-body-s<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">13px</td><td><span style="font-size:13px;font-weight:400;color:var(--text-secondary)">GST: 27AAECS1234F1Z5 · ISO 9001:2015 Certified</span></td><td class="token-desc">400</td></tr>
+              <tr><td><span class="token-name" data-token="--text-caption">--text-caption<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span style="font-size:12px;font-weight:400;color:var(--text-muted)">Last updated 2 hours ago · 127 reviews</span></td><td class="token-desc">400</td></tr>
+              <tr><td><span class="token-name" data-token="--text-label">--text-label<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span style="font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">VERIFIED SUPPLIER</span></td><td class="token-desc">500, uppercase 0.06em tracking</td></tr>
+              <tr><td><span class="token-name" data-token="--text-overline">--text-overline<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">11px</td><td><span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">PASSIVE COMPONENTS</span></td><td class="token-desc">600, uppercase 0.1em tracking</td></tr>
+            </tbody>
+          </table>
+
+          <div class="token-group-label">Line heights</div>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Paired with</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--lh-display">--lh-display<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">56px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-display</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-h1">--lh-h1<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">44px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h1</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-h2">--lh-h2<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">36px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h2</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-h3">--lh-h3<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">30px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h3</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-h4">--lh-h4<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">26px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h4</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-body">--lh-body<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.6</td><td class="token-desc">Body copy, descriptions — default for <code style="font-size:11px;font-family:monospace;">body</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-tight">--lh-tight<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.3</td><td class="token-desc">All headings — default for <code style="font-size:11px;font-family:monospace;">h1–h6</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             4. SPACING
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-spacing">
+          <div class="token-section-header">
+            <span class="token-section-title">Spacing</span>
+            <span class="token-section-count">11 tokens · 8pt grid</span>
+          </div>
+          <p class="token-section-desc">All values are multiples of 4px. Use for padding, margin, gap, and positional offsets.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Visual</th><th>Common use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--space-1">--space-1<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">4px</td><td><span class="space-bar" style="width:4px;"></span></td><td class="token-desc">Icon-to-label gap, badge padding</td></tr>
+              <tr><td><span class="token-name" data-token="--space-2">--space-2<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">8px</td><td><span class="space-bar" style="width:8px;"></span></td><td class="token-desc">Inline gaps, compact lists</td></tr>
+              <tr><td><span class="token-name" data-token="--space-3">--space-3<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span class="space-bar" style="width:12px;"></span></td><td class="token-desc">Button padding (sm), chip padding</td></tr>
+              <tr><td><span class="token-name" data-token="--space-4">--space-4<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">16px</td><td><span class="space-bar" style="width:16px;"></span></td><td class="token-desc">Card padding, button padding (md), grid gap</td></tr>
+              <tr><td><span class="token-name" data-token="--space-5">--space-5<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">20px</td><td><span class="space-bar" style="width:20px;"></span></td><td class="token-desc">Button padding (lg), input lateral padding</td></tr>
+              <tr><td><span class="token-name" data-token="--space-6">--space-6<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">24px</td><td><span class="space-bar" style="width:24px;"></span></td><td class="token-desc">Section internal padding, gap between groups</td></tr>
+              <tr><td><span class="token-name" data-token="--space-8">--space-8<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">32px</td><td><span class="space-bar" style="width:32px;"></span></td><td class="token-desc">Page horizontal padding, section gaps</td></tr>
+              <tr><td><span class="token-name" data-token="--space-10">--space-10<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">40px</td><td><span class="space-bar" style="width:40px;"></span></td><td class="token-desc">Large component internal spacing</td></tr>
+              <tr><td><span class="token-name" data-token="--space-12">--space-12<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">48px</td><td><span class="space-bar" style="width:48px;"></span></td><td class="token-desc">Section vertical padding</td></tr>
+              <tr><td><span class="token-name" data-token="--space-16">--space-16<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">64px</td><td><span class="space-bar" style="width:64px;"></span></td><td class="token-desc">Hero padding, major layout gaps</td></tr>
+              <tr><td><span class="token-name" data-token="--space-20">--space-20<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">80px</td><td><span class="space-bar" style="width:80px;"></span></td><td class="token-desc">Page top padding, full-screen hero blocks</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             5. BORDER RADIUS
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-radius">
+          <div class="token-section-header">
+            <span class="token-section-title">Border Radius</span>
+            <span class="token-section-count">7 tokens</span>
+          </div>
+          <p class="token-section-desc">Use the semantic step that matches the component size. Larger components get larger radius.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Preview</th><th>Use on</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--radius-xs">--radius-xs<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">2px</td><td><span class="radius-preview" style="border-radius:2px;"></span></td><td class="token-desc">Table cells, tight status chips, progress bars</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-sm">--radius-sm<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">4px</td><td><span class="radius-preview" style="border-radius:4px;"></span></td><td class="token-desc">Code blocks, thumbnails, skeleton bars</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-md">--radius-md<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">6px</td><td><span class="radius-preview" style="border-radius:6px;"></span></td><td class="token-desc">Inputs, selects, tooltips, sort dropdowns</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-lg">--radius-lg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">8px</td><td><span class="radius-preview" style="border-radius:8px;"></span></td><td class="token-desc">Buttons, open dropdown panels, search bar</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-xl">--radius-xl<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span class="radius-preview" style="border-radius:12px;"></span></td><td class="token-desc">Product cards, seller cards, filter sidebar</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-2xl">--radius-2xl<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">16px</td><td><span class="radius-preview" style="border-radius:16px;"></span></td><td class="token-desc">Modals, overlays, hero feature cards</td></tr>
+              <tr><td><span class="token-name" data-token="--radius-full">--radius-full<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">9999px</td><td><span class="radius-preview" style="border-radius:9999px;"></span></td><td class="token-desc">Badges, pill chips, avatars, filter pills, tags</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             6. SHADOWS
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-shadows">
+          <div class="token-section-header">
+            <span class="token-section-title">Shadows</span>
+            <span class="token-section-count">3 tokens · theme-aware</span>
+          </div>
+          <p class="token-section-desc">Shadow opacity increases in dark theme to remain visible. Never use <code style="font-size:12px;font-family:monospace;">box-shadow</code> with hardcoded values.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Light value</th><th>Preview</th><th>Use on</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="token-name" data-token="--shadow-sm">--shadow-sm<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
+                <td class="token-value" style="font-size:11px;">0 1px 3px rgba(0,0,0,.08),<br>0 1px 2px rgba(0,0,0,.06)</td>
+                <td><span class="shadow-preview" style="box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);"></span></td>
+                <td class="token-desc">Cards at rest, dropdowns at rest</td>
+              </tr>
+              <tr>
+                <td><span class="token-name" data-token="--shadow-md">--shadow-md<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
+                <td class="token-value" style="font-size:11px;">0 4px 12px rgba(0,0,0,.12),<br>0 2px 6px rgba(0,0,0,.08)</td>
+                <td><span class="shadow-preview" style="box-shadow:0 4px 12px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);"></span></td>
+                <td class="token-desc">Card hover state, open dropdowns</td>
+              </tr>
+              <tr>
+                <td><span class="token-name" data-token="--shadow-lg">--shadow-lg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
+                <td class="token-value" style="font-size:11px;">0 12px 24px rgba(0,0,0,.12),<br>0 4px 8px rgba(0,0,0,.06)</td>
+                <td><span class="shadow-preview" style="box-shadow:0 12px 24px rgba(0,0,0,.12),0 4px 8px rgba(0,0,0,.06);"></span></td>
+                <td class="token-desc">Modals, overlays, sticky headers</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             7. TRANSITIONS
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-transitions">
+          <div class="token-section-header">
+            <span class="token-section-title">Transitions</span>
+            <span class="token-section-count">3 tokens</span>
+          </div>
+          <p class="token-section-desc">Use <code style="font-size:12px;font-family:monospace;">transition-fast</code> for micro-interactions (hover), <code style="font-size:12px;font-family:monospace;">transition-normal</code> for theme switches and reveals, <code style="font-size:12px;font-family:monospace;">transition-slow</code> for page-level animations.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Use on</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--transition-fast">--transition-fast<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">150ms ease</td><td class="token-desc">Button hover, link colour, border-color on focus, icon opacity</td></tr>
+              <tr><td><span class="token-name" data-token="--transition-normal">--transition-normal<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">250ms ease</td><td class="token-desc">Background/theme switch, sidebar open/close, skeleton fade-out</td></tr>
+              <tr><td><span class="token-name" data-token="--transition-slow">--transition-slow<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">400ms ease</td><td class="token-desc">Modal enter/exit, hero fade-in, full-page transitions</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             8. Z-INDEX
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-zindex">
+          <div class="token-section-header">
+            <span class="token-section-title">Z-Index Scale</span>
+            <span class="token-section-count">7 tokens</span>
+          </div>
+          <p class="token-section-desc">Named stacking layers. Never use arbitrary z-index integers — always reference a layer token.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Layer</th></tr></thead>
+            <tbody>
+              <tr><td><span class="token-name" data-token="--z-base">--z-base<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">0</td><td class="token-desc">Default document flow</td></tr>
+              <tr><td><span class="token-name" data-token="--z-raised">--z-raised<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">10</td><td class="token-desc">Elevated cards, floating action buttons</td></tr>
+              <tr><td><span class="token-name" data-token="--z-dropdown">--z-dropdown<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">100</td><td class="token-desc">Dropdown menus, autocomplete lists, tooltips</td></tr>
+              <tr><td><span class="token-name" data-token="--z-sticky">--z-sticky<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">200</td><td class="token-desc">Sticky nav bar, sticky filter bar, sticky tab bar</td></tr>
+              <tr><td><span class="token-name" data-token="--z-overlay">--z-overlay<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">300</td><td class="token-desc">Modal backdrop, drawer backdrop</td></tr>
+              <tr><td><span class="token-name" data-token="--z-modal">--z-modal<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">400</td><td class="token-desc">Modal dialogs, side drawers, bottom sheets</td></tr>
+              <tr><td><span class="token-name" data-token="--z-toast">--z-toast<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">500</td><td class="token-desc">Toast notifications — always on top</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+
+        <!-- ══════════════════════════════════════════════
+             12. TOKEN USAGE EXAMPLES
+             ══════════════════════════════════════════════ -->
+        <section class="token-section" id="section-examples">
+          <div class="token-section-header">
+            <span class="token-section-title">Token Usage Examples</span>
+            <span class="token-section-count">3 components</span>
+          </div>
+          <p class="token-section-desc">
+            Three real components built entirely from design tokens — no hardcoded values anywhere.
+            Each example shows the live interactive render, the token-to-property mapping, and the CSS source you can copy directly into your codebase.
+          </p>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 01 — CTA Button
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-cta">
+            <div class="ex-block-header">
+              <span class="ex-block-num">01</span>
+              <div>
+                <div class="ex-block-title">Call to Action — Primary Button</div>
+                <div class="ex-block-desc">Used in product cards, PDP hero, and RFQ flows. Signals the highest-priority action on any surface. Background, spacing, radius, shadow, and transition speed are all resolved from tokens.</div>
+              </div>
+            </div>
+
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area">
+                  <button class="demo-cta">Add to Cart</button>
+                </div>
+                <div class="ex-state-row">
+                  <div class="ex-state-item">
+                    <button class="demo-cta">Default</button>
+                    <span class="ex-state-label">Default</span>
+                  </div>
+                  <div class="ex-state-item">
+                    <button class="demo-cta demo-cta-hover">Hover</button>
+                    <span class="ex-state-label">Hover</span>
+                  </div>
+                  <div class="ex-state-item">
+                    <button class="demo-cta" disabled>Disabled</button>
+                    <span class="ex-state-label">Disabled</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>background</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>background (hover)</td><td><code>--color-primary-700</code></td></tr>
+                    <tr><td>font-family</td><td><code>--font-body</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>font-weight</td><td><code>--font-weight-cta</code></td></tr>
+                    <tr><td>padding block</td><td><code>--space-3</code></td></tr>
+                    <tr><td>padding inline</td><td><code>--space-6</code></td></tr>
+                    <tr><td>border-radius</td><td><code>--radius-lg</code></td></tr>
+                    <tr><td>box-shadow</td><td><code>--shadow-sm</code></td></tr>
+                    <tr><td>box-shadow (hover)</td><td><code>--shadow-md</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.btn-primary {
+  background:    var(--color-primary);
+  color:         #fff;
+  font-family:   var(--font-body);
+  font-size:     var(--text-body-m);
+  font-weight:   var(--font-weight-cta);
+  padding:       var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  border:        none;
+  cursor:        pointer;
+  box-shadow:    var(--shadow-sm);
+  transition:    background var(--transition-fast),
+                 box-shadow  var(--transition-fast);
+}
+.btn-primary:hover {
+  background: var(--color-primary-700);
+  box-shadow: var(--shadow-md);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor:  not-allowed;
+}</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 02 — Tab Bar
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-tab">
+            <div class="ex-block-header">
+              <span class="ex-block-num">02</span>
+              <div>
+                <div class="ex-block-title">Tab Bar</div>
+                <div class="ex-block-desc">Used on seller profiles (Products / About / Reviews) and the PDP (Description / Specifications / Packaging &amp; Delivery). The active underline, colour, typography, and motion all derive from tokens. Click a tab below to interact.</div>
+              </div>
+            </div>
+
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="padding-bottom:0;padding-top:var(--space-5);align-items:flex-end;">
+                  <div class="demo-tab-bar">
+                    <button class="demo-tab active" onclick="setTab(event)">Products</button>
+                    <button class="demo-tab" onclick="setTab(event)">About</button>
+                    <button class="demo-tab" onclick="setTab(event)">Reviews</button>
+                    <button class="demo-tab" onclick="setTab(event)">Photos</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-bottom (bar)</td><td><code>--border</code></td></tr>
+                    <tr><td>gap (between tabs)</td><td><code>--space-1</code></td></tr>
+                    <tr><td>font-family</td><td><code>--font-body</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>font-weight</td><td><code>--font-weight-cta</code></td></tr>
+                    <tr><td>padding block</td><td><code>--space-3</code></td></tr>
+                    <tr><td>padding inline</td><td><code>--space-4</code></td></tr>
+                    <tr><td>color (inactive)</td><td><code>--text-secondary</code></td></tr>
+                    <tr><td>color (hover)</td><td><code>--text-primary</code></td></tr>
+                    <tr><td>color + underline (active)</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.tab-bar {
+  display:       flex;
+  border-bottom: 1px solid var(--border);
+  gap:           var(--space-1);
+}
+.tab {
+  font-family:   var(--font-body);
+  font-size:     var(--text-body-m);
+  font-weight:   500;
+  color:         var(--text-secondary);
+  padding:       var(--space-3) var(--space-4);
+  background:    transparent;
+  border:        none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor:        pointer;
+  transition:    color        var(--transition-fast),
+                 border-color var(--transition-fast);
+}
+.tab:hover  { color: var(--text-primary); }
+.tab.active {
+  color:         var(--color-primary);
+  border-color:  var(--color-primary);
+  font-weight:   600;
+}</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 03 — Product Card
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-product-card">
+            <div class="ex-block-header">
+              <span class="ex-block-num">03</span>
+              <div>
+                <div class="ex-block-title">Product Card</div>
+                <div class="ex-block-desc">Appears in homepage recommendations, category grids, seller profile product tabs, and PDP related products. Every visual layer — card surface, image well, badge, typography, price, and CTA — uses a token. Hover the card to see the elevation transition.</div>
+              </div>
+            </div>
+
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="padding:var(--space-8);">
+                  <div class="demo-card">
+                    <div class="demo-card-image">
+                      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-primary-300)">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                        <circle cx="12" cy="14" r="2"/>
+                      </svg>
+                    </div>
+                    <div class="demo-card-body">
+                      <span class="demo-card-badge">Passive Components</span>
+                      <div class="demo-card-title">SMD Electrolytic Capacitors 100µF 50V</div>
+                      <div class="demo-card-seller">Electronica Components · Bengaluru</div>
+                      <div class="demo-card-footer">
+                        <div class="demo-card-price">₹4.20<span class="demo-card-unit">&thinsp;/unit</span></div>
+                        <button class="demo-card-cta">Add to Cart</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>card background</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>card border</td><td><code>--border</code></td></tr>
+                    <tr><td>card border-radius</td><td><code>--radius-xl</code></td></tr>
+                    <tr><td>card shadow / hover</td><td><code>--shadow-sm</code> <code>--shadow-md</code></td></tr>
+                    <tr><td>card transition</td><td><code>--transition-normal</code></td></tr>
+                    <tr><td>image well background</td><td><code>--bg-subtle</code></td></tr>
+                    <tr><td>image well border</td><td><code>--border</code></td></tr>
+                    <tr><td>badge background</td><td><code>--color-primary-50</code></td></tr>
+                    <tr><td>badge color</td><td><code>--color-primary-700</code></td></tr>
+                    <tr><td>badge border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>badge font-size</td><td><code>--text-caption</code></td></tr>
+                    <tr><td>title font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>title color</td><td><code>--text-primary</code></td></tr>
+                    <tr><td>title line-height</td><td><code>--lh-tight</code></td></tr>
+                    <tr><td>seller color</td><td><code>--text-muted</code></td></tr>
+                    <tr><td>seller font-size</td><td><code>--text-body-s</code></td></tr>
+                    <tr><td>footer divider</td><td><code>--divider</code></td></tr>
+                    <tr><td>price font-size</td><td><code>--text-h4</code></td></tr>
+                    <tr><td>CTA background</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>CTA border-radius</td><td><code>--radius-md</code></td></tr>
+                    <tr><td>CTA font-size</td><td><code>--text-body-s</code></td></tr>
+                    <tr><td>CTA font-weight</td><td><code>--font-weight-cta</code></td></tr>
+                    <tr><td>CTA transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.product-card {
+  background:    var(--bg-card);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow:    var(--shadow-sm);
+  overflow:      hidden;
+  transition:    box-shadow var(--transition-normal),
+                 transform  var(--transition-normal);
+}
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform:  translateY(-2px);
+}
+
+/* Image well */
+.product-card-image {
+  background:    var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Body */
+.product-card-body   { padding: var(--space-4); }
+
+/* Category badge */
+.product-card-badge {
+  font-size:     var(--text-caption);
+  font-weight:   600;
+  color:         var(--color-primary-700);
+  background:    var(--color-primary-50);
+  border-radius: var(--radius-full);
+  padding:       2px var(--space-3);
+}
+
+/* Title */
+.product-card-title {
+  font-size:   var(--text-body-m);
+  font-weight: 600;
+  color:       var(--text-primary);
+  line-height: var(--lh-tight);
+}
+
+/* Seller line */
+.product-card-seller {
+  font-size: var(--text-body-s);
+  color:     var(--text-muted);
+}
+
+/* Footer */
+.product-card-footer {
+  border-top: 1px solid var(--divider);
+  padding-top: var(--space-3);
+}
+.product-card-price {
+  font-size:   var(--text-h4);
+  font-weight: 700;
+  color:       var(--text-primary);
+}
+
+/* CTA */
+.product-card-cta {
+  background:    var(--color-primary);
+  color:         #fff;
+  font-size:     var(--text-body-s);
+  font-weight:   var(--font-weight-cta);
+  padding:       var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border:        none;
+  transition:    background var(--transition-fast);
+}
+.product-card-cta:hover { background: var(--color-primary-700); }</pre>
+            </div>
+          </div>
+
+        </section>
+
+      </div><!-- /page-content -->
+
+      <!-- Table of Contents -->
+      <nav class="page-toc">
+        <div class="toc-label">On this page</div>
+        <a href="#section-color-primary" class="toc-link">Primary — Desktop</a>
+        <a href="#section-color-mobile" class="toc-link">Primary — Mobile</a>
+        <a href="#section-color-semantic" class="toc-link">Semantic Colors</a>
+        <a href="#section-neutral" class="toc-link">Neutral Grays</a>
+        <a href="#section-surface" class="toc-link">Surface Tokens</a>
+        <a href="#section-typography" class="toc-link">Typography</a>
+        <a href="#section-spacing" class="toc-link">Spacing</a>
+        <a href="#section-radius" class="toc-link">Border Radius</a>
+        <a href="#section-shadows" class="toc-link">Shadows</a>
+        <a href="#section-transitions" class="toc-link">Transitions</a>
+        <a href="#section-zindex" class="toc-link">Z-Index</a>
+        <a href="#section-examples" class="toc-link">Token Usage Examples</a>
+      </nav>
+
+    </div><!-- /page-layout -->
+  </div><!-- /page-body -->
+</div><!-- /ds-page -->
+
+<!-- Copied toast -->
+<div id="copy-toast">Copied to clipboard</div>
+
+<script src="shared/nav.js"></script>
+<script>
+
+  /* ── Tab demo interaction ────────────────────────── */
+  function setTab(e) {
+    var btn = e.currentTarget || e.target;
+    var bar = btn.closest('.demo-tab-bar');
+    if (!bar) return;
+    bar.querySelectorAll('.demo-tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  /* ── Copy token to clipboard ───────────────────── */
+  var toast = document.getElementById('copy-toast');
+  var toastTimer;
+
+  document.querySelectorAll('.token-name').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var token = el.getAttribute('data-token');
+      if (!token) return;
+      navigator.clipboard.writeText(token).then(function() {
+        el.classList.add('copied');
+        clearTimeout(toastTimer);
+        toast.textContent = 'Copied ' + token;
+        toast.classList.add('show');
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('show');
+          el.classList.remove('copied');
+        }, 1800);
+      });
+    });
+  });
+
+  /* ── Active TOC link on scroll ─────────────────── */
+  var sections = document.querySelectorAll('.token-section[id]');
+  var tocLinks = document.querySelectorAll('.toc-link');
+
+  function onScroll() {
+    var scrollY = window.scrollY + 80;
+    var current = '';
+    sections.forEach(function(s) {
+      if (s.offsetTop <= scrollY) current = s.id;
+    });
+    tocLinks.forEach(function(l) {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>

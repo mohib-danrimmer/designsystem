@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMD Electrolytic Capacitors 100µF 50V — TradeNest</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: var(--lh-body);
+    }
+
+    /* ============================================================
+       SITE STRUCTURE
+    ============================================================ */
+    .ds-page {
+      padding-top: 56px; /* DS nav offset */
+    }
+
+    /* ============================================================
+       SITE HEADER (marketplace header)
+    ============================================================ */
+    .site-header {
+      height: 64px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 56px;
+      z-index: var(--z-sticky);
+    }
+    .site-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .site-header-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .site-header-logo-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-primary);
+    }
+    .site-header-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      max-width: 560px;
+    }
+    .site-header-search-cat {
+      padding: 0 14px;
+      height: 38px;
+      border: none;
+      border-right: 1px solid var(--border);
+      background: var(--bg-subtle);
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .site-header-search-input {
+      flex: 1;
+      height: 38px;
+      border: none;
+      padding: 0 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: transparent;
+      outline: none;
+    }
+    .site-header-search-btn {
+      width: 42px;
+      height: 38px;
+      background: var(--color-primary);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .site-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .site-header-icon-btn {
+      width: 38px;
+      height: 38px;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 18px;
+      position: relative;
+      transition: background var(--transition-fast);
+    }
+    .site-header-icon-btn:hover { background: var(--bg-subtle); }
+    .site-header-icon-btn .badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 16px;
+      height: 16px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .site-header-avatar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      height: 38px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      background: var(--bg-card);
+      transition: background var(--transition-fast);
+    }
+    .site-header-avatar:hover { background: var(--bg-subtle); }
+    .site-header-avatar-circle {
+      width: 26px;
+      height: 26px;
+      background: var(--color-primary-100);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .site-header-avatar-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .btn-post-req {
+      height: 38px;
+      padding: 0 16px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--transition-fast);
+    }
+    .btn-post-req:hover { background: var(--color-primary-700); }
+
+    /* ============================================================
+       MOBILE HEADER
+    ============================================================ */
+    .mobile-header {
+      display: none;
+      position: sticky;
+      top: 56px;
+      z-index: var(--z-sticky);
+    }
+
+    /* ============================================================
+       BREADCRUMB
+    ============================================================ */
+    .breadcrumb {
+      background: var(--bg-page);
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-link {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .breadcrumb-link:hover { color: var(--color-primary-700); text-decoration: underline; }
+    .breadcrumb-sep {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin: 0 2px;
+    }
+    .breadcrumb-current {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       SECTION CONTAINER
+    ============================================================ */
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ============================================================
+       HERO BLOCK
+    ============================================================ */
+    .pdp-hero {
+      display: flex;
+      gap: 32px;
+      padding: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Left: Product Images */
+    .pdp-product-img {
+      width: 60%;
+      flex-shrink: 0;
+    }
+    .pdp-main-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .pdp-main-image-label {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.7);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    /* CSS Capacitor Art */
+    .capacitor-art {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cap-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid;
+    }
+    .cap-ring-1 {
+      width: 220px; height: 220px;
+      border-color: var(--color-primary-200);
+      background: transparent;
+    }
+    .cap-ring-2 {
+      width: 180px; height: 180px;
+      border-color: var(--color-primary-300);
+      background: var(--color-primary-50);
+    }
+    .cap-ring-3 {
+      width: 140px; height: 140px;
+      border-color: var(--color-primary-400);
+      background: var(--color-primary-100);
+    }
+    .cap-ring-4 {
+      width: 100px; height: 100px;
+      border-color: var(--color-primary-500);
+      background: var(--color-primary-200);
+    }
+    .cap-center {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      z-index: 1;
+      box-shadow: 0 4px 16px rgba(46, 49, 146, 0.4);
+    }
+    .cap-center-val {
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+    }
+    /* Leg marks */
+    .cap-legs {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      gap: 20px;
+    }
+    .cap-leg {
+      width: 4px;
+      height: 30px;
+      background: var(--color-primary-600);
+      border-radius: 2px;
+    }
+    .cap-leg-plus::after {
+      content: '+';
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-align: center;
+      margin-top: 2px;
+    }
+    .cap-leg-minus::after {
+      content: '–';
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 2px;
+    }
+    /* Spec line on ring */
+    .cap-spec-line {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--color-primary-200);
+      border-radius: var(--radius-md);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--color-primary-700);
+      line-height: 1.5;
+    }
+
+    .pdp-thumbnails {
+      display: flex;
+      gap: 8px;
+    }
+    .pdp-thumb {
+      width: 60px;
+      height: 60px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 22px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .pdp-thumb.active {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-100);
+    }
+    .pdp-thumb:hover:not(.active) {
+      border-color: var(--color-primary-300);
+    }
+    .pdp-thumb-label {
+      display: none;
+    }
+
+    /* Right: Product Info */
+    .pdp-product-info {
+      width: 40%;
+      min-width: 0;
+    }
+
+    .pdp-category-badge {
+      display: inline-block;
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      padding: 3px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .pdp-product-title {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .pdp-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .stars { color: #f59e0b; font-size: 16px; letter-spacing: 1px; }
+    .stars-sm { font-size: 12px; }
+    .pdp-rating-val {
+      font-size: 14px;
+      font-weight: 600;
+      color: #b45309;
+    }
+    .pdp-rating-count {
+      font-size: 13px;
+      color: var(--color-primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .pdp-rating-count:hover { text-decoration: underline; }
+    .pdp-rating-dot { color: var(--text-muted); font-size: 12px; }
+    .badge-verified-buyer {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      border-radius: var(--radius-full);
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .pdp-trust-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .badge-trust {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-trust-blue {
+      background: var(--color-info-bg);
+      color: var(--color-info);
+    }
+    .badge-trust-gold {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    /* Price Block */
+    .pdp-price-block {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .pdp-price-main {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    .pdp-price-unit {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+    .pdp-bulk-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .bulk-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .bulk-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--bg-subtle);
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+    }
+    .bulk-table td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .bulk-table tr:hover td {
+      background: var(--bg-subtle);
+    }
+    .bulk-table td.savings-green {
+      color: var(--color-success);
+      font-weight: 600;
+    }
+
+    .pdp-location {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Action Buttons */
+    .pdp-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-body);
+      cursor: pointer;
+      font-weight: 600;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-lg { height: 48px; padding: 0 24px; font-size: 15px; }
+    .btn-md { height: 40px; padding: 0 18px; font-size: 14px; }
+    .btn-sm { height: 34px; padding: 0 14px; font-size: 13px; }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--color-primary-700); }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+    }
+    .btn-secondary:hover { background: var(--color-primary-50); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--bg-subtle); color: var(--text-primary); }
+    .btn-icon {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: var(--radius-lg);
+    }
+    .btn-flex { flex: 1; min-width: 120px; }
+
+    .pdp-quote-link {
+      font-size: 13px;
+      color: var(--color-primary);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .pdp-quote-link:hover { text-decoration: underline; }
+
+    /* Quick Specs Strip */
+    .pdp-quick-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .quick-spec-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 4px 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .quick-spec-pill strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       SELLER STRIP
+    ============================================================ */
+    .seller-strip {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+    }
+    .seller-strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .seller-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--color-primary-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .seller-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-right: auto;
+    }
+    .seller-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .seller-strip-link {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .seller-strip-link:hover { text-decoration: underline; }
+
+    /* ============================================================
+       TABS
+    ============================================================ */
+    .pdp-tabs-section {
+      padding: 32px 32px 0;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    /* Tab Bar — uses shared .tab / .tab-bar atom (see components/molecules.html → Tab Bar) */
+    .tab-bar {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab {
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+      white-space: nowrap;
+      font-family: var(--font-body);
+    }
+    .tab.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+    .tab:hover:not(.active) {
+      color: var(--text-primary);
+    }
+
+    .pdp-tab-content { display: none; }
+    .pdp-tab-content.active { display: block; }
+
+    /* Description Tab */
+    .tab-desc-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .tab-desc-features {
+      margin-top: 20px;
+    }
+    .tab-desc-features h4 {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .feature-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .feature-check {
+      color: var(--color-success);
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .feature-label { font-weight: 600; color: var(--text-primary); }
+
+    /* Specs Tab */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .specs-table th {
+      text-align: left;
+      padding: 10px 16px;
+      background: var(--color-primary-50);
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+    }
+    .specs-table td {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .specs-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+      width: 35%;
+      background: var(--bg-subtle);
+    }
+    .specs-table td:last-child {
+      width: 20%;
+      color: var(--text-muted);
+    }
+    .specs-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .specs-table tr:nth-child(even) td:first-child { background: var(--neutral-100); }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    .reviews-section {
+      padding: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .reviews-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .reviews-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .reviews-overall {
+      text-align: center;
+      min-width: 120px;
+    }
+    .reviews-overall-score {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .reviews-overall-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .reviews-bars {
+      flex: 1;
+      min-width: 220px;
+    }
+    .rating-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .rating-bar-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      width: 22px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .rating-bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: #f59e0b;
+      border-radius: var(--radius-full);
+    }
+    .rating-bar-pct {
+      font-size: 12px;
+      color: var(--text-muted);
+      width: 32px;
+      flex-shrink: 0;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .review-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      gap: 12px;
+    }
+    .review-stars { color: #f59e0b; font-size: 14px; letter-spacing: 1px; }
+    .review-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .review-meta-item {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .review-meta-sep { color: var(--text-muted); font-size: 11px; }
+    .review-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .review-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       RELATED PRODUCTS
+    ============================================================ */
+    .related-section {
+      padding: 0 32px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .related-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .product-card-img {
+      height: 140px;
+      background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-card-body { padding: 14px; }
+    .product-card-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .product-card-seller {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .product-card-price {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+    .product-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .product-card-rating .stars-sm { color: #f59e0b; }
+
+    /* ============================================================
+       STICKY MOBILE CTA
+    ============================================================ */
+    .sticky-add-to-cart {
+      display: none;
+      position: sticky;
+      bottom: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      z-index: 100;
+      gap: 12px;
+    }
+
+    /* ============================================================
+       MOBILE OVERRIDES
+    ============================================================ */
+    .surface-mobile .pdp-hero { flex-direction: column !important; }
+    .surface-mobile .pdp-product-img { width: 100% !important; }
+    .surface-mobile .pdp-product-info { width: 100% !important; padding: 16px !important; }
+    .surface-mobile .pdp-actions { flex-wrap: wrap; }
+    .surface-mobile .site-header { display: none !important; }
+    .surface-mobile .breadcrumb { display: none !important; }
+    .surface-mobile .mobile-header { display: flex !important; }
+    .surface-mobile .sticky-add-to-cart { display: flex !important; }
+    .surface-mobile .section-container { padding: 0 16px !important; }
+    .surface-mobile .pdp-tabs-section { padding: 16px 16px 0 !important; }
+    .surface-mobile .reviews-section { padding: 16px !important; }
+    .surface-mobile .related-section { padding: 0 16px 32px !important; }
+    .surface-mobile .related-grid { grid-template-columns: 1fr 1fr !important; }
+    .surface-mobile .seller-strip { padding: 12px 16px !important; }
+    .surface-mobile .seller-strip-inner { flex-wrap: wrap; gap: 10px; }
+    .surface-mobile .reviews-header { flex-direction: column; gap: 20px; }
+    .surface-mobile .feature-list { grid-template-columns: 1fr !important; }
+    .surface-mobile .pdp-main-image { height: 280px !important; }
+    .surface-mobile .pdp-product-title { font-size: 20px !important; }
+    .surface-mobile .pdp-price-main { font-size: 26px !important; }
+    .surface-mobile .pdp-hero { padding: 0 !important; }
+    .surface-mobile .breadcrumb { padding: 10px 16px !important; }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DS Nav Bar -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+      <div class="ds-nav-links">
+        <a href="../components/foundations.html" class="ds-nav-link">Foundations</a>
+        <a href="../components/atoms.html" class="ds-nav-link">Atoms</a>
+        <a href="../components/molecules.html" class="ds-nav-link">Molecules</a>
+        <a href="../components/organisms.html" class="ds-nav-link">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="homepage.html" class="ds-nav-link">Home</a>
+        <a href="pdp.html" class="ds-nav-link active" data-page="pdp">PDP</a>
+        <a href="category.html" class="ds-nav-link">Category</a>
+        <a href="seller-profile.html" class="ds-nav-link">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div class="ds-page" id="ds-page-container">
+
+    <!-- Mobile Header (hidden on desktop) -->
+    <div class="mobile-header" style="display:none;">
+      <div style="background:var(--color-primary);height:56px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;color:#fff;width:100%;">
+        <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:20px;">←</button>
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:15px;">Product Details</span>
+        <div style="display:flex;gap:8px;">
+          <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:18px;">♡</button>
+          <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:18px;">⋮</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SITE HEADER ==================== -->
+    <header class="site-header">
+      <a href="#" class="site-header-logo">
+        <div class="site-header-logo-mark">TN</div>
+        <span class="site-header-logo-name">TradeNest</span>
+      </a>
+
+      <div class="site-header-search">
+        <select class="site-header-search-cat" aria-label="Category">
+          <option>All Categories</option>
+          <option selected>Electronics</option>
+          <option>Passive Components</option>
+          <option>Mechanical</option>
+          <option>Raw Materials</option>
+        </select>
+        <input class="site-header-search-input" type="text" placeholder="Search products, suppliers, categories..." value="SMD Electrolytic Capacitors" />
+        <button class="site-header-search-btn" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <div class="site-header-actions">
+        <button class="site-header-icon-btn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">3</span>
+        </button>
+        <button class="site-header-icon-btn" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge">2</span>
+        </button>
+        <div class="site-header-avatar" role="button" aria-label="User menu">
+          <div class="site-header-avatar-circle">RK</div>
+          <span class="site-header-avatar-name">Rahul K.</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <button class="btn-post-req">Post Requirement</button>
+      </div>
+    </header>
+
+    <!-- ==================== BREADCRUMB ==================== -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="#" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Electronics</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Passive Components</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Capacitors</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">SMD Electrolytic Capacitors 100µF 50V</span>
+      </div>
+    </nav>
+
+    <!-- ==================== HERO BLOCK ==================== -->
+    <div class="pdp-hero">
+
+      <!-- Left: Product Images -->
+      <div class="pdp-product-img">
+        <div class="pdp-main-image">
+          <span class="pdp-main-image-label">Main Product Image</span>
+          <!-- CSS Capacitor Art -->
+          <div class="capacitor-art">
+            <div class="cap-ring cap-ring-1"></div>
+            <div class="cap-ring cap-ring-2"></div>
+            <div class="cap-ring cap-ring-3"></div>
+            <div class="cap-ring cap-ring-4"></div>
+            <div class="cap-center">
+              <div class="cap-center-val">100µF<br/>50V</div>
+            </div>
+          </div>
+          <div class="cap-spec-line">
+            SMD<br/>D-Case<br/>10×10mm
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="pdp-thumbnails">
+          <div class="pdp-thumb active" title="Product front view" onclick="selectThumb(this)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="2" fill="var(--color-primary)"/></svg>
+          </div>
+          <div class="pdp-thumb" title="Datasheet / Spec sheet" onclick="selectThumb(this)">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-400)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="pdp-thumb" title="Packaging reel" onclick="selectThumb(this)">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-400)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="2" fill="var(--color-primary-200)"/></svg>
+          </div>
+          <div class="pdp-thumb" title="Dimensions" onclick="selectThumb(this)">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-400)" stroke-width="1.5"><path d="M3 3h4v4H3zM17 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4z"/><line x1="7" y1="5" x2="17" y2="5"/><line x1="7" y1="19" x2="17" y2="19"/><line x1="5" y1="7" x2="5" y2="17"/><line x1="19" y1="7" x2="19" y2="17"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="pdp-product-info">
+
+        <!-- Category Badge -->
+        <span class="pdp-category-badge">Passive Components</span>
+
+        <!-- Title -->
+        <h1 class="pdp-product-title">SMD Electrolytic Capacitors 100µF 50V (Reel of 5,000)</h1>
+
+        <!-- Rating Row -->
+        <div class="pdp-rating-row">
+          <span class="stars" aria-label="4.4 out of 5 stars">★★★★☆</span>
+          <span class="pdp-rating-val">4.4</span>
+          <span class="pdp-rating-dot">·</span>
+          <a href="#reviews" class="pdp-rating-count">127 reviews</a>
+          <span class="pdp-rating-dot">·</span>
+          <span class="badge-verified-buyer">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </span>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="pdp-trust-row">
+          <span class="badge-trust badge-trust-blue">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Verified Supplier
+          </span>
+          <span class="badge-trust badge-trust-gold">
+            ★ TrustSeal Verified
+          </span>
+        </div>
+
+        <!-- Price Block -->
+        <div class="pdp-price-block">
+          <div class="pdp-price-main">₹4.20 <span class="pdp-price-unit">/ unit</span></div>
+
+
+          <div class="pdp-bulk-label">Bulk Pricing</div>
+          <table class="bulk-table">
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Price / Unit</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 – 999</td>
+                <td>₹4.20</td>
+                <td class="savings-green">—</td>
+              </tr>
+              <tr>
+                <td>1,000 – 4,999</td>
+                <td>₹3.80</td>
+                <td class="savings-green">Save 10%</td>
+              </tr>
+              <tr>
+                <td>5,000 +</td>
+                <td>₹3.40</td>
+                <td class="savings-green">Save 19%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Location -->
+        <div class="pdp-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Bengaluru, Karnataka
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pdp-actions">
+          <button class="btn btn-primary btn-lg btn-flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Add to Cart
+          </button>
+          <button class="btn btn-secondary btn-lg btn-flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Contact Seller
+          </button>
+          <button class="btn btn-ghost btn-lg" title="Save for later" style="padding:0 14px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            Save
+          </button>
+          <button class="btn btn-ghost btn-lg btn-icon" title="Share this product">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </button>
+        </div>
+
+        <!-- Quote Link -->
+        <a href="#" class="pdp-quote-link">Request Custom Quote →</a>
+
+        <!-- Quick Specs -->
+        <div class="pdp-quick-specs">
+          <div class="quick-spec-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Min Order: <strong>1,000 units</strong></span>
+          </div>
+          <div class="quick-spec-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Lead Time: <strong>3–5 business days</strong></span>
+          </div>
+          <div class="quick-spec-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Sample: <strong>Available on request</strong></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== SELLER STRIP ==================== -->
+    <div class="seller-strip">
+      <div class="seller-strip-inner">
+        <div class="seller-avatar">EC</div>
+        <span class="seller-name">Electronica Components Pvt. Ltd.</span>
+
+        <div class="seller-strip-item">
+          <span class="badge-trust badge-trust-gold" style="font-size:11px;padding:2px 8px;">★ TrustSeal ✓</span>
+        </div>
+
+        <div class="seller-strip-item">
+          <span class="stars" style="font-size:12px;">★★★★☆</span>
+          <span style="font-size:13px;color:var(--text-secondary);">4.4</span>
+          <span style="font-size:12px;color:var(--text-muted);">(127 reviews)</span>
+        </div>
+
+        <div class="seller-strip-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Ships in 3–5 business days
+        </div>
+
+        <a href="seller-profile.html" class="seller-strip-link">View Full Profile →</a>
+      </div>
+    </div>
+
+    <!-- ==================== TAB SECTION ==================== -->
+    <div class="pdp-tabs-section">
+      <div class="tab-bar" role="tablist">
+        <button class="tab active" role="tab" onclick="switchTab(this, 'tab-description')">Description</button>
+        <button class="tab" role="tab" onclick="switchTab(this, 'tab-specifications')">Specifications</button>
+        <button class="tab" role="tab" onclick="switchTab(this, 'tab-packaging')">Packaging &amp; Delivery</button>
+        <button class="tab" role="tab" onclick="switchTab(this, 'tab-reviews-tab')">Reviews</button>
+      </div>
+
+      <!-- Description Tab -->
+      <div class="pdp-tab-content active" id="tab-description">
+        <p class="tab-desc-body">
+          SMD Electrolytic Capacitors 100µF 50V are high-reliability aluminium electrolytic capacitors designed for surface-mount applications in industrial electronics, power supplies, and consumer equipment. Manufactured to IEC 60384-4 standards with a 2,000-hour lifetime rating at 105°C.
+        </p>
+        <p class="tab-desc-body">
+          Supplied on a reel of 5,000 units, these capacitors meet RoHS compliance requirements and are suitable for automated PCB assembly. The low ESR characteristics make them ideal for high-frequency filtering applications in SMPS, inverters, and motor drives.
+        </p>
+
+        <div class="tab-desc-features">
+          <h4>Feature Highlights</h4>
+          <ul class="feature-list">
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Capacitance:</span> 100µF ±20%</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Voltage Rating:</span> 50V DC</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Temperature Range:</span> −40°C to +105°C</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Lifetime:</span> 2,000 hours at 105°C</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Lead Type:</span> SMD (Surface Mount), Case Size D (10×10mm)</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Compliance:</span> RoHS, REACH, IEC 60384-4</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Pack:</span> Reel of 5,000 units</span>
+            </li>
+            <li>
+              <span class="feature-check">✓</span>
+              <span><span class="feature-label">Origin:</span> Bengaluru, India</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Specifications Tab -->
+      <div class="pdp-tab-content" id="tab-specifications">
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+              <th>Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Capacitance</td>
+              <td>100 ±20%</td>
+              <td>µF</td>
+            </tr>
+            <tr>
+              <td>Voltage Rating</td>
+              <td>50</td>
+              <td>V DC</td>
+            </tr>
+            <tr>
+              <td>Operating Temperature</td>
+              <td>−40 to +105</td>
+              <td>°C</td>
+            </tr>
+            <tr>
+              <td>ESR (max @ 100 kHz)</td>
+              <td>85</td>
+              <td>mΩ</td>
+            </tr>
+            <tr>
+              <td>Leakage Current (max)</td>
+              <td>0.03 × C × V ≤ 3</td>
+              <td>µA</td>
+            </tr>
+            <tr>
+              <td>Dimensions (D × L)</td>
+              <td>10 × 10</td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>Weight per unit</td>
+              <td>approx. 1.8</td>
+              <td>g</td>
+            </tr>
+            <tr>
+              <td>Package</td>
+              <td>Reel of 5,000 units</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Packaging & Delivery Tab -->
+      <div class="pdp-tab-content" id="tab-packaging">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:14px;">
+          <div>
+            <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:600;margin-bottom:12px;color:var(--text-primary);">Packaging Details</h4>
+            <table style="width:100%;border-collapse:collapse;">
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;width:50%;">Pack Type</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">Tape &amp; Reel (5,000 pcs)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Reel Size</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">330mm standard</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Tape Width</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">16mm</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Reel Weight</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">~9.5 kg</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Outer Carton</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">4 reels per carton</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:600;margin-bottom:12px;color:var(--text-primary);">Delivery Information</h4>
+            <table style="width:100%;border-collapse:collapse;">
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;width:50%;">Lead Time</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">3–5 business days</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Dispatch From</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">Bengaluru, Karnataka</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Shipping Mode</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;">Surface / Air (as agreed)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Pan-India Delivery</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;color:var(--color-success);">Available</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;color:var(--text-muted);font-size:13px;">Export Possible</td>
+                  <td style="padding:10px 0;font-weight:600;font-size:13px;color:var(--color-success);">Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Tab (scrolls to reviews section) -->
+      <div class="pdp-tab-content" id="tab-reviews-tab">
+        <p style="font-size:14px;color:var(--text-secondary);">
+          See the full reviews section below for customer feedback and ratings.
+        </p>
+      </div>
+    </div>
+
+    <div style="height:32px;"></div>
+    <div class="section-divider"></div>
+
+    <!-- ==================== REVIEWS SECTION ==================== -->
+    <div class="reviews-section" id="reviews">
+      <div class="reviews-header">
+
+        <!-- Overall Score -->
+        <div class="reviews-overall">
+          <div class="reviews-overall-score">4.4</div>
+          <div class="stars" style="font-size:20px;margin:4px 0;">★★★★☆</div>
+          <div class="reviews-overall-label">127 reviews</div>
+        </div>
+
+        <!-- Rating Bars -->
+        <div class="reviews-bars">
+          <div style="margin-bottom:4px;">
+            <h3 class="reviews-title">Customer Reviews</h3>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">5★</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:68%;"></div></div>
+            <span class="rating-bar-pct">68%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">4★</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:19%;background:#fbbf24;"></div></div>
+            <span class="rating-bar-pct">19%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">3★</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:8%;background:#fcd34d;"></div></div>
+            <span class="rating-bar-pct">8%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">2★</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%;background:#fde68a;"></div></div>
+            <span class="rating-bar-pct">3%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="rating-bar-label">1★</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;background:#fef3c7;"></div></div>
+            <span class="rating-bar-pct">2%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Card 1 -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-title">Excellent quality capacitors, ESR values well within spec.</div>
+          </div>
+          <span class="review-date">15 Jan 2024</span>
+        </div>
+        <div class="review-meta">
+          <span class="badge-verified-buyer" style="font-size:11px;">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Rakesh Nair</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">PCB Design Engineer</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Kochi</span>
+        </div>
+        <p class="review-body">
+          We've been using these for our SMPS designs. Consistent quality batch after batch. Reflow soldering with our standard profile works perfectly. Highly recommend for volume production.
+        </p>
+      </div>
+
+      <!-- Review Card 2 -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <div>
+            <div class="review-stars">★★★★☆</div>
+            <div class="review-title">Good product, slight delay in dispatch</div>
+          </div>
+          <span class="review-date">3 Dec 2023</span>
+        </div>
+        <div class="review-meta">
+          <span class="badge-verified-buyer" style="font-size:11px;">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Supriya Kulkarni</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Purchase Manager</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Nashik</span>
+        </div>
+        <p class="review-body">
+          Capacitors are performing as per spec. Had a slight delay of 2 extra days beyond committed lead time, but the quality more than makes up for it. Will reorder.
+        </p>
+      </div>
+
+      <!-- Review Card 3 -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-title">Best price for this spec in the market</div>
+          </div>
+          <span class="review-date">18 Nov 2023</span>
+        </div>
+        <div class="review-meta">
+          <span class="badge-verified-buyer" style="font-size:11px;">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Mohit Sharma</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Production Head</span>
+          <span class="review-meta-sep">·</span>
+          <span class="review-meta-item">Faridabad</span>
+        </div>
+        <p class="review-body">
+          Compared pricing across 6 suppliers. Electronica Components gave the best combination of price + certification + fast delivery. The 5,000-unit reel packaging is also excellent.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ==================== RELATED PRODUCTS ==================== -->
+    <div class="related-section" style="padding-top:32px;">
+      <h2 class="related-title">Related Products</h2>
+      <div class="related-grid">
+
+        <!-- Card 1 -->
+        <div class="product-card">
+          <div class="product-card-img">🔵</div>
+          <div class="product-card-body">
+            <div class="product-card-title">Ceramic Capacitors 100nF 50V (SMD 0805)</div>
+            <div class="product-card-seller">MFCS Electronics, Hyderabad</div>
+            <div class="product-card-price">₹0.85<span style="font-size:12px;font-weight:400;color:var(--text-muted);">/pc</span></div>
+            <div class="product-card-rating">
+              <span class="stars-sm">★★★★☆</span>
+              <span>4.3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">🟡</div>
+          <div class="product-card-body">
+            <div class="product-card-title">Tantalum Capacitors 47µF 16V</div>
+            <div class="product-card-seller">TechCap India, Bengaluru</div>
+            <div class="product-card-price">₹12.50<span style="font-size:12px;font-weight:400;color:var(--text-muted);">/pc</span></div>
+            <div class="product-card-rating">
+              <span class="stars-sm">★★★★★</span>
+              <span>4.6</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="product-card">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">🔷</div>
+          <div class="product-card-body">
+            <div class="product-card-title">Film Capacitors 1µF 250V (Box)</div>
+            <div class="product-card-seller">Vishay Dist., Mumbai</div>
+            <div class="product-card-price">₹8.20<span style="font-size:12px;font-weight:400;color:var(--text-muted);">/pc</span></div>
+            <div class="product-card-rating">
+              <span class="stars-sm">★★★★★</span>
+              <span>4.5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="product-card">
+          <div class="product-card-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);">🟢</div>
+          <div class="product-card-body">
+            <div class="product-card-title">SMD Resistors 10kΩ (Reel 5000)</div>
+            <div class="product-card-seller">ResistorHub, Delhi</div>
+            <div class="product-card-price">₹1.20<span style="font-size:12px;font-weight:400;color:var(--text-muted);">/pc</span></div>
+            <div class="product-card-rating">
+              <span class="stars-sm">★★★★☆</span>
+              <span>4.4</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-add-to-cart" style="display:none;position:sticky;bottom:0;background:var(--bg-card);border-top:1px solid var(--border);padding:12px 16px;z-index:100;gap:12px;">
+      <div style="flex:1;">
+        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--color-primary);">₹4.20<span style="font-size:13px;font-weight:400;color:var(--text-muted);">/unit</span></div>
+      </div>
+      <button style="flex:1;height:44px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-lg);font-weight:600;font-size:15px;cursor:pointer;">Add to Cart</button>
+    </div>
+
+  </div><!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+  <script>
+    /* =====================================================
+       TAB SWITCHING
+    ===================================================== */
+    function switchTab(tabEl, contentId) {
+      // Deactivate all tabs
+      document.querySelectorAll('.tab-bar .tab').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      document.querySelectorAll('.pdp-tab-content').forEach(function(c) {
+        c.classList.remove('active');
+      });
+      // Activate selected
+      tabEl.classList.add('active');
+      var content = document.getElementById(contentId);
+      if (content) content.classList.add('active');
+    }
+
+    /* =====================================================
+       THUMBNAIL SELECTION
+    ===================================================== */
+    function selectThumb(el) {
+      document.querySelectorAll('.pdp-thumb').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      el.classList.add('active');
+    }
+
+    /* =====================================================
+       RATING LINK → SCROLL TO REVIEWS
+    ===================================================== */
+    document.querySelector('.pdp-rating-count').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+</html>

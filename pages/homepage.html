@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TradeNest — B2B Marketplace Homepage</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* =====================================================
+       PAGE-LEVEL RESETS & HELPERS
+       ===================================================== */
+    button { font-family: var(--font-body); cursor: pointer; }
+
+    /* =====================================================
+       DS NAV — SITE HEADER (product header, not DS nav)
+       ===================================================== */
+    .site-header {
+      position: sticky;
+      top: 56px;
+      z-index: var(--z-raised);
+      height: 64px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 40px;
+      background: var(--bg-page);
+      min-width: 0;
+    }
+
+    .site-header-search:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-50);
+    }
+
+    .site-header-search-select {
+      padding: 0 10px;
+      height: 100%;
+      border: none;
+      border-right: 1.5px solid var(--border);
+      background: var(--bg-subtle);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      min-width: 140px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .site-header-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 12px;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      outline: none;
+      min-width: 0;
+    }
+
+    .site-header-search-input::placeholder { color: var(--text-muted); }
+
+    .site-header-search-btn {
+      padding: 0 16px;
+      height: 100%;
+      background: var(--color-primary);
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: opacity 150ms ease;
+    }
+
+    .site-header-search-btn:hover { opacity: 0.9; }
+
+    .site-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .site-header-icon-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      position: relative;
+      transition: background 150ms ease;
+    }
+
+    .site-header-icon-btn:hover { background: var(--bg-subtle); color: var(--text-primary); }
+
+    .site-header-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .site-header-cart-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      min-width: 16px;
+      height: 16px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .site-header-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px 4px 4px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+
+    .site-header-user:hover { background: var(--bg-subtle); }
+
+    .site-header-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .site-header-username {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-post-btn {
+      height: 36px;
+      padding: 0 18px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 150ms ease, transform 150ms ease;
+      flex-shrink: 0;
+    }
+
+    .site-header-post-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* =====================================================
+       MOBILE HEADER
+       ===================================================== */
+    .mobile-header {
+      display: none;
+    }
+
+    /* =====================================================
+       HERO SECTION
+       ===================================================== */
+    .hero-section {
+      background: linear-gradient(135deg, #1c1e60 0%, #2e3192 50%, #3b45c4 100%);
+      min-height: 420px;
+      padding: 64px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(91, 108, 255, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-greeting {
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 8px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+    }
+
+    .hero-search-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 52px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
+
+    .hero-search-select {
+      min-width: 160px;
+      height: 100%;
+      border: none;
+      border-right: 1.5px solid var(--border);
+      padding: 0 14px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .hero-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 16px;
+      font-size: 15px;
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .hero-search-input::placeholder { color: var(--text-muted); }
+
+    .hero-search-btn {
+      height: 100%;
+      padding: 0 24px;
+      background: var(--color-primary);
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 150ms;
+    }
+
+    .hero-search-btn:hover { opacity: 0.9; }
+
+    .hero-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-chips-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      flex-shrink: 0;
+    }
+
+    .hero-chip {
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background 150ms, border-color 150ms;
+    }
+
+    .hero-chip:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.45);
+    }
+
+    /* =====================================================
+       SECTION SHARED STYLES
+       ===================================================== */
+    .section-wrapper {
+      padding: 60px 32px;
+    }
+
+    .ds-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .section-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      white-space: nowrap;
+      text-decoration: none;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .section-link:hover { text-decoration: underline; }
+
+    /* =====================================================
+       PRODUCT CARDS
+       ===================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all 200ms ease;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--color-primary-200);
+    }
+
+    .product-card-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      position: relative;
+    }
+
+    .product-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 3px 9px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      backdrop-filter: blur(4px);
+    }
+
+    .product-card-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card-seller {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .product-card-seller-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary-200), var(--color-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .product-card-seller-info {
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .rating-star { color: #f59e0b; font-size: 13px; }
+
+    .product-card-price {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+
+
+    .product-card-atc {
+      margin-top: auto;
+      width: 100%;
+      height: 36px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: opacity 150ms, transform 150ms;
+    }
+
+    .product-card-atc:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* =====================================================
+       TOP CATEGORIES
+       ===================================================== */
+    .categories-section {
+      background: var(--bg-subtle);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .category-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 200ms, box-shadow 200ms, transform 200ms;
+    }
+
+    .category-tile:hover {
+      border-color: var(--color-primary-200);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .category-tile-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .category-tile-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .category-tile-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* =====================================================
+       SELLER CARDS
+       ===================================================== */
+    .seller-scroll-wrapper {
+      position: relative;
+    }
+
+    .seller-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+
+    .seller-scroll::-webkit-scrollbar { display: none; }
+
+    .seller-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      min-width: 280px;
+      width: 280px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      transition: box-shadow 200ms, border-color 200ms, transform 200ms;
+    }
+
+    .seller-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary-200);
+      transform: translateY(-2px);
+    }
+
+    .seller-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .seller-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .seller-card-info { flex: 1; min-width: 0; }
+
+    .seller-card-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .trust-badge-verified {
+      background: var(--color-success-bg);
+      color: var(--color-success);
+    }
+
+    .trust-badge-exporter {
+      background: var(--color-info-bg);
+      color: var(--color-info);
+    }
+
+    .trust-badge-trust {
+      background: var(--color-warning-bg);
+      color: var(--color-warning);
+    }
+
+    .seller-card-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .seller-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .seller-card-since {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .seller-card-view-btn {
+      width: 100%;
+      height: 36px;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      color: var(--color-primary);
+      cursor: pointer;
+      transition: border-color 150ms, background 150ms;
+    }
+
+    .seller-card-view-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-50);
+    }
+
+    /* =====================================================
+       RECENTLY VIEWED SCROLL
+       ===================================================== */
+    .recent-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+
+    .recent-scroll::-webkit-scrollbar { display: none; }
+
+    .recent-scroll .product-card {
+      min-width: 260px;
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    .site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 48px 32px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-cols {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col { flex: 1; }
+
+    .footer-col-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-list a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 150ms;
+    }
+
+    .footer-link-list a:hover {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .footer-trust-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .footer-trust-icon { font-size: 16px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-legal-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-legal-links a:hover { color: var(--color-primary); text-decoration: underline; }
+
+    /* =====================================================
+       BOTTOM NAV (mobile)
+       ===================================================== */
+    .bottom-nav {
+      display: none;
+    }
+
+    /* =====================================================
+       MOBILE OVERRIDES
+       ===================================================== */
+    .surface-mobile .site-header { display: none; }
+    .surface-mobile .mobile-header { display: block; }
+    .surface-mobile .hero-section { padding: 32px 16px; min-height: auto; }
+    .surface-mobile .hero-headline { font-size: 28px; }
+    .surface-mobile .hero-sub { font-size: 14px; }
+    .surface-mobile .hero-search-select { min-width: 110px; }
+    .surface-mobile .products-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+    .surface-mobile .categories-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .surface-mobile .seller-scroll { flex-direction: column !important; }
+    .surface-mobile .seller-card { min-width: 100%; width: 100%; }
+    .surface-mobile .recent-scroll .product-card { min-width: 200px; width: 200px; }
+    .surface-mobile .section-wrapper { padding: 32px 16px; }
+    .surface-mobile .ds-container { padding: 0 !important; }
+    .surface-mobile .site-footer { padding: 32px 16px; }
+    .surface-mobile .footer-cols { flex-direction: column; gap: 24px; }
+    .surface-mobile .footer-cols { margin-bottom: 24px; }
+    .surface-mobile .bottom-nav { display: flex; }
+    .surface-mobile .categories-section .section-wrapper { padding: 32px 16px; }
+    .surface-mobile .hero-chips { gap: 6px; }
+    .surface-mobile .hero-chip { font-size: 12px; padding: 4px 10px; }
+    .surface-mobile .section-title { font-size: 18px; }
+    .surface-mobile .footer-trust-row { gap: 12px; }
+    .surface-mobile .footer-trust-badge { font-size: 12px; }
+    .surface-mobile .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .surface-mobile .hero-search-btn { padding: 0 14px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================
+       DS NAV BAR
+       =================================================== -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+      <div class="ds-nav-links">
+        <a href="../components/foundations.html" class="ds-nav-link">Foundations</a>
+        <a href="../components/atoms.html" class="ds-nav-link">Atoms</a>
+        <a href="../components/molecules.html" class="ds-nav-link">Molecules</a>
+        <a href="../components/organisms.html" class="ds-nav-link">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="homepage.html" class="ds-nav-link active" data-page="homepage">Home</a>
+        <a href="pdp.html" class="ds-nav-link" data-page="pdp">PDP</a>
+        <a href="category.html" class="ds-nav-link" data-page="category">Category</a>
+        <a href="seller-profile.html" class="ds-nav-link" data-page="seller">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================================================
+       PAGE CONTAINER
+       =================================================== -->
+  <div class="ds-page" id="ds-page-container">
+
+    <!-- Mobile Header (shown only in mobile view) -->
+    <div class="mobile-header">
+      <div style="background: var(--color-primary); height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; color: #fff;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; background: rgba(255,255,255,0.2);">TN</div>
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 16px;">TradeNest</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button style="width: 40px; height: 40px; background: none; border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px;">🔍</button>
+          <button style="width: 40px; height: 40px; background: none; border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px;">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         SITE HEADER (product header)
+         =================================================== -->
+    <header class="site-header">
+      <a href="#" class="site-header-logo">
+        <div class="site-header-logo-icon">TN</div>
+        <span class="site-header-logo-name">TradeNest</span>
+      </a>
+
+      <div class="site-header-search">
+        <select class="site-header-search-select">
+          <option>All Categories</option>
+          <option>Electronics</option>
+          <option>Packaging</option>
+          <option>Industrial Equipment</option>
+          <option>Raw Materials</option>
+          <option>Office Supplies</option>
+          <option>Chemicals</option>
+          <option>Textiles &amp; Fabrics</option>
+          <option>Food &amp; Agro</option>
+          <option>Construction</option>
+          <option>Automotive</option>
+          <option>Medical Devices</option>
+          <option>IT Hardware</option>
+        </select>
+        <input class="site-header-search-input" type="text" placeholder="Search products, suppliers..." />
+        <button class="site-header-search-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Search
+        </button>
+      </div>
+
+      <div class="site-header-actions">
+        <!-- Bell -->
+        <button class="site-header-icon-btn" title="Notifications">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="site-header-badge"></span>
+        </button>
+
+        <!-- Cart -->
+        <button class="site-header-icon-btn" title="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-header-cart-badge">2</span>
+        </button>
+
+        <!-- User -->
+        <button class="site-header-user" title="Profile">
+          <div class="site-header-avatar">RK</div>
+          <span class="site-header-username">Rahul K.</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted)"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <!-- Post Requirement CTA -->
+        <button class="site-header-post-btn">+ Post Requirement</button>
+      </div>
+    </header>
+
+    <!-- ===================================================
+         HERO SECTION
+         =================================================== -->
+    <section class="hero-section">
+      <div class="hero-inner">
+        <p class="hero-greeting">Good morning, Rahul 👋</p>
+        <h1 class="hero-headline">Find verified suppliers<br>for your business</h1>
+        <p class="hero-sub">Explore 500+ categories &nbsp;·&nbsp; 1,00,000+ verified products &nbsp;·&nbsp; 50,000+ trusted suppliers</p>
+
+        <div class="hero-search-bar">
+          <select class="hero-search-select">
+            <option>All Categories</option>
+            <option>Electronics</option>
+            <option>Packaging</option>
+            <option>Industrial Equipment</option>
+            <option>Raw Materials</option>
+            <option>Office Supplies</option>
+          </select>
+          <input class="hero-search-input" type="text" placeholder="Search for products, suppliers, and services..." />
+          <button class="hero-search-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Search
+          </button>
+        </div>
+
+        <div class="hero-chips">
+          <span class="hero-chips-label">Popular:</span>
+          <button class="hero-chip">Packaging</button>
+          <button class="hero-chip">Electronics</button>
+          <button class="hero-chip">Raw Materials</button>
+          <button class="hero-chip">Office Supplies</button>
+          <button class="hero-chip">Industrial</button>
+          <button class="hero-chip">Chemicals</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         RECOMMENDED FOR YOU
+         =================================================== -->
+    <section style="background: var(--bg-page);">
+      <div class="section-wrapper ds-container" style="padding-left: 32px; padding-right: 32px;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recommended for You</h2>
+            <p class="section-subtitle">Based on your recent activity in Industrial &amp; Electrical</p>
+          </div>
+          <a href="#" class="section-link">See all →</a>
+        </div>
+
+        <div class="products-grid">
+
+          <!-- Card 1 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #eef0fb, #d4d7f5);">
+              ⚡
+              <span class="product-card-badge">Passive Components</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">SMD Electrolytic Capacitors 100µF 50V</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar">EC</div>
+                <span class="product-card-seller-info">Electronica Components Pvt. Ltd. · Bengaluru</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.4</strong>
+                <span style="color: var(--text-muted);">(127 reviews)</span>
+              </div>
+              <div class="product-card-price">₹4.20<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/unit</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+              🔧
+              <span class="product-card-badge">Industrial Equipment</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">Industrial Air Compressor GA-37 (37kW)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #86efac, #16a34a);">PS</div>
+                <span class="product-card-seller-info">Pneumatic Solutions India · Pune</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.7</strong>
+                <span style="color: var(--text-muted);">(43 reviews)</span>
+              </div>
+              <div class="product-card-price">₹1,85,000<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/unit</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #fefce8, #fef3c7);">
+              📦
+              <span class="product-card-badge">Packaging</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">BOPP Laminated Bags (Custom Print, 5kg)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #fde68a, #d97706);">FI</div>
+                <span class="product-card-seller-info">Flexipack Industries · Ahmedabad</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.5</strong>
+                <span style="color: var(--text-muted);">(89 reviews)</span>
+              </div>
+              <div class="product-card-price">₹18<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/pc</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9);">
+              📄
+              <span class="product-card-badge">Office Supplies</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">A4 Copier Paper 75gsm (Box of 10 Reams)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #cbd5e1, #64748b);">OP</div>
+                <span class="product-card-seller-info">OfficePro Supplies · Delhi</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.3</strong>
+                <span style="color: var(--text-muted);">(215 reviews)</span>
+              </div>
+              <div class="product-card-price">₹680<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/box</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+              🏭
+              <span class="product-card-badge">Raw Materials</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">HDPE Granules Natural Grade (25kg bag)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #6ee7b7, #059669);">PC</div>
+                <span class="product-card-seller-info">Polytech Commodities · Surat</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.6</strong>
+                <span style="color: var(--text-muted);">(67 reviews)</span>
+              </div>
+              <div class="product-card-price">₹92<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/kg</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #eef0fb, #d4d7f5);">
+              ⚡
+              <span class="product-card-badge">Electrical Components</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">MCB Circuit Breaker 32A Single Pole</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #a5b4fc, #4338ca);">SE</div>
+                <span class="product-card-seller-info">Shree Electricals Pvt. Ltd. · Mumbai</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.6</strong>
+                <span style="color: var(--text-muted);">(312 reviews)</span>
+              </div>
+              <div class="product-card-price">₹245<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/pc</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #fff0f0, #fee2e2);">
+              🧤
+              <span class="product-card-badge">Medical Devices</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">Surgical Gloves Latex-Free (Box of 100)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #fca5a5, #dc2626);">MI</div>
+                <span class="product-card-seller-info">MediSupply India · Hyderabad</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.8</strong>
+                <span style="color: var(--text-muted);">(156 reviews)</span>
+              </div>
+              <div class="product-card-price">₹380<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/box</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #fff7ed, #fed7aa);">
+              🪖
+              <span class="product-card-badge">Safety Equipment</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">Industrial Safety Helmet ISI Marked</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #fdba74, #ea580c);">SW</div>
+                <span class="product-card-seller-info">SafeWork Gear · Ludhiana</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.5</strong>
+                <span style="color: var(--text-muted);">(78 reviews)</span>
+              </div>
+              <div class="product-card-price">₹165<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/pc</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+        </div><!-- /products-grid -->
+      </div>
+    </section>
+
+    <!-- ===================================================
+         TOP CATEGORIES
+         =================================================== -->
+    <section class="categories-section">
+      <div class="section-wrapper ds-container" style="padding-left: 32px; padding-right: 32px;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Top Categories</h2>
+            <p class="section-subtitle">Browse by Industry</p>
+          </div>
+          <a href="#" class="section-link">View all →</a>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-tile">
+            <div class="category-tile-icon">⚡</div>
+            <div class="category-tile-name">Electronics</div>
+            <div class="category-tile-count">4,821 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">📦</div>
+            <div class="category-tile-name">Packaging</div>
+            <div class="category-tile-count">3,456 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">⚙️</div>
+            <div class="category-tile-name">Industrial Equipment</div>
+            <div class="category-tile-count">2,890 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🧪</div>
+            <div class="category-tile-name">Raw Materials</div>
+            <div class="category-tile-count">5,123 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🖊️</div>
+            <div class="category-tile-name">Office Supplies</div>
+            <div class="category-tile-count">1,876 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🧫</div>
+            <div class="category-tile-name">Chemicals</div>
+            <div class="category-tile-count">2,341 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🧵</div>
+            <div class="category-tile-name">Textiles &amp; Fabrics</div>
+            <div class="category-tile-count">3,012 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🌾</div>
+            <div class="category-tile-name">Food &amp; Agro</div>
+            <div class="category-tile-count">2,678 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🏗️</div>
+            <div class="category-tile-name">Construction</div>
+            <div class="category-tile-count">1,945 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">🚗</div>
+            <div class="category-tile-name">Automotive</div>
+            <div class="category-tile-count">1,567 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">💊</div>
+            <div class="category-tile-name">Medical Devices</div>
+            <div class="category-tile-count">1,234 products</div>
+          </div>
+          <div class="category-tile">
+            <div class="category-tile-icon">💻</div>
+            <div class="category-tile-name">IT Hardware</div>
+            <div class="category-tile-count">987 products</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         TRENDING SUPPLIERS
+         =================================================== -->
+    <section style="background: var(--bg-page);">
+      <div class="section-wrapper ds-container" style="padding-left: 32px; padding-right: 32px;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Trending Suppliers Near You</h2>
+            <p class="section-subtitle">Based on your location: Mumbai</p>
+          </div>
+          <a href="#" class="section-link">View All →</a>
+        </div>
+
+        <div class="seller-scroll-wrapper">
+          <div class="seller-scroll">
+
+            <!-- Seller 1 -->
+            <div class="seller-card">
+              <div class="seller-card-top">
+                <div class="seller-logo" style="background: linear-gradient(135deg, #4338ca, #2e3192);">SE</div>
+                <div class="seller-card-info">
+                  <div class="seller-card-name">Shree Electricals Pvt. Ltd.</div>
+                  <span class="trust-badge trust-badge-trust">⭐ TrustSeal Verified</span>
+                </div>
+              </div>
+              <div class="seller-card-meta">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Mumbai &nbsp;·&nbsp; Electrical Components
+              </div>
+              <div class="seller-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.6</strong>
+                <span style="color: var(--text-muted);">(312 reviews)</span>
+              </div>
+              <div class="seller-card-since">Since 2008 &nbsp;·&nbsp; 45–50 employees</div>
+              <button class="seller-card-view-btn">View Profile</button>
+            </div>
+
+            <!-- Seller 2 -->
+            <div class="seller-card">
+              <div class="seller-card-top">
+                <div class="seller-logo" style="background: linear-gradient(135deg, #16a34a, #059669);">PS</div>
+                <div class="seller-card-info">
+                  <div class="seller-card-name">Pneumatic Solutions India</div>
+                  <span class="trust-badge trust-badge-verified">✓ Verified Supplier</span>
+                </div>
+              </div>
+              <div class="seller-card-meta">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pune &nbsp;·&nbsp; Industrial Equipment
+              </div>
+              <div class="seller-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.7</strong>
+                <span style="color: var(--text-muted);">(89 reviews)</span>
+              </div>
+              <div class="seller-card-since">Since 2015 &nbsp;·&nbsp; 20–30 employees</div>
+              <button class="seller-card-view-btn">View Profile</button>
+            </div>
+
+            <!-- Seller 3 -->
+            <div class="seller-card">
+              <div class="seller-card-top">
+                <div class="seller-logo" style="background: linear-gradient(135deg, #d97706, #b45309);">FI</div>
+                <div class="seller-card-info">
+                  <div class="seller-card-name">Flexipack Industries</div>
+                  <span class="trust-badge trust-badge-exporter">✈ Verified Exporter</span>
+                </div>
+              </div>
+              <div class="seller-card-meta">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Ahmedabad &nbsp;·&nbsp; Packaging
+              </div>
+              <div class="seller-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.5</strong>
+                <span style="color: var(--text-muted);">(156 reviews)</span>
+              </div>
+              <div class="seller-card-since">Since 2010 &nbsp;·&nbsp; 60–80 employees</div>
+              <button class="seller-card-view-btn">View Profile</button>
+            </div>
+
+            <!-- Seller 4 -->
+            <div class="seller-card">
+              <div class="seller-card-top">
+                <div class="seller-logo" style="background: linear-gradient(135deg, #64748b, #334155);">OP</div>
+                <div class="seller-card-info">
+                  <div class="seller-card-name">OfficePro Supplies</div>
+                  <span class="trust-badge trust-badge-verified">✓ Verified Supplier</span>
+                </div>
+              </div>
+              <div class="seller-card-meta">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Delhi &nbsp;·&nbsp; Office Supplies
+              </div>
+              <div class="seller-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.3</strong>
+                <span style="color: var(--text-muted);">(421 reviews)</span>
+              </div>
+              <div class="seller-card-since">Since 2012 &nbsp;·&nbsp; 30–40 employees</div>
+              <button class="seller-card-view-btn">View Profile</button>
+            </div>
+
+            <!-- Seller 5 -->
+            <div class="seller-card">
+              <div class="seller-card-top">
+                <div class="seller-logo" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">EC</div>
+                <div class="seller-card-info">
+                  <div class="seller-card-name">Electronica Components Pvt. Ltd.</div>
+                  <span class="trust-badge trust-badge-verified">✓ Verified Supplier</span>
+                </div>
+              </div>
+              <div class="seller-card-meta">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Bengaluru &nbsp;·&nbsp; Electronics
+              </div>
+              <div class="seller-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.4</strong>
+                <span style="color: var(--text-muted);">(127 reviews)</span>
+              </div>
+              <div class="seller-card-since">Since 2005 &nbsp;·&nbsp; 25–35 employees</div>
+              <button class="seller-card-view-btn">View Profile</button>
+            </div>
+
+          </div><!-- /seller-scroll -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         RECENTLY VIEWED
+         =================================================== -->
+    <section style="background: var(--bg-subtle);">
+      <div class="section-wrapper ds-container" style="padding-left: 32px; padding-right: 32px;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recently Viewed</h2>
+            <p class="section-subtitle">Pick up where you left off</p>
+          </div>
+          <a href="#" class="section-link">View all →</a>
+        </div>
+
+        <div class="recent-scroll">
+
+          <!-- Recent 1 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #eef0fb, #d4d7f5);">
+              ⚡
+              <span class="product-card-badge">Passive Components</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">SMD Capacitors 100µF 50V</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar">EC</div>
+                <span class="product-card-seller-info">Electronica Components · Bengaluru</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.4</strong>
+                <span style="color: var(--text-muted);">(127)</span>
+              </div>
+              <div class="product-card-price">₹4.20<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/unit</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Recent 2 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #eef0fb, #d4d7f5);">
+              ⚡
+              <span class="product-card-badge">Electrical Components</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">MCB Circuit Breaker 32A Single Pole</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #a5b4fc, #4338ca);">SE</div>
+                <span class="product-card-seller-info">Shree Electricals · Mumbai</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.6</strong>
+                <span style="color: var(--text-muted);">(312)</span>
+              </div>
+              <div class="product-card-price">₹245<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/pc</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Recent 3 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+              🏭
+              <span class="product-card-badge">Raw Materials</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">HDPE Granules Natural Grade (25kg bag)</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #6ee7b7, #059669);">PC</div>
+                <span class="product-card-seller-info">Polytech Commodities · Surat</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.6</strong>
+                <span style="color: var(--text-muted);">(67)</span>
+              </div>
+              <div class="product-card-price">₹92<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/kg</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Recent 4 -->
+          <div class="product-card">
+            <div class="product-card-img" style="background: linear-gradient(135deg, #fff7ed, #fed7aa);">
+              🪖
+              <span class="product-card-badge">Safety Equipment</span>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-name">Safety Helmet ISI Marked</div>
+              <div class="product-card-seller">
+                <div class="product-card-seller-avatar" style="background: linear-gradient(135deg, #fdba74, #ea580c);">SW</div>
+                <span class="product-card-seller-info">SafeWork Gear · Ludhiana</span>
+              </div>
+              <div class="product-card-rating">
+                <span class="rating-star">★</span>
+                <strong style="font-size: 13px; color: var(--text-primary);">4.5</strong>
+                <span style="color: var(--text-muted);">(78)</span>
+              </div>
+              <div class="product-card-price">₹165<span style="font-size: 13px; font-weight: 400; color: var(--text-secondary);">/pc</span></div>
+              <button class="product-card-atc">Add to Cart</button>
+            </div>
+          </div>
+
+        </div><!-- /recent-scroll -->
+      </div>
+    </section>
+
+    <!-- ===================================================
+         FOOTER
+         =================================================== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-cols">
+          <div class="footer-col">
+            <div class="footer-col-title">About TradeNest</div>
+            <ul class="footer-link-list">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Advertise With Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Buyer Resources</div>
+            <ul class="footer-link-list">
+              <li><a href="#">How to Buy</a></li>
+              <li><a href="#">Request a Quote</a></li>
+              <li><a href="#">Bulk Ordering</a></li>
+              <li><a href="#">Payment &amp; Security</a></li>
+              <li><a href="#">Buyer Protection</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Seller Resources</div>
+            <ul class="footer-link-list">
+              <li><a href="#">Sell on TradeNest</a></li>
+              <li><a href="#">Seller Dashboard</a></li>
+              <li><a href="#">Supplier Verification</a></li>
+              <li><a href="#">Pricing Plans</a></li>
+              <li><a href="#">Seller Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-trust-row">
+          <div class="footer-trust-badge">
+            <span class="footer-trust-icon">🔒</span>
+            SSL Secured
+          </div>
+          <div class="footer-trust-badge">
+            <span class="footer-trust-icon">✓</span>
+            GST Verified Platform
+          </div>
+          <div class="footer-trust-badge">
+            <span class="footer-trust-icon" style="font-size: 14px;">🏢</span>
+            1,00,000+ Verified Suppliers
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2024 TradeNest Technologies Pvt. Ltd. All rights reserved.</span>
+          <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Nav (shown only in mobile view) -->
+    <div class="bottom-nav" style="position: sticky; bottom: 0; background: var(--bg-card); border-top: 1px solid var(--border); height: 56px; z-index: 100;">
+      <div style="display: flex; height: 100%; width: 100%;">
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--color-primary); font-size: 10px; font-weight: 600; cursor: pointer;">
+          🏠 <span>Home</span>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--text-muted); font-size: 10px; cursor: pointer;">
+          📋 <span>Categories</span>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--text-muted); font-size: 10px; cursor: pointer;">
+          🛒 <span>Cart</span>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--text-muted); font-size: 10px; cursor: pointer;">
+          💬 <span>Messages</span>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--text-muted); font-size: 10px; cursor: pointer;">
+          👤 <span>Account</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+</body>
+</html>

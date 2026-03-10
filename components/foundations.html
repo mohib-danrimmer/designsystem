@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundations — TradeNest Design System</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* =====================================================
+       PAGE-LEVEL STYLES
+       ===================================================== */
+
+    /* Sub-section headings inside a ds-section */
+    .ds-subsection-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-h4);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    .ds-subsection-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* =====================================================
+       COLOR PALETTE
+       ===================================================== */
+
+    /* Two-column scale grid (Desktop + Mobile) */
+    .color-scales-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 700px) {
+      .color-scales-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .color-scale-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .color-scale-group-label {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .color-scale-swatches {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .color-scale-swatches {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .color-swatch-square {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .color-swatch-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 100%;
+    }
+
+    .color-swatch-hex {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    .color-swatch-name {
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .color-swatch-badge {
+      display: inline-block;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      border-radius: var(--radius-sm);
+      padding: 1px 4px;
+    }
+
+    /* Semantic colors */
+    .semantic-colors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 600px) {
+      .semantic-colors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .semantic-swatch {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .semantic-swatch-main {
+      height: 56px;
+    }
+
+    .semantic-swatch-bg {
+      height: 32px;
+    }
+
+    .semantic-swatch-label {
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-card);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .semantic-swatch-hex {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    /* Neutral grays */
+    .neutral-swatches {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 700px) {
+      .neutral-swatches {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    /* Surface tokens table */
+    .surface-tokens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .surface-token-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .surface-token-preview {
+      height: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .surface-token-info {
+      padding: var(--space-3);
+      background: var(--bg-card);
+    }
+
+    .surface-token-var {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+
+    .surface-token-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* =====================================================
+       TYPOGRAPHY SCALE
+       ===================================================== */
+
+    .type-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .type-scale-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .type-scale-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-scale-label-col {
+      flex: 0 0 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .type-scale-style-name {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+    }
+
+    .type-scale-sample-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .type-scale-meta-col {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-align: right;
+    }
+
+    .type-meta-item {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* =====================================================
+       SPACING SCALE
+       ===================================================== */
+
+    .spacing-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spacing-row:last-child {
+      border-bottom: none;
+    }
+
+    .spacing-token-name {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      font-weight: 600;
+      color: var(--color-primary);
+      flex: 0 0 90px;
+    }
+
+    .spacing-bar-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .spacing-bar {
+      height: 24px;
+      background: var(--color-primary-200);
+      border-radius: var(--radius-sm);
+      min-width: 4px;
+    }
+
+    .spacing-px-value {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      flex: 0 0 40px;
+      text-align: right;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* =====================================================
+       SHADOW LEVELS
+       ===================================================== */
+
+    .shadow-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .shadow-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .shadow-demo-card {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .shadow-demo-card-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-h4);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .shadow-demo-card-desc {
+      font-size: var(--text-body-s);
+      color: var(--text-secondary);
+    }
+
+    .shadow-demo-card-var {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    /* =====================================================
+       BORDER RADIUS
+       ===================================================== */
+
+    .radius-flex {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .radius-square {
+      width: 64px;
+      height: 64px;
+      background: var(--color-primary-100);
+      border: 2px solid var(--color-primary-300);
+      flex-shrink: 0;
+    }
+
+    .radius-item-label {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    .radius-item-var {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 9px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .radius-item-px {
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    /* =====================================================
+       ICONOGRAPHY
+       ===================================================== */
+
+    .icons-flex {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .icon-wrapper {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      color: var(--text-primary);
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .icon-wrapper:hover {
+      background: var(--color-primary-50);
+      border-color: var(--color-primary-200);
+      color: var(--color-primary);
+    }
+
+    .icon-label {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* =====================================================
+       MISC UTILITIES
+       ===================================================== */
+
+    .ds-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-sm);
+      padding: 2px 5px;
+    }
+
+    .ds-tag--base {
+      background: var(--color-primary-50);
+      color: var(--color-primary-600);
+    }
+
+    code.token {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      background: var(--bg-subtle);
+      color: var(--color-primary);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+
+      <!-- Center Links -->
+      <div class="ds-nav-links">
+        <a href="foundations.html" class="ds-nav-link active" data-page="foundations">Foundations</a>
+        <a href="atoms.html" class="ds-nav-link" data-page="atoms">Atoms</a>
+        <a href="molecules.html" class="ds-nav-link" data-page="molecules">Molecules</a>
+        <a href="organisms.html" class="ds-nav-link" data-page="organisms">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../pages/homepage.html" class="ds-nav-link" data-page="homepage">Home</a>
+        <a href="../pages/pdp.html" class="ds-nav-link" data-page="pdp">PDP</a>
+        <a href="../pages/category.html" class="ds-nav-link" data-page="category">Category</a>
+        <a href="../pages/seller-profile.html" class="ds-nav-link" data-page="seller">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">📱 Mobile View</button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       PAGE BODY
+       ===================================================== -->
+  <div class="ds-page" id="ds-page-container">
+    <div class="ds-container">
+
+      <!-- ==================================================
+           SECTION 1: COLOR PALETTE
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Color Palette</h2>
+        <p class="ds-section-subtitle">Design tokens for all surface and brand colors across both desktop and mobile themes.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Color tokens are used across all surfaces. Desktop theme uses Indigo (#2e3192), Mobile/App theme uses Teal (#1d8480). Switch themes via the nav toggle.
+        </div>
+
+        <!-- Primary Color Scales -->
+        <h3 class="ds-subsection-title">Primary Color Scales</h3>
+        <div class="color-scales-grid">
+
+          <!-- Desktop / Indigo -->
+          <div class="color-scale-group">
+            <div class="color-scale-group-label">Desktop Primary — Indigo</div>
+            <div class="color-scale-swatches">
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#eef0fb;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#eef0fb</span>
+                  <span class="color-swatch-name">--primary-50</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#d4d7f5;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#d4d7f5</span>
+                  <span class="color-swatch-name">--primary-100</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#a9afeb;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#a9afeb</span>
+                  <span class="color-swatch-name">--primary-200</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#7e88e0;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#7e88e0</span>
+                  <span class="color-swatch-name">--primary-300</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#5360d6;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#5360d6</span>
+                  <span class="color-swatch-name">--primary-400</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#3b45c4;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#3b45c4</span>
+                  <span class="color-swatch-name">--primary-500</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#2e3192;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#2e3192</span>
+                  <span class="color-swatch-name">--primary-600</span>
+                  <span class="color-swatch-badge">BASE</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#252880;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#252880</span>
+                  <span class="color-swatch-name">--primary-700</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#1c1e60;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#1c1e60</span>
+                  <span class="color-swatch-name">--primary-800</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#131540;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#131540</span>
+                  <span class="color-swatch-name">--primary-900</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile / Teal -->
+          <div class="color-scale-group">
+            <div class="color-scale-group-label">Mobile / App Primary — Teal</div>
+            <div class="color-scale-swatches">
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#e6f4f4;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#e6f4f4</span>
+                  <span class="color-swatch-name">--primary-m-50</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#b3dfde;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#b3dfde</span>
+                  <span class="color-swatch-name">--primary-m-100</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#80cac9;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#80cac9</span>
+                  <span class="color-swatch-name">--primary-m-200</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#4db5b3;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#4db5b3</span>
+                  <span class="color-swatch-name">--primary-m-300</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#26a09e;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#26a09e</span>
+                  <span class="color-swatch-name">--primary-m-400</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#1d8480;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#1d8480</span>
+                  <span class="color-swatch-name">--primary-m-500</span>
+                  <span class="color-swatch-badge" style="background:#e6f4f4;color:#177b77;">BASE</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#177b77;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#177b77</span>
+                  <span class="color-swatch-name">--primary-m-600</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#11716d;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#11716d</span>
+                  <span class="color-swatch-name">--primary-m-700</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#0b6360;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#0b6360</span>
+                  <span class="color-swatch-name">--primary-m-800</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-square" style="background:#074f4d;"></div>
+                <div class="color-swatch-info">
+                  <span class="color-swatch-hex">#074f4d</span>
+                  <span class="color-swatch-name">--primary-m-900</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /color-scales-grid -->
+
+        <!-- Semantic Colors -->
+        <h3 class="ds-subsection-title">Semantic Colors</h3>
+        <div class="semantic-colors-grid">
+
+          <div class="semantic-swatch">
+            <div class="semantic-swatch-main" style="background:#16a34a;"></div>
+            <div class="semantic-swatch-bg" style="background:#dcfce7;"></div>
+            <div class="semantic-swatch-label">
+              Success
+              <span class="semantic-swatch-hex">#16a34a · bg #dcfce7</span>
+            </div>
+          </div>
+
+          <div class="semantic-swatch">
+            <div class="semantic-swatch-main" style="background:#d97706;"></div>
+            <div class="semantic-swatch-bg" style="background:#fef3c7;"></div>
+            <div class="semantic-swatch-label">
+              Warning
+              <span class="semantic-swatch-hex">#d97706 · bg #fef3c7</span>
+            </div>
+          </div>
+
+          <div class="semantic-swatch">
+            <div class="semantic-swatch-main" style="background:#dc2626;"></div>
+            <div class="semantic-swatch-bg" style="background:#fee2e2;"></div>
+            <div class="semantic-swatch-label">
+              Error
+              <span class="semantic-swatch-hex">#dc2626 · bg #fee2e2</span>
+            </div>
+          </div>
+
+          <div class="semantic-swatch">
+            <div class="semantic-swatch-main" style="background:#0284c7;"></div>
+            <div class="semantic-swatch-bg" style="background:#e0f2fe;"></div>
+            <div class="semantic-swatch-label">
+              Info
+              <span class="semantic-swatch-hex">#0284c7 · bg #e0f2fe</span>
+            </div>
+          </div>
+
+        </div><!-- /semantic-colors-grid -->
+
+        <!-- Neutral Grays -->
+        <h3 class="ds-subsection-title">Neutral Grays</h3>
+        <div class="neutral-swatches">
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#f8fafc; border:1px solid #e2e8f0;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#f8fafc</span>
+              <span class="color-swatch-name">--neutral-50</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#f1f5f9; border:1px solid #e2e8f0;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#f1f5f9</span>
+              <span class="color-swatch-name">--neutral-100</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#e2e8f0;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#e2e8f0</span>
+              <span class="color-swatch-name">--neutral-200</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#cbd5e1;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#cbd5e1</span>
+              <span class="color-swatch-name">--neutral-300</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#94a3b8;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#94a3b8</span>
+              <span class="color-swatch-name">--neutral-400</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#64748b;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#64748b</span>
+              <span class="color-swatch-name">--neutral-500</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#475569;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#475569</span>
+              <span class="color-swatch-name">--neutral-600</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#334155;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#334155</span>
+              <span class="color-swatch-name">--neutral-700</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#1e293b;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#1e293b</span>
+              <span class="color-swatch-name">--neutral-800</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-square" style="background:#0f172a;"></div>
+            <div class="color-swatch-info">
+              <span class="color-swatch-hex">#0f172a</span>
+              <span class="color-swatch-name">--neutral-900</span>
+            </div>
+          </div>
+        </div><!-- /neutral-swatches -->
+
+        <!-- Surface Tokens -->
+        <h3 class="ds-subsection-title">Surface Tokens</h3>
+        <p style="font-size:var(--text-body-s);color:var(--text-secondary);margin-bottom:var(--space-4);">
+          Live swatches — values reflect the active theme. Toggle dark mode in the nav to see changes.
+        </p>
+        <div class="surface-tokens-grid">
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--bg-page);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--bg-page</div>
+              <div class="surface-token-desc">Page background</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--bg-card);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--bg-card</div>
+              <div class="surface-token-desc">Card / panel surface</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--bg-subtle);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--bg-subtle</div>
+              <div class="surface-token-desc">Subtle / input background</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--border);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--border</div>
+              <div class="surface-token-desc">Default border color</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--text-primary);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--text-primary</div>
+              <div class="surface-token-desc">Primary text</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--text-secondary);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--text-secondary</div>
+              <div class="surface-token-desc">Secondary / supporting text</div>
+            </div>
+          </div>
+          <div class="surface-token-card">
+            <div class="surface-token-preview" style="background:var(--text-muted);"></div>
+            <div class="surface-token-info">
+              <div class="surface-token-var">--text-muted</div>
+              <div class="surface-token-desc">Muted / placeholder text</div>
+            </div>
+          </div>
+        </div>
+
+      </section><!-- /Color Palette -->
+
+      <!-- ==================================================
+           SECTION 2: TYPOGRAPHY SCALE
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Typography Scale</h2>
+        <p class="ds-section-subtitle">Type styles used across all components and pages.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Inter for all typography — headings, display text, body copy, labels, and UI text.
+        </div>
+
+        <div class="type-scale-table">
+
+          <!-- Display -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Display</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:48px;line-height:56px;font-weight:700;color:var(--text-primary);display:block;">Find verified suppliers</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">48px / 56px</span>
+              <span class="type-meta-item">weight: 700</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- H1 -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">H1</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:36px;line-height:44px;font-weight:700;color:var(--text-primary);display:block;">Electrical Components</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">36px / 44px</span>
+              <span class="type-meta-item">weight: 700</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- H2 -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">H2</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:28px;line-height:36px;font-weight:600;color:var(--text-primary);display:block;">Top Categories</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">28px / 36px</span>
+              <span class="type-meta-item">weight: 600</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- H3 -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">H3</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:22px;line-height:30px;font-weight:600;color:var(--text-primary);display:block;">SMD Capacitors 100µF</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">22px / 30px</span>
+              <span class="type-meta-item">weight: 600</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- H4 -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">H4</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:18px;line-height:26px;font-weight:500;color:var(--text-primary);display:block;">Shree Electricals Pvt. Ltd.</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">18px / 26px</span>
+              <span class="type-meta-item">weight: 500</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Body L -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Body L</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">Browse from 500+ verified categories across India's leading B2B marketplace.</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">16px / 1.6</span>
+              <span class="type-meta-item">weight: 400</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Body M -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Body M</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">Ships in 3–5 business days · Dispatch from Bengaluru warehouse.</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">14px / 1.6</span>
+              <span class="type-meta-item">weight: 400</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Body S -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Body S</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">GST: 27AAECS1234F1Z5 · ISO 9001:2015 Certified Distributor</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">13px / 1.6</span>
+              <span class="type-meta-item">weight: 400</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Caption -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Caption</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:12px;line-height:1.6;font-weight:400;color:var(--text-secondary);display:block;">Last updated 2 hours ago · 127 verified reviews</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">12px / 1.6</span>
+              <span class="type-meta-item">weight: 400</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Label -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Label</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:12px;line-height:1.6;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-primary);display:block;">VERIFIED SUPPLIER</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">12px / 1.6</span>
+              <span class="type-meta-item">weight: 500 · uppercase</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+          <!-- Overline -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Overline</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:11px;line-height:1.6;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);display:block;">PASSIVE COMPONENTS</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">11px / 1.6</span>
+              <span class="type-meta-item">weight: 600 · uppercase wide</span>
+              <span class="type-meta-item">Inter</span>
+            </div>
+          </div>
+
+        </div><!-- /type-scale-table -->
+
+      </section><!-- /Typography Scale -->
+
+      <!-- ==================================================
+           SECTION 3: SPACING SCALE
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Spacing Scale</h2>
+        <p class="ds-section-subtitle">Consistent spacing values for margins, padding, and gaps.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          8pt grid system. All spacing values are multiples of 4px.
+        </div>
+
+        <div class="spacing-rows">
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-1</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:4px;"></div>
+            </div>
+            <span class="spacing-px-value">4px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-2</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:8px;"></div>
+            </div>
+            <span class="spacing-px-value">8px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-3</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:12px;"></div>
+            </div>
+            <span class="spacing-px-value">12px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-4</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:16px;"></div>
+            </div>
+            <span class="spacing-px-value">16px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-5</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:20px;"></div>
+            </div>
+            <span class="spacing-px-value">20px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-6</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:24px;"></div>
+            </div>
+            <span class="spacing-px-value">24px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-8</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:32px;"></div>
+            </div>
+            <span class="spacing-px-value">32px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-10</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:40px;"></div>
+            </div>
+            <span class="spacing-px-value">40px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-12</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:48px;"></div>
+            </div>
+            <span class="spacing-px-value">48px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-16</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:64px;"></div>
+            </div>
+            <span class="spacing-px-value">64px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-token-name">--space-20</span>
+            <div class="spacing-bar-wrap">
+              <div class="spacing-bar" style="width:80px;"></div>
+            </div>
+            <span class="spacing-px-value">80px</span>
+          </div>
+
+        </div><!-- /spacing-rows -->
+
+      </section><!-- /Spacing Scale -->
+
+      <!-- ==================================================
+           SECTION 4: SHADOW LEVELS
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Shadow Levels</h2>
+        <p class="ds-section-subtitle">Three elevation levels for layering UI surfaces.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Three elevation levels. Use --shadow-sm for cards at rest, --shadow-md on hover, --shadow-lg for modals and overlays.
+        </div>
+
+        <div class="shadow-cards-grid">
+
+          <div class="shadow-demo-card" style="box-shadow:var(--shadow-sm);">
+            <div class="shadow-demo-card-title">Shadow SM</div>
+            <div class="shadow-demo-card-desc">Subtle lift — used for cards at rest, image containers, table rows on hover.</div>
+            <div class="shadow-demo-card-var">--shadow-sm<br>0 1px 3px rgba(0,0,0,0.08),<br>0 1px 2px rgba(0,0,0,0.06)</div>
+          </div>
+
+          <div class="shadow-demo-card" style="box-shadow:var(--shadow-md);">
+            <div class="shadow-demo-card-title">Shadow MD</div>
+            <div class="shadow-demo-card-desc">Hover state — used on interactive cards, dropdowns, and focused elements.</div>
+            <div class="shadow-demo-card-var">--shadow-md<br>0 4px 12px rgba(0,0,0,0.12),<br>0 2px 6px rgba(0,0,0,0.08)</div>
+          </div>
+
+          <div class="shadow-demo-card" style="box-shadow:var(--shadow-lg);">
+            <div class="shadow-demo-card-title">Shadow LG</div>
+            <div class="shadow-demo-card-desc">Modals &amp; overlays — used for dialogs, popovers, and floating panels.</div>
+            <div class="shadow-demo-card-var">--shadow-lg<br>0 12px 24px rgba(0,0,0,0.12),<br>0 4px 8px rgba(0,0,0,0.06)</div>
+          </div>
+
+        </div>
+
+      </section><!-- /Shadow Levels -->
+
+      <!-- ==================================================
+           SECTION 5: BORDER RADIUS
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Border Radius</h2>
+        <p class="ds-section-subtitle">Consistent rounding scale for components and surfaces.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Consistent rounding scale. Use --radius-sm for compact components, --radius-xl for cards and modals, --radius-full for pills and badges.
+        </div>
+
+        <div class="radius-flex">
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:2px;"></div>
+            <span class="radius-item-label">XS</span>
+            <span class="radius-item-var">--radius-xs</span>
+            <span class="radius-item-px">2px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:4px;"></div>
+            <span class="radius-item-label">SM</span>
+            <span class="radius-item-var">--radius-sm</span>
+            <span class="radius-item-px">4px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:6px;"></div>
+            <span class="radius-item-label">MD</span>
+            <span class="radius-item-var">--radius-md</span>
+            <span class="radius-item-px">6px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:8px;"></div>
+            <span class="radius-item-label">LG</span>
+            <span class="radius-item-var">--radius-lg</span>
+            <span class="radius-item-px">8px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:12px;"></div>
+            <span class="radius-item-label">XL</span>
+            <span class="radius-item-var">--radius-xl</span>
+            <span class="radius-item-px">12px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:16px;"></div>
+            <span class="radius-item-label">2XL</span>
+            <span class="radius-item-var">--radius-2xl</span>
+            <span class="radius-item-px">16px</span>
+          </div>
+
+          <div class="radius-item">
+            <div class="radius-square" style="border-radius:9999px;"></div>
+            <span class="radius-item-label">Full</span>
+            <span class="radius-item-var">--radius-full</span>
+            <span class="radius-item-px">9999px</span>
+          </div>
+
+        </div><!-- /radius-flex -->
+
+      </section><!-- /Border Radius -->
+
+      <!-- ==================================================
+           SECTION 6: ICONOGRAPHY
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Iconography</h2>
+        <p class="ds-section-subtitle">Stroke-based inline SVG icons following the Lucide icon style.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          TradeNest uses Lucide Icons (stroke-based, 24px grid, 2px stroke-width). Icons are inline SVG — no icon font dependency.
+        </div>
+
+        <div class="icons-flex">
+
+          <!-- Package -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Package">
+                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <span class="icon-label">Package</span>
+          </div>
+
+          <!-- Store -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Store">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <span class="icon-label">Store</span>
+          </div>
+
+          <!-- Filter -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Filter">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+              </svg>
+            </div>
+            <span class="icon-label">Filter</span>
+          </div>
+
+          <!-- Star -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Star">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <span class="icon-label">Star</span>
+          </div>
+
+          <!-- Bell -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Bell">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+            </div>
+            <span class="icon-label">Bell</span>
+          </div>
+
+          <!-- ShoppingCart -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Shopping Cart">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+            </div>
+            <span class="icon-label">Cart</span>
+          </div>
+
+          <!-- Truck -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Truck">
+                <rect x="1" y="3" width="15" height="13" rx="1"/>
+                <path d="M16 8h4l3 5v3h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <span class="icon-label">Shipping</span>
+          </div>
+
+          <!-- Shield -->
+          <div class="icon-item">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Shield">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <span class="icon-label">Verified</span>
+          </div>
+
+        </div><!-- /icons-flex -->
+
+        <p style="margin-top:var(--space-6);font-size:var(--text-body-s);color:var(--text-muted);">
+          All icons are inline SVG with <code class="token">stroke="currentColor"</code>, <code class="token">stroke-width="2"</code>, and a <code class="token">24px</code> viewBox. Color is inherited from the parent element, making them fully theme-aware.
+        </p>
+
+      </section><!-- /Iconography -->
+
+    </div><!-- /ds-container -->
+  </div><!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+</body>
+</html>

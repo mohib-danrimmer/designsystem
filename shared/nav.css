@@ -1,0 +1,207 @@
+/* ============================================================
+   TradeNest Design System — Shared Navigation Styles
+   nav.css
+   ============================================================ */
+
+/* ===================================================
+   TOP NAV BAR
+   =================================================== */
+.ds-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  z-index: var(--z-sticky);
+  transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+.ds-nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Logo / Wordmark */
+.ds-nav-logo {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ds-nav-logo:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.ds-nav-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Center links */
+.ds-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ds-nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.ds-nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--space-3);
+  height: 56px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ds-nav-link:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom-color: var(--neutral-300);
+}
+
+.ds-nav-link.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.ds-nav-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Right controls */
+.ds-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Mobile toggle pill */
+.ds-mobile-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--bg-subtle);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.ds-mobile-toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-50);
+}
+
+.ds-mobile-toggle.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Theme toggle button */
+.ds-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--bg-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.ds-theme-toggle:hover {
+  background: var(--bg-card);
+  border-color: var(--neutral-400);
+  color: var(--text-primary);
+}
+
+/* Page wrapper — offset for fixed nav */
+.ds-page {
+  padding-top: 56px;
+  min-height: 100vh;
+  background: var(--bg-page);
+  transition: background var(--transition-normal);
+}
+
+/* Mobile view frame */
+.ds-page.surface-mobile .ds-mobile-content {
+  max-width: 375px;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px var(--border), var(--shadow-lg);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Phone frame decoration */
+.phone-frame {
+  display: none;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-subtle);
+  z-index: -1;
+}
+
+.phone-frame.visible {
+  display: block;
+}

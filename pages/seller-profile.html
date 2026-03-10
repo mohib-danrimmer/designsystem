@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Electricals Pvt. Ltd. — Seller Profile · TradeNest</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* =====================================================
+       PAGE-LEVEL RESETS & HELPERS
+       ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    button { font-family: var(--font-body); cursor: pointer; }
+    a { text-decoration: none; }
+
+    body {
+      margin: 0;
+      background: var(--bg-page);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+    }
+
+    /* =====================================================
+       SITE HEADER (marketplace header)
+       ===================================================== */
+    .site-header {
+      position: sticky;
+      top: 56px;
+      z-index: 200;
+      height: 64px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .site-header-logo-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 40px;
+      background: var(--bg-page);
+      min-width: 0;
+    }
+
+    .site-header-search:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-50);
+    }
+
+    .site-header-search-select {
+      padding: 0 10px;
+      height: 100%;
+      border: none;
+      border-right: 1.5px solid var(--border);
+      background: var(--bg-subtle);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      min-width: 140px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .site-header-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 12px;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      outline: none;
+      min-width: 0;
+    }
+
+    .site-header-search-input::placeholder { color: var(--text-muted); }
+
+    .site-header-search-btn {
+      padding: 0 16px;
+      height: 100%;
+      background: var(--color-primary);
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: opacity 150ms ease;
+    }
+
+    .site-header-search-btn:hover { opacity: 0.9; }
+
+    .site-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .site-header-icon-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      position: relative;
+      transition: background 150ms ease;
+      font-size: 18px;
+    }
+
+    .site-header-icon-btn:hover { background: var(--bg-subtle); color: var(--text-primary); }
+
+    .site-header-cart-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      min-width: 16px;
+      height: 16px;
+      background: var(--color-error);
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+      border: 1.5px solid var(--bg-card);
+    }
+
+    .site-header-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px 4px 4px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border);
+      background: none;
+      transition: background 150ms ease, border-color 150ms ease;
+      cursor: pointer;
+    }
+
+    .site-header-user:hover { background: var(--bg-subtle); border-color: var(--color-primary-200); }
+
+    .site-header-user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+    }
+
+    .site-header-user-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .site-header-post-btn {
+      height: 38px;
+      padding: 0 16px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 150ms ease, transform 80ms ease;
+    }
+
+    .site-header-post-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* =====================================================
+       MOBILE HEADER
+       ===================================================== */
+    .mobile-header {
+      display: none;
+    }
+
+    /* =====================================================
+       PROFILE COVER
+       ===================================================== */
+    .profile-cover {
+      height: 240px;
+      background: linear-gradient(135deg, #1c1e60 0%, #2e3192 50%, #3b45c4 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-cover-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .profile-cover-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .profile-cover-circle1 {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      top: -60px;
+      right: 10%;
+    }
+
+    .profile-cover-circle2 {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      bottom: -40px;
+      right: 12%;
+    }
+
+    .profile-cover-circle3 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+      top: -100px;
+      left: 30%;
+    }
+
+    .profile-cover-line {
+      position: absolute;
+      height: 1px;
+      width: 180px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      top: 60%;
+      left: 20%;
+    }
+
+    /* =====================================================
+       PROFILE INFO ROW
+       ===================================================== */
+    .profile-info-wrap {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .profile-info-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      padding: 0 32px 24px;
+    }
+
+    .profile-logo-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: var(--color-primary-100);
+      border: 4px solid var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-top: -40px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .profile-details {
+      margin-left: 16px;
+      flex: 1;
+      min-width: 0;
+      padding-bottom: 2px;
+    }
+
+    .profile-company-name {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+
+    .profile-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .profile-badge-trust {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .profile-badge-auth {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+    }
+
+    .profile-category-line {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .profile-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .profile-meta-item {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .profile-meta-item .meta-rating {
+      color: #b45309;
+      font-weight: 600;
+    }
+
+    .profile-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-shrink: 0;
+      padding-bottom: 2px;
+    }
+
+    .btn-primary {
+      height: 40px;
+      padding: 0 20px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 150ms ease, transform 80ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-secondary {
+      height: 40px;
+      padding: 0 20px;
+      background: none;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover { background: var(--color-primary-50); }
+
+    .btn-ghost-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border);
+      background: none;
+      color: var(--text-secondary);
+      font-size: 16px;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+
+    .btn-ghost-icon:hover { background: var(--bg-subtle); border-color: var(--color-primary-200); color: var(--text-primary); }
+
+    /* =====================================================
+       STATS STRIP
+       ===================================================== */
+    .stats-strip {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 32px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .stat-number .stat-star {
+      color: #b45309;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* =====================================================
+       PROFILE TABS
+       ===================================================== */
+    .profile-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      background: var(--bg-card);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+    }
+
+    .profile-tab {
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      transition: color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .profile-tab:hover { color: var(--text-primary); }
+
+    .profile-tab.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       PROFILE CONTENT AREA
+       ===================================================== */
+    .profile-content {
+      padding: 32px;
+      max-width: 100%;
+    }
+
+    /* =====================================================
+       PRODUCT FILTER PILLS
+       ===================================================== */
+    .product-filter-pills {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .product-filter-pills::-webkit-scrollbar { height: 0; }
+
+    .filter-pill {
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .filter-pill:hover { background: var(--color-primary-50); border-color: var(--color-primary-200); color: var(--color-primary); }
+
+    .filter-pill.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       PRODUCTS GRID
+       ===================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: box-shadow 200ms ease, transform 150ms ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .product-card-image {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .product-card-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-card-category {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .product-card-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-card-price {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+
+    .product-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .product-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .product-card-rating .star { color: #f59e0b; font-size: 11px; }
+
+    .product-card-add-btn {
+      height: 30px;
+      padding: 0 12px;
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary-200);
+      border-radius: var(--radius-lg);
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 150ms ease, color 150ms ease;
+    }
+
+    .product-card-add-btn:hover {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    /* =====================================================
+       ABOUT / COMPANY INFO SECTION
+       ===================================================== */
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .about-card-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 20px 0;
+    }
+
+    .about-grid {
+      display: flex;
+      gap: 40px;
+    }
+
+    .about-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .about-col-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .about-info-table {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .about-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .about-info-label {
+      color: var(--text-muted);
+      width: 140px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    .about-info-value {
+      color: var(--text-primary);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .about-info-verified {
+      color: var(--color-success);
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+
+    .about-cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-cert-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .about-cert-check {
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .about-divider {
+      width: 1px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .about-description-block {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-description-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+
+    .about-description-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* =====================================================
+       REVIEWS SECTION
+       ===================================================== */
+    .reviews-section {
+      margin-top: 24px;
+    }
+
+    .reviews-section-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 20px 0;
+    }
+
+    .reviews-summary {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .reviews-overall {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-width: 120px;
+    }
+
+    .reviews-big-score {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: #b45309;
+      line-height: 1;
+    }
+
+    .reviews-out-of {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .reviews-stars-big {
+      font-size: 20px;
+      color: #f59e0b;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .reviews-bar-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .reviews-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .reviews-bar-label {
+      width: 60px;
+      flex-shrink: 0;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .reviews-bar-label .bar-star { color: #f59e0b; }
+
+    .reviews-bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .reviews-bar-fill {
+      height: 100%;
+      background: #f59e0b;
+      border-radius: 4px;
+      transition: width 400ms ease;
+    }
+
+    .reviews-bar-count {
+      width: 80px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Review Cards */
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .review-card:last-child { margin-bottom: 0; }
+
+    .review-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-100);
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .review-meta { flex: 1; }
+
+    .review-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-verified-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+    }
+
+    .review-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .review-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .review-stars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .review-stars .star { color: #f59e0b; font-size: 13px; }
+    .review-stars .star-empty { color: var(--border); font-size: 13px; }
+
+    .review-stars .review-score {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-left: 4px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0 0 12px 0;
+    }
+
+    .review-helpful {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-top: 12px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .review-helpful-label { font-weight: 500; }
+
+    .review-helpful-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: none;
+      font-size: 12px;
+      color: var(--text-secondary);
+      transition: background 150ms ease;
+    }
+
+    .review-helpful-btn:hover { background: var(--bg-subtle); }
+
+    /* =====================================================
+       MOBILE OVERRIDES
+       ===================================================== */
+    .surface-mobile .site-header { display: none !important; }
+    .surface-mobile .mobile-header { display: flex !important; }
+    .surface-mobile .profile-cover { height: 160px !important; }
+    .surface-mobile .profile-info-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0 16px 16px;
+    }
+    .surface-mobile .profile-actions { margin-left: 0 !important; }
+    .surface-mobile .stats-strip {
+      overflow-x: auto;
+      flex-wrap: nowrap !important;
+      padding: 16px;
+      gap: 0;
+    }
+    .surface-mobile .profile-content { padding: 16px !important; }
+    .surface-mobile .products-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .surface-mobile .about-grid { flex-direction: column !important; }
+    .surface-mobile .about-divider { display: none; }
+    .surface-mobile .ds-container { padding: 0 !important; }
+    .surface-mobile .profile-tabs { padding: 0 16px; overflow-x: auto; }
+    .surface-mobile .profile-tab { padding: 12px 14px; }
+    .surface-mobile .reviews-summary { flex-direction: column; gap: 20px; }
+    .surface-mobile .reviews-overall { flex-direction: row; min-width: auto; gap: 12px; }
+    .surface-mobile .profile-company-name { font-size: 20px !important; }
+    .surface-mobile .stats-strip .stat-item + .stat-item::before { display: block; }
+
+    /* =====================================================
+       DS PAGE WRAPPER
+       ===================================================== */
+    .ds-page {
+      padding-top: 56px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DS Nav Bar -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+      <div class="ds-nav-links">
+        <a href="../components/foundations.html" class="ds-nav-link">Foundations</a>
+        <a href="../components/atoms.html" class="ds-nav-link">Atoms</a>
+        <a href="../components/molecules.html" class="ds-nav-link">Molecules</a>
+        <a href="../components/organisms.html" class="ds-nav-link">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="homepage.html" class="ds-nav-link">Home</a>
+        <a href="pdp.html" class="ds-nav-link">PDP</a>
+        <a href="category.html" class="ds-nav-link">Category</a>
+        <a href="seller-profile.html" class="ds-nav-link active" data-page="seller">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="ds-page" id="ds-page-container">
+
+    <!-- Mobile Header (hidden by default) -->
+    <div class="mobile-header" style="display:none;">
+      <div style="background:var(--color-primary);height:56px;padding:0 16px;display:flex;align-items:center;gap:12px;color:#fff;width:100%;">
+        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;">←</button>
+        <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;flex:1;">Supplier Profile</span>
+        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">♡</button>
+        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">⋮</button>
+      </div>
+    </div>
+
+    <!-- Site Header (marketplace header) -->
+    <header class="site-header">
+      <a href="#" class="site-header-logo">
+        <div class="site-header-logo-icon">TN</div>
+        <span class="site-header-logo-name">TradeNest</span>
+      </a>
+
+      <div class="site-header-search">
+        <select class="site-header-search-select">
+          <option>All Categories</option>
+          <option>Electrical</option>
+          <option>Industrial</option>
+          <option>Electronics</option>
+          <option>Cables &amp; Wires</option>
+        </select>
+        <input type="text" class="site-header-search-input" placeholder="Search products, suppliers, categories..." />
+        <button class="site-header-search-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Search
+        </button>
+      </div>
+
+      <div class="site-header-actions">
+        <button class="site-header-icon-btn" title="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="site-header-cart-badge" style="width:8px;height:8px;min-width:8px;padding:0;"></span>
+        </button>
+
+        <button class="site-header-icon-btn" title="Cart" style="font-size:16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-header-cart-badge">2</span>
+        </button>
+
+        <button class="site-header-user">
+          <div class="site-header-user-avatar">RK</div>
+          <span class="site-header-user-name">Rahul K.</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--text-muted)"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <button class="site-header-post-btn">Post Requirement</button>
+      </div>
+    </header>
+
+    <!-- Profile Cover -->
+    <div class="profile-cover">
+      <div class="profile-cover-pattern"></div>
+      <div class="profile-cover-deco">
+        <div class="profile-cover-circle1"></div>
+        <div class="profile-cover-circle2"></div>
+        <div class="profile-cover-circle3"></div>
+        <div class="profile-cover-line"></div>
+      </div>
+    </div>
+
+    <!-- Profile Info Row -->
+    <div class="profile-info-wrap">
+      <div class="profile-info-row">
+        <!-- Company Logo Avatar -->
+        <div class="profile-logo-avatar">SE</div>
+
+        <!-- Company Details -->
+        <div class="profile-details">
+          <h1 class="profile-company-name">Shree Electricals Pvt. Ltd.</h1>
+          <div class="profile-badges">
+            <span class="profile-badge-trust">★ TrustSeal Verified</span>
+            <span class="profile-badge-auth">Authorized Havells Distributor</span>
+          </div>
+          <div class="profile-category-line">Electrical Components · Distributor &amp; Trader</div>
+          <div class="profile-meta-row">
+            <span class="profile-meta-item">📍 Mumbai, Maharashtra</span>
+            <span class="profile-meta-item">Est. 2008</span>
+            <span class="profile-meta-item"><span class="meta-rating">4.6★</span>&nbsp;(312 reviews)</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions">
+          <button class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Contact Supplier
+          </button>
+          <button class="btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Follow
+          </button>
+          <button class="btn-ghost-icon" title="Share">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Strip -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-number">312</div>
+        <div class="stat-label">Verified Reviews</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.6<span class="stat-star">★</span></div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">847</div>
+        <div class="stat-label">Products Listed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Response Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">₹10–25 Cr</div>
+        <div class="stat-label">Annual Turnover</div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="profile-tabs" id="profile-tabs">
+      <button class="profile-tab active" data-tab="products">Products</button>
+      <button class="profile-tab" data-tab="categories">Categories</button>
+      <button class="profile-tab" data-tab="about">About</button>
+      <button class="profile-tab" data-tab="photos">Photos</button>
+      <button class="profile-tab" data-tab="reviews">Reviews</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="profile-content">
+
+      <!-- Product Filter Pills -->
+      <div class="product-filter-pills">
+        <button class="filter-pill active">All Products</button>
+        <button class="filter-pill">MCB &amp; Switchgear</button>
+        <button class="filter-pill">Cables &amp; Wires</button>
+        <button class="filter-pill">Lighting</button>
+        <button class="filter-pill">Control Panels</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#eef0fb;">⚡</div>
+          <div class="product-card-body">
+            <div class="product-card-category">MCB &amp; Switchgear</div>
+            <div class="product-card-name">MCB Circuit Breaker 32A Single Pole</div>
+            <div class="product-card-price">₹245/pc</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.6</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#dcfce7;">🔌</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Cables &amp; Wires</div>
+            <div class="product-card-name">PVC Insulated Wire 1.5mm² (100m spool)</div>
+            <div class="product-card-price">₹890/spool</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.5</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#fefce8;">⚙️</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Control Panels</div>
+            <div class="product-card-name">Industrial Switchgear Panel 63A</div>
+            <div class="product-card-price">₹6,800/unit</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.7</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#e0f2fe;">💡</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Lighting</div>
+            <div class="product-card-name">LED Batten Light 40W (4ft)</div>
+            <div class="product-card-price">₹520/pc</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.4</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#f8fafc;">📦</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Cable Management</div>
+            <div class="product-card-name">Cable Tray Perforated 75×25mm (3m)</div>
+            <div class="product-card-price">₹580/piece</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.3</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#eef0fb;">⚡</div>
+          <div class="product-card-body">
+            <div class="product-card-category">MCB &amp; Switchgear</div>
+            <div class="product-card-name">RCCB 25A 30mA Double Pole</div>
+            <div class="product-card-price">₹1,450/pc</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.8</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#dcfce7;">🔌</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Cables &amp; Wires</div>
+            <div class="product-card-name">Armoured Cable 2.5mm² 3-Core (100m)</div>
+            <div class="product-card-price">₹4,200/spool</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.5</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+          <div class="product-card-image" style="background:#fefce8;">⚙️</div>
+          <div class="product-card-body">
+            <div class="product-card-category">Control Panels</div>
+            <div class="product-card-name">Distribution Board 12-Way with MCBs</div>
+            <div class="product-card-price">₹3,800/unit</div>
+            <div class="product-card-footer">
+              <div class="product-card-rating">
+                <span class="star">★</span>
+                <span>4.6</span>
+              </div>
+              <button class="product-card-add-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /products-grid -->
+
+      <!-- About / Company Info -->
+      <div class="about-card">
+        <h3 class="about-card-title">Company Information</h3>
+        <div class="about-grid">
+
+          <!-- Left Column: Company Details -->
+          <div class="about-col">
+            <div class="about-col-title">Business Details</div>
+            <div class="about-info-table">
+              <div class="about-info-row">
+                <span class="about-info-label">GST Number</span>
+                <span class="about-info-value">
+                  27AAECS1234F1Z5
+                  <span class="about-info-verified">✓ Verified</span>
+                </span>
+              </div>
+              <div class="about-info-row">
+                <span class="about-info-label">Year Established</span>
+                <span class="about-info-value">2008</span>
+              </div>
+              <div class="about-info-row">
+                <span class="about-info-label">Company Type</span>
+                <span class="about-info-value">Distributor &amp; Trader</span>
+              </div>
+              <div class="about-info-row">
+                <span class="about-info-label">Employee Count</span>
+                <span class="about-info-value">45–50</span>
+              </div>
+              <div class="about-info-row">
+                <span class="about-info-label">Annual Turnover</span>
+                <span class="about-info-value">₹10–25 Crore</span>
+              </div>
+              <div class="about-info-row">
+                <span class="about-info-label">Primary Market</span>
+                <span class="about-info-value">Maharashtra, Gujarat, Rajasthan</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <!-- Right Column: Certifications -->
+          <div class="about-col">
+            <div class="about-col-title">Certifications &amp; Partnerships</div>
+            <div class="about-cert-list">
+              <div class="about-cert-item">
+                <div class="about-cert-check">✓</div>
+                ISO 9001:2015 Quality Management System
+              </div>
+              <div class="about-cert-item">
+                <div class="about-cert-check">✓</div>
+                Authorized Havells Distributor
+              </div>
+              <div class="about-cert-item">
+                <div class="about-cert-check">✓</div>
+                Schneider Electric Certified Partner
+              </div>
+              <div class="about-cert-item">
+                <div class="about-cert-check">✓</div>
+                Legrand Authorized Channel Partner
+              </div>
+              <div class="about-cert-item">
+                <div class="about-cert-check" style="background:var(--color-warning-bg);color:var(--color-warning);">★</div>
+                TradeNest TrustSeal Verified
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Business Description -->
+        <div class="about-description-block">
+          <div class="about-description-title">About the Company</div>
+          <p class="about-description-text">
+            Shree Electricals Pvt. Ltd. is a leading distributor and trader of electrical components, switchgear, cables, and wiring accessories, serving contractors, OEMs, and project companies across western India since 2008. Our Mumbai warehouse maintains stock of 2,000+ SKUs from top brands including Havells, Schneider Electric, Legrand, and Polycab.
+          </p>
+        </div>
+      </div>
+
+      <!-- Reviews Section -->
+      <div class="reviews-section">
+        <h2 class="reviews-section-title">Customer Reviews</h2>
+
+        <!-- Rating Summary -->
+        <div class="reviews-summary">
+          <div class="reviews-overall">
+            <div class="reviews-big-score">4.6</div>
+            <div class="reviews-stars-big">★★★★★</div>
+            <div class="reviews-out-of">out of 5<br>Based on 312 verified reviews</div>
+          </div>
+
+          <div class="reviews-bar-list">
+            <div class="reviews-bar-row">
+              <div class="reviews-bar-label"><span class="bar-star">★★★★★</span></div>
+              <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:72%"></div></div>
+              <div class="reviews-bar-count">72% (225)</div>
+            </div>
+            <div class="reviews-bar-row">
+              <div class="reviews-bar-label"><span class="bar-star">★★★★</span><span style="color:var(--border)">★</span></div>
+              <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:18%"></div></div>
+              <div class="reviews-bar-count">18% (56)</div>
+            </div>
+            <div class="reviews-bar-row">
+              <div class="reviews-bar-label"><span class="bar-star">★★★</span><span style="color:var(--border)">★★</span></div>
+              <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:7%"></div></div>
+              <div class="reviews-bar-count">7% (22)</div>
+            </div>
+            <div class="reviews-bar-row">
+              <div class="reviews-bar-label"><span class="bar-star">★★</span><span style="color:var(--border)">★★★</span></div>
+              <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:2%"></div></div>
+              <div class="reviews-bar-count">2% (6)</div>
+            </div>
+            <div class="reviews-bar-row">
+              <div class="reviews-bar-label"><span class="bar-star">★</span><span style="color:var(--border)">★★★★</span></div>
+              <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:1%"></div></div>
+              <div class="reviews-bar-count">1% (3)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">AR</div>
+            <div class="review-meta">
+              <div class="review-name">
+                Anjali R.
+                <span class="review-verified-badge">✓ Verified Buyer</span>
+              </div>
+              <div class="review-sub">Purchase Manager · Delhi</div>
+            </div>
+            <div class="review-date">12 Feb 2024</div>
+          </div>
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="review-score">5/5</span>
+          </div>
+          <p class="review-text">Consistent quality across all our orders. Their MCBs and switchgear sourced from Havells are exactly as specified. Dispatch from their Mumbai warehouse is always within 2 days. Best supplier we've found for electrical components.</p>
+          <div class="review-helpful">
+            <span class="review-helpful-label">Was this helpful?</span>
+            <button class="review-helpful-btn">👍 Yes (12)</button>
+            <button class="review-helpful-btn">👎 No (1)</button>
+          </div>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar" style="background:var(--color-success-bg);color:var(--color-success);">RM</div>
+            <div class="review-meta">
+              <div class="review-name">
+                Rajesh M.
+                <span class="review-verified-badge">✓ Verified Buyer</span>
+              </div>
+              <div class="review-sub">Project Manager · Pune</div>
+            </div>
+            <div class="review-date">28 Jan 2024</div>
+          </div>
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star-empty">★</span>
+            <span class="review-score">4/5</span>
+          </div>
+          <p class="review-text">Good pricing on bulk orders for our panel building projects. Pricing for cables and trays is competitive. Would appreciate a wider range of cable management products. Overall very reliable.</p>
+          <div class="review-helpful">
+            <span class="review-helpful-label">Was this helpful?</span>
+            <button class="review-helpful-btn">👍 Yes (8)</button>
+            <button class="review-helpful-btn">👎 No (0)</button>
+          </div>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar" style="background:#fef3c7;color:#92400e;">SK</div>
+            <div class="review-meta">
+              <div class="review-name">
+                Suresh K.
+                <span class="review-verified-badge">✓ Verified Buyer</span>
+              </div>
+              <div class="review-sub">Electrical Contractor · Navi Mumbai</div>
+            </div>
+            <div class="review-date">5 Jan 2024</div>
+          </div>
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star-empty">★</span>
+            <span class="star-empty">★</span>
+            <span class="review-score">3/5</span>
+          </div>
+          <p class="review-text">Slightly delayed on our last order — 3 extra days beyond promised date. When we raised the issue, their team was responsive and offered a discount on the next order. Quality of the products themselves is good.</p>
+          <div class="review-helpful">
+            <span class="review-helpful-label">Was this helpful?</span>
+            <button class="review-helpful-btn">👍 Yes (5)</button>
+            <button class="review-helpful-btn">👎 No (2)</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- /reviews-section -->
+
+    </div>
+    <!-- /profile-content -->
+
+  </div>
+  <!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.profile-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Product filter pills
+    const pills = document.querySelectorAll('.filter-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

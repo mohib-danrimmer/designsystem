@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atoms — TradeNest Design System</title>
+  <link rel="stylesheet" href="../shared/tokens.css">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <style>
+    /* ============================================================
+       ATOMS PAGE — PAGE-SPECIFIC STYLES
+       ============================================================ */
+
+    /* ── Page header ─────────────────────────────── */
+    .page-header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    .page-header-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .page-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ── Showcase canvas ─────────────────────────── */
+    .showcase-canvas {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-top: var(--space-6);
+    }
+
+    .showcase-canvas + .showcase-canvas {
+      margin-top: var(--space-4);
+    }
+
+    .showcase-canvas-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Sub-section title within a canvas ──────── */
+    .sub-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    /* ============================================================
+       1. BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--radius-lg);
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 150ms ease;
+      border: none;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    /* Sizes */
+    .btn-sm {
+      height: 32px;
+      padding: 0 12px;
+      font-size: 13px;
+    }
+
+    .btn-md {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    .btn-lg {
+      height: 48px;
+      padding: 0 20px;
+      font-size: 15px;
+    }
+
+    /* Variants */
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover,
+    .btn-primary.is-hover {
+      background: var(--color-primary-700);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary.is-hover {
+      background: var(--color-primary-50);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost.is-hover {
+      background: var(--bg-subtle);
+    }
+
+    .btn-destructive {
+      background: var(--color-error);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-destructive:hover,
+    .btn-destructive.is-hover {
+      opacity: 0.9;
+    }
+
+    /* States */
+    .btn:disabled,
+    .btn.is-disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Spinner animation */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-spinner {
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* Button matrix table */
+    .btn-matrix {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .btn-matrix th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      padding: 0 0 var(--space-4) 0;
+    }
+
+    .btn-matrix th:not(:first-child) {
+      text-align: center;
+      padding-left: var(--space-3);
+    }
+
+    .btn-matrix td {
+      padding: var(--space-2) var(--space-3) var(--space-2) 0;
+      vertical-align: middle;
+    }
+
+    .btn-matrix td:first-child {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding-right: var(--space-4);
+      min-width: 48px;
+    }
+
+    .btn-matrix td:not(:first-child) {
+      text-align: left;
+      padding-left: var(--space-3);
+    }
+
+    .btn-cell {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      align-items: flex-start;
+    }
+
+    .btn-state-tag {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 400;
+      margin-top: 2px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .btn-cell-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+    }
+
+    /* ============================================================
+       2. BADGES / STATUS CHIPS
+       ============================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-body);
+    }
+
+    /* Status dot */
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Trust Badges */
+    .badge-verified-supplier {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-trustseal {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .badge-verified-exporter {
+      background: #ede9fe;
+      color: #5b21b6;
+      border: 1px solid #ddd6fe;
+    }
+
+    .badge-unverified {
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* Inventory Status */
+    .badge-in-stock {
+      background: var(--color-success-bg);
+      color: var(--color-success);
+    }
+
+    .badge-out-of-stock {
+      background: var(--color-error-bg);
+      color: var(--color-error);
+    }
+
+    .badge-low-stock {
+      background: var(--color-warning-bg);
+      color: var(--color-warning);
+    }
+
+    /* Product Badges */
+    .badge-bulk {
+      background: #e6f4f4;
+      color: #1d8480;
+    }
+
+    .badge-new {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .badge-featured {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .badge-star {
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .badges-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .badges-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .badges-group-title:first-child {
+      margin-top: 0;
+    }
+
+    /* ============================================================
+       3. TAGS
+       ============================================================ */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: default;
+    }
+
+    /* Category tags */
+    .tag-electronics {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary-200);
+    }
+
+    .tag-raw-materials {
+      background: #e6f4f4;
+      color: #1d8480;
+      border: 1px solid #b3dfde;
+    }
+
+    .tag-packaging {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* Filter tags with remove */
+    .tag-filter {
+      background: var(--color-primary);
+      color: #fff;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+
+    .tag-filter:hover {
+      background: var(--color-primary-700);
+    }
+
+    .tag-filter-remove {
+      margin-left: 2px;
+      opacity: 0.75;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .tag-filter-remove:hover {
+      opacity: 1;
+    }
+
+    .tags-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ============================================================
+       4. INPUT FIELDS
+       ============================================================ */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .input-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+
+    .input-field::placeholder {
+      color: var(--text-muted);
+    }
+
+    .input-field:focus,
+    .is-focus .input-field {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.12);
+    }
+
+    .input-helper {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .is-error .input-field {
+      border-color: var(--color-error);
+    }
+
+    .is-error .input-label {
+      color: var(--color-error);
+    }
+
+    .input-error {
+      font-size: 12px;
+      color: var(--color-error);
+      margin-top: 4px;
+      display: block;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .input-field:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: var(--bg-subtle);
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper .input-field {
+      padding-right: 40px;
+    }
+
+    .input-icon-right {
+      position: absolute;
+      right: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: color 150ms;
+    }
+
+    .input-icon-right:hover {
+      color: var(--text-secondary);
+    }
+
+    .input-textarea {
+      width: 100%;
+      min-height: 96px;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      resize: vertical;
+      line-height: 1.5;
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+
+    .input-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .input-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.12);
+    }
+
+    .inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-6);
+    }
+
+    /* ============================================================
+       5. DROPDOWNS / SELECTS
+       ============================================================ */
+    .select-native {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      padding-right: 36px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 5.25L7 8.75L10.5 5.25' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+
+    .select-native:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.12);
+    }
+
+    /* Custom dropdown */
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 240px;
+    }
+
+    .custom-dropdown-trigger {
+      width: 100%;
+      height: 40px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .custom-dropdown-caret {
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .custom-dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .custom-dropdown-option {
+      padding: 10px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 100ms;
+    }
+
+    .custom-dropdown-option:hover {
+      background: var(--bg-subtle);
+    }
+
+    .custom-dropdown-option.active {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .dropdown-col-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    /* ============================================================
+       6. CHECKBOXES & RADIO BUTTONS
+       ============================================================ */
+    .custom-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color 150ms, background 150ms;
+    }
+
+    .custom-check.checked {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    .custom-check.indeterminate {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    .custom-check.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .custom-check-mark {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-radio {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color 150ms;
+    }
+
+    .custom-radio.checked {
+      border-color: var(--color-primary);
+    }
+
+    .custom-radio.checked::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .custom-radio.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--space-3);
+    }
+
+    .control-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    /* ============================================================
+       7. TOGGLE / SWITCH
+       ============================================================ */
+    .toggle {
+      width: 44px;
+      height: 24px;
+      background: var(--neutral-300);
+      border-radius: var(--radius-full);
+      position: relative;
+      cursor: pointer;
+      transition: background 150ms;
+      flex-shrink: 0;
+    }
+
+    .toggle.on {
+      background: var(--color-primary);
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: left 150ms;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle.on::after {
+      left: 23px;
+    }
+
+    .toggle-sm {
+      width: 32px;
+      height: 18px;
+    }
+
+    .toggle-sm::after {
+      width: 12px;
+      height: 12px;
+    }
+
+    .toggle-sm.on::after {
+      left: 17px;
+    }
+
+    .toggle.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--space-3);
+    }
+
+    .toggle-row-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      min-width: 36px;
+    }
+
+    .toggle-size-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .toggles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    /* ============================================================
+       8. TOOLTIPS
+       ============================================================ */
+    .tooltip-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-box {
+      position: absolute;
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 10;
+      font-family: var(--font-body);
+      pointer-events: none;
+    }
+
+    .tooltip-dark {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .tooltip-light {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Tooltip arrows */
+    .tooltip-box::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+
+    /* Top tooltip */
+    .tooltip-top {
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tooltip-top.tooltip-dark::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #0f172a;
+    }
+
+    .tooltip-top.tooltip-light::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--border);
+    }
+
+    /* Bottom tooltip */
+    .tooltip-bottom {
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tooltip-bottom.tooltip-dark::after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #0f172a;
+    }
+
+    .tooltip-bottom.tooltip-light::after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid var(--border);
+    }
+
+    /* Right tooltip */
+    .tooltip-right {
+      top: 50%;
+      left: calc(100% + 8px);
+      transform: translateY(-50%);
+    }
+
+    .tooltip-right.tooltip-dark::after {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 5px solid #0f172a;
+    }
+
+    .tooltip-right.tooltip-light::after {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 5px solid var(--border);
+    }
+
+    .tooltip-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      cursor: default;
+    }
+
+    .tooltips-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+      padding: 56px var(--space-4) var(--space-4);
+    }
+
+    /* Variant row for dark/light tooltip examples */
+    .tooltip-variants-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      padding: 56px var(--space-4) var(--space-4);
+    }
+
+    /* ============================================================
+       9. AVATARS
+       ============================================================ */
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .avatar-circle {
+      border-radius: 50%;
+    }
+
+    .avatar-square {
+      border-radius: var(--radius-lg);
+    }
+
+    .avatar-xs {
+      width: 24px;
+      height: 24px;
+      font-size: 9px;
+    }
+
+    .avatar-sm {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+
+    .avatar-md {
+      width: 40px;
+      height: 40px;
+      font-size: 15px;
+    }
+
+    .avatar-lg {
+      width: 56px;
+      height: 56px;
+      font-size: 20px;
+    }
+
+    .avatar-gradient-purple {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .avatar-gradient-indigo {
+      background: linear-gradient(135deg, #3b45c4, #2e3192);
+    }
+
+    .avatar-gradient-teal {
+      background: linear-gradient(135deg, #1d8480, #26a09e);
+    }
+
+    .avatar-fallback-rk {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .avatar-fallback-se {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .avatar-company-bg {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+    }
+
+    .avatars-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+
+    .avatar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .avatar-size-tag {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar-stack .avatar {
+      border: 2px solid var(--bg-card);
+    }
+
+    .avatar-stack .avatar + .avatar {
+      margin-left: -8px;
+    }
+
+    /* ============================================================
+       10. DIVIDERS
+       ============================================================ */
+    .divider-plain {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    .divider-labeled {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+
+    .divider-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+
+    .dividers-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .divider-example {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .divider-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+      font-family: var(--font-body);
+    }
+
+    /* ============================================================
+       UTILITY / MISC
+       ============================================================ */
+    .section-gap {
+      margin-top: var(--space-6);
+    }
+
+    [data-theme="dark"] .custom-dropdown-trigger {
+      border-color: var(--color-primary-400);
+    }
+
+    [data-theme="dark"] .badge-verified-supplier {
+      background: rgba(219, 234, 254, 0.12);
+    }
+
+    [data-theme="dark"] .badge-trustseal {
+      background: rgba(254, 243, 199, 0.12);
+    }
+
+    [data-theme="dark"] .badge-verified-exporter {
+      background: rgba(237, 233, 254, 0.12);
+    }
+
+    [data-theme="dark"] .badge-new {
+      background: rgba(219, 234, 254, 0.12);
+    }
+
+    [data-theme="dark"] .badge-featured {
+      background: rgba(254, 243, 199, 0.12);
+    }
+
+    [data-theme="dark"] .badge-bulk {
+      background: rgba(230, 244, 244, 0.12);
+    }
+
+    [data-theme="dark"] .tag-electronics {
+      background: rgba(238, 240, 251, 0.12);
+    }
+
+    [data-theme="dark"] .tag-raw-materials {
+      background: rgba(230, 244, 244, 0.12);
+    }
+
+    [data-theme="dark"] .tag-packaging {
+      background: rgba(240, 253, 244, 0.12);
+    }
+
+    [data-theme="dark"] .avatar-fallback-rk {
+      background: rgba(224, 231, 255, 0.2);
+    }
+
+    [data-theme="dark"] .avatar-fallback-se {
+      background: rgba(220, 252, 231, 0.2);
+    }
+
+    [data-theme="dark"] .avatar-company-bg {
+      background: rgba(238, 240, 251, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP NAV
+       ============================================================ -->
+  <nav class="ds-nav">
+    <div class="ds-nav-inner">
+      <a href="../index.html" class="ds-nav-logo">
+        <div class="ds-nav-logo-icon">TN</div>
+        TradeNest DS
+      </a>
+
+      <div class="ds-nav-links">
+        <a href="foundations.html" class="ds-nav-link" data-page="foundations">Foundations</a>
+        <a href="atoms.html" class="ds-nav-link active" data-page="atoms">Atoms</a>
+        <a href="molecules.html" class="ds-nav-link" data-page="molecules">Molecules</a>
+        <a href="organisms.html" class="ds-nav-link" data-page="organisms">Organisms</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../pages/homepage.html" class="ds-nav-link">Home</a>
+        <a href="../pages/pdp.html" class="ds-nav-link">PDP</a>
+        <a href="../pages/category.html" class="ds-nav-link">Category</a>
+        <a href="../pages/seller-profile.html" class="ds-nav-link">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+
+      <div class="ds-nav-controls">
+        <button class="ds-mobile-toggle" id="ds-mobile-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          Mobile View
+        </button>
+        <button class="ds-theme-toggle" id="ds-theme-toggle" title="Toggle theme"></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PAGE CONTENT
+       ============================================================ -->
+  <div class="ds-page" id="ds-page-container">
+    <div class="ds-container">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <p class="page-header-eyebrow">Component Library</p>
+        <h1>Atoms</h1>
+        <p>Foundational UI components — the building blocks of the TradeNest interface. Each atom is designed to compose into molecules and organisms.</p>
+      </div>
+
+      <!-- ====================================================
+           SECTION 1: BUTTONS
+           ==================================================== -->
+      <section class="ds-section" id="buttons">
+        <h2 class="ds-section-title">Buttons</h2>
+        <p class="ds-section-subtitle">Interactive controls for primary actions, secondary choices, ghost interactions, and destructive operations.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Buttons follow a 3-size &times; 4-variant matrix. All variants use <code>--color-primary</code>. Destructive uses <code>--color-error</code>. Loading state replaces label content — always pair with a spinner to communicate in-progress feedback.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">3 Sizes &times; 4 Variants — Default / Hover / Disabled / Loading</div>
+          <div style="overflow-x: auto;">
+            <table class="btn-matrix">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Primary</th>
+                  <th>Secondary</th>
+                  <th>Ghost</th>
+                  <th>Destructive</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- SM Row -->
+                <tr>
+                  <td>SM</td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-primary is-hover">Add to Cart</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-primary is-disabled" disabled>Add to Cart</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-primary">
+                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Adding...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-secondary">Contact Seller</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-secondary is-hover">Contact Seller</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-secondary">
+                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Sending...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-ghost">Save</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-ghost is-hover">Save</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-ghost is-disabled" disabled>Save</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-ghost">
+                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Saving...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-destructive">Remove</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-destructive is-hover">Remove</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-destructive is-disabled" disabled>Remove</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-sm btn-destructive">
+                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Removing...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- MD Row -->
+                <tr>
+                  <td>MD</td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-primary">Add to Cart</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-primary is-hover">Add to Cart</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-primary is-disabled" disabled>Add to Cart</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-primary">
+                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Adding...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-secondary">Contact Seller</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-secondary is-hover">Contact Seller</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-secondary">
+                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Sending...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-ghost">Save</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-ghost is-hover">Save</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-ghost is-disabled" disabled>Save</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-ghost">
+                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Saving...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-destructive">Remove</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-destructive is-hover">Remove</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-destructive is-disabled" disabled>Remove</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-md btn-destructive">
+                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Removing...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- LG Row -->
+                <tr>
+                  <td>LG</td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-primary">Add to Cart</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-primary is-hover">Add to Cart</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-primary is-disabled" disabled>Add to Cart</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-primary">
+                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Adding...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-secondary">Contact Seller</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-secondary is-hover">Contact Seller</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-secondary">
+                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Sending...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-ghost">Save</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-ghost is-hover">Save</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-ghost is-disabled" disabled>Save</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-ghost">
+                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Saving...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-cell">
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-destructive">Remove</button>
+                        <span class="btn-state-tag">Default</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-destructive is-hover">Remove</button>
+                        <span class="btn-state-tag">Hover</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-destructive is-disabled" disabled>Remove</button>
+                        <span class="btn-state-tag">Disabled</span>
+                      </div>
+                      <div class="btn-cell-item">
+                        <button class="btn btn-lg btn-destructive">
+                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
+                          </svg>
+                          Removing...
+                        </button>
+                        <span class="btn-state-tag">Loading</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Token specs callout -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">Token Specs</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); font-size: 12px; color: var(--text-secondary); font-family: var(--font-body);">
+            <div><strong style="color: var(--text-primary);">SM</strong><br>height: 32px &nbsp; padding: 0 12px<br>font-size: 13px</div>
+            <div><strong style="color: var(--text-primary);">MD</strong><br>height: 40px &nbsp; padding: 0 16px<br>font-size: 14px</div>
+            <div><strong style="color: var(--text-primary);">LG</strong><br>height: 48px &nbsp; padding: 0 20px<br>font-size: 15px</div>
+            <div><strong style="color: var(--text-primary);">Radius</strong><br>--radius-lg (8px)<br>border-radius all variants</div>
+            <div><strong style="color: var(--text-primary);">Transition</strong><br>all 150ms ease<br>hover &amp; focus states</div>
+            <div><strong style="color: var(--text-primary);">Disabled</strong><br>opacity: 0.4<br>cursor: not-allowed</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 2: BADGES / STATUS CHIPS
+           ==================================================== -->
+      <section class="ds-section" id="badges">
+        <h2 class="ds-section-title">Badges &amp; Status Chips</h2>
+        <p class="ds-section-subtitle">Inline labels that communicate trust level, inventory status, and product attributes at a glance.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Badges communicate supplier trust level and inventory status. Use pill shape (<code>--radius-full</code>) with matching background tint. Never use badges as interactive elements — use Tags for clickable/filterable contexts.
+        </div>
+
+        <div class="showcase-canvas">
+          <!-- Supplier Trust -->
+          <div class="badges-group-title">Supplier Trust Badges</div>
+          <div class="badges-group">
+            <span class="badge badge-verified-supplier">
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1L9.79 5.26L14.5 5.45L11 8.47L12.36 13L8 10.27L3.64 13L5 8.47L1.5 5.45L6.21 5.26L8 1Z" fill="#1d4ed8"/>
+              </svg>
+              Verified Supplier
+            </span>
+            <span class="badge badge-trustseal">
+              <span class="badge-star">★</span>
+              TrustSeal Verified
+            </span>
+            <span class="badge badge-verified-exporter">
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6.5" stroke="#5b21b6" stroke-width="1.5"/>
+                <path d="M5 8L7 10L11 6" stroke="#5b21b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Verified Exporter
+            </span>
+            <span class="badge badge-unverified">Unverified</span>
+          </div>
+
+          <!-- Inventory Status -->
+          <div class="badges-group-title">Inventory Status</div>
+          <div class="badges-group">
+            <span class="badge badge-in-stock">
+              <span class="badge-dot" style="background: var(--color-success);"></span>
+              In Stock
+            </span>
+            <span class="badge badge-out-of-stock">
+              <span class="badge-dot" style="background: var(--color-error);"></span>
+              Out of Stock
+            </span>
+            <span class="badge badge-low-stock">
+              <span class="badge-dot" style="background: var(--color-warning);"></span>
+              Low Stock
+            </span>
+          </div>
+
+          <!-- Product Badges -->
+          <div class="badges-group-title">Product Badges</div>
+          <div class="badges-group">
+            <span class="badge badge-bulk">Bulk Available</span>
+            <span class="badge badge-new">New</span>
+            <span class="badge badge-featured">
+              <span class="badge-star">★</span>
+              Featured
+            </span>
+          </div>
+        </div>
+
+        <!-- Spec note -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">Usage Example — Product Card</div>
+          <div style="display: flex; align-items: flex-start; gap: var(--space-4); padding: var(--space-2) 0;">
+            <div style="width: 56px; height: 56px; background: var(--color-primary-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; font-family: var(--font-heading);">SMD Capacitors 100µF — Pack of 500</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <span class="badge badge-verified-supplier">
+                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.79 5.26L14.5 5.45L11 8.47L12.36 13L8 10.27L3.64 13L5 8.47L1.5 5.45L6.21 5.26L8 1Z" fill="#1d4ed8"/></svg>
+                  Verified Supplier
+                </span>
+                <span class="badge badge-in-stock">
+                  <span class="badge-dot" style="background: var(--color-success);"></span>
+                  In Stock
+                </span>
+                <span class="badge badge-bulk">Bulk Available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 3: TAGS
+           ==================================================== -->
+      <section class="ds-section" id="tags">
+        <h2 class="ds-section-title">Tags</h2>
+        <p class="ds-section-subtitle">Category labels for taxonomy navigation and removable filter chips for active search refinements.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Category tags use filled style. Filter tags show active state with an &times; remove control. Tags are interactive — unlike badges which are purely informational. Filter tags in primary color signal an active, applied state.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Category Tags — Filled Style</div>
+          <div class="tags-group">
+            <span class="tag tag-electronics">Electronics</span>
+            <span class="tag tag-raw-materials">Raw Materials</span>
+            <span class="tag tag-packaging">Packaging</span>
+          </div>
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Filter Tags — Active / Applied State</div>
+          <div class="tags-group">
+            <span class="tag tag-filter">
+              Mumbai
+              <span class="tag-filter-remove" title="Remove filter">&times;</span>
+            </span>
+            <span class="tag tag-filter">
+              Price: &#8377;100–&#8377;500
+              <span class="tag-filter-remove" title="Remove filter">&times;</span>
+            </span>
+            <span class="tag tag-filter">
+              Manufacturer
+              <span class="tag-filter-remove" title="Remove filter">&times;</span>
+            </span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: var(--space-2);">Applied filters appear in the primary color. Click &times; to remove.</p>
+        </div>
+
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">Tags in Context — Search Results Header</div>
+          <div style="display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;">
+            <span style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Filters:</span>
+            <span class="tag tag-filter">
+              Electronics
+              <span class="tag-filter-remove">&times;</span>
+            </span>
+            <span class="tag tag-filter">
+              Mumbai
+              <span class="tag-filter-remove">&times;</span>
+            </span>
+            <span class="tag tag-filter">
+              Verified Supplier
+              <span class="tag-filter-remove">&times;</span>
+            </span>
+            <button class="btn btn-sm btn-ghost" style="margin-left: auto;">Clear all</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 4: INPUT FIELDS
+           ==================================================== -->
+      <section class="ds-section" id="inputs">
+        <h2 class="ds-section-title">Input Fields</h2>
+        <p class="ds-section-subtitle">Text entry components with consistent labeling, helper text, and validation states throughout the platform.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          All inputs use a shared base style. Labels sit above the field. Helper text appears below in muted style. Error state uses <code>--color-error</code> for both the border and error message. Focus ring uses 3px primary tint — visible and accessible.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">States — Default / Focus / Error / Disabled</div>
+          <div class="inputs-grid">
+
+            <!-- Default -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Default</div>
+              <div class="input-group">
+                <label class="input-label">Product Name</label>
+                <input type="text" class="input-field" placeholder="e.g. SMD Capacitors 100µF">
+                <span class="input-helper">Enter the full product or component name</span>
+              </div>
+            </div>
+
+            <!-- Focus -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Focus</div>
+              <div class="input-group is-focus">
+                <label class="input-label" style="color: var(--color-primary);">Product Name</label>
+                <input type="text" class="input-field" placeholder="e.g. SMD Capacitors 100µF" value="SMD Capacitors 100µF">
+                <span class="input-helper">Enter the full product or component name</span>
+              </div>
+            </div>
+
+            <!-- Error -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Error</div>
+              <div class="input-group is-error">
+                <label class="input-label">Unit Price (₹)</label>
+                <input type="text" class="input-field" value="abc">
+                <span class="input-error">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="7" stroke="var(--color-error)" stroke-width="1.5"/>
+                    <path d="M8 5v3.5M8 11v.5" stroke="var(--color-error)" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  Please enter a valid number (e.g. 1000)
+                </span>
+              </div>
+            </div>
+
+            <!-- Disabled -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Disabled</div>
+              <div class="input-group">
+                <label class="input-label" style="opacity: 0.5;">Product Name</label>
+                <input type="text" class="input-field" placeholder="e.g. SMD Capacitors 100µF" value="Locked field value" disabled>
+                <span class="input-helper" style="opacity: 0.5;">This field cannot be edited</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Variants — Password / Textarea</div>
+          <div class="inputs-grid">
+
+            <!-- Password with eye icon -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Password Input</div>
+              <div class="input-group">
+                <label class="input-label">Password</label>
+                <div class="input-wrapper">
+                  <input type="password" class="input-field" placeholder="Enter your password" value="mysecretpassword">
+                  <span class="input-icon-right" title="Show/hide password">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="input-helper">Min 8 characters, 1 number required</span>
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Textarea</div>
+              <div class="input-group">
+                <label class="input-label">Product Description</label>
+                <textarea class="input-textarea" placeholder="Describe the product specifications, packaging, and any relevant certifications..."></textarea>
+                <span class="input-helper">Up to 1000 characters</span>
+              </div>
+            </div>
+
+            <!-- Search input variant -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Search Input</div>
+              <div class="input-group">
+                <label class="input-label">Search Products</label>
+                <div class="input-wrapper">
+                  <span style="position: absolute; left: 12px; color: var(--text-muted); display: flex; align-items: center;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                  </span>
+                  <input type="text" class="input-field" placeholder="Search by product, category, or supplier..." style="padding-left: 36px;">
+                </div>
+              </div>
+            </div>
+
+            <!-- With prefix/suffix -->
+            <div>
+              <div class="sub-label" style="margin-bottom: 10px;">Input with Adornments</div>
+              <div class="input-group">
+                <label class="input-label">Price Per Unit (INR)</label>
+                <div style="display: flex; align-items: center; gap: 0;">
+                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-right: none; border-radius: var(--radius-md) 0 0 var(--radius-md); font-size: 14px; color: var(--text-muted); font-family: var(--font-body);">&#8377;</span>
+                  <input type="text" class="input-field" placeholder="0.00" style="border-radius: 0; border-left: none;">
+                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-left: none; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: 13px; color: var(--text-muted); font-family: var(--font-body);">per unit</span>
+                </div>
+                <span class="input-helper">Ex-GST price for one unit</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 5: DROPDOWNS / SELECTS
+           ==================================================== -->
+      <section class="ds-section" id="dropdowns">
+        <h2 class="ds-section-title">Dropdowns &amp; Selects</h2>
+        <p class="ds-section-subtitle">Native and custom select components for category browsing, location filtering, and structured choice inputs.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Use native <code>&lt;select&gt;</code> styled consistently for simple single-choice dropdowns. Reserve the custom dropdown for cases where you need search, multi-select, or richer option rendering. Show the custom dropdown in its open state in the showcase for visibility.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="dropdown-grid">
+
+            <!-- Native select -->
+            <div>
+              <div class="dropdown-col-label">Native Select — Styled</div>
+              <div class="input-group">
+                <label class="input-label">Category</label>
+                <select class="select-native">
+                  <option value="">All Categories</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="packaging">Packaging</option>
+                  <option value="raw-materials">Raw Materials</option>
+                  <option value="industrial">Industrial Equipment</option>
+                  <option value="office">Office Supplies</option>
+                </select>
+                <span class="input-helper">Browse supplier listings by category</span>
+              </div>
+
+              <div style="margin-top: var(--space-6);">
+                <label class="input-label">Location</label>
+                <select class="select-native">
+                  <option value="">All Locations</option>
+                  <option value="mumbai">Mumbai</option>
+                  <option value="delhi">Delhi</option>
+                  <option value="bengaluru">Bengaluru</option>
+                  <option value="pune">Pune</option>
+                  <option value="hyderabad">Hyderabad</option>
+                  <option value="chennai">Chennai</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Custom dropdown open state -->
+            <div>
+              <div class="dropdown-col-label">Custom Dropdown — Open State</div>
+              <div class="custom-dropdown">
+                <div class="custom-dropdown-trigger">
+                  <span>Bengaluru</span>
+                  <span class="custom-dropdown-caret">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="custom-dropdown-list">
+                  <div class="custom-dropdown-option">Mumbai</div>
+                  <div class="custom-dropdown-option active">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8L6.5 11.5L13 5" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      Bengaluru
+                    </span>
+                  </div>
+                  <div class="custom-dropdown-option">Delhi</div>
+                  <div class="custom-dropdown-option">Pune</div>
+                  <div class="custom-dropdown-option">Hyderabad</div>
+                  <div class="custom-dropdown-option">Chennai</div>
+                </div>
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 140px;">Shown in open state for showcase. Active option uses primary tint background.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 6: CHECKBOXES & RADIO BUTTONS
+           ==================================================== -->
+      <section class="ds-section" id="selection-controls">
+        <h2 class="ds-section-title">Checkboxes &amp; Radio Buttons</h2>
+        <p class="ds-section-subtitle">Custom-styled selection controls for filter sidebars, settings panels, and multi-select scenarios.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          All selection controls use <code>--color-primary</code> for checked state. Indeterminate state for checkboxes shown in "Select All" patterns — useful for bulk action toolbars in supplier listings and order management.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="controls-grid">
+
+            <!-- Checkboxes -->
+            <div>
+              <div class="sub-label">Checkboxes</div>
+
+              <div class="control-row">
+                <div class="custom-check"></div>
+                <span class="control-label">Unchecked</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-check checked">
+                  <span class="custom-check-mark">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6L5 9L10 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="control-label">Checked</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-check indeterminate">
+                  <span class="custom-check-mark">
+                    <svg width="10" height="2" viewBox="0 0 10 2" fill="none">
+                      <rect x="0" y="0" width="10" height="2" rx="1" fill="#fff"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="control-label">Indeterminate — Select All</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-check disabled"></div>
+                <span class="control-label" style="opacity: 0.4;">Disabled unchecked</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-check checked disabled">
+                  <span class="custom-check-mark">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6L5 9L10 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="control-label" style="opacity: 0.4;">Disabled checked</span>
+              </div>
+            </div>
+
+            <!-- Radio Buttons -->
+            <div>
+              <div class="sub-label">Radio Buttons</div>
+
+              <div class="control-row">
+                <div class="custom-radio"></div>
+                <span class="control-label">Unselected</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-radio checked"></div>
+                <span class="control-label">Selected — Primary</span>
+              </div>
+
+              <div class="control-row">
+                <div class="custom-radio disabled"></div>
+                <span class="control-label" style="opacity: 0.4;">Disabled</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Usage example -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">In Context — Filter Sidebar</div>
+          <div style="max-width: 280px;">
+            <div style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); font-family: var(--font-heading);">Supplier Type</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <div class="custom-check checked">
+                  <span class="custom-check-mark">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6L5 9L10 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Manufacturer</span>
+                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">2,341</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <div class="custom-check"></div>
+                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Wholesaler</span>
+                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">1,089</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <div class="custom-check checked">
+                  <span class="custom-check-mark">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6L5 9L10 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Exporter</span>
+                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">487</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <div class="custom-check"></div>
+                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Trader</span>
+                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">312</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 7: TOGGLE / SWITCH
+           ==================================================== -->
+      <section class="ds-section" id="toggles">
+        <h2 class="ds-section-title">Toggle &amp; Switch</h2>
+        <p class="ds-section-subtitle">Binary state controls for settings panels, notification preferences, and feature flags.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Toggles replace checkboxes for binary settings. SM for compact lists and mobile contexts, MD for settings panels. The thumb animates from left to right — never reverse the convention. Disabled toggles retain their state color at reduced opacity.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="toggles-grid">
+
+            <!-- MD Toggles -->
+            <div>
+              <div class="toggle-size-label">MD — 44 &times; 24px</div>
+              <div class="toggle-row">
+                <div class="toggle"></div>
+                <span class="toggle-row-label">Off</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle on"></div>
+                <span class="toggle-row-label">On</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle disabled"></div>
+                <span class="toggle-row-label" style="opacity: 0.4;">Disabled Off</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle on disabled"></div>
+                <span class="toggle-row-label" style="opacity: 0.4;">Disabled On</span>
+              </div>
+            </div>
+
+            <!-- SM Toggles -->
+            <div>
+              <div class="toggle-size-label">SM — 32 &times; 18px</div>
+              <div class="toggle-row">
+                <div class="toggle toggle-sm"></div>
+                <span class="toggle-row-label">Off</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle toggle-sm on"></div>
+                <span class="toggle-row-label">On</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle toggle-sm disabled"></div>
+                <span class="toggle-row-label" style="opacity: 0.4;">Disabled Off</span>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle toggle-sm on disabled"></div>
+                <span class="toggle-row-label" style="opacity: 0.4;">Disabled On</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Settings panel example -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">In Context — Notification Settings</div>
+          <div style="max-width: 400px; display: flex; flex-direction: column; gap: 0;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">New Inquiry Alerts</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Get notified when buyers send inquiries</div>
+              </div>
+              <div class="toggle on"></div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Order Status Updates</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Track shipment and delivery milestones</div>
+              </div>
+              <div class="toggle on"></div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Promotional Emails</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Weekly digest and platform announcements</div>
+              </div>
+              <div class="toggle"></div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0;">
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">SMS Notifications</div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Critical alerts via SMS</div>
+              </div>
+              <div class="toggle disabled"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 8: TOOLTIPS
+           ==================================================== -->
+      <section class="ds-section" id="tooltips">
+        <h2 class="ds-section-title">Tooltips</h2>
+        <p class="ds-section-subtitle">Contextual information overlays for icon buttons, abbreviated labels, and complex field descriptions.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Tooltips appear on hover after 300ms delay. Use top position by default, switch to bottom near viewport edge. Keep tooltip copy under 60 characters — for longer content use a Popover. Dark variant is default; light variant for use on dark backgrounds.
+        </div>
+
+        <!-- Position examples -->
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Positions — Top / Bottom / Right (always-visible for showcase)</div>
+          <div class="tooltips-row">
+
+            <!-- Top tooltip -->
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-top">Verified by TradeNest team</div>
+              <div class="tooltip-trigger">Top ↑</div>
+            </div>
+
+            <!-- Bottom tooltip -->
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-bottom">Minimum 500 units for bulk pricing</div>
+              <div class="tooltip-trigger">Bottom ↓</div>
+            </div>
+
+            <!-- Right tooltip -->
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-right">View full supplier profile</div>
+              <div class="tooltip-trigger">Right →</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Dark vs light variants -->
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Variants — Dark (default) &amp; Light</div>
+          <div class="tooltip-variants-row">
+
+            <!-- Dark variant -->
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-top">Dark tooltip — default style</div>
+              <div class="tooltip-trigger">Dark Variant</div>
+            </div>
+
+            <!-- Light variant -->
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-light tooltip-top">Light tooltip — for dark surfaces</div>
+              <div class="tooltip-trigger">Light Variant</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Usage example -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">In Context — Icon Buttons with Tooltips</div>
+          <div style="display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; flex-wrap: wrap;">
+
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-top">Add to Wishlist</div>
+              <button style="width: 36px; height: 36px; border-radius: var(--radius-full); border: 1.5px solid var(--border); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-top">Share Listing</div>
+              <button style="width: 36px; height: 36px; border-radius: var(--radius-full); border: 1.5px solid var(--border); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="tooltip-wrap">
+              <div class="tooltip-box tooltip-dark tooltip-top">Download Catalogue</div>
+              <button style="width: 36px; height: 36px; border-radius: var(--radius-full); border: 1.5px solid var(--border); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 9: AVATARS
+           ==================================================== -->
+      <section class="ds-section" id="avatars">
+        <h2 class="ds-section-title">Avatars</h2>
+        <p class="ds-section-subtitle">User and company identity representations across the platform — from supplier cards to review attribution.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          User avatars are circular. Company logos use slightly rounded squares. Fallback shows initials with a deterministic background color derived from the name — ensuring consistent colour across sessions. Never use random colors for fallback avatars.
+        </div>
+
+        <!-- User avatars -->
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">User Avatars — Circular — XS / SM / MD / LG</div>
+          <div class="avatars-row">
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-xs avatar-gradient-purple">RK</div>
+              <span class="avatar-size-tag">XS 24</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-sm avatar-gradient-purple">RK</div>
+              <span class="avatar-size-tag">SM 32</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-md avatar-gradient-purple">RK</div>
+              <span class="avatar-size-tag">MD 40</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-lg avatar-gradient-purple">RK</div>
+              <span class="avatar-size-tag">LG 56</span>
+            </div>
+          </div>
+
+          <div class="avatars-row" style="margin-top: var(--space-4);">
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-xs avatar-gradient-indigo">AP</div>
+              <span class="avatar-size-tag">XS 24</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-sm avatar-gradient-teal">MS</div>
+              <span class="avatar-size-tag">SM 32</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-md avatar-gradient-indigo">DP</div>
+              <span class="avatar-size-tag">MD 40</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-circle avatar-lg avatar-gradient-teal">NJ</div>
+              <span class="avatar-size-tag">LG 56</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company avatars -->
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Company Logo Avatars — Rounded Square</div>
+          <div class="avatars-row">
+            <div class="avatar-item">
+              <div class="avatar avatar-square avatar-xs avatar-company-bg" style="font-size: 8px;">SE</div>
+              <span class="avatar-size-tag">XS 24</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-square avatar-sm avatar-company-bg" style="font-size: 11px;">SE</div>
+              <span class="avatar-size-tag">SM 32</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-square avatar-md avatar-company-bg">SE</div>
+              <span class="avatar-size-tag">MD 40</span>
+            </div>
+            <div class="avatar-item">
+              <div class="avatar avatar-square avatar-lg avatar-company-bg">SE</div>
+              <span class="avatar-size-tag">LG 56</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fallback initials -->
+        <div class="showcase-canvas">
+          <div class="showcase-canvas-label">Fallback Initials — Deterministic Color by Name</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div class="avatar avatar-circle avatar-md avatar-fallback-rk">RK</div>
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Rahul Kumar</div>
+                <div style="font-size: 12px; color: var(--text-muted);">bg: #e0e7ff — color: #3730a3</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div class="avatar avatar-square avatar-md avatar-fallback-se">SE</div>
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Shree Electricals</div>
+                <div style="font-size: 12px; color: var(--text-muted);">bg: #dcfce7 — color: #15803d</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div class="avatar avatar-circle avatar-md" style="background: #fce7f3; color: #be185d; font-family: var(--font-heading); font-weight: 600;">PP</div>
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Priya Patel</div>
+                <div style="font-size: 12px; color: var(--text-muted);">bg: #fce7f3 — color: #be185d</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar stack example -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">Avatar Stack — Team / Viewers Indicator</div>
+          <div style="display: flex; align-items: center; gap: var(--space-4);">
+            <div class="avatar-stack">
+              <div class="avatar avatar-circle avatar-sm avatar-gradient-purple">RK</div>
+              <div class="avatar avatar-circle avatar-sm avatar-gradient-indigo">AP</div>
+              <div class="avatar avatar-circle avatar-sm avatar-gradient-teal">MS</div>
+              <div class="avatar avatar-circle avatar-sm" style="background: var(--bg-subtle); color: var(--text-muted); border: 2px solid var(--bg-card); font-size: 11px; font-family: var(--font-body);">+4</div>
+            </div>
+            <span style="font-size: 13px; color: var(--text-secondary);">7 people viewed this listing today</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================
+           SECTION 10: DIVIDERS
+           ==================================================== -->
+      <section class="ds-section" id="dividers">
+        <h2 class="ds-section-title">Dividers</h2>
+        <p class="ds-section-subtitle">Structural separators for grouping content, separating form sections, and creating visual rhythm.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">Designer Note</span>
+          Horizontal dividers use <code>--border</code> color. Use the labeled variant to separate major form sections (e.g. "Bulk Pricing Details"). The centered "or" variant separates alternate action paths — such as login options. Keep divider usage sparse to avoid visual clutter.
+        </div>
+
+        <div class="showcase-canvas">
+          <div class="dividers-stack">
+
+            <!-- Plain divider -->
+            <div class="divider-example">
+              <div class="divider-caption">Plain Horizontal</div>
+              <hr class="divider-plain">
+            </div>
+
+            <!-- Or divider -->
+            <div class="divider-example">
+              <div class="divider-caption">Center Label — "or"</div>
+              <div class="divider-labeled">
+                <div class="divider-line"></div>
+                <span class="divider-text">or</span>
+                <div class="divider-line"></div>
+              </div>
+            </div>
+
+            <!-- Section title divider -->
+            <div class="divider-example">
+              <div class="divider-caption">Section Title — Left Aligned</div>
+              <div class="divider-labeled">
+                <span class="divider-section-title">Bulk Pricing Details</span>
+                <div class="divider-line"></div>
+              </div>
+            </div>
+
+            <!-- Custom labeled divider -->
+            <div class="divider-example">
+              <div class="divider-caption">Section Title — with Icon</div>
+              <div class="divider-labeled">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <span class="divider-section-title">Pricing Details</span>
+                <div class="divider-line"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Usage example -->
+        <div class="showcase-canvas" style="background: var(--bg-subtle);">
+          <div class="showcase-canvas-label">In Context — Supplier Profile Form</div>
+          <div style="max-width: 480px; display: flex; flex-direction: column; gap: var(--space-5);">
+
+            <div class="divider-labeled">
+              <span class="divider-section-title">Business Information</span>
+              <div class="divider-line"></div>
+            </div>
+
+            <div class="inputs-grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="input-group">
+                <label class="input-label">Company Name</label>
+                <input type="text" class="input-field" value="Shree Electricals Pvt. Ltd.">
+              </div>
+              <div class="input-group">
+                <label class="input-label">GST Number</label>
+                <input type="text" class="input-field" placeholder="22AAAAA0000A1Z5">
+              </div>
+            </div>
+
+            <div class="divider-labeled">
+              <span class="divider-section-title">Shipping &amp; Logistics</span>
+              <div class="divider-line"></div>
+            </div>
+
+            <div class="input-group">
+              <label class="input-label">Dispatch Location</label>
+              <select class="select-native">
+                <option>Mumbai, Maharashtra</option>
+                <option>Bengaluru, Karnataka</option>
+              </select>
+            </div>
+
+            <div style="display: flex; gap: var(--space-3); justify-content: flex-end;">
+              <button class="btn btn-md btn-ghost">Cancel</button>
+              <button class="btn btn-md btn-primary">Save Profile</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.ds-container -->
+  </div><!-- /.ds-page -->
+
+  <script src="../shared/nav.js"></script>
+</body>
+</html>

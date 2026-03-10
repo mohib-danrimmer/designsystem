@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molecules — TradeNest Design System</title>
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+    /* ============================================================
+       PAGE LAYOUT
+       ============================================================ */
+    .ds-page {
+      padding-top: 56px;
+      min-height: 100vh;
+      background: var(--bg-page);
+    }
+
+    .ds-page-header {
+      background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary) 60%, var(--color-primary-400) 100%);
+      padding: var(--space-12) 0 var(--space-10);
+    }
+
+    .ds-page-header .ds-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .ds-page-header-eyebrow {
+      font-size: var(--text-caption);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .ds-page-header h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-h1);
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .ds-page-header p {
+      font-size: var(--text-body-l);
+      color: rgba(255,255,255,0.72);
+      margin: 0;
+      max-width: 560px;
+    }
+
+    /* ============================================================
+       SECTION UTILITIES
+       ============================================================ */
+    .ds-section {
+      padding: var(--space-12) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ds-section:last-child {
+      border-bottom: none;
+    }
+
+    .ds-section-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-h2);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .ds-section-subtitle {
+      font-size: var(--text-body-m);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .ds-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    .ds-label {
+      font-size: var(--text-caption);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .ds-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .ds-annotation {
+      background: var(--color-primary-50);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-6);
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: var(--text-body-s);
+    }
+
+    .ds-annotation-label {
+      display: inline-block;
+      font-weight: 600;
+      font-style: normal;
+      font-size: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+      margin-right: var(--space-2);
+    }
+
+    [data-theme="dark"] .ds-annotation {
+      background: rgba(46,49,146,0.12);
+    }
+
+    /* Section numbering badge */
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      margin-right: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .section-heading-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-2);
+    }
+
+    /* ============================================================
+       VARIANT LABEL CHIPS
+       ============================================================ */
+    .variant-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: var(--space-3);
+    }
+
+    .variant-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ============================================================
+       SECTION 1: PRODUCT CARD
+       ============================================================ */
+    .product-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all 200ms ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-card.is-hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--color-primary-200);
+    }
+
+    .product-card-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-card-body {
+      padding: 16px;
+    }
+
+    .product-card-category {
+      display: inline-block;
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-2);
+    }
+
+    .product-card-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: var(--space-3);
+    }
+
+    .product-card-seller {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--space-2);
+    }
+
+    .seller-avatar-sm {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+    }
+
+    .seller-name-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .seller-location {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .product-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 13px;
+      letter-spacing: -1px;
+    }
+
+    .rating-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #b45309;
+    }
+
+    .rating-reviews {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+    }
+
+    .product-card-price {
+      margin-bottom: 4px;
+    }
+
+    .price-main {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .price-unit {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+
+    .product-card-cta {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      background: var(--color-primary);
+      color: #fff;
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-700);
+      border-color: var(--color-primary-700);
+    }
+
+    .btn-primary:disabled,
+    .btn-primary.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary-200);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary-50);
+    }
+
+    .btn-secondary:disabled,
+    .btn-secondary.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Out of stock overlay */
+    .oos-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--color-error);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .product-card.is-oos .product-card-img {
+      opacity: 0.55;
+    }
+
+    .product-card.is-oos .price-main {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SECTION 2: SELLER/COMPANY CARD
+       ============================================================ */
+    .seller-card {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      align-items: flex-start;
+    }
+
+    .seller-card-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+    }
+
+    .seller-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .seller-card-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .seller-card-badges {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .trustseal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .seller-card-type {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .seller-card-location {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .seller-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .seller-card-rating .rating-value {
+      font-size: 14px;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 7px 14px;
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary-200);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      text-decoration: none;
+    }
+
+    .btn-link:hover {
+      background: var(--color-primary-50);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       SECTION 3: SEARCH BAR
+       ============================================================ */
+    .search-bar-wrap {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition-fast);
+      background: var(--bg-card);
+    }
+
+    .search-bar-wrap:focus-within {
+      border-color: var(--color-primary);
+    }
+
+    .search-category-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-subtle);
+      border: none;
+      border-right: 1px solid var(--border);
+      padding: 0 36px 0 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: var(--font-body);
+      min-width: 160px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      outline: none;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text-primary);
+      background: transparent;
+      font-family: var(--font-body);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 20px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: 0 calc(var(--radius-lg) - 1.5px) calc(var(--radius-lg) - 1.5px) 0;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      background: var(--color-primary-700);
+    }
+
+    /* ============================================================
+       SECTION 4: BREADCRUMB
+       ============================================================ */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      font-size: 13px;
+    }
+
+    .breadcrumb-item a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .breadcrumb-item a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb-item.current {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .breadcrumb-sep {
+      color: var(--text-muted);
+      margin: 0 6px;
+      user-select: none;
+    }
+
+    /* ============================================================
+       SECTION 5: PAGINATION
+       ============================================================ */
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .page-btn {
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .page-btn.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .page-btn:hover:not(.active) {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+    }
+
+    .page-btn.prev-next {
+      padding: 0 12px;
+      gap: 4px;
+    }
+
+    .page-ellipsis {
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ============================================================
+       SECTION 6: RATING & REVIEW ROW
+       ============================================================ */
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      width: fit-content;
+    }
+
+    .rating-large-value {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #b45309;
+    }
+
+    .rating-out-of {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .rating-reviews-link {
+      font-size: 13px;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .rating-reviews-link:hover {
+      text-decoration: underline;
+    }
+
+    .verified-buyer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    /* ============================================================
+       SECTION 7: PRICE BLOCK
+       ============================================================ */
+    .price-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      max-width: 520px;
+    }
+
+    .price-block-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .price-big {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .price-per {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+
+    .bulk-pricing-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-3);
+    }
+
+    .bulk-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .bulk-table th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 12px;
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+    }
+
+    .bulk-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+
+    .bulk-table tr:nth-child(even) td {
+      background: var(--bg-subtle);
+    }
+
+    .discount-chip {
+      display: inline-block;
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      margin-left: 6px;
+    }
+
+    /* ============================================================
+       SECTION 8: FILTER SIDEBAR
+       ============================================================ */
+    .filter-sidebar {
+      width: 280px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .filter-section {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-section:last-child {
+      border-bottom: none;
+    }
+
+    .filter-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .filter-section-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .filter-chevron {
+      color: var(--text-muted);
+      font-size: 12px;
+      transition: transform var(--transition-fast);
+    }
+
+    .filter-section-body {
+      padding: 0 16px 14px;
+    }
+
+    .filter-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+
+    .filter-checkbox-row input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--color-primary);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .filter-checkbox-label {
+      flex: 1;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .filter-checkbox-row input:checked ~ .filter-checkbox-label {
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .filter-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .filter-show-more {
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 500;
+      cursor: pointer;
+      padding: 4px 0;
+      display: inline-block;
+    }
+
+    .filter-show-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Price range slider (static) */
+    .price-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .price-range-track {
+      height: 4px;
+      background: var(--color-primary-100);
+      border-radius: var(--radius-full);
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .price-range-fill {
+      position: absolute;
+      left: 10%;
+      right: 35%;
+      top: 0;
+      bottom: 0;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+
+    .price-range-handle {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-full);
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+    }
+
+    .price-range-handle.left { left: 10%; }
+    .price-range-handle.right { left: 65%; }
+
+    /* Rating filter rows */
+    .rating-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .rating-filter-row:hover {
+      color: var(--text-primary);
+    }
+
+    .rating-filter-row .stars {
+      font-size: 12px;
+    }
+
+    /* ============================================================
+       SECTION 9: TAB BAR
+       ============================================================ */
+    .tab-bar {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      gap: 0;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      border: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      white-space: nowrap;
+      font-family: var(--font-body);
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+      user-select: none;
+    }
+
+    .tab.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--text-primary);
+    }
+
+    .tab-bar-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-content-placeholder {
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: var(--bg-card);
+    }
+
+    /* ============================================================
+       SECTION 10: ALERT BANNERS
+       ============================================================ */
+    .alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      border-left-width: 4px;
+      border-left-style: solid;
+      margin-bottom: 12px;
+    }
+
+    .alert:last-child {
+      margin-bottom: 0;
+    }
+
+    .alert-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 700;
+    }
+
+    .alert-body {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .alert-msg {
+      font-size: 13px;
+    }
+
+    .alert-close {
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.5;
+      background: none;
+      border: none;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0;
+      font-family: inherit;
+      transition: opacity var(--transition-fast);
+    }
+
+    .alert-close:hover {
+      opacity: 0.8;
+    }
+
+    .alert.alert-info {
+      background: #e0f2fe;
+      border-left-color: #0284c7;
+      color: #0c4a6e;
+    }
+
+    .alert.alert-info .alert-icon {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .alert.alert-success {
+      background: #dcfce7;
+      border-left-color: #16a34a;
+      color: #14532d;
+    }
+
+    .alert.alert-success .alert-icon {
+      background: #16a34a;
+      color: #fff;
+    }
+
+    .alert.alert-warning {
+      background: #fef3c7;
+      border-left-color: #d97706;
+      color: #78350f;
+    }
+
+    .alert.alert-warning .alert-icon {
+      background: #d97706;
+      color: #fff;
+    }
+
+    .alert.alert-error {
+      background: #fee2e2;
+      border-left-color: #dc2626;
+      color: #7f1d1d;
+    }
+
+    .alert.alert-error .alert-icon {
+      background: #dc2626;
+      color: #fff;
+    }
+
+    /* ============================================================
+       SECTION 11: EMPTY STATE
+       ============================================================ */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-sm);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .empty-state-icon {
+      margin-bottom: var(--space-5);
+      color: var(--color-primary-300);
+    }
+
+    .empty-state-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .empty-state-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+
+    .empty-state-cta {
+      width: 100%;
+      padding: 10px 24px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background var(--transition-fast);
+      margin-bottom: var(--space-3);
+    }
+
+    .empty-state-cta:hover {
+      background: var(--color-primary-700);
+    }
+
+    .empty-state-link {
+      font-size: 13px;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .empty-state-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       SECTION 12: LOADING SKELETON
+       ============================================================ */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.5s infinite linear;
+      border-radius: var(--radius-sm);
+    }
+
+    .skeleton-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skeleton-img {
+      height: 180px;
+    }
+
+    .skeleton-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skeleton-line {
+      height: 13px;
+    }
+
+    .skeleton-btn-bar {
+      height: 36px;
+      margin-top: 4px;
+    }
+
+    .skeleton-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .skeleton-list-rows {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .skeleton-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+    }
+
+    .skeleton-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+
+    .skeleton-row-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .product-cards-grid,
+      .skeleton-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .product-cards-grid,
+      .skeleton-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .seller-card {
+        flex-direction: column;
+      }
+
+      .search-category-select {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="ds-nav" role="navigation" aria-label="Design System Navigation">
+    <div class="ds-nav-inner">
+      <!-- Logo -->
+      <a href="../index.html" class="ds-nav-logo">
+        <span class="ds-nav-logo-icon">TN</span>
+        TradeNest DS
+      </a>
+
+      <!-- Center Links -->
+      <div class="ds-nav-links">
+        <a href="foundations.html" class="ds-nav-link" data-page="foundations">Foundations</a>
+        <a href="atoms.html" class="ds-nav-link" data-page="atoms">Atoms</a>
+        <a href="molecules.html" class="ds-nav-link active" data-page="molecules">Molecules</a>
+        <a href="organisms.html" class="ds-nav-link" data-page="organisms">Organisms</a>
+        <span class="ds-nav-divider"></span>
+        <a href="../pages/home.html" class="ds-nav-link" data-page="home">Home</a>
+        <a href="../pages/pdp.html" class="ds-nav-link" data-page="pdp">PDP</a>
+        <a href="../pages/category.html" class="ds-nav-link" data-page="category">Category</a>
+        <a href="../pages/seller-profile.html" class="ds-nav-link" data-page="seller">Seller</a>
+        <div class="ds-nav-divider"></div>
+        <a href="../design-tokens.html" class="ds-nav-link" data-page="design-tokens">Documentation</a>
+      </div>
+
+      <!-- Controls -->
+      <div class="ds-nav-controls">
+        <button id="ds-mobile-toggle" class="ds-mobile-toggle" aria-label="Toggle mobile view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mobile View
+        </button>
+        <button id="ds-theme-toggle" class="ds-theme-toggle" aria-label="Toggle theme" title="Switch to dark mode">
+          <!-- Icon injected by nav.js -->
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Phone frame decoration -->
+  <div id="phone-frame" class="phone-frame"></div>
+
+  <!-- ============================================================
+       PAGE WRAPPER
+       ============================================================ -->
+  <div class="ds-page" id="ds-page-container">
+    <div class="ds-mobile-content">
+
+      <!-- Page Header -->
+      <header class="ds-page-header">
+        <div class="ds-container">
+          <span class="ds-page-header-eyebrow">TradeNest Design System v1.0</span>
+          <h1>Molecules</h1>
+          <p>Composite UI patterns built from atomic components. Each molecule serves a distinct user workflow in the TradeNest B2B marketplace.</p>
+        </div>
+      </header>
+
+      <!-- ======================================================
+           SECTION 1: PRODUCT CARD
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">1</span>
+            <h2 class="ds-section-title">Product Card with Seller Details</h2>
+          </div>
+          <p class="ds-section-subtitle">Primary discovery unit used across Homepage, Category Listing, and PDP Related Products.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Product Card is the primary discovery unit. Used in Homepage, Category Listing, and PDP Related Products. Three states: Default, Hover (elevated shadow), Out of Stock (overlay).
+          </div>
+
+          <div class="product-cards-grid">
+
+            <!-- Variant 1: Default -->
+            <div class="variant-wrap">
+              <div class="ds-label">Default</div>
+              <div class="product-card">
+                <div class="product-card-img">
+                  <!-- Electronics / Capacitor SVG illustration -->
+                  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="20" y="28" width="32" height="16" rx="3" fill="#a9afeb" stroke="#7e88e0" stroke-width="1.5"/>
+                    <line x1="28" y1="28" x2="28" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="36" y1="28" x2="36" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="44" y1="28" x2="44" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="20" y1="36" x2="8" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="52" y1="36" x2="64" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="6" cy="36" r="3" fill="#5360d6"/>
+                    <circle cx="66" cy="36" r="3" fill="#5360d6"/>
+                    <rect x="30" y="20" width="12" height="8" rx="2" fill="#d4d7f5" stroke="#a9afeb" stroke-width="1"/>
+                    <text x="36" y="26.5" text-anchor="middle" font-size="6" fill="#2e3192" font-family="sans-serif" font-weight="700">100µF</text>
+                  </svg>
+                </div>
+                <div class="product-card-body">
+                  <span class="product-card-category">Passive Components</span>
+                  <h4 class="product-card-name">SMD Electrolytic Capacitors 100µF 50V</h4>
+                  <div class="product-card-seller">
+                    <span class="seller-avatar-sm">EC</span>
+                    <span class="seller-name-text">Electronica Components Pvt. Ltd.</span>
+                    <span class="seller-location">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Bengaluru
+                    </span>
+                  </div>
+                  <div class="product-card-rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="rating-value">4.4</span>
+                    <span class="rating-reviews">(127 reviews)</span>
+                    <span class="verified-badge">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Verified Supplier
+                    </span>
+                  </div>
+                  <div class="product-card-price">
+                    <span class="price-main">₹4.20</span>
+                    <span class="price-unit">/unit</span>
+                  </div>
+                  <div class="product-card-cta">
+                    <button class="btn-primary">Add to Cart</button>
+                    <button class="btn-secondary">Contact Seller</button>
+                  </div>
+                </div>
+              </div>
+              <div class="variant-label">Default state</div>
+            </div>
+
+            <!-- Variant 2: Hover -->
+            <div class="variant-wrap">
+              <div class="ds-label">Hover (Elevated)</div>
+              <div class="product-card is-hover">
+                <div class="product-card-img">
+                  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="20" y="28" width="32" height="16" rx="3" fill="#a9afeb" stroke="#7e88e0" stroke-width="1.5"/>
+                    <line x1="28" y1="28" x2="28" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="36" y1="28" x2="36" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="44" y1="28" x2="44" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="20" y1="36" x2="8" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="52" y1="36" x2="64" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="6" cy="36" r="3" fill="#5360d6"/>
+                    <circle cx="66" cy="36" r="3" fill="#5360d6"/>
+                    <rect x="30" y="20" width="12" height="8" rx="2" fill="#d4d7f5" stroke="#a9afeb" stroke-width="1"/>
+                    <text x="36" y="26.5" text-anchor="middle" font-size="6" fill="#2e3192" font-family="sans-serif" font-weight="700">100µF</text>
+                  </svg>
+                </div>
+                <div class="product-card-body">
+                  <span class="product-card-category">Passive Components</span>
+                  <h4 class="product-card-name">SMD Electrolytic Capacitors 100µF 50V</h4>
+                  <div class="product-card-seller">
+                    <span class="seller-avatar-sm">EC</span>
+                    <span class="seller-name-text">Electronica Components Pvt. Ltd.</span>
+                    <span class="seller-location">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Bengaluru
+                    </span>
+                  </div>
+                  <div class="product-card-rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="rating-value">4.4</span>
+                    <span class="rating-reviews">(127 reviews)</span>
+                    <span class="verified-badge">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Verified Supplier
+                    </span>
+                  </div>
+                  <div class="product-card-price">
+                    <span class="price-main">₹4.20</span>
+                    <span class="price-unit">/unit</span>
+                  </div>
+                  <div class="product-card-cta">
+                    <button class="btn-primary">Add to Cart</button>
+                    <button class="btn-secondary">Contact Seller</button>
+                  </div>
+                </div>
+              </div>
+              <div class="variant-label">Hover state (is-hover class)</div>
+            </div>
+
+            <!-- Variant 3: Out of Stock -->
+            <div class="variant-wrap">
+              <div class="ds-label">Out of Stock</div>
+              <div class="product-card is-oos">
+                <div class="product-card-img">
+                  <span class="oos-badge">Out of Stock</span>
+                  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="20" y="28" width="32" height="16" rx="3" fill="#a9afeb" stroke="#7e88e0" stroke-width="1.5"/>
+                    <line x1="28" y1="28" x2="28" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="36" y1="28" x2="36" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="44" y1="28" x2="44" y2="44" stroke="#5360d6" stroke-width="1.5"/>
+                    <line x1="20" y1="36" x2="8" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="52" y1="36" x2="64" y2="36" stroke="#7e88e0" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="6" cy="36" r="3" fill="#5360d6"/>
+                    <circle cx="66" cy="36" r="3" fill="#5360d6"/>
+                    <rect x="30" y="20" width="12" height="8" rx="2" fill="#d4d7f5" stroke="#a9afeb" stroke-width="1"/>
+                    <text x="36" y="26.5" text-anchor="middle" font-size="6" fill="#2e3192" font-family="sans-serif" font-weight="700">100µF</text>
+                  </svg>
+                </div>
+                <div class="product-card-body">
+                  <span class="product-card-category">Passive Components</span>
+                  <h4 class="product-card-name">SMD Electrolytic Capacitors 100µF 50V</h4>
+                  <div class="product-card-seller">
+                    <span class="seller-avatar-sm">EC</span>
+                    <span class="seller-name-text">Electronica Components Pvt. Ltd.</span>
+                    <span class="seller-location">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Bengaluru
+                    </span>
+                  </div>
+                  <div class="product-card-rating">
+                    <span class="stars">★★★★☆</span>
+                    <span class="rating-value">4.4</span>
+                    <span class="rating-reviews">(127 reviews)</span>
+                    <span class="verified-badge">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Verified Supplier
+                    </span>
+                  </div>
+                  <div class="product-card-price">
+                    <span class="price-main">₹4.20</span>
+                    <span class="price-unit">/unit</span>
+                  </div>
+                  <div class="product-card-cta">
+                    <button class="btn-primary disabled" disabled>Add to Cart</button>
+                    <button class="btn-secondary disabled" disabled>Contact Seller</button>
+                  </div>
+                </div>
+              </div>
+              <div class="variant-label">Out of Stock state</div>
+            </div>
+
+          </div><!-- /product-cards-grid -->
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2: SELLER / COMPANY CARD
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">2</span>
+            <h2 class="ds-section-title">Seller / Company Card</h2>
+          </div>
+          <p class="ds-section-subtitle">Compact seller card for horizontal scroll sections and supplier shortlists.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Compact seller card for horizontal scroll sections and supplier shortlists.
+          </div>
+
+          <div class="seller-card" style="max-width: 540px;">
+            <div class="seller-card-logo">SE</div>
+            <div class="seller-card-body">
+              <h4 class="seller-card-name">Shree Electricals Pvt. Ltd.</h4>
+              <div class="seller-card-badges">
+                <span class="trustseal-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  TrustSeal Verified
+                </span>
+              </div>
+              <div class="seller-card-type">
+                <span style="color: var(--text-secondary);">Electrical Components</span>
+                <span style="color: var(--text-muted);"> · Distributor &amp; Trader</span>
+              </div>
+              <div class="seller-card-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Mumbai, Maharashtra
+              </div>
+              <div class="seller-card-rating">
+                <span class="stars" style="font-size: 13px;">★★★★★</span>
+                <span class="rating-value">4.6★</span>
+                <span class="rating-reviews">(312 reviews)</span>
+              </div>
+              <a href="#" class="btn-link">View Profile <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 3: SEARCH BAR
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">3</span>
+            <h2 class="ds-section-title">Search Bar</h2>
+          </div>
+          <p class="ds-section-subtitle">Full-width search with category selector. Used in Site Header and Hero Banner.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Full-width search with category selector on the left. Used in Site Header and Hero Banner (larger size).
+          </div>
+
+          <div class="search-bar-wrap" role="search">
+            <select class="search-category-select" aria-label="Select category">
+              <option>All Categories</option>
+              <option>Electrical Components</option>
+              <option>Passive Components</option>
+              <option>Power Tools</option>
+              <option>Industrial Hardware</option>
+              <option>Cables &amp; Wires</option>
+              <option>Lighting Solutions</option>
+              <option>Safety Equipment</option>
+            </select>
+            <input
+              class="search-input"
+              type="search"
+              placeholder="Search for products, suppliers, and services..."
+              aria-label="Search TradeNest"
+            />
+            <button class="search-btn" aria-label="Search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 4: BREADCRUMB
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">4</span>
+            <h2 class="ds-section-title">Breadcrumb</h2>
+          </div>
+          <p class="ds-section-subtitle">Breadcrumb navigation providing wayfinding context. Chevron separator. Last item is current page.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Breadcrumb provides wayfinding context. Chevron separator. Last item is current page (no link).
+          </div>
+
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb" style="list-style: none; padding: 0; margin: 0;">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li aria-hidden="true"><span class="breadcrumb-sep">›</span></li>
+              <li class="breadcrumb-item"><a href="#">Electronics</a></li>
+              <li aria-hidden="true"><span class="breadcrumb-sep">›</span></li>
+              <li class="breadcrumb-item"><a href="#">Passive Components</a></li>
+              <li aria-hidden="true"><span class="breadcrumb-sep">›</span></li>
+              <li class="breadcrumb-item current" aria-current="page">Capacitors</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 5: PAGINATION
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">5</span>
+            <h2 class="ds-section-title">Pagination</h2>
+          </div>
+          <p class="ds-section-subtitle">Pagination for product listings. Shows up to 5 page numbers plus ellipsis for large sets.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Pagination for product listings. Show up to 5 page numbers + ellipsis for large sets.
+          </div>
+
+          <nav aria-label="Product listing pagination">
+            <div class="pagination">
+              <button class="page-btn prev-next" aria-label="Previous page">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                Previous
+              </button>
+              <button class="page-btn" aria-label="Page 1">1</button>
+              <button class="page-btn" aria-label="Page 2">2</button>
+              <button class="page-btn active" aria-label="Page 3, current" aria-current="page">3</button>
+              <button class="page-btn" aria-label="Page 4">4</button>
+              <button class="page-btn" aria-label="Page 5">5</button>
+              <span class="page-ellipsis" aria-hidden="true">…</span>
+              <button class="page-btn" aria-label="Page 12">12</button>
+              <button class="page-btn prev-next" aria-label="Next page">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 6: RATING & REVIEW ROW
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">6</span>
+            <h2 class="ds-section-title">Rating &amp; Review Row</h2>
+          </div>
+          <p class="ds-section-subtitle">Used inline on product cards and as a section header in the Reviews tab.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Used inline on product cards and as a section header in the Reviews tab.
+          </div>
+
+          <div class="rating-row">
+            <span class="stars" style="font-size: 18px; letter-spacing: 0;">★★★★☆</span>
+            <span class="rating-large-value">4.4</span>
+            <span class="rating-out-of">out of 5</span>
+            <span style="color: var(--border);">|</span>
+            <a href="#" class="rating-reviews-link">(127 reviews)</a>
+            <span class="verified-buyer-badge">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Verified Buyer
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 7: PRICE BLOCK
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">7</span>
+            <h2 class="ds-section-title">Price Block</h2>
+          </div>
+          <p class="ds-section-subtitle">Shows unit price and bulk pricing tiers. Used on PDP and product cards.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Price block shows unit price and optional bulk pricing tiers. Used on PDP and product cards.
+          </div>
+
+          <div class="price-block">
+            <div class="price-block-main">
+              <span class="price-big">₹4.20</span>
+              <span class="price-per">/ unit</span>
+            </div>
+            <div class="bulk-pricing-title">Bulk Pricing</div>
+            <table class="bulk-table" aria-label="Bulk pricing tiers">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Price / Unit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 – 999 units</td>
+                  <td>₹4.20</td>
+                </tr>
+                <tr>
+                  <td>1,000 – 4,999 units</td>
+                  <td>₹3.80 <span class="discount-chip">−10%</span></td>
+                </tr>
+                <tr>
+                  <td>5,000+ units</td>
+                  <td>₹3.40 <span class="discount-chip">−19%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 8: FILTER SIDEBAR
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">8</span>
+            <h2 class="ds-section-title">Filter Sidebar Item</h2>
+          </div>
+          <p class="ds-section-subtitle">Filter sidebar for the Category Listing page. Collapsible sections with active filters highlighted.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Filter sidebar for Category Listing page. Each section is collapsible. Active filters highlighted with --color-primary.
+          </div>
+
+          <div class="filter-sidebar">
+
+            <!-- Category Section -->
+            <div class="filter-section">
+              <div class="filter-section-header">
+                <span class="filter-section-title">Category</span>
+                <span class="filter-chevron">▲</span>
+              </div>
+              <div class="filter-section-body">
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">MCB &amp; Switchgear</span>
+                  <span class="filter-count">234</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" checked />
+                  <span class="filter-checkbox-label" style="color: var(--color-primary); font-weight: 500;">Cables &amp; Wires</span>
+                  <span class="filter-count">189</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Lighting Solutions</span>
+                  <span class="filter-count">145</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Control Panels</span>
+                  <span class="filter-count">98</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Wiring Accessories</span>
+                  <span class="filter-count">76</span>
+                </label>
+                <span class="filter-show-more">Show 5 more ↓</span>
+              </div>
+            </div>
+
+            <!-- Price Range Section -->
+            <div class="filter-section">
+              <div class="filter-section-header">
+                <span class="filter-section-title">Price Range</span>
+                <span class="filter-chevron">▲</span>
+              </div>
+              <div class="filter-section-body">
+                <div class="price-range-labels">
+                  <span>₹0</span>
+                  <span>₹50,000</span>
+                </div>
+                <div class="price-range-track">
+                  <div class="price-range-fill"></div>
+                  <div class="price-range-handle left"></div>
+                  <div class="price-range-handle right"></div>
+                </div>
+                <div class="price-range-labels" style="margin-top: 6px; margin-bottom: 0;">
+                  <span style="color: var(--text-muted); font-size: 11px;">Selected: ₹5,000 – ₹32,500</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Section -->
+            <div class="filter-section">
+              <div class="filter-section-header">
+                <span class="filter-section-title">Location</span>
+                <span class="filter-chevron">▲</span>
+              </div>
+              <div class="filter-section-body">
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" checked />
+                  <span class="filter-checkbox-label" style="color: var(--color-primary); font-weight: 500;">Mumbai</span>
+                  <span class="filter-count">312</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Bengaluru</span>
+                  <span class="filter-count">198</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Delhi</span>
+                  <span class="filter-count">156</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Pune</span>
+                  <span class="filter-count">89</span>
+                </label>
+                <label class="filter-checkbox-row">
+                  <input type="checkbox" />
+                  <span class="filter-checkbox-label">Hyderabad</span>
+                  <span class="filter-count">67</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Rating Section -->
+            <div class="filter-section">
+              <div class="filter-section-header">
+                <span class="filter-section-title">Minimum Rating</span>
+                <span class="filter-chevron">▲</span>
+              </div>
+              <div class="filter-section-body">
+                <div class="rating-filter-row">
+                  <span class="stars" style="font-size: 12px;">★★★★☆</span>
+                  <span style="font-size: 13px; color: var(--text-secondary);">4★ and above</span>
+                </div>
+                <div class="rating-filter-row">
+                  <span class="stars" style="font-size: 12px;">★★★☆☆</span>
+                  <span style="font-size: 13px; color: var(--text-secondary);">3★ and above</span>
+                </div>
+                <div class="rating-filter-row">
+                  <span class="stars" style="font-size: 12px;">★★☆☆☆</span>
+                  <span style="font-size: 13px; color: var(--text-secondary);">2★ and above</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /filter-sidebar -->
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 9: TAB BAR
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">9</span>
+            <h2 class="ds-section-title">Tab Bar</h2>
+          </div>
+          <p class="ds-section-subtitle">Tab bar for switching between content sections. Active tab has a 2px bottom border.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Tab bar for switching between content sections. Active tab has a 2px bottom border in --color-primary.
+          </div>
+
+          <div class="tab-bar-wrap">
+            <div class="tab-bar" role="tablist" aria-label="Seller profile sections">
+              <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-products">Products</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-categories">Categories</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-about">About</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-photos">Photos</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-videos">Videos</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-reviews">Reviews</button>
+            </div>
+            <div class="tab-content-placeholder" role="tabpanel" id="tab-products">
+              Tab content renders here — product grid, categories, about text, gallery, etc.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 10: ALERT BANNERS
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">10</span>
+            <h2 class="ds-section-title">Notification / Alert Banner</h2>
+          </div>
+          <p class="ds-section-subtitle">Four semantic variants for contextual feedback. Always include a close button unless the message is critical.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Four semantic variants. Always show close button (×) unless the message is critical/persistent.
+          </div>
+
+          <!-- Info -->
+          <div class="alert alert-info" role="alert">
+            <div class="alert-icon" aria-label="Information">ℹ</div>
+            <div class="alert-body">
+              <div class="alert-title">Request for Quotation Sent</div>
+              <div class="alert-msg">Your RFQ has been sent to 3 suppliers. You'll receive responses within 24 hours.</div>
+            </div>
+            <button class="alert-close" aria-label="Dismiss notification" onclick="this.closest('.alert').remove()">×</button>
+          </div>
+
+          <!-- Success -->
+          <div class="alert alert-success" role="alert">
+            <div class="alert-icon" aria-label="Success">✓</div>
+            <div class="alert-body">
+              <div class="alert-title">Order Placed Successfully</div>
+              <div class="alert-msg">New order #TN-2024-0847 placed successfully. Estimated delivery: 7–10 days.</div>
+            </div>
+            <button class="alert-close" aria-label="Dismiss notification" onclick="this.closest('.alert').remove()">×</button>
+          </div>
+
+          <!-- Warning -->
+          <div class="alert alert-warning" role="alert">
+            <div class="alert-icon" aria-label="Warning">⚠</div>
+            <div class="alert-body">
+              <div class="alert-title">Wishlist Price Update</div>
+              <div class="alert-msg">Price updated for 2 saved items in your wishlist. Review before placing order.</div>
+            </div>
+            <button class="alert-close" aria-label="Dismiss notification" onclick="this.closest('.alert').remove()">×</button>
+          </div>
+
+          <!-- Error -->
+          <div class="alert alert-error" role="alert">
+            <div class="alert-icon" aria-label="Error">✕</div>
+            <div class="alert-body">
+              <div class="alert-title">Payment Failed</div>
+              <div class="alert-msg">Unable to process payment. Please check your bank details and try again.</div>
+            </div>
+            <button class="alert-close" aria-label="Dismiss notification" onclick="this.closest('.alert').remove()">×</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 11: EMPTY STATE
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">11</span>
+            <h2 class="ds-section-title">Empty State</h2>
+          </div>
+          <p class="ds-section-subtitle">Empty states guide users toward resolution. Always include a clear action CTA.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Empty states guide users toward resolution. Always include a clear action CTA.
+          </div>
+
+          <div class="empty-state">
+            <!-- Package/Box SVG illustration -->
+            <div class="empty-state-icon" aria-hidden="true">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="22" width="48" height="34" rx="4" stroke="var(--color-primary-300)" stroke-width="2.5" fill="none"/>
+                <polyline points="8,22 32,8 56,22" stroke="var(--color-primary-300)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                <line x1="32" y1="8" x2="32" y2="56" stroke="var(--color-primary-300)" stroke-width="2" stroke-dasharray="4 3"/>
+                <line x1="8" y1="22" x2="56" y2="22" stroke="var(--color-primary-300)" stroke-width="2"/>
+                <path d="M22 38 Q32 44 42 38" stroke="var(--color-primary-300)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="empty-state-title">No products found</h3>
+            <p class="empty-state-body">No results in Electrical Components matching your current filters. Try adjusting your search or clearing filters.</p>
+            <button class="empty-state-cta">Clear All Filters</button>
+            <a href="#" class="empty-state-link">Browse all categories →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 12: LOADING SKELETON
+           ====================================================== -->
+      <section class="ds-section">
+        <div class="ds-container">
+          <div class="section-heading-row">
+            <span class="section-number">12</span>
+            <h2 class="ds-section-title">Loading Skeleton</h2>
+          </div>
+          <p class="ds-section-subtitle">Skeletons prevent layout shift during loading. Shimmer animation runs left-to-right.</p>
+
+          <div class="ds-annotation">
+            <span class="ds-annotation-label">Designer Note</span>
+            Skeletons prevent layout shift during loading. Shimmer animation runs left-to-right.
+          </div>
+
+          <!-- Card Skeletons -->
+          <div class="ds-label" style="margin-bottom: var(--space-3);">Card Skeletons</div>
+          <div class="skeleton-cards-grid">
+            <!-- Skeleton Card 1 -->
+            <div class="skeleton-card" aria-hidden="true">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line" style="width: 50%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                <div class="skeleton skeleton-line" style="width: 65%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 40%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 55%; height: 22px; margin-top: 4px;"></div>
+                <div class="skeleton skeleton-btn-bar" style="width: 100%;"></div>
+              </div>
+            </div>
+            <!-- Skeleton Card 2 -->
+            <div class="skeleton-card" aria-hidden="true">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line" style="width: 50%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                <div class="skeleton skeleton-line" style="width: 60%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 40%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 55%; height: 22px; margin-top: 4px;"></div>
+                <div class="skeleton skeleton-btn-bar" style="width: 100%;"></div>
+              </div>
+            </div>
+            <!-- Skeleton Card 3 -->
+            <div class="skeleton-card" aria-hidden="true">
+              <div class="skeleton skeleton-img"></div>
+              <div class="skeleton-body">
+                <div class="skeleton skeleton-line" style="width: 50%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                <div class="skeleton skeleton-line" style="width: 65%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 40%; height: 11px;"></div>
+                <div class="skeleton skeleton-line" style="width: 55%; height: 22px; margin-top: 4px;"></div>
+                <div class="skeleton skeleton-btn-bar" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Row Skeletons -->
+          <div class="ds-label" style="margin-bottom: var(--space-3);">List Row Skeletons</div>
+          <div class="skeleton-list-rows">
+            <!-- Row 1 -->
+            <div class="skeleton-row" aria-hidden="true">
+              <div class="skeleton skeleton-avatar"></div>
+              <div class="skeleton-row-text">
+                <div class="skeleton skeleton-line" style="width: 70%; height: 13px;"></div>
+                <div class="skeleton skeleton-line" style="width: 50%; height: 11px;"></div>
+              </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="skeleton-row" aria-hidden="true">
+              <div class="skeleton skeleton-avatar"></div>
+              <div class="skeleton-row-text">
+                <div class="skeleton skeleton-line" style="width: 65%; height: 13px;"></div>
+                <div class="skeleton skeleton-line" style="width: 45%; height: 11px;"></div>
+              </div>
+            </div>
+            <!-- Row 3 -->
+            <div class="skeleton-row" aria-hidden="true">
+              <div class="skeleton skeleton-avatar"></div>
+              <div class="skeleton-row-text">
+                <div class="skeleton skeleton-line" style="width: 72%; height: 13px;"></div>
+                <div class="skeleton skeleton-line" style="width: 52%; height: 11px;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- /SECTION 12 -->
+
+    </div><!-- /ds-mobile-content -->
+  </div><!-- /ds-page -->
+
+  <script src="../shared/nav.js"></script>
+  <script>
+    /* Tab bar interactivity */
+    (function () {
+      var tabBar = document.querySelector('.tab-bar');
+      if (!tabBar) return;
+      tabBar.addEventListener('click', function (e) {
+        var tab = e.target.closest('.tab');
+        if (!tab) return;
+        tabBar.querySelectorAll('.tab').forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+      });
+    })();
+
+    /* Filter section collapsibility */
+    (function () {
+      document.querySelectorAll('.filter-section-header').forEach(function (header) {
+        header.addEventListener('click', function () {
+          var body = header.nextElementSibling;
+          var chevron = header.querySelector('.filter-chevron');
+          if (!body) return;
+          var isExpanded = body.style.display !== 'none';
+          body.style.display = isExpanded ? 'none' : 'block';
+          if (chevron) chevron.textContent = isExpanded ? '▼' : '▲';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

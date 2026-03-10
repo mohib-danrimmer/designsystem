@@ -1,0 +1,326 @@
+/* ============================================================
+   TradeNest Design System — Design Tokens
+   tokens.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ===================================================
+     COLOR — DESKTOP PRIMARY (Indigo)
+     =================================================== */
+  --color-primary: #2e3192;
+  --color-primary-50:  #eef0fb;
+  --color-primary-100: #d4d7f5;
+  --color-primary-200: #a9afeb;
+  --color-primary-300: #7e88e0;
+  --color-primary-400: #5360d6;
+  --color-primary-500: #3b45c4;
+  --color-primary-600: #2e3192;
+  --color-primary-700: #252880;
+  --color-primary-800: #1c1e60;
+  --color-primary-900: #131540;
+
+  /* ===================================================
+     COLOR — MOBILE PRIMARY (Teal) — reference vars
+     (activated via .surface-mobile override below)
+     =================================================== */
+  --color-primary-m-50:  #e6f4f4;
+  --color-primary-m-100: #b3dfde;
+  --color-primary-m-200: #80cac9;
+  --color-primary-m-300: #4db5b3;
+  --color-primary-m-400: #26a09e;
+  --color-primary-m-500: #1d8480;
+  --color-primary-m-600: #177b77;
+  --color-primary-m-700: #11716d;
+  --color-primary-m-800: #0b6360;
+  --color-primary-m-900: #074f4d;
+
+  /* ===================================================
+     COLOR — SEMANTIC
+     =================================================== */
+  --color-success:    #16a34a;
+  --color-success-bg: #dcfce7;
+  --color-warning:    #d97706;
+  --color-warning-bg: #fef3c7;
+  --color-error:      #dc2626;
+  --color-error-bg:   #fee2e2;
+  --color-info:       #0284c7;
+  --color-info-bg:    #e0f2fe;
+
+  /* ===================================================
+     COLOR — NEUTRAL GRAYS
+     =================================================== */
+  --neutral-50:  #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  /* ===================================================
+     SURFACE — LIGHT THEME (default)
+     =================================================== */
+  --bg-page:        #f8fafc;
+  --bg-card:        #ffffff;
+  --bg-subtle:      #f1f5f9;
+  --border:         #e2e8f0;
+  --divider:        #f1f5f9;
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+
+  /* ===================================================
+     SPACING — 8pt grid
+     =================================================== */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ===================================================
+     BORDER RADIUS
+     =================================================== */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-full: 9999px;
+
+  /* ===================================================
+     SHADOWS
+     =================================================== */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+
+  /* ===================================================
+     TYPOGRAPHY
+     =================================================== */
+  --font-heading: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Type scale */
+  --text-display: 48px;
+  --text-h1:      36px;
+  --text-h2:      28px;
+  --text-h3:      22px;
+  --text-h4:      18px;
+  --text-body-l:  16px;
+  --text-body-m:  14px;
+  --text-body-s:  13px;
+  --text-caption: 12px;
+  --text-label:   12px;
+  --text-overline:11px;
+
+  /* Font weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-cta:      var(--font-weight-semibold); /* primary action labels */
+
+  /* Line heights */
+  --lh-display: 56px;
+  --lh-h1:      44px;
+  --lh-h2:      36px;
+  --lh-h3:      30px;
+  --lh-h4:      26px;
+  --lh-body:    1.6;
+  --lh-tight:   1.3;
+
+  /* ===================================================
+     TRANSITIONS
+     =================================================== */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* ===================================================
+     Z-INDEX SCALE
+     =================================================== */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-dropdown:100;
+  --z-sticky:  200;
+  --z-overlay: 300;
+  --z-modal:   400;
+  --z-toast:   500;
+}
+
+/* ===================================================
+   DARK THEME
+   =================================================== */
+[data-theme="dark"] {
+  --bg-page:        #0f0f0f;
+  --bg-card:        #1a1a1a;
+  --bg-subtle:      #141414;
+  --border:         #262626;
+  --divider:        #1f1f1f;
+  --text-primary:   #ededed;
+  --text-secondary: #a3a3a3;
+  --text-muted:     #888888;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.5);
+}
+
+/* ===================================================
+   MOBILE / APP SURFACE OVERRIDE
+   =================================================== */
+.surface-mobile {
+  --color-primary:     #1d8480;
+  --color-primary-50:  #e6f4f4;
+  --color-primary-100: #b3dfde;
+  --color-primary-200: #80cac9;
+  --color-primary-300: #4db5b3;
+  --color-primary-400: #26a09e;
+  --color-primary-500: #1d8480;
+  --color-primary-600: #177b77;
+  --color-primary-700: #11716d;
+  --color-primary-800: #0b6360;
+  --color-primary-900: #074f4d;
+}
+
+/* ===================================================
+   GLOBAL BASE RESET & TYPOGRAPHY
+   =================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-m);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===================================================
+   DESIGNER ANNOTATION CALLOUT
+   =================================================== */
+.ds-annotation {
+  background: var(--color-primary-50);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: var(--text-body-s);
+  font-family: var(--font-body);
+}
+
+.ds-annotation-label {
+  display: inline-block;
+  font-weight: 600;
+  font-style: normal;
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+  margin-right: var(--space-2);
+}
+
+[data-theme="dark"] .ds-annotation {
+  background: rgba(46, 49, 146, 0.12);
+}
+
+/* ===================================================
+   DS SECTION WRAPPER
+   =================================================== */
+.ds-section {
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ds-section:last-child {
+  border-bottom: none;
+}
+
+.ds-section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.ds-section-subtitle {
+  font-size: var(--text-body-m);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.ds-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+.ds-label {
+  font-size: var(--text-caption);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.ds-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.ds-grid {
+  display: grid;
+  gap: var(--space-4);
+}
