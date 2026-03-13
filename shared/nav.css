@@ -1,5 +1,5 @@
 /* ============================================================
-   TradeNest Design System — Shared Navigation Styles
+   IndiaMART Corporate Style Guide — Shared Navigation Styles
    nav.css
    ============================================================ */
 
@@ -11,11 +11,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 56px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
   z-index: var(--z-sticky);
   transition: background var(--transition-normal), border-color var(--transition-normal);
 }
@@ -26,22 +23,25 @@
   padding: 0 var(--space-6);
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-4);
+  column-gap: var(--space-4);
 }
 
-/* Logo / Wordmark */
+/* Logo / Wordmark — first row, stretches to fill space */
 .ds-nav-logo {
   font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   color: var(--color-primary);
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 1;
+  order: 1;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  height: 48px;
 }
 
 .ds-nav-logo:hover {
@@ -63,15 +63,18 @@
   flex-shrink: 0;
 }
 
-/* Center links */
+/* Nav links — second row, full width */
 .ds-nav-links {
   display: flex;
   align-items: center;
   gap: 0;
-  flex: 1;
-  justify-content: center;
+  order: 3;
+  flex-basis: 100%;
+  justify-content: flex-start;
   overflow-x: auto;
   scrollbar-width: none;
+  border-top: 1px solid var(--border);
+  height: 44px;
 }
 
 .ds-nav-links::-webkit-scrollbar {
@@ -82,7 +85,7 @@
   display: inline-flex;
   align-items: center;
   padding: 0 var(--space-3);
-  height: 56px;
+  height: 44px;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -112,12 +115,14 @@
   flex-shrink: 0;
 }
 
-/* Right controls */
+/* Right controls — first row right */
 .ds-nav-controls {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   flex-shrink: 0;
+  order: 2;
+  height: 48px;
 }
 
 /* Mobile toggle pill */
@@ -172,9 +177,9 @@
   color: var(--text-primary);
 }
 
-/* Page wrapper — offset for fixed nav */
+/* Page wrapper — offset for fixed two-row nav (48px brand + 44px links) */
 .ds-page {
-  padding-top: 56px;
+  padding-top: 92px;
   min-height: 100vh;
   background: var(--bg-page);
   transition: background var(--transition-normal);
@@ -194,7 +199,7 @@
 .phone-frame {
   display: none;
   position: fixed;
-  top: 56px;
+  top: 92px;
   left: 0;
   right: 0;
   bottom: 0;

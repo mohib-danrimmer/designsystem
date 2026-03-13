@@ -1,5 +1,5 @@
 /* ============================================================
-   TradeNest Design System — Shared Navigation Logic
+   IndiaMART Corporate Style Guide — Shared Navigation Logic
    nav.js
    ============================================================ */
 
