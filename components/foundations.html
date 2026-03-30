@@ -14,7 +14,7 @@
     /* Sub-section headings inside a ds-section */
     .ds-subsection-title {
       font-family: var(--font-heading);
-      font-size: var(--text-h4);
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: var(--space-4);
@@ -97,7 +97,7 @@
 
     .color-swatch-hex {
       font-family: var(--font-body);
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 500;
       color: var(--text-secondary);
       letter-spacing: 0.02em;
@@ -106,7 +106,7 @@
 
     .color-swatch-name {
       font-family: var(--font-body);
-      font-size: 9px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       text-align: center;
       line-height: 1.3;
@@ -114,7 +114,7 @@
 
     .color-swatch-badge {
       display: inline-block;
-      font-size: 8px;
+      font-size: var(--text-caption);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -161,7 +161,7 @@
     }
 
     .semantic-swatch-hex {
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 400;
       color: var(--text-muted);
       display: block;
@@ -207,14 +207,14 @@
 
     .surface-token-var {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 600;
       color: var(--color-primary);
       margin-bottom: 2px;
     }
 
     .surface-token-desc {
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
     }
 
@@ -269,7 +269,7 @@
     }
 
     .type-meta-item {
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       font-family: 'Courier New', Courier, monospace;
     }
@@ -326,6 +326,228 @@
     }
 
     /* =====================================================
+       SPACING IN PRACTICE — 8PT GRID
+       ===================================================== */
+
+    /* Grid background canvas */
+    .grid-canvas {
+      background-color: var(--bg-subtle);
+      background-image: repeating-linear-gradient(
+        transparent 0px,
+        transparent 7px,
+        rgba(46, 49, 146, 0.10) 7px,
+        rgba(46, 49, 146, 0.10) 8px
+      );
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10) var(--space-8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-10);
+    }
+
+    [data-theme="dark"] .grid-canvas {
+      background-image: repeating-linear-gradient(
+        transparent 0px,
+        transparent 7px,
+        rgba(99, 102, 241, 0.18) 7px,
+        rgba(99, 102, 241, 0.18) 8px
+      );
+    }
+
+    /* Wrapper for label + card */
+    .sp-card-block {
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    /* Variant label above the card */
+    .sp-variant-label {
+      font-size: var(--text-caption);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+    }
+
+    /* The card shell — no padding, overflow hidden so strips fill edge to edge */
+    .sp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* ── Padding highlight strips (indigo tint) ─────────── */
+    .sp-pad {
+      background: rgba(46, 49, 146, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: var(--space-3);
+    }
+
+    [data-theme="dark"] .sp-pad {
+      background: rgba(99, 102, 241, 0.12);
+    }
+
+    .sp-pad-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      color: rgba(46, 49, 146, 0.75);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    [data-theme="dark"] .sp-pad-label {
+      color: rgba(139, 143, 255, 0.85);
+    }
+
+    /* ── Gap strips between sections (amber tint) ────────── */
+    .sp-gap {
+      background: rgba(217, 119, 6, 0.09);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: var(--space-3);
+    }
+
+    [data-theme="dark"] .sp-gap {
+      background: rgba(217, 119, 6, 0.15);
+    }
+
+    .sp-gap-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      color: rgba(180, 83, 9, 0.85);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    [data-theme="dark"] .sp-gap-label {
+      color: rgba(251, 191, 36, 0.85);
+    }
+
+    /* ── Content sections — left/right padding only ──────── */
+    .sp-section {
+      background: var(--bg-card);
+    }
+
+    /* ── Product image placeholder ────────────────────────── */
+    .sp-image {
+      width: 100%;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: var(--space-2);
+      color: var(--text-muted);
+    }
+
+    .sp-image-icon {
+      width: 36px;
+      height: 36px;
+      opacity: 0.35;
+    }
+
+    .sp-image-caption {
+      font-size: var(--text-caption);
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* ── Typography within card ───────────────────────────── */
+    .sp-product-name {
+      font-family: var(--font-heading);
+      font-size: var(--text-heading);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: var(--lh-tight);
+    }
+
+    .sp-specs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .sp-spec-line {
+      font-size: var(--text-spec);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .sp-spec-line span {
+      color: var(--text-muted);
+    }
+
+    .sp-seller-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .sp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px var(--space-2);
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      border-radius: var(--radius-full);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sp-seller-name {
+      font-size: var(--text-spec);
+      color: var(--text-secondary);
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sp-btn-row {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .sp-btn {
+      flex: 1;
+      padding: var(--space-2) 0;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: var(--text-cta);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .sp-btn--primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .sp-btn--ghost {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+    }
+
+    /* =====================================================
        SHADOW LEVELS
        ===================================================== */
 
@@ -352,19 +574,19 @@
 
     .shadow-demo-card-title {
       font-family: var(--font-heading);
-      font-size: var(--text-h4);
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
     }
 
     .shadow-demo-card-desc {
-      font-size: var(--text-body-s);
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
     }
 
     .shadow-demo-card-var {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       background: var(--bg-subtle);
       padding: var(--space-2) var(--space-3);
@@ -409,15 +631,414 @@
 
     .radius-item-var {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 9px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       text-align: center;
     }
 
     .radius-item-px {
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-secondary);
       text-align: center;
+    }
+
+    /* =====================================================
+       CONCENTRIC RADIUS
+       ===================================================== */
+
+    /* Formula card */
+    .cr-formula-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      margin-bottom: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cr-formula-title {
+      font-size: var(--text-body-small);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .cr-formula-eq {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-heading);
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1.3;
+    }
+
+    .cr-formula-note {
+      font-size: var(--text-spec);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Wrong vs Right comparison */
+    .cr-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 600px) {
+      .cr-compare { grid-template-columns: 1fr; }
+    }
+
+    .cr-case {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cr-case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .cr-case-tag--wrong {
+      background: var(--color-error-bg);
+      color: var(--color-error);
+    }
+
+    .cr-case-tag--right {
+      background: var(--color-success-bg);
+      color: var(--color-success);
+    }
+
+    /* The nested box demo */
+    .cr-box-stage {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: var(--bg-subtle);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Outer box */
+    .cr-outer {
+      position: relative;
+      width: 100%;
+      max-width: 220px;
+    }
+
+    .cr-outer-box {
+      background: var(--color-primary-50);
+      border: 2px solid var(--color-primary-300);
+      padding: var(--space-3); /* 12px gap — the concentric distance */
+      position: relative;
+    }
+
+    /* Inner box */
+    .cr-inner-box {
+      background: var(--color-primary-100);
+      border: 2px solid var(--color-primary-400);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Radius labels on boxes */
+    .cr-radius-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      font-weight: 600;
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1px var(--space-2);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+
+    .cr-radius-label--outer {
+      top: calc(-1 * var(--space-4));
+      left: var(--space-2);
+      color: var(--color-primary-600);
+    }
+
+    .cr-radius-label--inner {
+      bottom: calc(-1 * var(--space-4));
+      left: var(--space-2);
+    }
+
+    .cr-radius-label--inner-wrong {
+      color: var(--color-error);
+    }
+
+    .cr-radius-label--inner-right {
+      color: var(--color-success);
+    }
+
+    /* Gap arrow indicator */
+    .cr-gap-indicator {
+      position: absolute;
+      right: var(--space-2);
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cr-gap-line {
+      width: 1px;
+      flex: 1;
+      border-left: 1.5px dashed var(--color-primary-300);
+    }
+
+    .cr-gap-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+      padding: var(--space-1) 0;
+    }
+
+    /* Corner-zoom callout for wrong case */
+    .cr-corner-callout {
+      margin-top: var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-spec);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .cr-corner-callout strong {
+      font-weight: 600;
+    }
+
+    /* ── Three-level live example ──────────────────────── */
+    .cr-live-section {
+      margin-bottom: var(--space-8);
+    }
+
+    .cr-live-section-label {
+      font-size: var(--text-body-small);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-4);
+    }
+
+    .cr-live-stage {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+
+    /* The annotated 3-level card */
+    .cr-annotated-card {
+      flex: 0 0 auto;
+      max-width: 220px;
+      width: 100%;
+    }
+
+    /* Level wrappers — each has a colored bg so you see all 3 layers */
+    .cr-l1 {
+      border-radius: var(--radius-2xl);  /* 16px */
+      border: 2px solid var(--color-primary-400);
+      background: var(--color-primary-50);
+      padding: var(--space-3);           /* 12px gap → L2 gets radius 16-12=4 */
+      position: relative;
+    }
+
+    .cr-l2 {
+      border-radius: var(--radius-sm);   /* 4px = 16-12 */
+      border: 2px solid rgba(217,119,6,0.5);
+      background: rgba(254,243,199,0.6);
+      padding: var(--space-2);           /* 8px gap → L3 gets radius 4-8 <0 = 0 → xs */
+      position: relative;
+    }
+
+    [data-theme="dark"] .cr-l2 {
+      background: rgba(120,53,15,0.2);
+      border-color: rgba(217,119,6,0.4);
+    }
+
+    .cr-l3 {
+      border-radius: var(--radius-xs);   /* 2px = clamp(0, 4-8, ...) → use xs */
+      border: 2px solid rgba(22,163,74,0.45);
+      background: rgba(220,252,231,0.7);
+      padding: var(--space-3);
+      position: relative;
+    }
+
+    [data-theme="dark"] .cr-l3 {
+      background: rgba(5,46,22,0.3);
+      border-color: rgba(22,163,74,0.4);
+    }
+
+    /* Card content inside level 3 */
+    .cr-card-image {
+      width: 100%;
+      height: 72px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-xs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-2);
+      color: var(--text-muted);
+    }
+
+    .cr-card-name {
+      font-size: var(--text-body-small);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .cr-card-spec {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+    }
+
+    /* Level annotation labels (right side) */
+    .cr-level-annotations {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      min-width: 180px;
+    }
+
+    .cr-level-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .cr-level-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: var(--radius-xs);
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: 2px solid;
+    }
+
+    .cr-level-swatch--l1 {
+      background: var(--color-primary-50);
+      border-color: var(--color-primary-400);
+    }
+
+    .cr-level-swatch--l2 {
+      background: rgba(254,243,199,0.8);
+      border-color: rgba(217,119,6,0.5);
+    }
+
+    [data-theme="dark"] .cr-level-swatch--l2 {
+      background: rgba(120,53,15,0.3);
+    }
+
+    .cr-level-swatch--l3 {
+      background: rgba(220,252,231,0.8);
+      border-color: rgba(22,163,74,0.5);
+    }
+
+    [data-theme="dark"] .cr-level-swatch--l3 {
+      background: rgba(5,46,22,0.4);
+    }
+
+    .cr-level-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .cr-level-name {
+      font-size: var(--text-spec);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .cr-level-calc {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      color: var(--color-primary);
+    }
+
+    .cr-level-desc {
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ── Quick reference table ────────────────────────── */
+    .cr-ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-spec);
+    }
+
+    .cr-ref-table th {
+      text-align: left;
+      font-size: var(--text-caption);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .cr-ref-table td {
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    .cr-ref-table tr:last-child td { border-bottom: none; }
+
+    .cr-ref-table code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-caption);
+      color: var(--color-primary);
+      background: var(--color-primary-50);
+      padding: 1px var(--space-2);
+      border-radius: var(--radius-sm);
+    }
+
+    [data-theme="dark"] .cr-ref-table code {
+      background: rgba(46,49,146,0.2);
+    }
+
+    .cr-ref-table .cr-result-sharp {
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     /* =====================================================
@@ -469,7 +1090,7 @@
 
     .ds-tag {
       display: inline-block;
-      font-size: 9px;
+      font-size: var(--text-caption);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -828,7 +1449,7 @@
 
         <!-- Surface Tokens -->
         <h3 class="ds-subsection-title">Surface Tokens</h3>
-        <p style="font-size:var(--text-body-s);color:var(--text-secondary);margin-bottom:var(--space-4);">
+        <p style="font-size:var(--text-body-small);color:var(--text-secondary);margin-bottom:var(--space-4);">
           Live swatches — values reflect the active theme. Toggle dark mode in the nav to see changes.
         </p>
         <div class="surface-tokens-grid">
@@ -894,173 +1515,143 @@
 
         <div class="ds-annotation">
           <span class="ds-annotation-label">Designer Note</span>
-          Inter for all typography — headings, display text, body copy, labels, and UI text.
+          Inter for all typography. Style names reflect purpose, not tag — the same tag (e.g. &lt;h2&gt;) may use different styles depending on context (listing card vs product hero).
         </div>
 
         <div class="type-scale-table">
 
-          <!-- Display -->
+          <!-- Product / Company Name -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Display</span>
+              <span class="type-scale-style-name">Product / Company Name</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:48px;line-height:56px;font-weight:700;color:var(--text-primary);display:block;">Find verified suppliers</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-product-name);line-height:1.3;font-weight:700;color:var(--text-primary);display:block;">Shree Electricals Pvt. Ltd.</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">48px / 56px</span>
+              <span class="type-meta-item">24px · 18px mobile</span>
               <span class="type-meta-item">weight: 700</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-product-name</span>
             </div>
           </div>
 
-          <!-- H1 -->
+          <!-- Non Hero Heading -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">H1</span>
+              <span class="type-scale-style-name">Non Hero Heading</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:36px;line-height:44px;font-weight:700;color:var(--text-primary);display:block;">Electrical Components</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-heading-featured);line-height:1.3;font-weight:700;color:var(--text-primary);display:block;">Electrical Components</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">36px / 44px</span>
+              <span class="type-meta-item">22px · 16px mobile</span>
               <span class="type-meta-item">weight: 700</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-heading-featured</span>
             </div>
           </div>
 
-          <!-- H2 -->
+          <!-- Product Name / Hero Price / Section Heading -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">H2</span>
+              <span class="type-scale-style-name">Product Name / Hero Price / Section Heading</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:28px;line-height:36px;font-weight:600;color:var(--text-primary);display:block;">Top Categories</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-heading);line-height:1.3;font-weight:600;color:var(--text-primary);display:block;">SMD Capacitors 100µF · ₹2,450/unit · Top Categories</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">28px / 36px</span>
+              <span class="type-meta-item">20px · 14px mobile</span>
               <span class="type-meta-item">weight: 600</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-heading</span>
             </div>
           </div>
 
-          <!-- H3 -->
+          <!-- Text / Primary -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">H3</span>
+              <span class="type-scale-style-name">Text / Primary</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:22px;line-height:30px;font-weight:600;color:var(--text-primary);display:block;">SMD Capacitors 100µF</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-body-large);line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">Browse from 500+ verified categories across India's leading B2B marketplace.</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">22px / 30px</span>
+              <span class="type-meta-item">16px · 13px mobile</span>
+              <span class="type-meta-item">weight: 400</span>
+              <span class="type-meta-item">--text-body-large</span>
+            </div>
+          </div>
+
+          <!-- Primary Text (CTAs etc.) -->
+          <div class="type-scale-row">
+            <div class="type-scale-label-col">
+              <span class="type-scale-style-name">Primary Text (CTAs etc.)</span>
+            </div>
+            <div class="type-scale-sample-col">
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-cta);line-height:1.6;font-weight:600;color:var(--color-primary);display:block;">Add to Cart · Contact Supplier · Get Best Price</span>
+            </div>
+            <div class="type-scale-meta-col">
+              <span class="type-meta-item">14px · 12px mobile</span>
               <span class="type-meta-item">weight: 600</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-cta</span>
             </div>
           </div>
 
-          <!-- H4 -->
+          <!-- Subtext -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">H4</span>
+              <span class="type-scale-style-name">Subtext</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:18px;line-height:26px;font-weight:500;color:var(--text-primary);display:block;">Shree Electricals Pvt. Ltd.</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-body-small);line-height:1.6;font-weight:400;color:var(--text-secondary);display:block;">Ships in 3–5 business days · Dispatch from Bengaluru warehouse.</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">18px / 26px</span>
-              <span class="type-meta-item">weight: 500</span>
-              <span class="type-meta-item">Inter</span>
-            </div>
-          </div>
-
-          <!-- Body L -->
-          <div class="type-scale-row">
-            <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Body L</span>
-            </div>
-            <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">Browse from 500+ verified categories across India's leading B2B marketplace.</span>
-            </div>
-            <div class="type-scale-meta-col">
-              <span class="type-meta-item">16px / 1.6</span>
+              <span class="type-meta-item">13px · 12px mobile</span>
               <span class="type-meta-item">weight: 400</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-body-small</span>
             </div>
           </div>
 
-          <!-- Body M -->
+          <!-- Listing Spec / Seller Location / Fact Sheet / Pop-up -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Body M</span>
+              <span class="type-scale-style-name">Listing Spec / Seller Location / Fact Sheet / Pop-up</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">Ships in 3–5 business days · Dispatch from Bengaluru warehouse.</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-spec);line-height:1.6;font-weight:400;color:var(--text-secondary);display:block;">GST: 27AAECS1234F1Z5 · ISO 9001:2015 Certified · Mumbai, Maharashtra</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">14px / 1.6</span>
+              <span class="type-meta-item">12px · 12px mobile</span>
               <span class="type-meta-item">weight: 400</span>
-              <span class="type-meta-item">Inter</span>
-            </div>
-          </div>
-
-          <!-- Body S -->
-          <div class="type-scale-row">
-            <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Body S</span>
-            </div>
-            <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;font-weight:400;color:var(--text-primary);display:block;">GST: 27AAECS1234F1Z5 · ISO 9001:2015 Certified Distributor</span>
-            </div>
-            <div class="type-scale-meta-col">
-              <span class="type-meta-item">13px / 1.6</span>
-              <span class="type-meta-item">weight: 400</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-spec</span>
             </div>
           </div>
 
           <!-- Caption -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Caption</span>
+              <span class="type-scale-style-name">Caption (Last Updated etc.)</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:12px;line-height:1.6;font-weight:400;color:var(--text-secondary);display:block;">Last updated 2 hours ago · 127 verified reviews</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-caption);line-height:1.6;font-weight:400;color:var(--text-muted);display:block;">Last updated 2 hours ago · 127 verified reviews</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">12px / 1.6</span>
+              <span class="type-meta-item">11px · 12px mobile</span>
               <span class="type-meta-item">weight: 400</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">--text-caption</span>
             </div>
           </div>
 
-          <!-- Label -->
+          <!-- Small Textual Elements -->
           <div class="type-scale-row">
             <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Label</span>
+              <span class="type-scale-style-name">Small Textual Elements</span>
             </div>
             <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:12px;line-height:1.6;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-primary);display:block;">VERIFIED SUPPLIER</span>
+              <span style="font-family:'Inter',sans-serif;font-size:var(--text-caption);line-height:1.6;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);display:block;">PASSIVE COMPONENTS · VERIFIED SUPPLIER</span>
             </div>
             <div class="type-scale-meta-col">
-              <span class="type-meta-item">12px / 1.6</span>
-              <span class="type-meta-item">weight: 500 · uppercase</span>
-              <span class="type-meta-item">Inter</span>
-            </div>
-          </div>
-
-          <!-- Overline -->
-          <div class="type-scale-row">
-            <div class="type-scale-label-col">
-              <span class="type-scale-style-name">Overline</span>
-            </div>
-            <div class="type-scale-sample-col">
-              <span style="font-family:'Inter',sans-serif;font-size:11px;line-height:1.6;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);display:block;">PASSIVE COMPONENTS</span>
-            </div>
-            <div class="type-scale-meta-col">
-              <span class="type-meta-item">11px / 1.6</span>
-              <span class="type-meta-item">weight: 600 · uppercase wide</span>
-              <span class="type-meta-item">Inter</span>
+              <span class="type-meta-item">11px · 12px mobile</span>
+              <span class="type-meta-item">weight: 600 · uppercase</span>
+              <span class="type-meta-item">--text-caption</span>
             </div>
           </div>
 
@@ -1175,6 +1766,181 @@
       </section><!-- /Spacing Scale -->
 
       <!-- ==================================================
+           SECTION 3b: SPACING IN PRACTICE
+           ================================================== -->
+      <section class="ds-section">
+        <h2 class="ds-section-title">Spacing in Practice — 8pt Grid</h2>
+        <p class="ds-section-subtitle">Every gap and padding in the system is a multiple of 8px. The two cards below are structurally identical — only the spacing tokens differ, producing a compact listing density and a comfortable featured density.</p>
+
+        <div class="ds-annotation">
+          <span class="ds-annotation-label">How to read this</span>
+          <strong style="font-style:normal;color:rgba(46,49,146,0.85);">Indigo strips</strong> = padding (space between card edge and content).
+          <strong style="font-style:normal;color:rgba(180,83,9,0.85);">Amber strips</strong> = gaps between sections. Each strip is labelled with the token and its px value. The background grid lines mark every 8px — notice every strip snaps exactly to the grid.
+        </div>
+
+        <div class="grid-canvas">
+
+          <!-- ── Card 1: Compact ──────────────────────────── -->
+          <div class="sp-card-block">
+            <div class="sp-variant-label">Compact — listing / grid view</div>
+            <div class="sp-card">
+
+              <!-- top padding -->
+              <div class="sp-pad" style="height:var(--space-3);">
+                <span class="sp-pad-label">--space-3 · 12px · padding</span>
+              </div>
+
+              <!-- image -->
+              <div class="sp-section" style="padding:0 var(--space-3);">
+                <div class="sp-image" style="height:128px;"><!-- 16 × 8pt -->
+                  <svg class="sp-image-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="14.5" r="1.5"/></svg>
+                  <span class="sp-image-caption">Product Image · 128px</span>
+                </div>
+              </div>
+
+              <!-- gap: image → name -->
+              <div class="sp-gap" style="height:var(--space-2);">
+                <span class="sp-gap-label">--space-2 · 8px</span>
+              </div>
+
+              <!-- product name -->
+              <div class="sp-section" style="padding:0 var(--space-3);">
+                <div class="sp-product-name">SMD Capacitors 100µF</div>
+              </div>
+
+              <!-- gap: name → specs -->
+              <div class="sp-gap" style="height:var(--space-2);">
+                <span class="sp-gap-label">--space-2 · 8px</span>
+              </div>
+
+              <!-- specs -->
+              <div class="sp-section" style="padding:0 var(--space-3);">
+                <div class="sp-specs">
+                  <div class="sp-spec-line"><span>Voltage:</span> 50V &nbsp;·&nbsp; <span>Package:</span> SMD 1210</div>
+                  <div class="sp-spec-line"><span>Capacitance:</span> 100µF &nbsp;·&nbsp; <span>Brand:</span> Vishay</div>
+                </div>
+              </div>
+
+              <!-- gap: specs → seller -->
+              <div class="sp-gap" style="height:var(--space-2);">
+                <span class="sp-gap-label">--space-2 · 8px</span>
+              </div>
+
+              <!-- seller -->
+              <div class="sp-section" style="padding:0 var(--space-3);">
+                <div class="sp-seller-row">
+                  <span class="sp-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    Verified
+                  </span>
+                  <span class="sp-seller-name">Shree Electricals Pvt. Ltd.</span>
+                </div>
+              </div>
+
+              <!-- gap: seller → buttons -->
+              <div class="sp-gap" style="height:var(--space-3);">
+                <span class="sp-gap-label">--space-3 · 12px</span>
+              </div>
+
+              <!-- buttons -->
+              <div class="sp-section" style="padding:0 var(--space-3);">
+                <div class="sp-btn-row">
+                  <button class="sp-btn sp-btn--ghost">Call Now</button>
+                  <button class="sp-btn sp-btn--primary">Get Best Price</button>
+                </div>
+              </div>
+
+              <!-- bottom padding -->
+              <div class="sp-pad" style="height:var(--space-3);">
+                <span class="sp-pad-label">--space-3 · 12px · padding</span>
+              </div>
+
+            </div><!-- /sp-card -->
+          </div><!-- /sp-card-block -->
+
+          <!-- ── Card 2: Comfortable ───────────────────────── -->
+          <div class="sp-card-block">
+            <div class="sp-variant-label">Comfortable — featured / detail view</div>
+            <div class="sp-card">
+
+              <!-- top padding -->
+              <div class="sp-pad" style="height:var(--space-5);">
+                <span class="sp-pad-label">--space-5 · 20px · padding</span>
+              </div>
+
+              <!-- image -->
+              <div class="sp-section" style="padding:0 var(--space-5);">
+                <div class="sp-image" style="height:160px;"><!-- 20 × 8pt -->
+                  <svg class="sp-image-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="14.5" r="1.5"/></svg>
+                  <span class="sp-image-caption">Product Image · 160px</span>
+                </div>
+              </div>
+
+              <!-- gap: image → name -->
+              <div class="sp-gap" style="height:var(--space-3);">
+                <span class="sp-gap-label">--space-3 · 12px</span>
+              </div>
+
+              <!-- product name -->
+              <div class="sp-section" style="padding:0 var(--space-5);">
+                <div class="sp-product-name">SMD Capacitors 100µF</div>
+              </div>
+
+              <!-- gap: name → specs -->
+              <div class="sp-gap" style="height:var(--space-3);">
+                <span class="sp-gap-label">--space-3 · 12px</span>
+              </div>
+
+              <!-- specs -->
+              <div class="sp-section" style="padding:0 var(--space-5);">
+                <div class="sp-specs">
+                  <div class="sp-spec-line"><span>Voltage:</span> 50V &nbsp;·&nbsp; <span>Package:</span> SMD 1210</div>
+                  <div class="sp-spec-line"><span>Capacitance:</span> 100µF &nbsp;·&nbsp; <span>Brand:</span> Vishay</div>
+                </div>
+              </div>
+
+              <!-- gap: specs → seller -->
+              <div class="sp-gap" style="height:var(--space-3);">
+                <span class="sp-gap-label">--space-3 · 12px</span>
+              </div>
+
+              <!-- seller -->
+              <div class="sp-section" style="padding:0 var(--space-5);">
+                <div class="sp-seller-row">
+                  <span class="sp-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    Verified
+                  </span>
+                  <span class="sp-seller-name">Shree Electricals Pvt. Ltd.</span>
+                </div>
+              </div>
+
+              <!-- gap: seller → buttons -->
+              <div class="sp-gap" style="height:var(--space-4);">
+                <span class="sp-gap-label">--space-4 · 16px</span>
+              </div>
+
+              <!-- buttons -->
+              <div class="sp-section" style="padding:0 var(--space-5);">
+                <div class="sp-btn-row">
+                  <button class="sp-btn sp-btn--ghost">Call Now</button>
+                  <button class="sp-btn sp-btn--primary">Get Best Price</button>
+                </div>
+              </div>
+
+              <!-- bottom padding -->
+              <div class="sp-pad" style="height:var(--space-5);">
+                <span class="sp-pad-label">--space-5 · 20px · padding</span>
+              </div>
+
+            </div><!-- /sp-card -->
+          </div><!-- /sp-card-block -->
+
+        </div><!-- /grid-canvas -->
+
+      </section><!-- /Spacing in Practice -->
+
+      <!-- ==================================================
            SECTION 4: SHADOW LEVELS
            ================================================== -->
       <section class="ds-section">
@@ -1274,6 +2040,184 @@
           </div>
 
         </div><!-- /radius-flex -->
+
+        <!-- ── Concentric Radius ─────────────────────── -->
+        <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Concentric Radius — Box Inside a Box</h3>
+
+        <!-- Formula -->
+        <div class="cr-formula-card">
+          <div class="cr-formula-title">The Rule</div>
+          <div class="cr-formula-eq">inner&nbsp;radius&nbsp;=&nbsp;outer&nbsp;radius&nbsp;−&nbsp;gap</div>
+          <div class="cr-formula-note">
+            When one rounded element sits inside another, the inner element's radius must be smaller — exactly equal to the outer radius minus the distance between them. This keeps both arcs concentric (sharing the same centre point), so the corridor between them looks like a uniform band all the way around. If the inner radius is too large, the corners balloon outward and the gap widens at every corner. If the inner radius is too small or sharp, the inner corners look pointed and detached.
+          </div>
+        </div>
+
+        <!-- Wrong vs Right -->
+        <div class="cr-compare">
+
+          <!-- WRONG -->
+          <div class="cr-case">
+            <span class="cr-case-tag cr-case-tag--wrong">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Wrong — inner radius too large
+            </span>
+            <div class="cr-box-stage">
+              <div class="cr-outer" style="position:relative;">
+                <div class="cr-outer-box" style="border-radius:var(--radius-2xl);">
+                  <div class="cr-inner-box" style="border-radius:var(--radius-2xl);"></div>
+                  <div class="cr-radius-label cr-radius-label--inner cr-radius-label--inner-wrong" style="bottom:calc(-1 * var(--space-5));">inner: --radius-2xl · 16px ✗</div>
+                </div>
+                <div class="cr-radius-label cr-radius-label--outer">outer: --radius-2xl · 16px</div>
+              </div>
+            </div>
+            <div class="cr-corner-callout">
+              <strong>Gap: --space-3 (12px)</strong> · Inner uses the same 16px radius as the outer. The inner corners arc too far — they no longer share a centre point with the outer corners. The corridor is thin at the sides but balloons wider at each corner.
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="cr-case">
+            <span class="cr-case-tag cr-case-tag--right">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Right — inner radius = outer − gap
+            </span>
+            <div class="cr-box-stage">
+              <div class="cr-outer" style="position:relative;">
+                <div class="cr-outer-box" style="border-radius:var(--radius-2xl);">
+                  <div class="cr-inner-box" style="border-radius:var(--radius-sm);"></div>
+                  <div class="cr-radius-label cr-radius-label--inner cr-radius-label--inner-right" style="bottom:calc(-1 * var(--space-5));">inner: --radius-sm · 4px ✓</div>
+                </div>
+                <div class="cr-radius-label cr-radius-label--outer">outer: --radius-2xl · 16px</div>
+              </div>
+            </div>
+            <div class="cr-corner-callout">
+              <strong>16 − 12 = 4px → --radius-sm</strong> · Both arcs share the same centre point. The 12px corridor is exactly the same thickness everywhere — straight edges and around every corner.
+            </div>
+          </div>
+
+        </div><!-- /cr-compare -->
+
+        <!-- Three-level live example -->
+        <div class="cr-live-section">
+          <div class="cr-live-section-label">Three Levels Deep — Product Card</div>
+
+          <div class="cr-live-stage">
+
+            <!-- The card itself -->
+            <div class="cr-annotated-card">
+              <!-- Level 1: Card shell -->
+              <div class="cr-l1">
+                <!-- Level 2: Image container -->
+                <div class="cr-l2">
+                  <!-- Level 3: Image area -->
+                  <div class="cr-l3">
+                    <div class="cr-card-image">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="14.5" r="1.5"/></svg>
+                    </div>
+                    <div class="cr-card-name">SMD Capacitors 100µF</div>
+                    <div class="cr-card-spec">Voltage: 50V · Package: SMD 1210</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Annotations -->
+            <div class="cr-level-annotations">
+
+              <div class="cr-level-row">
+                <div class="cr-level-swatch cr-level-swatch--l1"></div>
+                <div class="cr-level-text">
+                  <span class="cr-level-name">Level 1 — Card Shell</span>
+                  <span class="cr-level-calc">--radius-2xl · 16px</span>
+                  <span class="cr-level-desc">Outermost layer. Padding to L2: --space-3 (12px)</span>
+                </div>
+              </div>
+
+              <div class="cr-level-row">
+                <div class="cr-level-swatch cr-level-swatch--l2"></div>
+                <div class="cr-level-text">
+                  <span class="cr-level-name">Level 2 — Image Container</span>
+                  <span class="cr-level-calc">16 − 12 = 4px → --radius-sm</span>
+                  <span class="cr-level-desc">Sits 12px inside L1. Padding to L3: --space-2 (8px)</span>
+                </div>
+              </div>
+
+              <div class="cr-level-row">
+                <div class="cr-level-swatch cr-level-swatch--l3"></div>
+                <div class="cr-level-text">
+                  <span class="cr-level-name">Level 3 — Image Area</span>
+                  <span class="cr-level-calc">4 − 8 = −4 → clamp to --radius-xs · 2px</span>
+                  <span class="cr-level-desc">Gap exceeds parent radius. Use the minimum token (--radius-xs) or 0. Never go negative.</span>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /cr-live-stage -->
+        </div><!-- /cr-live-section -->
+
+        <!-- Quick reference table -->
+        <div class="cr-live-section-label">Quick Reference — Token Pairs</div>
+        <table class="cr-ref-table">
+          <thead>
+            <tr>
+              <th>Outer radius</th>
+              <th>Gap (padding)</th>
+              <th>Inner radius</th>
+              <th>Result token</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--radius-2xl</code> 16px</td>
+              <td><code>--space-2</code> 8px</td>
+              <td>16 − 8 = 8px</td>
+              <td><code>--radius-lg</code></td>
+            </tr>
+            <tr>
+              <td><code>--radius-2xl</code> 16px</td>
+              <td><code>--space-3</code> 12px</td>
+              <td>16 − 12 = 4px</td>
+              <td><code>--radius-sm</code></td>
+            </tr>
+            <tr>
+              <td><code>--radius-2xl</code> 16px</td>
+              <td><code>--space-4</code> 16px</td>
+              <td>16 − 16 = 0</td>
+              <td class="cr-result-sharp">sharp corners</td>
+            </tr>
+            <tr>
+              <td><code>--radius-xl</code> 12px</td>
+              <td><code>--space-1</code> 4px</td>
+              <td>12 − 4 = 8px</td>
+              <td><code>--radius-lg</code></td>
+            </tr>
+            <tr>
+              <td><code>--radius-xl</code> 12px</td>
+              <td><code>--space-2</code> 8px</td>
+              <td>12 − 8 = 4px</td>
+              <td><code>--radius-sm</code></td>
+            </tr>
+            <tr>
+              <td><code>--radius-xl</code> 12px</td>
+              <td><code>--space-3</code> 12px</td>
+              <td>12 − 12 = 0</td>
+              <td class="cr-result-sharp">sharp corners</td>
+            </tr>
+            <tr>
+              <td><code>--radius-lg</code> 8px</td>
+              <td><code>--space-1</code> 4px</td>
+              <td>8 − 4 = 4px</td>
+              <td><code>--radius-sm</code></td>
+            </tr>
+            <tr>
+              <td><code>--radius-lg</code> 8px</td>
+              <td><code>--space-2</code> 8px</td>
+              <td>8 − 8 = 0</td>
+              <td class="cr-result-sharp">sharp corners</td>
+            </tr>
+          </tbody>
+        </table>
 
       </section><!-- /Border Radius -->
 
@@ -1384,7 +2328,7 @@
 
         </div><!-- /icons-flex -->
 
-        <p style="margin-top:var(--space-6);font-size:var(--text-body-s);color:var(--text-muted);">
+        <p style="margin-top:var(--space-6);font-size:var(--text-body-small);color:var(--text-muted);">
           All icons are inline SVG with <code class="token">stroke="currentColor"</code>, <code class="token">stroke-width="2"</code>, and a <code class="token">24px</code> viewBox. Color is inherited from the parent element, making them fully theme-aware.
         </p>
 

@@ -55,14 +55,14 @@
       justify-content: center;
       color: #fff;
       font-weight: 800;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-family: var(--font-heading);
       flex-shrink: 0;
     }
 
     .site-header-logo-name {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--color-primary);
       white-space: nowrap;
@@ -91,7 +91,7 @@
       border: none;
       border-right: 1.5px solid var(--border);
       background: var(--bg-subtle);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       font-family: var(--font-body);
       min-width: 140px;
@@ -104,7 +104,7 @@
       border: none;
       background: transparent;
       padding: 0 12px;
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-primary);
       font-family: var(--font-body);
       outline: none;
@@ -119,7 +119,7 @@
       background: var(--color-primary);
       border: none;
       color: #fff;
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -149,7 +149,7 @@
       color: var(--text-secondary);
       position: relative;
       transition: background 150ms ease;
-      font-size: 18px;
+      font-size: var(--text-body-large);
     }
 
     .site-header-icon-btn:hover { background: var(--bg-subtle); color: var(--text-primary); }
@@ -162,7 +162,7 @@
       height: 16px;
       background: var(--color-error);
       border-radius: var(--radius-full);
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 700;
       color: #fff;
       display: flex;
@@ -192,7 +192,7 @@
       border-radius: var(--radius-full);
       background: var(--color-primary);
       color: #fff;
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -201,7 +201,7 @@
     }
 
     .site-header-user-name {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       color: var(--text-primary);
       white-space: nowrap;
@@ -214,7 +214,7 @@
       color: #fff;
       border: none;
       border-radius: var(--radius-lg);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       white-space: nowrap;
       transition: opacity 150ms ease, transform 80ms ease;
@@ -318,7 +318,7 @@
       align-items: center;
       justify-content: center;
       font-family: var(--font-heading);
-      font-size: 28px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: var(--color-primary);
       margin-top: -40px;
@@ -335,7 +335,7 @@
 
     .profile-company-name {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: var(--text-primary);
       margin: 0 0 6px 0;
@@ -356,7 +356,7 @@
       gap: 4px;
       background: #fef3c7;
       color: #92400e;
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       padding: 3px 10px;
       border-radius: var(--radius-full);
@@ -368,7 +368,7 @@
       gap: 4px;
       background: var(--bg-subtle);
       color: var(--text-secondary);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 500;
       padding: 3px 10px;
       border-radius: var(--radius-full);
@@ -376,7 +376,7 @@
     }
 
     .profile-category-line {
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
       margin-bottom: 6px;
     }
@@ -389,7 +389,7 @@
     }
 
     .profile-meta-item {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-muted);
       display: flex;
       align-items: center;
@@ -417,7 +417,7 @@
       color: #fff;
       border: none;
       border-radius: var(--radius-lg);
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -435,7 +435,7 @@
       color: var(--color-primary);
       border: 1.5px solid var(--color-primary);
       border-radius: var(--radius-lg);
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -456,7 +456,7 @@
       border: 1.5px solid var(--border);
       background: none;
       color: var(--text-secondary);
-      font-size: 16px;
+      font-size: var(--text-body-large);
       transition: background 150ms ease, border-color 150ms ease;
     }
 
@@ -495,7 +495,7 @@
 
     .stat-number {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--text-primary);
       line-height: 1.2;
@@ -506,7 +506,7 @@
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -529,7 +529,7 @@
 
     .profile-tab {
       padding: 14px 20px;
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 500;
       color: var(--text-secondary);
       cursor: pointer;
@@ -574,7 +574,7 @@
 
     .filter-pill {
       padding: 6px 16px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       border-radius: var(--radius-full);
       border: 1px solid var(--border);
@@ -623,7 +623,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 44px;
+      font-size: var(--text-product-name);
       position: relative;
       flex-shrink: 0;
     }
@@ -636,7 +636,7 @@
     }
 
     .product-card-category {
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -645,7 +645,7 @@
     }
 
     .product-card-name {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       color: var(--text-primary);
       line-height: 1.35;
@@ -659,7 +659,7 @@
 
     .product-card-price {
       font-family: var(--font-heading);
-      font-size: 16px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 2px;
@@ -677,11 +677,11 @@
       display: flex;
       align-items: center;
       gap: 3px;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-secondary);
     }
 
-    .product-card-rating .star { color: #f59e0b; font-size: 11px; }
+    .product-card-rating .star { color: #f59e0b; font-size: var(--text-caption); }
 
     .product-card-add-btn {
       height: 30px;
@@ -690,7 +690,7 @@
       color: var(--color-primary);
       border: 1px solid var(--color-primary-200);
       border-radius: var(--radius-lg);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       transition: background 150ms ease, color 150ms ease;
     }
@@ -714,7 +714,7 @@
 
     .about-card-title {
       font-family: var(--font-heading);
-      font-size: 16px;
+      font-size: var(--text-body-large);
       font-weight: 600;
       color: var(--text-primary);
       margin: 0 0 20px 0;
@@ -731,7 +731,7 @@
     }
 
     .about-col-title {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -749,7 +749,7 @@
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
     }
 
     .about-info-label {
@@ -767,7 +767,7 @@
 
     .about-info-verified {
       color: var(--color-success);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       margin-left: 6px;
     }
@@ -782,7 +782,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-primary);
       font-weight: 500;
     }
@@ -796,7 +796,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 700;
       flex-shrink: 0;
     }
@@ -814,7 +814,7 @@
     }
 
     .about-description-title {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       color: var(--text-secondary);
       text-transform: uppercase;
@@ -823,7 +823,7 @@
     }
 
     .about-description-text {
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
       line-height: 1.65;
       margin: 0;
@@ -838,7 +838,7 @@
 
     .reviews-section-title {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: var(--text-heading-featured);
       font-weight: 600;
       color: var(--text-primary);
       margin: 0 0 20px 0;
@@ -866,14 +866,14 @@
 
     .reviews-big-score {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: #b45309;
       line-height: 1;
     }
 
     .reviews-out-of {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-muted);
       text-align: center;
       margin-top: 6px;
@@ -881,7 +881,7 @@
     }
 
     .reviews-stars-big {
-      font-size: 20px;
+      font-size: var(--text-heading);
       color: #f59e0b;
       letter-spacing: 2px;
       margin-top: 4px;
@@ -898,7 +898,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 12px;
+      font-size: var(--text-spec);
     }
 
     .reviews-bar-label {
@@ -956,7 +956,7 @@
       border-radius: var(--radius-full);
       background: var(--color-primary-100);
       color: var(--color-primary);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -968,7 +968,7 @@
     .review-meta { flex: 1; }
 
     .review-name {
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
       display: flex;
@@ -977,7 +977,7 @@
     }
 
     .review-verified-badge {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       background: var(--color-success-bg);
       color: var(--color-success);
@@ -986,13 +986,13 @@
     }
 
     .review-sub {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       margin-top: 2px;
     }
 
     .review-date {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       flex-shrink: 0;
     }
@@ -1004,18 +1004,18 @@
       margin-bottom: 8px;
     }
 
-    .review-stars .star { color: #f59e0b; font-size: 13px; }
-    .review-stars .star-empty { color: var(--border); font-size: 13px; }
+    .review-stars .star { color: #f59e0b; font-size: var(--text-body-small); }
+    .review-stars .star-empty { color: var(--border); font-size: var(--text-body-small); }
 
     .review-stars .review-score {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       color: var(--text-secondary);
       margin-left: 4px;
     }
 
     .review-text {
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
       line-height: 1.65;
       margin: 0 0 12px 0;
@@ -1025,7 +1025,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       padding-top: 12px;
       border-top: 1px solid var(--divider);
@@ -1041,7 +1041,7 @@
       border-radius: var(--radius-full);
       border: 1px solid var(--border);
       background: none;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-secondary);
       transition: background 150ms ease;
     }
@@ -1079,7 +1079,7 @@
     .surface-mobile .profile-tab { padding: 12px 14px; }
     .surface-mobile .reviews-summary { flex-direction: column; gap: 20px; }
     .surface-mobile .reviews-overall { flex-direction: row; min-width: auto; gap: 12px; }
-    .surface-mobile .profile-company-name { font-size: 20px !important; }
+    .surface-mobile .profile-company-name { font-size: var(--text-heading) !important; }
     .surface-mobile .stats-strip .stat-item + .stat-item::before { display: block; }
 
     /* =====================================================
@@ -1128,10 +1128,10 @@
     <!-- Mobile Header (hidden by default) -->
     <div class="mobile-header" style="display:none;">
       <div style="background:var(--color-primary);height:56px;padding:0 16px;display:flex;align-items:center;gap:12px;color:#fff;width:100%;">
-        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;">←</button>
-        <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;flex:1;">Supplier Profile</span>
-        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">♡</button>
-        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">⋮</button>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-heading);cursor:pointer;">←</button>
+        <span style="font-family:var(--font-heading);font-weight:700;font-size:var(--text-body-large);flex:1;">Supplier Profile</span>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-body-large);cursor:pointer;">♡</button>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-body-large);cursor:pointer;">⋮</button>
       </div>
     </div>
 
@@ -1163,7 +1163,7 @@
           <span class="site-header-cart-badge" style="width:8px;height:8px;min-width:8px;padding:0;"></span>
         </button>
 
-        <button class="site-header-icon-btn" title="Cart" style="font-size:16px;">
+        <button class="site-header-icon-btn" title="Cart" style="font-size:var(--text-body-large);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span class="site-header-cart-badge">2</span>
         </button>

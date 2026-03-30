@@ -1,0 +1,281 @@
+# TradeNest Design System — CLAUDE.md
+
+## Project Overview
+Pure HTML/CSS/vanilla JS design system showcase for a B2B marketplace (TradeNest — Indian marketplace theme). No build tools, no frameworks, no dependencies except Inter font from Google Fonts.
+
+## File Structure
+```
+designsystem/
+├── index.html                  ← Cover/nav hub
+├── design-tokens.html          ← Developer token reference (click-to-copy, scroll-spy TOC)
+├── shared/
+│   ├── tokens.css              ← All CSS custom properties (125 tokens)
+│   ├── nav.css                 ← Sticky top nav bar styles
+│   └── nav.js                  ← Theme toggle + mobile toggle logic
+├── components/
+│   ├── foundations.html        ← Colors, type, spacing, shadows, radius
+│   ├── atoms.html              ← Buttons, badges, inputs, toggles, avatars
+│   ├── molecules.html          ← Product cards, seller cards, search, filters
+│   └── organisms.html          ← Site headers, footer, filter bar, hero
+└── pages/
+    ├── homepage.html           ← Full homepage, desktop + mobile toggle
+    ├── pdp.html                ← SMD Capacitors 100µF product detail page
+    ├── category.html           ← Electrical Components listing page
+    └── seller-profile.html     ← Shree Electricals Mumbai profile
+```
+
+## Architecture Rules
+
+### Stylesheet Loading Order (every HTML file)
+```html
+<link rel="stylesheet" href="../shared/tokens.css" />
+<link rel="stylesheet" href="../shared/nav.css" />
+<style>/* Page-specific styles inline */</style>
+```
+- `index.html` and `design-tokens.html` use `./shared/` (root level)
+- All others use `../shared/` (one level deep)
+
+### Script Loading (bottom of body, every HTML file)
+```html
+<script src="../shared/nav.js"></script>
+```
+
+### Page Boilerplate
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Page] — TradeNest DS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>/* page styles */</style>
+</head>
+<body>
+  <nav class="ds-nav">...</nav>
+  <div class="ds-page" id="ds-page-container">
+    <div id="phone-frame" class="phone-frame"></div>
+    <div class="ds-mobile-content">
+      <!-- content here -->
+    </div>
+  </div>
+  <script src="../shared/nav.js"></script>
+</body>
+</html>
+```
+
+### Navigation Pattern (required in every file)
+```html
+<nav class="ds-nav">
+  <div class="ds-nav-inner">
+    <a class="ds-nav-logo" href="../index.html">
+      <span class="ds-nav-logo-icon">TN</span>
+      Design System
+    </a>
+    <div class="ds-nav-controls">
+      <button class="ds-mobile-toggle" id="ds-mobile-toggle">Mobile View</button>
+      <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+    </div>
+    <div class="ds-nav-links">
+      <a class="ds-nav-link" data-page="foundations" href="./foundations.html">Foundations</a>
+      <a class="ds-nav-link" data-page="atoms" href="./atoms.html">Atoms</a>
+      <a class="ds-nav-link" data-page="molecules" href="./molecules.html">Molecules</a>
+      <a class="ds-nav-link" data-page="organisms" href="./organisms.html">Organisms</a>
+      <span class="ds-nav-divider"></span>
+      <a class="ds-nav-link" data-page="homepage" href="../pages/homepage.html">Homepage</a>
+      <a class="ds-nav-link" data-page="category" href="../pages/category.html">Category</a>
+      <a class="ds-nav-link" data-page="pdp" href="../pages/pdp.html">PDP</a>
+      <a class="ds-nav-link" data-page="seller-profile" href="../pages/seller-profile.html">Seller Profile</a>
+    </div>
+  </div>
+</nav>
+```
+- Active link uses `class="ds-nav-link active"` — `nav.js` sets this automatically via `data-page` matching the filename
+
+## Design Tokens (tokens.css)
+
+### Color Palettes
+- **Desktop primary (Indigo):** `--color-primary: #2e3192`, scale 50–900
+- **Mobile primary (Teal):** `--color-primary-mobile: #1d8480`, scale 50–900, activated via `.surface-mobile`
+- **Semantic:** success `#16a34a`, warning `#d97706`, error `#dc2626`, info `#0284c7`
+- **Neutral grays:** `--gray-50` (#f8fafc) through `--gray-900` (#0f172a)
+
+### Surface Variables (auto-switch with dark mode)
+| Token | Light | Dark |
+|-------|-------|------|
+| `--bg-page` | `#f8fafc` | `#0f0f0f` |
+| `--bg-card` | `#ffffff` | `#1a1a1a` |
+| `--bg-subtle` | `#f1f5f9` | `#262626` |
+| `--border` | `#e2e8f0` | `#262626` |
+| `--text-primary` | `#0f172a` | `#ededed` |
+| `--text-secondary` | `#475569` | `#a3a3a3` |
+| `--text-muted` | `#94a3b8` | `#6b7280` |
+
+### Spacing (8pt grid)
+`--space-1: 4px` · `--space-2: 8px` · `--space-3: 12px` · `--space-4: 16px` · `--space-5: 20px` · `--space-6: 24px` · `--space-8: 32px` · `--space-10: 40px` · `--space-12: 48px` · `--space-16: 64px` · `--space-20: 80px`
+
+### Typography (Purpose-Based)
+- **Font:** Inter only, both `--font-heading` and `--font-body`
+- **Desktop (24px max to 11px min):** Purpose-driven scale ordered by priority
+- **Mobile (18px max to 12px min):** Constrained scale, auto-applied at ≤768px
+
+| Purpose | Desktop | Mobile | Use Case |
+|---------|---------|--------|----------|
+| `--text-product-name` | 24px | 18px | **Product/Company Name** – highest priority, most prominent text |
+| `--text-heading-featured` | 22px | 16px | **Non Hero Heading** – major page/section headers |
+| `--text-heading` | 20px | 14px | **Product Name / Hero Price / Section Heading** |
+| `--text-body-large` | 16px | 13px | **Text / Primary** – body text, main content paragraphs |
+| `--text-cta` | 14px | 12px | **Primary Text (CTAs)** – button labels, call-to-action |
+| `--text-body-small` | 13px | 12px | **Subtext** – descriptions, secondary information |
+| `--text-spec` | 12px | 12px | **Listing Spec / Seller Location / Fact Sheet / Pop-up** |
+| `--text-caption` | 11px | 12px | **Caption** – "Last Updated", timestamps, small notes |
+
+### Border Radius
+`--radius-xs: 2px` · `--radius-sm: 4px` · `--radius-md: 6px` · `--radius-lg: 8px` · `--radius-xl: 12px` · `--radius-2xl: 16px` · `--radius-full: 9999px`
+
+### Shadows
+- `--shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)`
+- `--shadow-md: 0 4px 12px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08)`
+- `--shadow-lg: 0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)`
+
+### Z-Index Scale
+`--z-base: 0` · `--z-raised: 10` · `--z-dropdown: 100` · `--z-sticky: 200` · `--z-overlay: 300` · `--z-modal: 400` · `--z-toast: 500`
+
+### Transitions
+`--transition-fast: 150ms ease` · `--transition-normal: 250ms ease` · `--transition-slow: 400ms ease`
+
+## CSS Naming Conventions
+
+### Prefix System
+| Prefix | Domain |
+|--------|--------|
+| `ds-` | Design system core (nav, layout, utilities) |
+| `site-` | Marketplace-level (header, search, account) |
+| `product-` | Product cards and details |
+| `category-` | Category listing and filters |
+| `seller-` | Seller profile and cards |
+| `hero-` | Hero/banner sections |
+| `btn-` | Button variants and sizes |
+| `badge-` | Status badges and labels |
+| `avatar-` | Avatar sizes and styles |
+| `footer-` | Footer layout |
+
+### BEM-inspired Pattern
+- `block-element-modifier`
+- Sizes: `-sm`, `-md`, `-lg`
+- States: `.active`, `.disabled`, `.checked` (modifier classes, not data attributes)
+- Variants: `-primary`, `-secondary`, `-ghost`, `-destructive`
+
+### Core Layout Classes
+```css
+.ds-container   /* max-width: 1280px, centered, 32px horizontal padding */
+.ds-page        /* top padding offset for fixed nav (92px) */
+.ds-section     /* content section with border and padding */
+.ds-row         /* flex row, align-center, gap-4, flex-wrap */
+.ds-grid        /* css grid, gap-4 */
+.ds-label       /* uppercase caption, letter-spacing 0.06em, text-muted */
+```
+
+## Theming System
+
+### How Themes Work
+1. **Light (default):** `:root` vars, no attribute needed
+2. **Dark:** `[data-theme="dark"]` on `<html>` — applied by `nav.js`, persisted to `localStorage('ds-theme')`
+3. **Mobile (teal):** `.surface-mobile` on `#ds-page-container` — applied by `nav.js` mobile toggle
+
+### Mobile View Mode
+- Adds `.surface-mobile` to `#ds-page-container` + `.active` to `#ds-mobile-toggle`
+- Constrains `.ds-mobile-content` to `max-width: 375px`, centered with shadow
+- Shows `#phone-frame` decoration (fixed, z-index: -1)
+- Swaps `--color-primary` from Indigo → Teal throughout
+
+## B2B Content & Brand
+
+### Fictional Companies Used
+- **TradeNest** — the marketplace brand (primary B2B platform)
+- **Shree Electricals** — seller, Mumbai (seller-profile.html)
+- **Electronica Components** — seller, Bengaluru
+- **Featured product:** SMD Capacitors 100µF (PDP page)
+- **Category featured:** Electrical Components
+
+### Content Conventions
+- Prices in INR (₹), quantities in bulk (e.g. "Min order: 500 units")
+- Indian city names, GST, Indian phone formats
+- Trust signals: verified badges, GST verified, TrustSeal
+
+## Component Reference
+
+### Buttons
+```html
+<button class="btn btn-primary btn-md">Label</button>
+<button class="btn btn-secondary btn-sm">Label</button>
+<button class="btn btn-ghost btn-lg">Label</button>
+<button class="btn btn-destructive btn-md">Delete</button>
+```
+
+### Badges
+```html
+<span class="badge badge-verified">Verified</span>
+<span class="badge badge-in-stock">In Stock</span>
+<span class="badge badge-low-stock">Low Stock</span>
+<span class="badge badge-out-of-stock">Out of Stock</span>
+<span class="badge badge-new">New</span>
+<span class="badge badge-featured">Featured</span>
+```
+
+### Avatars
+```html
+<div class="avatar avatar-md avatar-circle avatar-gradient-indigo">SE</div>
+<div class="avatar avatar-lg avatar-square avatar-gradient-teal">EC</div>
+```
+
+### Tabs (canonical — use these, not custom tab classes)
+```html
+<div class="tab-bar">
+  <button class="tab active">Overview</button>
+  <button class="tab">Specifications</button>
+  <button class="tab">Reviews</button>
+</div>
+```
+
+### Product Card
+```html
+<div class="product-card">
+  <div class="product-card-img"><!-- image or bg --></div>
+  <div class="product-card-body">
+    <div class="product-card-badge">Badge</div>
+    <div class="product-card-name">Product Name</div>
+    <div class="product-card-seller">Seller Name</div>
+    <div class="product-card-price">₹2,450 <span class="product-card-unit">/unit</span></div>
+  </div>
+  <div class="product-card-atc">
+    <button class="btn btn-primary btn-sm">Add to Cart</button>
+  </div>
+</div>
+```
+
+## JavaScript (nav.js)
+
+Five functions, IIFE pattern:
+1. `initThemeToggle()` — reads/writes `localStorage('ds-theme')`, toggles `[data-theme]` on `<html>`
+2. `updateThemeIcon(btn, theme)` — swaps SVG sun/moon icon
+3. `initMobileToggle()` — toggles `.surface-mobile` on `#ds-page-container`, shows phone frame
+4. `initActiveNavLink()` — matches `data-page` attribute against current pathname, sets `.active`
+5. `init()` — orchestrates all, runs on `DOMContentLoaded` or immediately
+
+**Do not modify nav.js behavior without updating all 10 HTML files.**
+
+## Constraints & Rules
+
+- **No frameworks** — no React, Vue, Tailwind, Bootstrap
+- **No build step** — files are opened directly in browser
+- **Inter only** — DM Sans was removed; do not add other fonts
+- **No MOQ** — "Minimum Order Quantity" was removed sitewide; do not re-add
+- **Inline styles** — page-specific CSS goes in `<style>` in `<head>`, not separate files
+- **Shared CSS** — only `tokens.css` and `nav.css` are shared; do not create more shared files
+- **Tab classes** — use canonical `.tab` / `.tab-bar` atoms; do not create custom tab variants
+- **Path convention** — component/page files reference `../shared/`; root files reference `./shared/`

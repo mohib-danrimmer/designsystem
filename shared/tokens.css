@@ -113,18 +113,16 @@
   --font-heading: 'Inter', sans-serif;
   --font-body:    'Inter', sans-serif;
 
-  /* Type scale */
-  --text-display: 48px;
-  --text-h1:      36px;
-  --text-h2:      28px;
-  --text-h3:      22px;
-  --text-h4:      18px;
-  --text-body-l:  16px;
-  --text-body-m:  14px;
-  --text-body-s:  13px;
-  --text-caption: 12px;
-  --text-label:   12px;
-  --text-overline:11px;
+  /* Type scale — Desktop (24px max to 11px min)
+     Ordered by priority: Product/Company Name (highest) → Small Textual Elements (lowest) */
+  --text-product-name:      24px;  /* Product/Company Name – highest priority, most prominent */
+  --text-heading-featured:  22px;  /* Non Hero Heading – major page/section headers */
+  --text-heading:           20px;  /* Product Name / Hero Price / Section Heading */
+  --text-body-large:        16px;  /* Text / Primary – body text, main content paragraphs */
+  --text-cta:               14px;  /* Primary Text (CTAs etc.) – button labels, call-to-action */
+  --text-body-small:        13px;  /* Subtext – descriptions, secondary information */
+  --text-spec:              12px;  /* Listing Spec / Seller Location / Fact Sheet / Pop-up */
+  --text-caption:           11px;  /* Caption – "Last Updated", timestamps, small notes */
 
   /* Font weights */
   --font-weight-regular:  400;
@@ -159,6 +157,22 @@
   --z-overlay: 300;
   --z-modal:   400;
   --z-toast:   500;
+}
+
+/* ===================================================
+   MOBILE TYPOGRAPHY OVERRIDE (18px max to 12px min)
+   =================================================== */
+@media (max-width: 768px) {
+  :root {
+    --text-product-name:      18px;  /* Product/Company Name */
+    --text-heading-featured:  16px;  /* Non Hero Heading */
+    --text-heading:           14px;  /* Product Name / Hero Price / Section Heading */
+    --text-body-large:        13px;  /* Text / Primary */
+    --text-cta:               12px;  /* Primary Text (CTAs etc.) */
+    --text-body-small:        12px;  /* Subtext */
+    --text-spec:              12px;  /* Listing Spec / Seller Location / Fact Sheet / Pop-up */
+    --text-caption:           12px;  /* Caption */
+  }
 }
 
 /* ===================================================

@@ -19,7 +19,7 @@
     }
 
     .page-header-eyebrow {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -30,7 +30,7 @@
 
     .page-header h1 {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 8px;
@@ -38,7 +38,7 @@
     }
 
     .page-header p {
-      font-size: 16px;
+      font-size: var(--text-body-large);
       color: var(--text-secondary);
       max-width: 600px;
       line-height: 1.6;
@@ -58,7 +58,7 @@
     }
 
     .showcase-canvas-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -70,7 +70,7 @@
 
     /* ── Sub-section title within a canvas ──────── */
     .sub-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -99,19 +99,19 @@
     .btn-sm {
       height: 32px;
       padding: 0 12px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
     }
 
     .btn-md {
       height: 40px;
       padding: 0 16px;
-      font-size: 14px;
+      font-size: var(--text-cta);
     }
 
     .btn-lg {
       height: 48px;
       padding: 0 20px;
-      font-size: 15px;
+      font-size: var(--text-cta);
     }
 
     /* Variants */
@@ -186,7 +186,7 @@
 
     .btn-matrix th {
       text-align: left;
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -205,7 +205,7 @@
     }
 
     .btn-matrix td:first-child {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -228,7 +228,7 @@
     }
 
     .btn-state-tag {
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       font-family: var(--font-body);
       font-weight: 400;
@@ -253,7 +253,7 @@
       gap: 4px;
       padding: 2px 10px;
       border-radius: var(--radius-full);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 500;
       font-family: var(--font-body);
     }
@@ -324,7 +324,7 @@
     }
 
     .badge-star {
-      font-size: 10px;
+      font-size: var(--text-caption);
       line-height: 1;
     }
 
@@ -336,7 +336,7 @@
     }
 
     .badges-group-title {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -358,7 +358,7 @@
       gap: 4px;
       padding: 4px 12px;
       border-radius: var(--radius-full);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       font-family: var(--font-body);
       cursor: default;
@@ -399,7 +399,7 @@
       margin-left: 2px;
       opacity: 0.75;
       cursor: pointer;
-      font-size: 14px;
+      font-size: var(--text-cta);
       line-height: 1;
       display: flex;
       align-items: center;
@@ -426,7 +426,7 @@
     }
 
     .input-label {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       color: var(--text-secondary);
       margin-bottom: 4px;
@@ -442,7 +442,7 @@
       background: var(--bg-card);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       outline: none;
       transition: border-color 150ms, box-shadow 150ms;
     }
@@ -458,7 +458,7 @@
     }
 
     .input-helper {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       margin-top: 4px;
       display: block;
@@ -473,7 +473,7 @@
     }
 
     .input-error {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--color-error);
       margin-top: 4px;
       display: block;
@@ -521,7 +521,7 @@
       background: var(--bg-card);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       outline: none;
       resize: vertical;
       line-height: 1.5;
@@ -556,7 +556,7 @@
       background: var(--bg-card);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       outline: none;
       cursor: pointer;
       appearance: none;
@@ -592,7 +592,7 @@
       background: var(--bg-card);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 500;
       cursor: pointer;
     }
@@ -619,7 +619,7 @@
     .custom-dropdown-option {
       padding: 10px 16px;
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-primary);
       cursor: pointer;
       transition: background 100ms;
@@ -643,7 +643,7 @@
     }
 
     .dropdown-col-label {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -729,7 +729,7 @@
     }
 
     .control-label {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       font-family: var(--font-body);
     }
@@ -802,14 +802,14 @@
     }
 
     .toggle-row-label {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       font-family: var(--font-body);
       min-width: 36px;
     }
 
     .toggle-size-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -835,7 +835,7 @@
       position: absolute;
       padding: 6px 10px;
       border-radius: var(--radius-md);
-      font-size: 12px;
+      font-size: var(--text-spec);
       white-space: nowrap;
       z-index: 10;
       font-family: var(--font-body);
@@ -945,7 +945,7 @@
       background: var(--bg-subtle);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       font-family: var(--font-body);
       cursor: default;
@@ -992,25 +992,25 @@
     .avatar-xs {
       width: 24px;
       height: 24px;
-      font-size: 9px;
+      font-size: var(--text-caption);
     }
 
     .avatar-sm {
       width: 32px;
       height: 32px;
-      font-size: 12px;
+      font-size: var(--text-spec);
     }
 
     .avatar-md {
       width: 40px;
       height: 40px;
-      font-size: 15px;
+      font-size: var(--text-cta);
     }
 
     .avatar-lg {
       width: 56px;
       height: 56px;
-      font-size: 20px;
+      font-size: var(--text-heading);
     }
 
     .avatar-gradient-purple {
@@ -1056,7 +1056,7 @@
     }
 
     .avatar-size-tag {
-      font-size: 10px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       font-family: var(--font-body);
       text-transform: uppercase;
@@ -1097,14 +1097,14 @@
     }
 
     .divider-text {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-muted);
       font-family: var(--font-body);
       white-space: nowrap;
     }
 
     .divider-section-title {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       color: var(--text-secondary);
       font-family: var(--font-body);
@@ -1124,7 +1124,7 @@
     }
 
     .divider-caption {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -1605,10 +1605,10 @@
         <!-- Token specs callout -->
         <div class="showcase-canvas" style="background: var(--bg-subtle);">
           <div class="showcase-canvas-label">Token Specs</div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); font-size: 12px; color: var(--text-secondary); font-family: var(--font-body);">
-            <div><strong style="color: var(--text-primary);">SM</strong><br>height: 32px &nbsp; padding: 0 12px<br>font-size: 13px</div>
-            <div><strong style="color: var(--text-primary);">MD</strong><br>height: 40px &nbsp; padding: 0 16px<br>font-size: 14px</div>
-            <div><strong style="color: var(--text-primary);">LG</strong><br>height: 48px &nbsp; padding: 0 20px<br>font-size: 15px</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); font-size: var(--text-spec); color: var(--text-secondary); font-family: var(--font-body);">
+            <div><strong style="color: var(--text-primary);">SM</strong><br>height: 32px &nbsp; padding: 0 12px<br>font-size: var(--text-body-small)</div>
+            <div><strong style="color: var(--text-primary);">MD</strong><br>height: 40px &nbsp; padding: 0 16px<br>font-size: var(--text-cta)</div>
+            <div><strong style="color: var(--text-primary);">LG</strong><br>height: 48px &nbsp; padding: 0 20px<br>font-size: var(--text-cta)</div>
             <div><strong style="color: var(--text-primary);">Radius</strong><br>--radius-lg (8px)<br>border-radius all variants</div>
             <div><strong style="color: var(--text-primary);">Transition</strong><br>all 150ms ease<br>hover &amp; focus states</div>
             <div><strong style="color: var(--text-primary);">Disabled</strong><br>opacity: 0.4<br>cursor: not-allowed</div>
@@ -1691,7 +1691,7 @@
               </svg>
             </div>
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; font-family: var(--font-heading);">SMD Capacitors 100µF — Pack of 500</div>
+              <div style="font-size: var(--text-cta); font-weight: 600; color: var(--text-primary); margin-bottom: 6px; font-family: var(--font-heading);">SMD Capacitors 100µF — Pack of 500</div>
               <div style="display: flex; flex-wrap: wrap; gap: 6px;">
                 <span class="badge badge-verified-supplier">
                   <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.79 5.26L14.5 5.45L11 8.47L12.36 13L8 10.27L3.64 13L5 8.47L1.5 5.45L6.21 5.26L8 1Z" fill="#1d4ed8"/></svg>
@@ -1745,13 +1745,13 @@
               <span class="tag-filter-remove" title="Remove filter">&times;</span>
             </span>
           </div>
-          <p style="font-size: 12px; color: var(--text-muted); margin-top: var(--space-2);">Applied filters appear in the primary color. Click &times; to remove.</p>
+          <p style="font-size: var(--text-spec); color: var(--text-muted); margin-top: var(--space-2);">Applied filters appear in the primary color. Click &times; to remove.</p>
         </div>
 
         <div class="showcase-canvas" style="background: var(--bg-subtle);">
           <div class="showcase-canvas-label">Tags in Context — Search Results Header</div>
           <div style="display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;">
-            <span style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Filters:</span>
+            <span style="font-size: var(--text-body-small); color: var(--text-secondary); font-weight: 500;">Filters:</span>
             <span class="tag tag-filter">
               Electronics
               <span class="tag-filter-remove">&times;</span>
@@ -1888,9 +1888,9 @@
               <div class="input-group">
                 <label class="input-label">Price Per Unit (INR)</label>
                 <div style="display: flex; align-items: center; gap: 0;">
-                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-right: none; border-radius: var(--radius-md) 0 0 var(--radius-md); font-size: 14px; color: var(--text-muted); font-family: var(--font-body);">&#8377;</span>
+                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-right: none; border-radius: var(--radius-md) 0 0 var(--radius-md); font-size: var(--text-cta); color: var(--text-muted); font-family: var(--font-body);">&#8377;</span>
                   <input type="text" class="input-field" placeholder="0.00" style="border-radius: 0; border-left: none;">
-                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-left: none; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: 13px; color: var(--text-muted); font-family: var(--font-body);">per unit</span>
+                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-left: none; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: var(--text-body-small); color: var(--text-muted); font-family: var(--font-body);">per unit</span>
                 </div>
                 <span class="input-helper">Ex-GST price for one unit</span>
               </div>
@@ -1973,7 +1973,7 @@
                   <div class="custom-dropdown-option">Chennai</div>
                 </div>
               </div>
-              <p style="font-size: 12px; color: var(--text-muted); margin-top: 140px;">Shown in open state for showcase. Active option uses primary tint background.</p>
+              <p style="font-size: var(--text-spec); color: var(--text-muted); margin-top: 140px;">Shown in open state for showcase. Active option uses primary tint background.</p>
             </div>
 
           </div>
@@ -2070,7 +2070,7 @@
         <div class="showcase-canvas" style="background: var(--bg-subtle);">
           <div class="showcase-canvas-label">In Context — Filter Sidebar</div>
           <div style="max-width: 280px;">
-            <div style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); font-family: var(--font-heading);">Supplier Type</div>
+            <div style="font-size: var(--text-body-small); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-3); font-family: var(--font-heading);">Supplier Type</div>
             <div style="display: flex; flex-direction: column; gap: var(--space-3);">
               <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                 <div class="custom-check checked">
@@ -2080,13 +2080,13 @@
                     </svg>
                   </span>
                 </div>
-                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Manufacturer</span>
-                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">2,341</span>
+                <span style="font-size: var(--text-body-small); color: var(--text-primary); font-family: var(--font-body);">Manufacturer</span>
+                <span style="margin-left: auto; font-size: var(--text-spec); color: var(--text-muted);">2,341</span>
               </label>
               <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                 <div class="custom-check"></div>
-                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Wholesaler</span>
-                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">1,089</span>
+                <span style="font-size: var(--text-body-small); color: var(--text-primary); font-family: var(--font-body);">Wholesaler</span>
+                <span style="margin-left: auto; font-size: var(--text-spec); color: var(--text-muted);">1,089</span>
               </label>
               <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                 <div class="custom-check checked">
@@ -2096,13 +2096,13 @@
                     </svg>
                   </span>
                 </div>
-                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Exporter</span>
-                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">487</span>
+                <span style="font-size: var(--text-body-small); color: var(--text-primary); font-family: var(--font-body);">Exporter</span>
+                <span style="margin-left: auto; font-size: var(--text-spec); color: var(--text-muted);">487</span>
               </label>
               <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                 <div class="custom-check"></div>
-                <span style="font-size: 13px; color: var(--text-primary); font-family: var(--font-body);">Trader</span>
-                <span style="margin-left: auto; font-size: 12px; color: var(--text-muted);">312</span>
+                <span style="font-size: var(--text-body-small); color: var(--text-primary); font-family: var(--font-body);">Trader</span>
+                <span style="margin-left: auto; font-size: var(--text-spec); color: var(--text-muted);">312</span>
               </label>
             </div>
           </div>
@@ -2175,29 +2175,29 @@
           <div style="max-width: 400px; display: flex; flex-direction: column; gap: 0;">
             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">New Inquiry Alerts</div>
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Get notified when buyers send inquiries</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">New Inquiry Alerts</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px;">Get notified when buyers send inquiries</div>
               </div>
               <div class="toggle on"></div>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Order Status Updates</div>
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Track shipment and delivery milestones</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Order Status Updates</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px;">Track shipment and delivery milestones</div>
               </div>
               <div class="toggle on"></div>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border);">
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Promotional Emails</div>
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Weekly digest and platform announcements</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Promotional Emails</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px;">Weekly digest and platform announcements</div>
               </div>
               <div class="toggle"></div>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0;">
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">SMS Notifications</div>
-                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Critical alerts via SMS</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">SMS Notifications</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px;">Critical alerts via SMS</div>
               </div>
               <div class="toggle disabled"></div>
             </div>
@@ -2360,11 +2360,11 @@
           <div class="showcase-canvas-label">Company Logo Avatars — Rounded Square</div>
           <div class="avatars-row">
             <div class="avatar-item">
-              <div class="avatar avatar-square avatar-xs avatar-company-bg" style="font-size: 8px;">SE</div>
+              <div class="avatar avatar-square avatar-xs avatar-company-bg" style="font-size: var(--text-caption);">SE</div>
               <span class="avatar-size-tag">XS 24</span>
             </div>
             <div class="avatar-item">
-              <div class="avatar avatar-square avatar-sm avatar-company-bg" style="font-size: 11px;">SE</div>
+              <div class="avatar avatar-square avatar-sm avatar-company-bg" style="font-size: var(--text-caption);">SE</div>
               <span class="avatar-size-tag">SM 32</span>
             </div>
             <div class="avatar-item">
@@ -2385,22 +2385,22 @@
             <div style="display: flex; align-items: center; gap: var(--space-4);">
               <div class="avatar avatar-circle avatar-md avatar-fallback-rk">RK</div>
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Rahul Kumar</div>
-                <div style="font-size: 12px; color: var(--text-muted);">bg: #e0e7ff — color: #3730a3</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Rahul Kumar</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted);">bg: #e0e7ff — color: #3730a3</div>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: var(--space-4);">
               <div class="avatar avatar-square avatar-md avatar-fallback-se">SE</div>
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Shree Electricals</div>
-                <div style="font-size: 12px; color: var(--text-muted);">bg: #dcfce7 — color: #15803d</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Shree Electricals</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted);">bg: #dcfce7 — color: #15803d</div>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: var(--space-4);">
               <div class="avatar avatar-circle avatar-md" style="background: #fce7f3; color: #be185d; font-family: var(--font-heading); font-weight: 600;">PP</div>
               <div>
-                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Priya Patel</div>
-                <div style="font-size: 12px; color: var(--text-muted);">bg: #fce7f3 — color: #be185d</div>
+                <div style="font-size: var(--text-cta); font-weight: 500; color: var(--text-primary); font-family: var(--font-body);">Priya Patel</div>
+                <div style="font-size: var(--text-spec); color: var(--text-muted);">bg: #fce7f3 — color: #be185d</div>
               </div>
             </div>
           </div>
@@ -2414,9 +2414,9 @@
               <div class="avatar avatar-circle avatar-sm avatar-gradient-purple">RK</div>
               <div class="avatar avatar-circle avatar-sm avatar-gradient-indigo">AP</div>
               <div class="avatar avatar-circle avatar-sm avatar-gradient-teal">MS</div>
-              <div class="avatar avatar-circle avatar-sm" style="background: var(--bg-subtle); color: var(--text-muted); border: 2px solid var(--bg-card); font-size: 11px; font-family: var(--font-body);">+4</div>
+              <div class="avatar avatar-circle avatar-sm" style="background: var(--bg-subtle); color: var(--text-muted); border: 2px solid var(--bg-card); font-size: var(--text-caption); font-family: var(--font-body);">+4</div>
             </div>
-            <span style="font-size: 13px; color: var(--text-secondary);">7 people viewed this listing today</span>
+            <span style="font-size: var(--text-body-small); color: var(--text-secondary);">7 people viewed this listing today</span>
           </div>
         </div>
       </section>

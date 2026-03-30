@@ -17,7 +17,7 @@
 
     /* ── Page header ──────────────────────────────────── */
     .page-eyebrow {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -25,14 +25,14 @@
       margin-bottom: 10px;
     }
     .page-title {
-      font-size: 36px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: var(--text-primary);
       line-height: 1.15;
       margin-bottom: 12px;
     }
     .page-subtitle {
-      font-size: 15px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
       max-width: 640px;
       line-height: 1.65;
@@ -52,7 +52,7 @@
       flex-wrap: wrap;
     }
     .usage-block-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -61,7 +61,7 @@
     }
     .usage-block code {
       font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
@@ -85,12 +85,12 @@
       border-bottom: 1px solid var(--border);
     }
     .token-section-title {
-      font-size: 18px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--text-primary);
     }
     .token-section-count {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 500;
       color: var(--text-muted);
       background: var(--bg-subtle);
@@ -99,7 +99,7 @@
       padding: 1px 8px;
     }
     .token-section-desc {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       margin-bottom: 16px;
       line-height: 1.6;
@@ -109,7 +109,7 @@
     .token-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: var(--text-body-small);
     }
     .token-table thead tr {
       border-bottom: 1px solid var(--border);
@@ -117,7 +117,7 @@
     .token-table th {
       text-align: left;
       padding: 8px 12px;
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -140,7 +140,7 @@
       align-items: center;
       gap: 6px;
       font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--color-primary);
       background: var(--color-primary-50);
       padding: 3px 8px;
@@ -164,7 +164,7 @@
     /* Value cell */
     .token-value {
       font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-secondary);
     }
 
@@ -212,7 +212,7 @@
 
     /* Description cell */
     .token-desc {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -220,7 +220,7 @@
     /* Usage badge */
     .usage-tag {
       display: inline-block;
-      font-size: 11px;
+      font-size: var(--text-caption);
       padding: 2px 7px;
       border-radius: var(--radius-full);
       background: var(--bg-subtle);
@@ -231,7 +231,7 @@
 
     /* ── Group label (sub-headers inside sections) ────── */
     .token-group-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -249,7 +249,7 @@
     .surface-chip {
       padding: 6px 14px;
       border-radius: var(--radius-full);
-      font-size: 12px;
+      font-size: var(--text-spec);
       border: 1px solid var(--border);
     }
 
@@ -266,7 +266,7 @@
       border: 1px solid var(--border);
     }
     .theme-compare-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -277,7 +277,7 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 6px;
-      font-size: 12px;
+      font-size: var(--text-spec);
     }
     .theme-swatch {
       width: 20px;
@@ -301,7 +301,7 @@
       top: 72px;
     }
     .toc-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -310,7 +310,7 @@
     }
     .toc-link {
       display: block;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       padding: 5px 0 5px 10px;
       border-left: 2px solid var(--border);
@@ -328,7 +328,7 @@
       transform: translateX(-50%) translateY(12px);
       background: #0f172a;
       color: #fff;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       padding: 8px 18px;
       border-radius: var(--radius-full);
@@ -359,7 +359,7 @@
       border-bottom: 1px solid var(--border);
     }
     .ex-block-num {
-      font-size: var(--text-overline);
+      font-size: var(--text-caption);
       font-weight: 700;
       letter-spacing: 0.1em;
       color: var(--color-primary);
@@ -376,13 +376,13 @@
       border-color: rgba(46,49,146,0.3);
     }
     .ex-block-title {
-      font-size: var(--text-body-l);
+      font-size: var(--text-body-large);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 4px;
     }
     .ex-block-desc {
-      font-size: var(--text-body-s);
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       line-height: 1.6;
     }
@@ -399,7 +399,7 @@
       padding: var(--space-6);
     }
     .ex-preview-label {
-      font-size: var(--text-overline);
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -440,12 +440,12 @@
     .ex-map-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: var(--text-body-s);
+      font-size: var(--text-body-small);
     }
     .ex-map-table th {
       text-align: left;
       padding: 6px 8px;
-      font-size: var(--text-overline);
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -463,7 +463,7 @@
     .ex-map-table tr:last-child td { border-bottom: none; }
     .ex-map-table code {
       font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: var(--color-primary);
       background: var(--color-primary-50);
       padding: 1px 5px;
@@ -482,7 +482,7 @@
       background: var(--bg-subtle);
     }
     .ex-code-label {
-      font-size: var(--text-overline);
+      font-size: var(--text-caption);
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -491,7 +491,7 @@
     }
     .ex-code {
       font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-      font-size: 12px;
+      font-size: var(--text-spec);
       line-height: 1.7;
       color: var(--text-primary);
       background: var(--bg-card);
@@ -511,7 +511,7 @@
       background:    var(--color-primary);
       color:         #fff;
       font-family:   var(--font-body);
-      font-size:     var(--text-body-m);
+      font-size:     var(--text-cta);
       font-weight:   var(--font-weight-cta);
       padding:       var(--space-3) var(--space-6);
       border-radius: var(--radius-lg);
@@ -543,7 +543,7 @@
     }
     .demo-tab {
       font-family:   var(--font-body);
-      font-size:     var(--text-body-m);
+      font-size:     var(--text-cta);
       font-weight:   500;
       color:         var(--text-secondary);
       padding:       var(--space-3) var(--space-4);
@@ -605,14 +605,14 @@
     }
     .demo-card-title {
       font-family:   var(--font-body);
-      font-size:     var(--text-body-m);
+      font-size:     var(--text-cta);
       font-weight:   600;
       color:         var(--text-primary);
       line-height:   var(--lh-tight);
       margin-bottom: var(--space-2);
     }
     .demo-card-seller {
-      font-size:     var(--text-body-s);
+      font-size:     var(--text-body-small);
       color:         var(--text-muted);
       margin-bottom: var(--space-4);
     }
@@ -626,7 +626,7 @@
     }
     .demo-card-price {
       font-family:  var(--font-body);
-      font-size:    var(--text-h4);
+      font-size:    var(--text-cta);
       font-weight:  700;
       color:        var(--text-primary);
     }
@@ -639,7 +639,7 @@
       background:    var(--color-primary);
       color:         #fff;
       font-family:   var(--font-body);
-      font-size:     var(--text-body-s);
+      font-size:     var(--text-body-small);
       font-weight:   var(--font-weight-cta);
       padding:       var(--space-2) var(--space-4);
       border-radius: var(--radius-md);
@@ -698,7 +698,7 @@
     <div class="page-eyebrow">Developer Reference</div>
     <h1 class="page-title">Design Tokens</h1>
     <p class="page-subtitle">
-      All CSS custom properties defined in <code style="font-family:monospace;font-size:13px;background:var(--bg-subtle);padding:1px 6px;border-radius:4px;border:1px solid var(--border);">shared/tokens.css</code>.
+      All CSS custom properties defined in <code style="font-family:monospace;font-size:var(--text-body-small);background:var(--bg-subtle);padding:1px 6px;border-radius:4px;border:1px solid var(--border);">shared/tokens.css</code>.
       Click any token name to copy it. Tokens are globally available — link the stylesheet once and use them anywhere.
     </p>
 
@@ -737,22 +737,22 @@ border-radius: var(--radius-lg);</code>
             <span class="token-section-count">11 tokens</span>
           </div>
           <p class="token-section-desc">
-            Indigo scale. <code style="font-size:12px;font-family:monospace;">--color-primary</code> resolves to the base step (<code style="font-size:12px;font-family:monospace;">#2e3192</code>) by default.
-            Overridden to teal on <code style="font-size:12px;font-family:monospace;">.surface-mobile</code> elements.
+            Indigo scale. <code style="font-size:var(--text-spec);font-family:monospace;">--color-primary</code> resolves to the base step (<code style="font-size:var(--text-spec);font-family:monospace;">#2e3192</code>) by default.
+            Overridden to teal on <code style="font-size:var(--text-spec);font-family:monospace;">.surface-mobile</code> elements.
           </p>
           <table class="token-table">
             <thead><tr>
               <th>Token</th><th>Value</th><th></th><th>Usage</th>
             </tr></thead>
             <tbody>
-              <tr><td><span class="token-name" data-token="--color-primary">--color-primary<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc">Alias for <code style="font-size:11px;font-family:monospace;">--color-primary-600</code>. CTAs, links, active states</td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary">--color-primary<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc">Alias for <code style="font-size:var(--text-caption);font-family:monospace;">--color-primary-600</code>. CTAs, links, active states</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-50">--color-primary-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#eef0fb</td><td><span class="swatch" style="background:#eef0fb;"></span></td><td class="token-desc">Chip & badge backgrounds, hover tints</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-100">--color-primary-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#d4d7f5</td><td><span class="swatch" style="background:#d4d7f5;"></span></td><td class="token-desc">Avatar backgrounds, subtle fills</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-200">--color-primary-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#a9afeb</td><td><span class="swatch" style="background:#a9afeb;"></span></td><td class="token-desc">Card hover border colour</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-300">--color-primary-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#7e88e0</td><td><span class="swatch" style="background:#7e88e0;"></span></td><td class="token-desc">Illustrations, decorative elements</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-400">--color-primary-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#5360d6</td><td><span class="swatch" style="background:#5360d6;"></span></td><td class="token-desc">Secondary interactive elements</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-500">--color-primary-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#3b45c4</td><td><span class="swatch" style="background:#3b45c4;"></span></td><td class="token-desc">Focus rings, active link underlines</td></tr>
-              <tr><td><span class="token-name" data-token="--color-primary-600">--color-primary-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc"><strong>Base step.</strong> Same as <code style="font-size:11px;font-family:monospace;">--color-primary</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-600">--color-primary-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#2e3192</td><td><span class="swatch" style="background:#2e3192;"></span></td><td class="token-desc"><strong>Base step.</strong> Same as <code style="font-size:var(--text-caption);font-family:monospace;">--color-primary</code></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-700">--color-primary-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#252880</td><td><span class="swatch" style="background:#252880;"></span></td><td class="token-desc">Button hover/pressed state</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-800">--color-primary-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1c1e60</td><td><span class="swatch" style="background:#1c1e60;"></span></td><td class="token-desc">Hero gradient start, dark overlays</td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-900">--color-primary-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#131540</td><td><span class="swatch" style="background:#131540;"></span></td><td class="token-desc">Deepest shade, use sparingly</td></tr>
@@ -768,19 +768,19 @@ border-radius: var(--radius-lg);</code>
           </div>
           <p class="token-section-desc">
             Teal scale. These are static reference variables. The active mobile overrides are applied by adding
-            <code style="font-size:12px;font-family:monospace;">.surface-mobile</code> to a container —
-            that remaps <code style="font-size:12px;font-family:monospace;">--color-primary</code> through
-            <code style="font-size:12px;font-family:monospace;">--color-primary-900</code> to teal values automatically.
+            <code style="font-size:var(--text-spec);font-family:monospace;">.surface-mobile</code> to a container —
+            that remaps <code style="font-size:var(--text-spec);font-family:monospace;">--color-primary</code> through
+            <code style="font-size:var(--text-spec);font-family:monospace;">--color-primary-900</code> to teal values automatically.
           </p>
           <table class="token-table">
             <thead><tr><th>Token</th><th>Value</th><th></th><th>Notes</th></tr></thead>
             <tbody>
-              <tr><td><span class="token-name" data-token="--color-primary-m-50">--color-primary-m-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e6f4f4</td><td><span class="swatch" style="background:#e6f4f4;"></span></td><td class="token-desc">Reference only — use inside <code style="font-size:11px;font-family:monospace;">.surface-mobile</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-50">--color-primary-m-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e6f4f4</td><td><span class="swatch" style="background:#e6f4f4;"></span></td><td class="token-desc">Reference only — use inside <code style="font-size:var(--text-caption);font-family:monospace;">.surface-mobile</code></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-100">--color-primary-m-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#b3dfde</td><td><span class="swatch" style="background:#b3dfde;"></span></td><td class="token-desc"></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-200">--color-primary-m-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#80cac9</td><td><span class="swatch" style="background:#80cac9;"></span></td><td class="token-desc"></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-300">--color-primary-m-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#4db5b3</td><td><span class="swatch" style="background:#4db5b3;"></span></td><td class="token-desc"></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-400">--color-primary-m-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#26a09e</td><td><span class="swatch" style="background:#26a09e;"></span></td><td class="token-desc"></td></tr>
-              <tr><td><span class="token-name" data-token="--color-primary-m-500">--color-primary-m-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1d8480</td><td><span class="swatch" style="background:#1d8480;"></span></td><td class="token-desc"><strong>Mobile base.</strong> Remapped to <code style="font-size:11px;font-family:monospace;">--color-primary</code> in <code style="font-size:11px;font-family:monospace;">.surface-mobile</code></td></tr>
+              <tr><td><span class="token-name" data-token="--color-primary-m-500">--color-primary-m-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1d8480</td><td><span class="swatch" style="background:#1d8480;"></span></td><td class="token-desc"><strong>Mobile base.</strong> Remapped to <code style="font-size:var(--text-caption);font-family:monospace;">--color-primary</code> in <code style="font-size:var(--text-caption);font-family:monospace;">.surface-mobile</code></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-600">--color-primary-m-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#177b77</td><td><span class="swatch" style="background:#177b77;"></span></td><td class="token-desc"></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-700">--color-primary-m-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#11716d</td><td><span class="swatch" style="background:#11716d;"></span></td><td class="token-desc"></td></tr>
               <tr><td><span class="token-name" data-token="--color-primary-m-800">--color-primary-m-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0b6360</td><td><span class="swatch" style="background:#0b6360;"></span></td><td class="token-desc"></td></tr>
@@ -817,20 +817,20 @@ border-radius: var(--radius-lg);</code>
             <span class="token-section-title">Neutral Grays</span>
             <span class="token-section-count">10 tokens</span>
           </div>
-          <p class="token-section-desc">Slate-based gray scale. Prefer surface tokens (<code style="font-size:12px;font-family:monospace;">--text-*</code>, <code style="font-size:12px;font-family:monospace;">--bg-*</code>) for UI elements — use the raw neutral scale only for decorative or one-off cases.</p>
+          <p class="token-section-desc">Slate-based gray scale. Prefer surface tokens (<code style="font-size:var(--text-spec);font-family:monospace;">--text-*</code>, <code style="font-size:var(--text-spec);font-family:monospace;">--bg-*</code>) for UI elements — use the raw neutral scale only for decorative or one-off cases.</p>
           <table class="token-table">
             <thead><tr><th>Token</th><th>Value</th><th></th><th>Common use</th></tr></thead>
             <tbody>
-              <tr><td><span class="token-name" data-token="--neutral-50">--neutral-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f8fafc</td><td><span class="swatch" style="background:#f8fafc;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--bg-page</code></td></tr>
-              <tr><td><span class="token-name" data-token="--neutral-100">--neutral-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f1f5f9</td><td><span class="swatch" style="background:#f1f5f9;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--bg-subtle</code>, <code style="font-size:11px;font-family:monospace;">--divider</code></td></tr>
-              <tr><td><span class="token-name" data-token="--neutral-200">--neutral-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e2e8f0</td><td><span class="swatch" style="background:#e2e8f0;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--border</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-50">--neutral-50<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f8fafc</td><td><span class="swatch" style="background:#f8fafc;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--bg-page</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-100">--neutral-100<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#f1f5f9</td><td><span class="swatch" style="background:#f1f5f9;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--bg-subtle</code>, <code style="font-size:var(--text-caption);font-family:monospace;">--divider</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-200">--neutral-200<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#e2e8f0</td><td><span class="swatch" style="background:#e2e8f0;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--border</code></td></tr>
               <tr><td><span class="token-name" data-token="--neutral-300">--neutral-300<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#cbd5e1</td><td><span class="swatch" style="background:#cbd5e1;"></span></td><td class="token-desc">Disabled borders, skeleton base</td></tr>
-              <tr><td><span class="token-name" data-token="--neutral-400">--neutral-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#94a3b8</td><td><span class="swatch" style="background:#94a3b8;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-muted</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-400">--neutral-400<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#94a3b8</td><td><span class="swatch" style="background:#94a3b8;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--text-muted</code></td></tr>
               <tr><td><span class="token-name" data-token="--neutral-500">--neutral-500<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#64748b</td><td><span class="swatch" style="background:#64748b;"></span></td><td class="token-desc">Placeholder text, icon fills</td></tr>
-              <tr><td><span class="token-name" data-token="--neutral-600">--neutral-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#475569</td><td><span class="swatch" style="background:#475569;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-secondary</code></td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-600">--neutral-600<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#475569</td><td><span class="swatch" style="background:#475569;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--text-secondary</code></td></tr>
               <tr><td><span class="token-name" data-token="--neutral-700">--neutral-700<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#334155</td><td><span class="swatch" style="background:#334155;"></span></td><td class="token-desc">Dark UI text, subheadings on dark bg</td></tr>
               <tr><td><span class="token-name" data-token="--neutral-800">--neutral-800<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#1e293b</td><td><span class="swatch" style="background:#1e293b;"></span></td><td class="token-desc">High-contrast text on light bg</td></tr>
-              <tr><td><span class="token-name" data-token="--neutral-900">--neutral-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0f172a</td><td><span class="swatch" style="background:#0f172a;"></span></td><td class="token-desc">→ <code style="font-size:11px;font-family:monospace;">--text-primary</code> (light theme)</td></tr>
+              <tr><td><span class="token-name" data-token="--neutral-900">--neutral-900<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">#0f172a</td><td><span class="swatch" style="background:#0f172a;"></span></td><td class="token-desc">→ <code style="font-size:var(--text-caption);font-family:monospace;">--text-primary</code> (light theme)</td></tr>
             </tbody>
           </table>
         </section>
@@ -845,30 +845,30 @@ border-radius: var(--radius-lg);</code>
           </div>
           <p class="token-section-desc">
             These tokens switch automatically between light and dark values when
-            <code style="font-size:12px;font-family:monospace;">[data-theme="dark"]</code> is set on <code style="font-size:12px;font-family:monospace;">&lt;html&gt;</code>.
+            <code style="font-size:var(--text-spec);font-family:monospace;">[data-theme="dark"]</code> is set on <code style="font-size:var(--text-spec);font-family:monospace;">&lt;html&gt;</code>.
             Always use surface tokens for backgrounds, borders, and text — never hardcode their equivalent hex values.
           </p>
 
           <div class="theme-compare">
             <div class="theme-compare-panel" style="background:#f8fafc;">
               <div class="theme-compare-label" style="color:#64748b;">☀️ Light theme</div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f8fafc;"></div><code style="font-size:11px;font-family:monospace;">--bg-page: #f8fafc</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ffffff;"></div><code style="font-size:11px;font-family:monospace;">--bg-card: #ffffff</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f1f5f9;"></div><code style="font-size:11px;font-family:monospace;">--bg-subtle: #f1f5f9</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#e2e8f0;"></div><code style="font-size:11px;font-family:monospace;">--border: #e2e8f0</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f172a;border-color:rgba(0,0,0,0.15)"></div><code style="font-size:11px;font-family:monospace;">--text-primary: #0f172a</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#475569;"></div><code style="font-size:11px;font-family:monospace;">--text-secondary: #475569</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#94a3b8;"></div><code style="font-size:11px;font-family:monospace;">--text-muted: #94a3b8</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f8fafc;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--bg-page: #f8fafc</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ffffff;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--bg-card: #ffffff</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#f1f5f9;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--bg-subtle: #f1f5f9</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#e2e8f0;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--border: #e2e8f0</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f172a;border-color:rgba(0,0,0,0.15)"></div><code style="font-size:var(--text-caption);font-family:monospace;">--text-primary: #0f172a</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#475569;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--text-secondary: #475569</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#94a3b8;"></div><code style="font-size:var(--text-caption);font-family:monospace;">--text-muted: #94a3b8</code></div>
             </div>
             <div class="theme-compare-panel" style="background:#1a1a1a;border-color:#262626;">
               <div class="theme-compare-label" style="color:#888;">🌙 Dark theme</div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f0f0f;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-page: #0f0f0f</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#1a1a1a;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-card: #1a1a1a</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#141414;border-color:#262626;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--bg-subtle: #141414</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#262626;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--border: #262626</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ededed;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-primary: #ededed</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#a3a3a3;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-secondary: #a3a3a3</code></div>
-              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#888;border-color:#333;"></div><code style="font-size:11px;font-family:monospace;color:#a3a3a3;">--text-muted: #888888</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#0f0f0f;border-color:#262626;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--bg-page: #0f0f0f</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#1a1a1a;border-color:#262626;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--bg-card: #1a1a1a</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#141414;border-color:#262626;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--bg-subtle: #141414</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#262626;border-color:#333;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--border: #262626</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#ededed;border-color:#333;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--text-primary: #ededed</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#a3a3a3;border-color:#333;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--text-secondary: #a3a3a3</code></div>
+              <div class="theme-swatch-row"><div class="theme-swatch" style="background:#888;border-color:#333;"></div><code style="font-size:var(--text-caption);font-family:monospace;color:#a3a3a3;">--text-muted: #888888</code></div>
             </div>
           </div>
 
@@ -914,25 +914,22 @@ border-radius: var(--radius-lg);</code>
               <tr><td><span class="token-name" data-token="--font-weight-medium">--font-weight-medium<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">500</td><td class="token-desc">Tab labels, nav links, input labels, secondary UI text</td></tr>
               <tr><td><span class="token-name" data-token="--font-weight-semibold">--font-weight-semibold<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">600</td><td class="token-desc">Card titles, badges, active tabs, section headings</td></tr>
               <tr><td><span class="token-name" data-token="--font-weight-bold">--font-weight-bold<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">700</td><td class="token-desc">Prices, H1–H3 headings, page titles</td></tr>
-              <tr><td><span class="token-name" data-token="--font-weight-cta">--font-weight-cta<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">→ <code style="font-size:11px;font-family:monospace;">--font-weight-semibold</code></td><td class="token-desc">All primary action buttons — Add to Cart, Contact Seller, Post Requirement</td></tr>
+              <tr><td><span class="token-name" data-token="--font-weight-cta">--font-weight-cta<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">→ <code style="font-size:var(--text-caption);font-family:monospace;">--font-weight-semibold</code></td><td class="token-desc">All primary action buttons — Add to Cart, Contact Seller, Post Requirement</td></tr>
             </tbody>
           </table>
 
-          <div class="token-group-label">Type scale (font-size)</div>
+          <div class="token-group-label">Type scale (font-size) — ordered by priority, highest → lowest</div>
           <table class="token-table" style="margin-bottom:24px;">
-            <thead><tr><th>Token</th><th>Value</th><th>Live sample</th><th>Typical weight</th></tr></thead>
+            <thead><tr><th>Token</th><th>Desktop</th><th>Mobile</th><th>Purpose</th><th>Live sample</th></tr></thead>
             <tbody>
-              <tr><td><span class="token-name" data-token="--text-display">--text-display<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">48px</td><td><span style="font-size:28px;font-weight:700;line-height:1;color:var(--text-primary)">IndiaMART</span></td><td class="token-desc">700</td></tr>
-              <tr><td><span class="token-name" data-token="--text-h1">--text-h1<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">36px</td><td><span style="font-size:22px;font-weight:700;line-height:1;color:var(--text-primary)">Electrical Components</span></td><td class="token-desc">700</td></tr>
-              <tr><td><span class="token-name" data-token="--text-h2">--text-h2<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">28px</td><td><span style="font-size:18px;font-weight:600;line-height:1;color:var(--text-primary)">Top Categories</span></td><td class="token-desc">600</td></tr>
-              <tr><td><span class="token-name" data-token="--text-h3">--text-h3<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">22px</td><td><span style="font-size:16px;font-weight:600;line-height:1;color:var(--text-primary)">SMD Capacitors 100µF</span></td><td class="token-desc">600</td></tr>
-              <tr><td><span class="token-name" data-token="--text-h4">--text-h4<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">18px</td><td><span style="font-size:15px;font-weight:500;line-height:1;color:var(--text-primary)">Shree Electricals Pvt. Ltd.</span></td><td class="token-desc">500</td></tr>
-              <tr><td><span class="token-name" data-token="--text-body-l">--text-body-l<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">16px</td><td><span style="font-size:16px;font-weight:400;color:var(--text-secondary)">Browse from 500+ verified categories</span></td><td class="token-desc">400</td></tr>
-              <tr><td><span class="token-name" data-token="--text-body-m">--text-body-m<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">14px</td><td><span style="font-size:14px;font-weight:400;color:var(--text-secondary)">Ships in 3–5 business days from Bengaluru</span></td><td class="token-desc">400 — <em>default body size</em></td></tr>
-              <tr><td><span class="token-name" data-token="--text-body-s">--text-body-s<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">13px</td><td><span style="font-size:13px;font-weight:400;color:var(--text-secondary)">GST: 27AAECS1234F1Z5 · ISO 9001:2015 Certified</span></td><td class="token-desc">400</td></tr>
-              <tr><td><span class="token-name" data-token="--text-caption">--text-caption<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span style="font-size:12px;font-weight:400;color:var(--text-muted)">Last updated 2 hours ago · 127 reviews</span></td><td class="token-desc">400</td></tr>
-              <tr><td><span class="token-name" data-token="--text-label">--text-label<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td><span style="font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">VERIFIED SUPPLIER</span></td><td class="token-desc">500, uppercase 0.06em tracking</td></tr>
-              <tr><td><span class="token-name" data-token="--text-overline">--text-overline<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">11px</td><td><span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">PASSIVE COMPONENTS</span></td><td class="token-desc">600, uppercase 0.1em tracking</td></tr>
+              <tr><td><span class="token-name" data-token="--text-product-name">--text-product-name<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">24px</td><td class="token-value">18px</td><td class="token-desc">Product / Company Name</td><td><span style="font-size:var(--text-product-name);font-weight:700;line-height:1.3;color:var(--text-primary)">Shree Electricals Pvt. Ltd.</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-heading-featured">--text-heading-featured<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">22px</td><td class="token-value">16px</td><td class="token-desc">Non Hero Heading</td><td><span style="font-size:var(--text-heading-featured);font-weight:700;line-height:1.3;color:var(--text-primary)">Electrical Components</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-heading">--text-heading<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">20px</td><td class="token-value">14px</td><td class="token-desc">Product Name / Hero Price / Section Heading</td><td><span style="font-size:var(--text-heading);font-weight:600;line-height:1.3;color:var(--text-primary)">SMD Capacitors 100µF · ₹2,450/unit</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-body-large">--text-body-large<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">16px</td><td class="token-value">13px</td><td class="token-desc">Text / Primary</td><td><span style="font-size:var(--text-body-large);font-weight:400;color:var(--text-primary)">Browse from 500+ verified categories</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-cta">--text-cta<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">14px</td><td class="token-value">12px</td><td class="token-desc">Primary Text (CTAs etc.)</td><td><span style="font-size:var(--text-cta);font-weight:600;color:var(--color-primary)">Add to Cart · Contact Supplier</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-body-small">--text-body-small<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">13px</td><td class="token-value">12px</td><td class="token-desc">Subtext</td><td><span style="font-size:var(--text-body-small);font-weight:400;color:var(--text-secondary)">Ships in 3–5 business days from Bengaluru</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-spec">--text-spec<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">12px</td><td class="token-value">12px</td><td class="token-desc">Listing Spec / Seller Location / Fact Sheet / Pop-up</td><td><span style="font-size:var(--text-spec);font-weight:400;color:var(--text-secondary)">GST: 27AAECS1234F1Z5 · Mumbai, Maharashtra</span></td></tr>
+              <tr><td><span class="token-name" data-token="--text-caption">--text-caption<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">11px</td><td class="token-value">12px</td><td class="token-desc">Caption / Small Textual Elements</td><td><span style="font-size:var(--text-caption);font-weight:400;color:var(--text-muted)">Last updated 2 hours ago · 127 verified reviews</span></td></tr>
             </tbody>
           </table>
 
@@ -940,13 +937,8 @@ border-radius: var(--radius-lg);</code>
           <table class="token-table">
             <thead><tr><th>Token</th><th>Value</th><th>Paired with</th></tr></thead>
             <tbody>
-              <tr><td><span class="token-name" data-token="--lh-display">--lh-display<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">56px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-display</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-h1">--lh-h1<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">44px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h1</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-h2">--lh-h2<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">36px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h2</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-h3">--lh-h3<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">30px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h3</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-h4">--lh-h4<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">26px</td><td class="token-desc"><code style="font-size:11px;font-family:monospace;">--text-h4</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-body">--lh-body<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.6</td><td class="token-desc">Body copy, descriptions — default for <code style="font-size:11px;font-family:monospace;">body</code></td></tr>
-              <tr><td><span class="token-name" data-token="--lh-tight">--lh-tight<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.3</td><td class="token-desc">All headings — default for <code style="font-size:11px;font-family:monospace;">h1–h6</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-tight">--lh-tight<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.3</td><td class="token-desc">Headings — <code style="font-size:var(--text-caption);font-family:monospace;">--text-product-name, --text-heading-featured, --text-heading</code></td></tr>
+              <tr><td><span class="token-name" data-token="--lh-body">--lh-body<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td><td class="token-value">1.6</td><td class="token-desc">Body copy — <code style="font-size:var(--text-caption);font-family:monospace;">--text-body-large, --text-cta, --text-body-small, --text-spec, --text-caption</code></td></tr>
             </tbody>
           </table>
         </section>
@@ -1009,25 +1001,25 @@ border-radius: var(--radius-lg);</code>
             <span class="token-section-title">Shadows</span>
             <span class="token-section-count">3 tokens · theme-aware</span>
           </div>
-          <p class="token-section-desc">Shadow opacity increases in dark theme to remain visible. Never use <code style="font-size:12px;font-family:monospace;">box-shadow</code> with hardcoded values.</p>
+          <p class="token-section-desc">Shadow opacity increases in dark theme to remain visible. Never use <code style="font-size:var(--text-spec);font-family:monospace;">box-shadow</code> with hardcoded values.</p>
           <table class="token-table">
             <thead><tr><th>Token</th><th>Light value</th><th>Preview</th><th>Use on</th></tr></thead>
             <tbody>
               <tr>
                 <td><span class="token-name" data-token="--shadow-sm">--shadow-sm<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
-                <td class="token-value" style="font-size:11px;">0 1px 3px rgba(0,0,0,.08),<br>0 1px 2px rgba(0,0,0,.06)</td>
+                <td class="token-value" style="font-size:var(--text-caption);">0 1px 3px rgba(0,0,0,.08),<br>0 1px 2px rgba(0,0,0,.06)</td>
                 <td><span class="shadow-preview" style="box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);"></span></td>
                 <td class="token-desc">Cards at rest, dropdowns at rest</td>
               </tr>
               <tr>
                 <td><span class="token-name" data-token="--shadow-md">--shadow-md<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
-                <td class="token-value" style="font-size:11px;">0 4px 12px rgba(0,0,0,.12),<br>0 2px 6px rgba(0,0,0,.08)</td>
+                <td class="token-value" style="font-size:var(--text-caption);">0 4px 12px rgba(0,0,0,.12),<br>0 2px 6px rgba(0,0,0,.08)</td>
                 <td><span class="shadow-preview" style="box-shadow:0 4px 12px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);"></span></td>
                 <td class="token-desc">Card hover state, open dropdowns</td>
               </tr>
               <tr>
                 <td><span class="token-name" data-token="--shadow-lg">--shadow-lg<svg class="copy-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></td>
-                <td class="token-value" style="font-size:11px;">0 12px 24px rgba(0,0,0,.12),<br>0 4px 8px rgba(0,0,0,.06)</td>
+                <td class="token-value" style="font-size:var(--text-caption);">0 12px 24px rgba(0,0,0,.12),<br>0 4px 8px rgba(0,0,0,.06)</td>
                 <td><span class="shadow-preview" style="box-shadow:0 12px 24px rgba(0,0,0,.12),0 4px 8px rgba(0,0,0,.06);"></span></td>
                 <td class="token-desc">Modals, overlays, sticky headers</td>
               </tr>
@@ -1043,7 +1035,7 @@ border-radius: var(--radius-lg);</code>
             <span class="token-section-title">Transitions</span>
             <span class="token-section-count">3 tokens</span>
           </div>
-          <p class="token-section-desc">Use <code style="font-size:12px;font-family:monospace;">transition-fast</code> for micro-interactions (hover), <code style="font-size:12px;font-family:monospace;">transition-normal</code> for theme switches and reveals, <code style="font-size:12px;font-family:monospace;">transition-slow</code> for page-level animations.</p>
+          <p class="token-section-desc">Use <code style="font-size:var(--text-spec);font-family:monospace;">transition-fast</code> for micro-interactions (hover), <code style="font-size:var(--text-spec);font-family:monospace;">transition-normal</code> for theme switches and reveals, <code style="font-size:var(--text-spec);font-family:monospace;">transition-slow</code> for page-level animations.</p>
           <table class="token-table">
             <thead><tr><th>Token</th><th>Value</th><th>Use on</th></tr></thead>
             <tbody>
@@ -1133,7 +1125,7 @@ border-radius: var(--radius-lg);</code>
                     <tr><td>background</td><td><code>--color-primary</code></td></tr>
                     <tr><td>background (hover)</td><td><code>--color-primary-700</code></td></tr>
                     <tr><td>font-family</td><td><code>--font-body</code></td></tr>
-                    <tr><td>font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-cta</code></td></tr>
                     <tr><td>font-weight</td><td><code>--font-weight-cta</code></td></tr>
                     <tr><td>padding block</td><td><code>--space-3</code></td></tr>
                     <tr><td>padding inline</td><td><code>--space-6</code></td></tr>
@@ -1152,7 +1144,7 @@ border-radius: var(--radius-lg);</code>
   background:    var(--color-primary);
   color:         #fff;
   font-family:   var(--font-body);
-  font-size:     var(--text-body-m);
+  font-size:     var(--text-cta);
   font-weight:   var(--font-weight-cta);
   padding:       var(--space-3) var(--space-6);
   border-radius: var(--radius-lg);
@@ -1206,7 +1198,7 @@ border-radius: var(--radius-lg);</code>
                     <tr><td>border-bottom (bar)</td><td><code>--border</code></td></tr>
                     <tr><td>gap (between tabs)</td><td><code>--space-1</code></td></tr>
                     <tr><td>font-family</td><td><code>--font-body</code></td></tr>
-                    <tr><td>font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-cta</code></td></tr>
                     <tr><td>font-weight</td><td><code>--font-weight-cta</code></td></tr>
                     <tr><td>padding block</td><td><code>--space-3</code></td></tr>
                     <tr><td>padding inline</td><td><code>--space-4</code></td></tr>
@@ -1228,7 +1220,7 @@ border-radius: var(--radius-lg);</code>
 }
 .tab {
   font-family:   var(--font-body);
-  font-size:     var(--text-body-m);
+  font-size:     var(--text-cta);
   font-weight:   500;
   color:         var(--text-secondary);
   padding:       var(--space-3) var(--space-4);
@@ -1302,16 +1294,16 @@ border-radius: var(--radius-lg);</code>
                     <tr><td>badge color</td><td><code>--color-primary-700</code></td></tr>
                     <tr><td>badge border-radius</td><td><code>--radius-full</code></td></tr>
                     <tr><td>badge font-size</td><td><code>--text-caption</code></td></tr>
-                    <tr><td>title font-size</td><td><code>--text-body-m</code></td></tr>
+                    <tr><td>title font-size</td><td><code>--text-cta</code></td></tr>
                     <tr><td>title color</td><td><code>--text-primary</code></td></tr>
                     <tr><td>title line-height</td><td><code>--lh-tight</code></td></tr>
                     <tr><td>seller color</td><td><code>--text-muted</code></td></tr>
-                    <tr><td>seller font-size</td><td><code>--text-body-s</code></td></tr>
+                    <tr><td>seller font-size</td><td><code>--text-body-small</code></td></tr>
                     <tr><td>footer divider</td><td><code>--divider</code></td></tr>
-                    <tr><td>price font-size</td><td><code>--text-h4</code></td></tr>
+                    <tr><td>price font-size</td><td><code>--text-cta</code></td></tr>
                     <tr><td>CTA background</td><td><code>--color-primary</code></td></tr>
                     <tr><td>CTA border-radius</td><td><code>--radius-md</code></td></tr>
-                    <tr><td>CTA font-size</td><td><code>--text-body-s</code></td></tr>
+                    <tr><td>CTA font-size</td><td><code>--text-body-small</code></td></tr>
                     <tr><td>CTA font-weight</td><td><code>--font-weight-cta</code></td></tr>
                     <tr><td>CTA transition</td><td><code>--transition-fast</code></td></tr>
                   </tbody>
@@ -1356,7 +1348,7 @@ border-radius: var(--radius-lg);</code>
 
 /* Title */
 .product-card-title {
-  font-size:   var(--text-body-m);
+  font-size:   var(--text-cta);
   font-weight: 600;
   color:       var(--text-primary);
   line-height: var(--lh-tight);
@@ -1364,7 +1356,7 @@ border-radius: var(--radius-lg);</code>
 
 /* Seller line */
 .product-card-seller {
-  font-size: var(--text-body-s);
+  font-size: var(--text-body-small);
   color:     var(--text-muted);
 }
 
@@ -1374,7 +1366,7 @@ border-radius: var(--radius-lg);</code>
   padding-top: var(--space-3);
 }
 .product-card-price {
-  font-size:   var(--text-h4);
+  font-size:   var(--text-cta);
   font-weight: 700;
   color:       var(--text-primary);
 }
@@ -1383,7 +1375,7 @@ border-radius: var(--radius-lg);</code>
 .product-card-cta {
   background:    var(--color-primary);
   color:         #fff;
-  font-size:     var(--text-body-s);
+  font-size:     var(--text-body-small);
   font-weight:   var(--font-weight-cta);
   padding:       var(--space-2) var(--space-4);
   border-radius: var(--radius-md);

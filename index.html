@@ -40,13 +40,13 @@
       border-radius: var(--radius-md);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-heading);
-      font-size: 14px; font-weight: 800;
+      font-size: var(--text-cta); font-weight: 800;
       color: var(--color-primary);
     }
 
     .cover-bar-logo-text {
       font-family: var(--font-heading);
-      font-size: 15px; font-weight: 700;
+      font-size: var(--text-cta); font-weight: 700;
       color: #fff;
       letter-spacing: -0.01em;
     }
@@ -115,7 +115,7 @@
       border-radius: var(--radius-full);
       border: 1px solid rgba(255,255,255,0.25);
       background: rgba(255,255,255,0.1);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 500;
       color: rgba(255,255,255,0.85);
       letter-spacing: 0.04em;
@@ -148,7 +148,7 @@
     }
 
     .cover-version {
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 400;
       color: rgba(255,255,255,0.55);
       letter-spacing: 0.02em;
@@ -192,7 +192,7 @@
     }
 
     .token-swatch-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: rgba(255,255,255,0.6);
       font-family: var(--font-body);
       text-align: center;
@@ -213,7 +213,7 @@
 
     .token-type-h {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: var(--text-heading);
       font-weight: 700;
       color: #fff;
       line-height: 1;
@@ -221,14 +221,14 @@
 
     .token-type-b {
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: rgba(255,255,255,0.6);
       line-height: 1;
     }
 
     .token-type-l {
       font-family: var(--font-body);
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -249,7 +249,7 @@
     }
 
     .cover-grid-eyebrow {
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -260,7 +260,7 @@
 
     .cover-grid-title {
       font-family: var(--font-heading);
-      font-size: var(--text-h2);
+      font-size: var(--text-heading);
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: var(--space-3);
@@ -268,13 +268,13 @@
 
     .cover-grid-desc {
       color: var(--text-secondary);
-      font-size: var(--text-body-m);
+      font-size: var(--text-cta);
       max-width: 480px;
       margin: 0 auto;
     }
 
     .cover-section-label {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -323,13 +323,13 @@
 
     .cover-card-title {
       font-family: var(--font-heading);
-      font-size: 15px;
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
     }
 
     .cover-card-desc {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       line-height: 1.5;
       flex: 1;
@@ -339,7 +339,7 @@
       display: flex;
       align-items: center;
       gap: var(--space-1);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 500;
       color: var(--color-primary);
       margin-top: auto;
@@ -351,7 +351,7 @@
       border-top: 1px solid var(--border);
       text-align: center;
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: var(--text-body-small);
     }
 
     [data-theme="dark"] .cover-theme-toggle {
@@ -389,7 +389,7 @@
       <span class="cover-bar-logo-text">IndiaMART CSG</span>
     </a>
     <div class="cover-bar-right">
-      <a href="design-tokens.html" style="font-size:13px;font-weight:500;color:var(--text-secondary);text-decoration:none;margin-right:12px;letter-spacing:0.01em;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Documentation</a>
+      <a href="design-tokens.html" style="font-size:var(--text-body-small);font-weight:500;color:var(--text-secondary);text-decoration:none;margin-right:12px;letter-spacing:0.01em;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Documentation</a>
       <button class="cover-theme-toggle" id="ds-theme-toggle" title="Toggle theme">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>

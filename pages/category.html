@@ -42,7 +42,7 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 700;
       font-family: var(--font-heading);
       flex-shrink: 0;
@@ -50,7 +50,7 @@
 
     .site-header-logo-name {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--color-primary);
     }
@@ -79,7 +79,7 @@
       gap: 6px;
       padding: 0 14px;
       height: 100%;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       color: var(--text-secondary);
       border-right: 1px solid var(--border);
@@ -99,7 +99,7 @@
       outline: none;
       background: transparent;
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-primary);
       padding: 0 14px;
       height: 100%;
@@ -175,7 +175,7 @@
       padding: 0 4px;
       background: var(--color-primary);
       border-radius: var(--radius-full);
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 700;
       color: #fff;
       display: flex;
@@ -204,7 +204,7 @@
       border-radius: var(--radius-full);
       background: var(--color-primary-100);
       color: var(--color-primary);
-      font-size: 12px;
+      font-size: var(--text-spec);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -214,7 +214,7 @@
     }
 
     .header-username {
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 500;
       color: var(--text-primary);
       white-space: nowrap;
@@ -230,7 +230,7 @@
       border: none;
       border-radius: var(--radius-full);
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -258,7 +258,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       margin-bottom: 12px;
     }
@@ -292,14 +292,14 @@
 
     .page-header-title {
       font-family: var(--font-heading);
-      font-size: 32px;
+      font-size: var(--text-product-name);
       font-weight: 700;
       color: var(--text-primary);
       line-height: 1.2;
     }
 
     .page-header-count {
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
       white-space: nowrap;
     }
@@ -338,7 +338,7 @@
       background: var(--bg-card);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-full);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       color: var(--text-secondary);
       cursor: pointer;
@@ -364,13 +364,13 @@
     }
 
     .filter-bar-sep {
-      font-size: 16px;
+      font-size: var(--text-body-large);
       color: var(--text-muted);
       flex-shrink: 0;
     }
 
     .filter-clear-all {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--color-primary);
       cursor: pointer;
       white-space: nowrap;
@@ -395,7 +395,7 @@
     }
 
     .filter-bar-count {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-muted);
       white-space: nowrap;
     }
@@ -408,7 +408,7 @@
       background: var(--bg-card);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 500;
       color: var(--text-secondary);
       cursor: pointer;
@@ -474,13 +474,13 @@
 
     .filter-sidebar-title {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 700;
       color: var(--text-primary);
     }
 
     .filter-reset-btn {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--color-primary);
       background: none;
       border: none;
@@ -508,7 +508,7 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 12px;
@@ -520,7 +520,7 @@
     }
 
     .filter-section-arrow {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       transition: transform var(--transition-fast);
     }
@@ -538,7 +538,7 @@
       align-items: center;
       gap: 8px;
       padding: 5px 0;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       cursor: pointer;
       transition: color var(--transition-fast);
@@ -565,17 +565,17 @@
       background: var(--color-primary);
       border-color: var(--color-primary);
       color: #fff;
-      font-size: 10px;
+      font-size: var(--text-caption);
     }
 
     .filter-count {
       margin-left: auto;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
     }
 
     .filter-show-more {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--color-primary);
       cursor: pointer;
       background: none;
@@ -594,7 +594,7 @@
     .price-range-labels {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       margin-bottom: 10px;
     }
@@ -667,7 +667,7 @@
 
     .price-input-prefix {
       padding: 0 6px 0 8px;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-muted);
       background: var(--bg-subtle);
       height: 100%;
@@ -683,7 +683,7 @@
       outline: none;
       background: var(--bg-card);
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-primary);
       padding: 0 8px;
       height: 100%;
@@ -691,7 +691,7 @@
     }
 
     .price-input-sep {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       flex-shrink: 0;
     }
@@ -703,7 +703,7 @@
       gap: 8px;
       padding: 6px 0;
       cursor: pointer;
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
       transition: color var(--transition-fast);
     }
@@ -718,7 +718,7 @@
     }
 
     .star {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       line-height: 1;
     }
 
@@ -731,7 +731,7 @@
     }
 
     .rating-label {
-      font-size: 13px;
+      font-size: var(--text-body-small);
       color: var(--text-secondary);
     }
 
@@ -751,7 +751,7 @@
     }
 
     .products-toolbar-left {
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-secondary);
     }
 
@@ -826,7 +826,7 @@
     }
 
     .product-card-emoji {
-      font-size: 36px;
+      font-size: var(--text-product-name);
       line-height: 1;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     }
@@ -846,7 +846,7 @@
       cursor: pointer;
       opacity: 0;
       transition: opacity var(--transition-fast);
-      font-size: 14px;
+      font-size: var(--text-cta);
       color: var(--text-muted);
       box-shadow: var(--shadow-sm);
     }
@@ -874,7 +874,7 @@
       gap: 4px;
       padding: 2px 8px;
       border-radius: var(--radius-full);
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 500;
       align-self: flex-start;
     }
@@ -886,7 +886,7 @@
 
     .product-name {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: var(--text-cta);
       font-weight: 600;
       color: var(--text-primary);
       line-height: 1.35;
@@ -908,7 +908,7 @@
       border-radius: var(--radius-full);
       background: var(--color-primary-100);
       color: var(--color-primary);
-      font-size: 9px;
+      font-size: var(--text-caption);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -923,7 +923,7 @@
     }
 
     .product-seller-name {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-secondary);
       white-space: nowrap;
       overflow: hidden;
@@ -931,7 +931,7 @@
     }
 
     .product-seller-city {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
     }
 
@@ -947,18 +947,18 @@
     }
 
     .product-rating-star {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: #f59e0b;
     }
 
     .product-rating-num {
-      font-size: 11px;
+      font-size: var(--text-caption);
       font-weight: 600;
       color: var(--text-primary);
     }
 
     .product-rating-count {
-      font-size: 11px;
+      font-size: var(--text-caption);
       color: var(--text-muted);
     }
 
@@ -971,14 +971,14 @@
 
     .product-price {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: var(--text-body-large);
       font-weight: 700;
       color: var(--color-primary);
       line-height: 1;
     }
 
     .product-price-unit {
-      font-size: 12px;
+      font-size: var(--text-spec);
       color: var(--text-muted);
       font-weight: 400;
     }
@@ -998,7 +998,7 @@
       gap: 3px;
       padding: 2px 7px;
       border-radius: var(--radius-full);
-      font-size: 10px;
+      font-size: var(--text-caption);
       font-weight: 600;
     }
 
@@ -1035,7 +1035,7 @@
       border: none;
       border-radius: var(--radius-md);
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: var(--text-body-small);
       font-weight: 600;
       cursor: pointer;
       transition: background var(--transition-fast);
@@ -1070,7 +1070,7 @@
       justify-content: center;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      font-size: 14px;
+      font-size: var(--text-cta);
       cursor: pointer;
       background: var(--bg-card);
       color: var(--text-secondary);
@@ -1099,7 +1099,7 @@
 
     .page-ellipsis {
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: var(--text-cta);
       padding: 0 4px;
       user-select: none;
     }
@@ -1118,7 +1118,7 @@
     }
 
     .surface-mobile .page-header-title {
-      font-size: 22px !important;
+      font-size: var(--text-heading-featured) !important;
     }
 
     .surface-mobile .filter-sidebar {
@@ -1213,10 +1213,10 @@
     <!-- Mobile Header (shown only in mobile view) -->
     <div class="mobile-header">
       <div style="background:var(--color-primary);height:56px;padding:0 16px;display:flex;align-items:center;gap:12px;color:#fff;width:100%;">
-        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;">&#8592;</button>
-        <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;flex:1;">Electrical Components</span>
-        <button style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer;">&#128269;</button>
-        <button style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;letter-spacing:-1px;font-weight:700;">&#8942;</button>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-heading);cursor:pointer;line-height:1;">&#8592;</button>
+        <span style="font-family:var(--font-heading);font-weight:700;font-size:var(--text-body-large);flex:1;">Electrical Components</span>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-body-large);cursor:pointer;">&#128269;</button>
+        <button style="background:none;border:none;color:#fff;font-size:var(--text-heading);cursor:pointer;letter-spacing:-1px;font-weight:700;">&#8942;</button>
       </div>
     </div>
 
@@ -1268,14 +1268,14 @@
 
     <!-- Mobile Filter Bar (shown only in mobile view) -->
     <div class="filter-bar-mobile" style="overflow-x:auto; padding:10px 16px; gap:8px; border-bottom:1px solid var(--border); background:var(--bg-card); scrollbar-width:none; align-items:center;">
-      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-subtle);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:600;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-subtle);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:var(--text-body-small);font-weight:600;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
         Filters
       </button>
-      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Price &#9660;</button>
-      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Location &#9660;</button>
-      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Rating &#9660;</button>
-      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--color-primary);border:1.5px solid var(--color-primary);border-radius:var(--radius-full);font-size:13px;font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Mumbai &times;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:var(--text-body-small);font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Price &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:var(--text-body-small);font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Location &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius-full);font-size:var(--text-body-small);font-weight:500;color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Rating &#9660;</button>
+      <button style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--color-primary);border:1.5px solid var(--color-primary);border-radius:var(--radius-full);font-size:var(--text-body-small);font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;font-family:var(--font-body);">Mumbai &times;</button>
     </div>
 
     <!-- Page Header -->
