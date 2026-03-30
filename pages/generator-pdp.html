@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Powerol Silent Diesel Generator — DAZZLE Power Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/tokens.css" />
+  <link rel="stylesheet" href="../shared/nav.css" />
+  <style>
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--bg-page); color: var(--text-primary); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font-body); cursor: pointer; }
+
+    /* ── Page offset for ds-nav ─────────────────────── */
+    .ds-page { padding-top: 56px; }
+
+    /* ══════════════════════════════════════════════════
+       SITE HEADER
+    ══════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 56px;
+      z-index: var(--z-sticky);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: 0 var(--space-8);
+    }
+    .site-header-logo {
+      display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0;
+      text-decoration: none;
+    }
+    .site-header-logo-mark {
+      width: 32px; height: 32px; border-radius: var(--radius-md);
+      background: var(--color-primary); color: #fff;
+      font-size: var(--text-spec); font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .site-header-logo-name {
+      font-size: var(--text-cta); font-weight: 700;
+      color: var(--text-primary); letter-spacing: -0.01em;
+    }
+    .site-header-search {
+      flex: 1; max-width: 580px;
+      display: flex; align-items: center;
+      border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; background: var(--bg-card);
+      transition: border-color var(--transition-fast);
+    }
+    .site-header-search:focus-within { border-color: var(--color-primary); }
+    .site-header-search-cat {
+      height: 40px; padding: 0 var(--space-3);
+      border: none; border-right: 1px solid var(--border);
+      background: var(--bg-subtle); font-family: var(--font-body);
+      font-size: var(--text-spec); color: var(--text-secondary);
+      cursor: pointer; outline: none; flex-shrink: 0;
+    }
+    .site-header-search-input {
+      flex: 1; height: 40px; padding: 0 var(--space-3);
+      border: none; background: transparent; outline: none;
+      font-family: var(--font-body); font-size: var(--text-cta);
+      color: var(--text-primary);
+    }
+    .site-header-search-input::placeholder { color: var(--text-muted); }
+    .site-header-search-btn {
+      width: 44px; height: 40px; border: none;
+      background: var(--color-primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .site-header-search-btn:hover { background: var(--color-primary-700); }
+    .site-header-actions {
+      display: flex; align-items: center; gap: var(--space-3);
+      margin-left: auto; flex-shrink: 0;
+    }
+    .site-header-icon-btn {
+      position: relative; width: 38px; height: 38px;
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: var(--bg-card); color: var(--text-secondary);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+    .site-header-icon-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .site-header-icon-btn .badge {
+      position: absolute; top: 4px; right: 4px;
+      min-width: 16px; height: 16px; padding: 0 4px;
+      border-radius: var(--radius-full);
+      background: var(--color-error); color: #fff;
+      font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1; border: 1.5px solid var(--bg-card);
+    }
+    .site-header-avatar {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      cursor: pointer; transition: border-color var(--transition-fast);
+    }
+    .site-header-avatar:hover { border-color: var(--color-primary); }
+    .site-header-avatar-circle {
+      width: 26px; height: 26px; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-700));
+      color: #fff; font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .site-header-avatar-name {
+      font-size: var(--text-spec); font-weight: 500; color: var(--text-primary);
+    }
+    .btn-post-req {
+      height: 36px; padding: 0 var(--space-4);
+      background: var(--color-primary); color: #fff;
+      border: none; border-radius: var(--radius-md);
+      font-size: var(--text-spec); font-weight: 600;
+      white-space: nowrap;
+      transition: background var(--transition-fast);
+    }
+    .btn-post-req:hover { background: var(--color-primary-700); }
+
+    /* ══════════════════════════════════════════════════
+       BREADCRUMB
+    ══════════════════════════════════════════════════ */
+    .breadcrumb {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumb-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: var(--space-3) var(--space-8);
+      display: flex; align-items: center; flex-wrap: wrap; gap: 2px;
+      font-size: var(--text-spec); color: var(--text-muted);
+    }
+    .breadcrumb-link { color: var(--text-secondary); transition: color var(--transition-fast); }
+    .breadcrumb-link:hover { color: var(--color-primary); text-decoration: underline; }
+    .breadcrumb-sep { margin: 0 4px; color: var(--text-muted); }
+    .breadcrumb-current { color: var(--text-primary); font-weight: 500; }
+
+    /* ══════════════════════════════════════════════════
+       PDP HERO
+    ══════════════════════════════════════════════════ */
+    .pdp-container {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+    .pdp-hero {
+      display: flex; gap: var(--space-10);
+      padding: var(--space-8) 0 var(--space-6);
+      align-items: flex-start;
+    }
+
+    /* ── Gallery ── */
+    .pdp-gallery { flex: 0 0 52%; }
+    .pdp-main-img {
+      position: relative;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      height: 420px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pdp-main-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .pdp-main-img:hover img { transform: scale(1.03); }
+    .pdp-img-badge {
+      position: absolute; top: var(--space-4); left: var(--space-4);
+      background: var(--color-primary); color: #fff;
+      font-size: var(--text-spec); font-weight: 600;
+      padding: 4px var(--space-3); border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+    }
+    .pdp-img-share {
+      position: absolute; top: var(--space-4); right: var(--space-4);
+      width: 34px; height: 34px; border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.9); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .pdp-img-share:hover { background: #fff; color: var(--color-primary); }
+
+    .pdp-thumbnails {
+      display: flex; gap: var(--space-3); margin-top: var(--space-3);
+    }
+    .pdp-thumb {
+      flex: 1; height: 88px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden; cursor: pointer;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      background: var(--bg-subtle);
+    }
+    .pdp-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .pdp-thumb:hover { border-color: var(--color-primary-300); }
+    .pdp-thumb.active {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46,49,146,0.12);
+    }
+
+    /* ── Info Panel ── */
+    .pdp-info { flex: 1; min-width: 0; }
+
+    .pdp-badges-row {
+      display: flex; align-items: center; gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    .pdp-badge-verified {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px var(--space-3); border-radius: var(--radius-full);
+      background: #dbeafe; color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      font-size: var(--text-spec); font-weight: 600; line-height: 1;
+    }
+    [data-theme="dark"] .pdp-badge-verified { background: rgba(219,234,254,0.12); color: #93c5fd; border-color: rgba(219,234,254,0.2); }
+    .pdp-badge-trustseal {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px var(--space-3); border-radius: var(--radius-full);
+      background: #fef3c7; color: #92400e;
+      border: 1px solid #fde68a;
+      font-size: var(--text-spec); font-weight: 600; line-height: 1;
+    }
+    [data-theme="dark"] .pdp-badge-trustseal { background: rgba(254,243,199,0.12); color: #fcd34d; border-color: rgba(254,243,199,0.2); }
+
+    .pdp-title {
+      font-size: var(--text-product-name); font-weight: 700;
+      color: var(--text-primary); line-height: 1.25;
+      margin-bottom: var(--space-2);
+    }
+    .pdp-subtitle {
+      font-size: var(--text-cta); color: var(--text-secondary);
+      margin-bottom: var(--space-3);
+    }
+
+    .pdp-rating-row {
+      display: flex; align-items: center; gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+    .pdp-stars { color: #f59e0b; font-size: var(--text-cta); letter-spacing: 1px; }
+    .pdp-rating-val { font-size: var(--text-cta); font-weight: 700; color: var(--text-primary); }
+    .pdp-review-count { font-size: var(--text-spec); color: var(--text-muted); }
+    .pdp-rating-sep { color: var(--border); }
+    .pdp-sold-count { font-size: var(--text-spec); color: var(--text-muted); }
+
+    /* Price block */
+    .pdp-price-block {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4) var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+    .pdp-price-label {
+      font-size: var(--text-spec); color: var(--text-muted);
+      margin-bottom: var(--space-1); text-transform: uppercase;
+      letter-spacing: 0.06em; font-weight: 600;
+    }
+    .pdp-price-main {
+      font-size: var(--text-product-name); font-weight: 700;
+      color: var(--color-primary); line-height: 1.1;
+      margin-bottom: var(--space-1);
+    }
+    .pdp-price-unit {
+      font-size: var(--text-spec); color: var(--text-muted); font-weight: 400;
+    }
+    .pdp-price-gst {
+      font-size: var(--text-spec); color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .pdp-price-table {
+      width: 100%; border-collapse: collapse;
+      font-size: var(--text-spec); margin-top: var(--space-3);
+    }
+    .pdp-price-table thead tr {
+      background: var(--color-primary-50);
+      border-bottom: 1px solid var(--color-primary-100);
+    }
+    [data-theme="dark"] .pdp-price-table thead tr { background: rgba(46,49,146,0.15); }
+    .pdp-price-table th {
+      padding: var(--space-2) var(--space-3);
+      text-align: left; font-size: var(--text-caption);
+      font-weight: 600; color: var(--color-primary);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .pdp-price-table td {
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--divider);
+      color: var(--text-secondary);
+    }
+    .pdp-price-table tr:last-child td { border-bottom: none; }
+    .pdp-price-table tr:hover td { background: var(--bg-card); }
+    .pdp-price-table .price-val {
+      font-weight: 600; color: var(--text-primary);
+    }
+
+    /* Location & stock */
+    .pdp-meta-row {
+      display: flex; align-items: center; gap: var(--space-4);
+      font-size: var(--text-spec); color: var(--text-secondary);
+      margin-bottom: var(--space-4);
+    }
+    .pdp-meta-item { display: flex; align-items: center; gap: 5px; }
+    .pdp-stock-dot {
+      width: 8px; height: 8px; border-radius: var(--radius-full);
+      background: var(--color-success); flex-shrink: 0;
+    }
+
+    /* Action buttons */
+    .pdp-actions {
+      display: flex; gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .pdp-btn-primary {
+      flex: 1; height: 48px;
+      background: var(--color-primary); color: #fff;
+      border: none; border-radius: var(--radius-lg);
+      font-size: var(--text-cta); font-weight: 600;
+      font-family: var(--font-body);
+      display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+      transition: background var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+    .pdp-btn-primary:hover { background: var(--color-primary-700); box-shadow: var(--shadow-md); }
+    .pdp-btn-secondary {
+      flex: 1; height: 48px;
+      background: transparent; color: var(--color-primary);
+      border: 2px solid var(--color-primary); border-radius: var(--radius-lg);
+      font-size: var(--text-cta); font-weight: 600;
+      font-family: var(--font-body);
+      display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+      transition: background var(--transition-fast);
+    }
+    .pdp-btn-secondary:hover { background: var(--color-primary-50); }
+    .pdp-btn-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--bg-card); color: var(--text-secondary);
+      border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+    .pdp-btn-icon:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* Quick specs */
+    .pdp-quick-specs {
+      display: flex; flex-wrap: wrap; gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .pdp-spec-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: var(--space-1) var(--space-3);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: var(--text-spec); color: var(--text-secondary);
+    }
+    .pdp-spec-pill strong { color: var(--text-primary); font-weight: 600; }
+
+    .pdp-enquiry-note {
+      font-size: var(--text-spec); color: var(--text-muted);
+      text-align: center; padding-top: var(--space-2);
+    }
+    .pdp-enquiry-note a { color: var(--color-primary); text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════
+       SELLER STRIP
+    ══════════════════════════════════════════════════ */
+    .seller-strip {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .seller-strip-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: var(--space-4) var(--space-8);
+      display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
+    }
+    .seller-avatar {
+      width: 48px; height: 48px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-800));
+      color: #fff; font-size: var(--text-cta); font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .seller-info { flex: 1; min-width: 160px; }
+    .seller-name {
+      font-size: var(--text-cta); font-weight: 700; color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    .seller-location {
+      font-size: var(--text-spec); color: var(--text-muted);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .seller-badges {
+      display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center;
+    }
+    .seller-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px var(--space-2); border-radius: var(--radius-full);
+      font-size: var(--text-caption); font-weight: 600; line-height: 1;
+    }
+    .seller-badge-gst { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .seller-badge-member { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); }
+    [data-theme="dark"] .seller-badge-gst { background: rgba(209,250,229,0.12); color: #6ee7b7; border-color: rgba(209,250,229,0.2); }
+    .seller-stat {
+      text-align: center; padding: 0 var(--space-3);
+      border-left: 1px solid var(--border);
+    }
+    .seller-stat-val { font-size: var(--text-cta); font-weight: 700; color: var(--text-primary); }
+    .seller-stat-label { font-size: var(--text-caption); color: var(--text-muted); }
+    .seller-strip-link {
+      margin-left: auto; font-size: var(--text-spec); font-weight: 600;
+      color: var(--color-primary); white-space: nowrap;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .seller-strip-link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════
+       TABS
+    ══════════════════════════════════════════════════ */
+    .pdp-tabs-section {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+    .pdp-tab-bar {
+      display: flex; border-bottom: 1px solid var(--border);
+      gap: var(--space-1); overflow-x: auto;
+      scrollbar-width: none; margin-bottom: var(--space-6);
+    }
+    .pdp-tab-bar::-webkit-scrollbar { display: none; }
+    .pdp-tab-bar .tab {
+      padding: var(--space-4) var(--space-5);
+      background: transparent; border: none;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      font-family: var(--font-body); font-size: var(--text-cta);
+      font-weight: 500; color: var(--text-secondary);
+      cursor: pointer; white-space: nowrap;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+    .pdp-tab-bar .tab:hover { color: var(--text-primary); }
+    .pdp-tab-bar .tab.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+    .pdp-tab-content { display: none; padding-bottom: var(--space-8); }
+    .pdp-tab-content.active { display: block; }
+
+    /* ── Overview tab ── */
+    .overview-layout {
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: var(--space-8); align-items: flex-start;
+    }
+    .overview-desc {
+      font-size: var(--text-cta); color: var(--text-secondary);
+      line-height: 1.75; margin-bottom: var(--space-5);
+    }
+    .overview-heading {
+      font-size: var(--text-heading); font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-3);
+    }
+    .feature-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-3); margin-bottom: var(--space-6);
+    }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-3); background: var(--bg-subtle);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+    }
+    .feature-icon {
+      width: 32px; height: 32px; border-radius: var(--radius-md);
+      background: var(--color-primary-50); color: var(--color-primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    [data-theme="dark"] .feature-icon { background: rgba(46,49,146,0.2); }
+    .feature-text-title { font-size: var(--text-spec); font-weight: 600; color: var(--text-primary); }
+    .feature-text-desc { font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px; }
+
+    .certifications-row {
+      display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-4);
+    }
+    .cert-chip {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-spec); color: var(--text-secondary);
+    }
+
+    /* Quick spec card (right rail) */
+    .quick-spec-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: var(--space-5);
+      position: sticky; top: 140px;
+    }
+    .quick-spec-title {
+      font-size: var(--text-body-small); font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3); border-bottom: 1px solid var(--border);
+    }
+    .quick-spec-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: var(--space-2) 0; border-bottom: 1px solid var(--divider);
+      font-size: var(--text-spec);
+    }
+    .quick-spec-row:last-child { border-bottom: none; }
+    .quick-spec-key { color: var(--text-muted); }
+    .quick-spec-val { font-weight: 600; color: var(--text-primary); text-align: right; }
+
+    /* ── Specs tab ── */
+    .specs-table {
+      width: 100%; border-collapse: collapse;
+      font-size: var(--text-cta); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); overflow: hidden;
+    }
+    .specs-table thead tr {
+      background: var(--color-primary-50);
+    }
+    [data-theme="dark"] .specs-table thead tr { background: rgba(46,49,146,0.15); }
+    .specs-table th {
+      padding: var(--space-3) var(--space-5);
+      text-align: left; font-size: var(--text-spec); font-weight: 700;
+      color: var(--color-primary); text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .specs-table td {
+      padding: var(--space-3) var(--space-5);
+      border-bottom: 1px solid var(--divider);
+      vertical-align: middle; color: var(--text-secondary);
+    }
+    .specs-table td:first-child {
+      font-weight: 600; color: var(--text-primary);
+      background: var(--bg-subtle); width: 35%;
+    }
+    .specs-table tr:last-child td { border-bottom: none; }
+    .specs-table tr:hover td { background: var(--bg-subtle); }
+    .specs-table tr:hover td:first-child { background: var(--color-primary-50); }
+    [data-theme="dark"] .specs-table tr:hover td:first-child { background: rgba(46,49,146,0.1); }
+    .specs-section-row td {
+      background: var(--color-primary-50) !important;
+      font-size: var(--text-spec); font-weight: 700;
+      color: var(--color-primary) !important; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: var(--space-2) var(--space-5);
+    }
+    [data-theme="dark"] .specs-section-row td { background: rgba(46,49,146,0.2) !important; }
+
+    /* ── Packaging & Delivery tab ── */
+    .delivery-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4); margin-bottom: var(--space-6);
+    }
+    .delivery-card {
+      padding: var(--space-5); background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius-xl);
+      text-align: center;
+    }
+    .delivery-card-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-xl);
+      background: var(--color-primary-50); color: var(--color-primary);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto var(--space-3);
+    }
+    [data-theme="dark"] .delivery-card-icon { background: rgba(46,49,146,0.2); }
+    .delivery-card-title { font-size: var(--text-spec); font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .delivery-card-val { font-size: var(--text-cta); font-weight: 600; color: var(--color-primary); margin-bottom: 4px; }
+    .delivery-card-desc { font-size: var(--text-spec); color: var(--text-muted); }
+
+    /* ── Reviews tab ── */
+    .reviews-layout {
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: var(--space-8); align-items: flex-start;
+    }
+    .reviews-score-block { text-align: center; padding: var(--space-5); background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-xl); }
+    .reviews-score-big { font-size: 48px; font-weight: 700; color: var(--text-primary); line-height: 1; }
+    .reviews-score-stars { color: #f59e0b; font-size: var(--text-heading); margin: var(--space-2) 0; }
+    .reviews-score-count { font-size: var(--text-spec); color: var(--text-muted); }
+    .reviews-bars { margin-top: var(--space-4); }
+    .reviews-bar-row { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); font-size: var(--text-spec); }
+    .reviews-bar-label { width: 32px; text-align: right; color: var(--text-muted); }
+    .reviews-bar-track { flex: 1; height: 6px; background: var(--bg-card); border-radius: var(--radius-full); border: 1px solid var(--border); overflow: hidden; }
+    .reviews-bar-fill { height: 100%; background: #f59e0b; border-radius: var(--radius-full); }
+
+    .review-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+    .review-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--space-3); }
+    .review-stars { color: #f59e0b; font-size: var(--text-cta); }
+    .review-date { font-size: var(--text-spec); color: var(--text-muted); }
+    .review-title { font-size: var(--text-cta); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
+    .review-body { font-size: var(--text-body-small); color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-3); }
+    .review-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-spec); color: var(--text-muted); }
+    .review-meta-sep { color: var(--border); }
+    .review-verified { color: var(--color-success); font-weight: 600; }
+
+    /* ══════════════════════════════════════════════════
+       SECTION HEADINGS (shared)
+    ══════════════════════════════════════════════════ */
+    .section-block {
+      max-width: 1280px; margin: 0 auto;
+      padding: var(--space-8) var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+    .section-heading {
+      font-size: var(--text-heading-featured); font-weight: 700;
+      color: var(--text-primary); margin-bottom: var(--space-6);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .section-heading-link {
+      font-size: var(--text-spec); font-weight: 600;
+      color: var(--color-primary); cursor: pointer;
+    }
+    .section-heading-link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════
+       PRODUCT CARDS (related / more from seller)
+    ══════════════════════════════════════════════════ */
+    .product-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+    .prod-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); overflow: hidden;
+      transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+      cursor: pointer;
+    }
+    .prod-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .prod-card-img {
+      height: 160px; overflow: hidden;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+    .prod-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .prod-card:hover .prod-card-img img { transform: scale(1.05); }
+    .prod-card-body { padding: var(--space-4); }
+    .prod-card-brand {
+      font-size: var(--text-caption); font-weight: 600;
+      color: var(--color-primary); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: var(--space-1);
+    }
+    .prod-card-name {
+      font-size: var(--text-body-small); font-weight: 600;
+      color: var(--text-primary); line-height: 1.4;
+      margin-bottom: var(--space-2);
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .prod-card-kva {
+      font-size: var(--text-spec); color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .prod-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: var(--space-3); border-top: 1px solid var(--divider);
+      gap: var(--space-2);
+    }
+    .prod-card-price { font-size: var(--text-spec); font-weight: 700; color: var(--text-primary); }
+    .prod-card-price span { font-size: var(--text-caption); font-weight: 400; color: var(--text-muted); }
+    .prod-card-cta {
+      height: 30px; padding: 0 var(--space-3);
+      background: var(--color-primary); color: #fff;
+      border: none; border-radius: var(--radius-md);
+      font-size: var(--text-caption); font-weight: 600;
+      font-family: var(--font-body); white-space: nowrap;
+      transition: background var(--transition-fast);
+    }
+    .prod-card-cta:hover { background: var(--color-primary-700); }
+
+    /* ══════════════════════════════════════════════════
+       MOBILE STICKY CTA
+    ══════════════════════════════════════════════════ */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--bg-card); border-top: 1px solid var(--border);
+      padding: var(--space-3) var(--space-4);
+      gap: var(--space-3);
+      z-index: var(--z-sticky);
+    }
+
+    /* ══════════════════════════════════════════════════
+       MOBILE OVERRIDES (.surface-mobile)
+    ══════════════════════════════════════════════════ */
+    .surface-mobile .site-header,
+    .surface-mobile .breadcrumb { display: none; }
+
+    .surface-mobile .mobile-header { display: flex !important; }
+
+    .surface-mobile .pdp-hero {
+      flex-direction: column; gap: var(--space-4);
+      padding: var(--space-4) 0;
+    }
+    .surface-mobile .pdp-gallery { flex: none; }
+    .surface-mobile .pdp-main-img { height: 300px; border-radius: var(--radius-xl); }
+    .surface-mobile .pdp-container,
+    .surface-mobile .pdp-tabs-section,
+    .surface-mobile .section-block { padding-left: var(--space-4); padding-right: var(--space-4); }
+    .surface-mobile .seller-strip-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+    .surface-mobile .breadcrumb-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+
+    .surface-mobile .overview-layout { grid-template-columns: 1fr; }
+    .surface-mobile .feature-grid { grid-template-columns: 1fr; }
+    .surface-mobile .delivery-grid { grid-template-columns: 1fr 1fr; }
+    .surface-mobile .reviews-layout { grid-template-columns: 1fr; }
+
+    .surface-mobile .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .surface-mobile .section-heading { font-size: var(--text-heading); }
+    .surface-mobile .seller-stat { display: none; }
+
+    .surface-mobile .sticky-cta { display: flex; }
+    .surface-mobile .pdp-actions .pdp-btn-icon { display: none; }
+
+    .surface-mobile .pdp-price-table { display: none; }
+    .surface-mobile .pdp-price-block { padding: var(--space-3) var(--space-4); }
+
+    .surface-mobile .quick-spec-card { display: none; }
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     DS NAV
+════════════════════════════════════════════════════════ -->
+<nav class="ds-nav">
+  <div class="ds-nav-inner">
+    <a href="../index.html" class="ds-nav-logo">
+      <div class="ds-nav-logo-icon">TN</div>
+      Design System
+    </a>
+    <div class="ds-nav-links">
+      <a href="../components/foundations.html" class="ds-nav-link" data-page="foundations">Foundations</a>
+      <a href="../components/atoms.html" class="ds-nav-link" data-page="atoms">Atoms</a>
+      <a href="../components/molecules.html" class="ds-nav-link" data-page="molecules">Molecules</a>
+      <a href="../components/organisms.html" class="ds-nav-link" data-page="organisms">Organisms</a>
+      <span class="ds-nav-divider"></span>
+      <a href="homepage.html" class="ds-nav-link" data-page="homepage">Homepage</a>
+      <a href="category.html" class="ds-nav-link" data-page="category">Category</a>
+      <a href="pdp.html" class="ds-nav-link" data-page="pdp">PDP</a>
+      <a href="seller-profile.html" class="ds-nav-link" data-page="seller-profile">Seller Profile</a>
+      <a href="generator-pdp.html" class="ds-nav-link active" data-page="generator-pdp">Generator PDP</a>
+    </div>
+    <div class="ds-nav-controls">
+      <button class="ds-mobile-toggle" id="ds-mobile-toggle">Mobile View</button>
+      <button class="ds-theme-toggle" id="ds-theme-toggle"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE CONTAINER
+════════════════════════════════════════════════════════ -->
+<div class="ds-page" id="ds-page-container">
+  <div id="phone-frame" class="phone-frame"></div>
+  <div class="ds-mobile-content">
+
+    <!-- Mobile Header -->
+    <div class="mobile-header" style="display:none;">
+      <div style="background:var(--color-primary);height:56px;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;color:#fff;width:100%;">
+        <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:var(--text-heading);">←</button>
+        <span style="font-family:var(--font-body);font-weight:600;font-size:var(--text-cta);">Product Details</span>
+        <div style="display:flex;gap:var(--space-3);">
+          <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:var(--text-body-large);">♡</button>
+          <button style="background:none;border:none;color:#fff;cursor:pointer;font-size:var(--text-body-large);">⋮</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════
+         SITE HEADER
+    ════════════════════════ -->
+    <header class="site-header">
+      <a href="#" class="site-header-logo">
+        <div class="site-header-logo-mark">TN</div>
+        <span class="site-header-logo-name">TradeNest</span>
+      </a>
+      <div class="site-header-search">
+        <select class="site-header-search-cat" aria-label="Category">
+          <option>All Categories</option>
+          <option selected>Industrial Machinery</option>
+          <option>Electrical Equipment</option>
+          <option>Power Solutions</option>
+          <option>Construction</option>
+        </select>
+        <input class="site-header-search-input" type="text" placeholder="Search products, suppliers, categories..." value="Powerol Diesel Generator" />
+        <button class="site-header-search-btn" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+      <div class="site-header-actions">
+        <button class="site-header-icon-btn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">2</span>
+        </button>
+        <div class="site-header-avatar" role="button" aria-label="User menu">
+          <div class="site-header-avatar-circle">MV</div>
+          <span class="site-header-avatar-name">Mehul V.</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <button class="btn-post-req">Post Requirement</button>
+      </div>
+    </header>
+
+    <!-- ════════════════════════
+         BREADCRUMB
+    ════════════════════════ -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="#" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Industrial Machinery</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Power Equipment</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Diesel Generator Sets</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" class="breadcrumb-link">Sound Proof Generators</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Powerol Silent DG Set by Mahindra</span>
+      </div>
+    </nav>
+
+    <!-- ════════════════════════
+         PDP HERO
+    ════════════════════════ -->
+    <div class="pdp-container">
+      <div class="pdp-hero">
+
+        <!-- Gallery -->
+        <div class="pdp-gallery">
+          <div class="pdp-main-img" id="pdp-main-img">
+            <img src="../references/primary_prod.webp" id="pdp-hero-img" alt="Powerol Silent Diesel Generator Set by Mahindra DAZZLE" />
+            <span class="pdp-img-badge">Sound Proof</span>
+            <button class="pdp-img-share" aria-label="Share product">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+          </div>
+          <div class="pdp-thumbnails">
+            <div class="pdp-thumb active" onclick="setThumb(this, '../references/primary_prod.webp')">
+              <img src="../references/primary_prod.webp" alt="Front view" />
+            </div>
+            <div class="pdp-thumb" onclick="setThumb(this, '../references/primary_prod.webp')">
+              <img src="../references/primary_prod.webp" alt="Side view" style="object-position: right center;" />
+            </div>
+            <div class="pdp-thumb" onclick="setThumb(this, '../references/secondary_prod_1.webp')">
+              <img src="../references/secondary_prod_1.webp" alt="Control panel view" />
+            </div>
+            <div class="pdp-thumb" onclick="setThumb(this, '../references/secondary_prod_2.webp')">
+              <img src="../references/secondary_prod_2.webp" alt="Enclosure view" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="pdp-info">
+
+          <div class="pdp-badges-row">
+            <span class="pdp-badge-verified">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#1d4ed8" stroke-width="1.5"/><path d="M5 8L7 10L11 6" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified Supplier
+            </span>
+            <span class="pdp-badge-trustseal">★ TrustSeal Verified</span>
+          </div>
+
+          <h1 class="pdp-title">Powerol Silent Diesel Generator Set</h1>
+          <p class="pdp-subtitle">By Mahindra &nbsp;·&nbsp; Distributed by DAZZLE Power Solutions</p>
+
+          <div class="pdp-rating-row">
+            <span class="pdp-stars">★★★★★</span>
+            <span class="pdp-rating-val">4.6</span>
+            <span class="pdp-review-count">(84 reviews)</span>
+            <span class="pdp-rating-sep">|</span>
+            <span class="pdp-sold-count">340+ units sold</span>
+          </div>
+
+          <!-- Price block -->
+          <div class="pdp-price-block">
+            <div class="pdp-price-label">Price Range</div>
+            <div class="pdp-price-main">₹4,20,000 <span class="pdp-price-unit">– ₹32,00,000 / Set</span></div>
+            <div class="pdp-price-gst">+ 18% GST applicable &nbsp;·&nbsp; Ex-works Mumbai</div>
+            <table class="pdp-price-table">
+              <thead>
+                <tr>
+                  <th>kVA Rating</th>
+                  <th>Base Price</th>
+                  <th>With AMF Panel</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>62.5 kVA</td>
+                  <td class="price-val">₹4,20,000</td>
+                  <td class="price-val">₹4,85,000</td>
+                </tr>
+                <tr>
+                  <td>125 kVA</td>
+                  <td class="price-val">₹8,50,000</td>
+                  <td class="price-val">₹9,40,000</td>
+                </tr>
+                <tr>
+                  <td>250 kVA</td>
+                  <td class="price-val">₹16,50,000</td>
+                  <td class="price-val">₹17,80,000</td>
+                </tr>
+                <tr>
+                  <td>500 kVA</td>
+                  <td class="price-val">₹32,00,000</td>
+                  <td class="price-val">₹34,50,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Location & stock -->
+          <div class="pdp-meta-row">
+            <div class="pdp-meta-item">
+              <span class="pdp-stock-dot"></span>
+              <span style="color:var(--color-success);font-weight:600;">In Stock</span>
+            </div>
+            <div class="pdp-meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mumbai, Maharashtra
+            </div>
+            <div class="pdp-meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Delivery: 4–6 weeks
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="pdp-actions">
+            <button class="pdp-btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call Now
+            </button>
+            <button class="pdp-btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Get Best Price
+            </button>
+            <button class="pdp-btn-icon" aria-label="Save to wishlist">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+
+          <!-- Quick specs -->
+          <div class="pdp-quick-specs">
+            <span class="pdp-spec-pill">Brand: <strong>Powerol (Mahindra)</strong></span>
+            <span class="pdp-spec-pill">Capacity: <strong>62.5–500 kVA</strong></span>
+            <span class="pdp-spec-pill">Phase: <strong>3 Phase</strong></span>
+            <span class="pdp-spec-pill">RPM: <strong>1500</strong></span>
+            <span class="pdp-spec-pill">Fuel: <strong>Diesel</strong></span>
+            <span class="pdp-spec-pill">Cooling: <strong>Water Cooled</strong></span>
+          </div>
+
+          <p class="pdp-enquiry-note">
+            Need a custom kVA or rental? <a href="#">Submit an RFQ</a> and we'll respond within 4 hours.
+          </p>
+
+        </div><!-- /pdp-info -->
+      </div><!-- /pdp-hero -->
+    </div><!-- /pdp-container -->
+
+    <!-- ════════════════════════
+         SELLER STRIP
+    ════════════════════════ -->
+    <div class="seller-strip">
+      <div class="seller-strip-inner">
+        <div class="seller-avatar">DZ</div>
+        <div class="seller-info">
+          <div class="seller-name">DAZZLE Power Solutions</div>
+          <div class="seller-location">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Andheri East, Mumbai, Maharashtra
+          </div>
+        </div>
+        <div class="seller-badges">
+          <span class="seller-badge seller-badge-gst">✓ GST Verified</span>
+          <span class="seller-badge seller-badge-member">Member since 2014</span>
+        </div>
+        <div class="seller-stat">
+          <div class="seller-stat-val">340+</div>
+          <div class="seller-stat-label">Units Sold</div>
+        </div>
+        <div class="seller-stat">
+          <div class="seller-stat-val">4.6★</div>
+          <div class="seller-stat-label">Seller Rating</div>
+        </div>
+        <div class="seller-stat">
+          <div class="seller-stat-val">11 yrs</div>
+          <div class="seller-stat-label">On TradeNest</div>
+        </div>
+        <a href="#" class="seller-strip-link">
+          View Full Profile
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ════════════════════════
+         TABS
+    ════════════════════════ -->
+    <div class="pdp-tabs-section">
+      <div class="pdp-tab-bar tab-bar" id="pdp-tab-bar">
+        <button class="tab active" onclick="switchTab('tab-overview', this)">Overview</button>
+        <button class="tab" onclick="switchTab('tab-specs', this)">Specifications</button>
+        <button class="tab" onclick="switchTab('tab-delivery', this)">Packaging &amp; Delivery</button>
+        <button class="tab" onclick="switchTab('tab-reviews', this)">Reviews (84)</button>
+      </div>
+
+      <!-- ── Tab: Overview ── -->
+      <div class="pdp-tab-content active" id="tab-overview">
+        <div class="overview-layout">
+          <div>
+            <h3 class="overview-heading">About this Generator</h3>
+            <p class="overview-desc">
+              Powerol, India's most trusted diesel generator brand from the house of Mahindra, offers unmatched performance and reliability across its silent DG Set range. DAZZLE Power Solutions is an authorised Powerol dealer and service partner in Maharashtra, with over a decade of experience supplying critical power infrastructure to manufacturing plants, commercial complexes, hospitals, and data centres.
+            </p>
+            <p class="overview-desc">
+              The Powerol Silent Series features a heavy-duty acoustic enclosure that brings noise levels below 75 dB(A) at 1 metre — making it suitable for noise-sensitive environments. Equipped with Mahindra's fuel-efficient BSVI-compliant engines and an Auto Mains Failure (AMF) panel, these sets deliver seamless power transfer within seconds of a grid outage.
+            </p>
+
+            <h3 class="overview-heading">Key Features</h3>
+            <div class="feature-grid">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">AMF Panel Standard</div>
+                  <div class="feature-text-desc">Auto Mains Failure — sub-10s switchover</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">≤ 75 dB(A) Noise</div>
+                  <div class="feature-text-desc">Acoustic enclosure, rated at 1 metre distance</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">BIS &amp; ISO Certified</div>
+                  <div class="feature-text-desc">ISO 9001:2015, BIS Mark, BSVI Compliant</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">DEIF Digital Controller</div>
+                  <div class="feature-text-desc">Remote monitoring, fault logging, auto-restart</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">Brushless Alternator</div>
+                  <div class="feature-text-desc">Self-exciting, 4-pole, AVR regulated output</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+                </div>
+                <div>
+                  <div class="feature-text-title">24/7 Continuous Duty</div>
+                  <div class="feature-text-desc">Rated for standby &amp; prime power applications</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="overview-heading">Applications</h3>
+            <div class="certifications-row">
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                Manufacturing Plants
+              </span>
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                IT Parks &amp; Data Centres
+              </span>
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                Commercial Buildings
+              </span>
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Hospitals &amp; Healthcare
+              </span>
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Telecom Towers
+              </span>
+              <span class="cert-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Infrastructure Projects
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick spec card (right rail) -->
+          <div class="quick-spec-card">
+            <div class="quick-spec-title">Quick Specifications</div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Brand</span><span class="quick-spec-val">Powerol (Mahindra)</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Capacity</span><span class="quick-spec-val">62.5–500 kVA</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Voltage</span><span class="quick-spec-val">415V ± 5%</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Frequency</span><span class="quick-spec-val">50 Hz</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Phase</span><span class="quick-spec-val">3 Phase, 4 Wire</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Speed</span><span class="quick-spec-val">1500 RPM</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Power Factor</span><span class="quick-spec-val">0.8 pf (Lag)</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Fuel</span><span class="quick-spec-val">HSD Diesel</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Cooling</span><span class="quick-spec-val">Water Cooled</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Enclosure</span><span class="quick-spec-val">Acoustic / Silent</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Starting</span><span class="quick-spec-val">Electric (12V DC)</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Warranty</span><span class="quick-spec-val">1 Year / 1000 Hrs</span></div>
+            <div class="quick-spec-row"><span class="quick-spec-key">Origin</span><span class="quick-spec-val">India</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tab: Specifications ── -->
+      <div class="pdp-tab-content" id="tab-specs">
+        <table class="specs-table">
+          <thead>
+            <tr><th colspan="2">Technical Specifications — Powerol Silent DG Set</th></tr>
+          </thead>
+          <tbody>
+            <tr class="specs-section-row"><td colspan="2">Engine</td></tr>
+            <tr><td>Brand</td><td>Powerol (Mahindra)</td></tr>
+            <tr><td>Engine Model</td><td>DAZZLE Series (62.5–500 kVA)</td></tr>
+            <tr><td>Speed</td><td>1500 RPM (50 Hz synchronous)</td></tr>
+            <tr><td>Fuel Type</td><td>High Speed Diesel (HSD)</td></tr>
+            <tr><td>Cooling System</td><td>Water Cooled with Radiator</td></tr>
+            <tr><td>Governing</td><td>Electronic Governor (isochronous)</td></tr>
+            <tr><td>Air Filter</td><td>Dry Type, Cyclonic Pre-cleaner</td></tr>
+            <tr><td>Emission Standard</td><td>BSVI Compliant (CPCB II)</td></tr>
+
+            <tr class="specs-section-row"><td colspan="2">Alternator</td></tr>
+            <tr><td>Type</td><td>Brushless, Self-Exciting, 4-Pole, Revolving Field</td></tr>
+            <tr><td>Output Voltage</td><td>415V ± 5%, 3-Phase, 4-Wire</td></tr>
+            <tr><td>Frequency</td><td>50 Hz ± 1%</td></tr>
+            <tr><td>Power Factor</td><td>0.8 pf (Lagging)</td></tr>
+            <tr><td>AVR</td><td>Digital Automatic Voltage Regulator</td></tr>
+            <tr><td>Insulation Class</td><td>H Class, IP23</td></tr>
+
+            <tr class="specs-section-row"><td colspan="2">Control &amp; Enclosure</td></tr>
+            <tr><td>Control Panel</td><td>AMF Panel with DEIF Digital Controller</td></tr>
+            <tr><td>Starting System</td><td>Electric Start — 12V DC Battery</td></tr>
+            <tr><td>Enclosure Type</td><td>Acoustic / Sound Proof (Weatherproof)</td></tr>
+            <tr><td>Noise Level</td><td>≤ 75 dB(A) at 1 metre</td></tr>
+            <tr><td>Fuel Tank</td><td>100 L – 500 L (model dependent)</td></tr>
+            <tr><td>Run Time at 75% Load</td><td>8–20 hours (model dependent)</td></tr>
+
+            <tr class="specs-section-row"><td colspan="2">Compliance &amp; Warranty</td></tr>
+            <tr><td>Warranty</td><td>1 Year or 1000 Operating Hours (whichever is earlier)</td></tr>
+            <tr><td>Certifications</td><td>BIS Mark, ISO 9001:2015, CPCB II</td></tr>
+            <tr><td>Country of Origin</td><td>India</td></tr>
+            <tr><td>Dealer</td><td>DAZZLE Power Solutions — Authorised Mahindra Partner</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── Tab: Packaging & Delivery ── -->
+      <div class="pdp-tab-content" id="tab-delivery">
+        <div class="delivery-grid">
+          <div class="delivery-card">
+            <div class="delivery-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="delivery-card-title">Delivery Timeline</div>
+            <div class="delivery-card-val">4–6 Weeks</div>
+            <div class="delivery-card-desc">After order confirmation and advance payment</div>
+          </div>
+          <div class="delivery-card">
+            <div class="delivery-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="delivery-card-title">Delivery Area</div>
+            <div class="delivery-card-val">Pan India</div>
+            <div class="delivery-card-desc">Road freight — Mumbai to your site</div>
+          </div>
+          <div class="delivery-card">
+            <div class="delivery-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="delivery-card-title">Packaging</div>
+            <div class="delivery-card-val">Wooden Crating</div>
+            <div class="delivery-card-desc">Export-grade packing with moisture protection</div>
+          </div>
+        </div>
+        <table class="specs-table">
+          <thead><tr><th colspan="2">Packaging &amp; Logistics Details</th></tr></thead>
+          <tbody>
+            <tr><td>Packaging Type</td><td>Wooden crate with metal strapping</td></tr>
+            <tr><td>Min Order Quantity</td><td>1 Set</td></tr>
+            <tr><td>Payment Terms</td><td>50% advance, 50% before dispatch</td></tr>
+            <tr><td>Payment Methods</td><td>RTGS / NEFT / Cheque / LC</td></tr>
+            <tr><td>Supply Ability</td><td>5 Sets / month</td></tr>
+            <tr><td>Port of Dispatch</td><td>Mumbai, Maharashtra</td></tr>
+            <tr><td>Installation</td><td>Available (chargeable, within Maharashtra)</td></tr>
+            <tr><td>Annual Maintenance</td><td>AMC available — contact for pricing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── Tab: Reviews ── -->
+      <div class="pdp-tab-content" id="tab-reviews">
+        <div class="reviews-layout">
+          <div>
+            <div class="reviews-score-block">
+              <div class="reviews-score-big">4.6</div>
+              <div class="reviews-score-stars">★★★★★</div>
+              <div class="reviews-score-count">84 verified reviews</div>
+              <div class="reviews-bars">
+                <div class="reviews-bar-row">
+                  <span class="reviews-bar-label">5★</span>
+                  <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:68%"></div></div>
+                  <span style="font-size:var(--text-spec);color:var(--text-muted);width:28px;">57</span>
+                </div>
+                <div class="reviews-bar-row">
+                  <span class="reviews-bar-label">4★</span>
+                  <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:20%"></div></div>
+                  <span style="font-size:var(--text-spec);color:var(--text-muted);width:28px;">17</span>
+                </div>
+                <div class="reviews-bar-row">
+                  <span class="reviews-bar-label">3★</span>
+                  <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:8%;background:#d97706;"></div></div>
+                  <span style="font-size:var(--text-spec);color:var(--text-muted);width:28px;">7</span>
+                </div>
+                <div class="reviews-bar-row">
+                  <span class="reviews-bar-label">2★</span>
+                  <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:2%;background:#dc2626;"></div></div>
+                  <span style="font-size:var(--text-spec);color:var(--text-muted);width:28px;">2</span>
+                </div>
+                <div class="reviews-bar-row">
+                  <span class="reviews-bar-label">1★</span>
+                  <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:1%;background:#dc2626;"></div></div>
+                  <span style="font-size:var(--text-spec);color:var(--text-muted);width:28px;">1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-stars">★★★★★</div>
+                <span class="review-date">Feb 2025</span>
+              </div>
+              <div class="review-title">Flawless performance at our Pune manufacturing unit</div>
+              <div class="review-body">We installed two 250 kVA units from DAZZLE at our auto parts factory in Pune. Both have been running 24/7 for 8 months without a single issue. AMF switchover is under 8 seconds — our CNC lines don't even notice the changeover. Service team from DAZZLE is extremely responsive. Highly recommended for industrial use.</div>
+              <div class="review-meta">
+                <span class="review-verified">✓ Verified Purchase</span>
+                <span class="review-meta-sep">·</span>
+                <span>S. Sharma, Pune — Industrial Buyer</span>
+                <span class="review-meta-sep">·</span>
+                <span>250 kVA, 2 units</span>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-stars">★★★★★</div>
+                <span class="review-date">Jan 2025</span>
+              </div>
+              <div class="review-title">Reliable backup for our Navi Mumbai data centre</div>
+              <div class="review-body">Ordered a 500 kVA unit with full AMF panel and DEIF controller for our co-location data centre. Delivery was on time in 5 weeks. The DEIF panel gives us remote monitoring via Modbus — that was the key requirement. Noise levels are well within limits. Very satisfied with the product and DAZZLE's pre-sales support.</div>
+              <div class="review-meta">
+                <span class="review-verified">✓ Verified Purchase</span>
+                <span class="review-meta-sep">·</span>
+                <span>R. Kapoor, Navi Mumbai — IT Infrastructure</span>
+                <span class="review-meta-sep">·</span>
+                <span>500 kVA, 1 unit</span>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-stars">★★★★☆</div>
+                <span class="review-date">Dec 2024</span>
+              </div>
+              <div class="review-title">Good product, delivery took slightly longer than quoted</div>
+              <div class="review-body">125 kVA unit for our hospital in Nashik. Generator quality is excellent — Mahindra engine is rock solid. Minor issue: delivery was delayed by 10 days beyond the committed date due to monsoon transport issues. DAZZLE kept us informed throughout. After installation, the unit has been running perfectly for 4 months. Would buy again.</div>
+              <div class="review-meta">
+                <span class="review-verified">✓ Verified Purchase</span>
+                <span class="review-meta-sep">·</span>
+                <span>Dr. M. Verma, Nashik — Healthcare</span>
+                <span class="review-meta-sep">·</span>
+                <span>125 kVA, 1 unit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pdp-tabs-section -->
+
+    <!-- ════════════════════════
+         SIMILAR GENERATORS
+    ════════════════════════ -->
+    <div class="section-block">
+      <div class="section-heading">
+        Similar Generators
+        <span class="section-heading-link">View all ›</span>
+      </div>
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_1.webp" alt="Ashok Leyland Silent Generator" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">Ashok Leyland</div>
+            <div class="prod-card-name">AL Silent DG Set — Sound Proof Enclosure</div>
+            <div class="prod-card-kva">62.5 kVA – 320 kVA · 3 Phase · 1500 RPM</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹3,90,000 <span>onwards</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_2.webp" alt="Cummins Silent Generator" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">Cummins</div>
+            <div class="prod-card-name">Cummins Silent DG Set — C Series</div>
+            <div class="prod-card-kva">82.5 kVA – 500 kVA · 3 Phase · 1500 RPM</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹6,20,000 <span>onwards</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_3.webp" alt="KOEL Green Generator" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">Kirloskar (KOEL)</div>
+            <div class="prod-card-name">KOEL Green Silent Generator — CPCB II</div>
+            <div class="prod-card-kva">30 kVA – 400 kVA · 3 Phase · 1500 RPM</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹2,80,000 <span>onwards</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/primary_prod.webp" alt="Powerol Open Generator" style="object-position: center 30%;" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">Powerol (Mahindra)</div>
+            <div class="prod-card-name">Powerol Open Frame DG Set — Heavy Duty</div>
+            <div class="prod-card-kva">62.5 kVA – 500 kVA · 3 Phase · 1500 RPM</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹3,60,000 <span>onwards</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════
+         MORE FROM DAZZLE
+    ════════════════════════ -->
+    <div class="section-block" style="padding-top:0;">
+      <div class="section-heading">
+        More from DAZZLE Power Solutions
+        <a href="seller-profile.html" class="section-heading-link">View seller profile ›</a>
+      </div>
+      <div class="product-grid">
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_1.webp" alt="Generator AMC Service" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">DAZZLE Service</div>
+            <div class="prod-card-name">Annual Maintenance Contract — DG Sets</div>
+            <div class="prod-card-kva">All brands · Mumbai &amp; MMR region</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹18,000 <span>/year</span></div>
+              <button class="prod-card-cta">Enquire</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_3.webp" alt="Generator on Hire" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">DAZZLE Rentals</div>
+            <div class="prod-card-name">DG Set on Hire — Short &amp; Long Term</div>
+            <div class="prod-card-kva">62.5 kVA – 500 kVA · Daily / Monthly</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹1,800 <span>/day</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/secondary_prod_2.webp" alt="Automatic Transfer Switch" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">DAZZLE Electrical</div>
+            <div class="prod-card-name">Automatic Transfer Switch Panel — ATS</div>
+            <div class="prod-card-kva">100A – 2500A · 415V 3 Phase</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹24,000 <span>onwards</span></div>
+              <button class="prod-card-cta">Call Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-img">
+            <img src="../references/primary_prod.webp" alt="Load Bank Testing" style="object-position: left center;" />
+          </div>
+          <div class="prod-card-body">
+            <div class="prod-card-brand">DAZZLE Service</div>
+            <div class="prod-card-name">Load Bank Testing Service — On-site</div>
+            <div class="prod-card-kva">Up to 1000 kW · Resistive / Inductive</div>
+            <div class="prod-card-footer">
+              <div class="prod-card-price">₹8,500 <span>/test</span></div>
+              <button class="prod-card-cta">Enquire</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile sticky CTA -->
+    <div class="sticky-cta">
+      <button class="pdp-btn-primary" style="flex:1;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+      </button>
+      <button class="pdp-btn-secondary" style="flex:1;">Get Best Price</button>
+    </div>
+
+  </div><!-- /ds-mobile-content -->
+</div><!-- /ds-page -->
+
+<script src="../shared/nav.js"></script>
+<script>
+
+  /* ── Tab switching ── */
+  function switchTab(contentId, btn) {
+    document.querySelectorAll('.pdp-tab-bar .tab').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    document.querySelectorAll('.pdp-tab-content').forEach(function(c) {
+      c.classList.remove('active');
+    });
+    btn.classList.add('active');
+    document.getElementById(contentId).classList.add('active');
+  }
+
+  /* ── Thumbnail selection ── */
+  function setThumb(thumbEl, imgSrc) {
+    document.querySelectorAll('.pdp-thumb').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    thumbEl.classList.add('active');
+    document.getElementById('pdp-hero-img').src = imgSrc;
+  }
+
+</script>
+</body>
+</html>
