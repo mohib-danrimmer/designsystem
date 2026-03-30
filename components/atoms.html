@@ -256,6 +256,7 @@
       font-size: var(--text-spec);
       font-weight: 500;
       font-family: var(--font-body);
+      line-height: 1;
     }
 
     /* Status dot */
@@ -496,6 +497,60 @@
 
     .input-wrapper .input-field {
       padding-right: 40px;
+    }
+
+    /* Adornment group (prefix + input + suffix) */
+    .input-adorn-group {
+      display: flex;
+      align-items: center;
+      border-radius: var(--radius-md);
+    }
+
+    .input-adorn-prefix,
+    .input-adorn-suffix {
+      height: 40px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border);
+      font-size: var(--text-cta);
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      transition: border-color 150ms;
+      flex-shrink: 0;
+    }
+
+    .input-adorn-prefix {
+      border-right: none;
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    .input-adorn-suffix {
+      border-left: none;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: var(--text-body-small);
+    }
+
+    .input-adorn-group .input-field {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+
+    .input-adorn-group:focus-within .input-field {
+      border-color: var(--color-primary);
+      box-shadow: none;
+    }
+
+    .input-adorn-group:focus-within .input-adorn-prefix,
+    .input-adorn-group:focus-within .input-adorn-suffix {
+      border-color: var(--color-primary);
+    }
+
+    .input-adorn-group:focus-within {
+      box-shadow: 0 0 0 3px rgba(46, 49, 146, 0.12);
+      border-radius: var(--radius-md);
     }
 
     .input-icon-right {
@@ -1249,15 +1304,15 @@
            ==================================================== -->
       <section class="ds-section" id="buttons">
         <h2 class="ds-section-title">Buttons</h2>
-        <p class="ds-section-subtitle">Interactive controls for primary actions, secondary choices, ghost interactions, and destructive operations.</p>
+        <p class="ds-section-subtitle">Interactive controls for primary actions, secondary choices, tertiary interactions, and destructive operations.</p>
 
         <div class="ds-annotation">
           <span class="ds-annotation-label">Designer Note</span>
-          Buttons follow a 3-size &times; 4-variant matrix. All variants use <code>--color-primary</code>. Destructive uses <code>--color-error</code>. Loading state replaces label content — always pair with a spinner to communicate in-progress feedback.
+          Buttons follow a 3-size &times; 4-variant matrix. All variants use <code>--color-primary</code>. Destructive uses <code>--color-error</code>.
         </div>
 
         <div class="showcase-canvas">
-          <div class="showcase-canvas-label">3 Sizes &times; 4 Variants — Default / Hover / Disabled / Loading</div>
+          <div class="showcase-canvas-label">3 Sizes &times; 4 Variants — Default / Hover / Disabled</div>
           <div style="overflow-x: auto;">
             <table class="btn-matrix">
               <thead>
@@ -1265,7 +1320,7 @@
                   <th>Size</th>
                   <th>Primary</th>
                   <th>Secondary</th>
-                  <th>Ghost</th>
+                  <th>Tertiary</th>
                   <th>Destructive</th>
                 </tr>
               </thead>
@@ -1276,52 +1331,32 @@
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                        <button class="btn btn-sm btn-primary">Call Now</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-primary is-hover">Add to Cart</button>
+                        <button class="btn btn-sm btn-primary is-hover">Call Now</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-primary is-disabled" disabled>Add to Cart</button>
+                        <button class="btn btn-sm btn-primary is-disabled" disabled>Call Now</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-primary">
-                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Adding...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-secondary">Contact Seller</button>
+                        <button class="btn btn-sm btn-secondary">Get Best Price</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-secondary is-hover">Contact Seller</button>
+                        <button class="btn btn-sm btn-secondary is-hover">Get Best Price</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <button class="btn btn-sm btn-secondary is-disabled" disabled>Get Best Price</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-secondary">
-                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Sending...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
@@ -1339,16 +1374,6 @@
                         <button class="btn btn-sm btn-ghost is-disabled" disabled>Save</button>
                         <span class="btn-state-tag">Disabled</span>
                       </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-ghost">
-                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Saving...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
-                      </div>
                     </div>
                   </td>
                   <td>
@@ -1365,16 +1390,6 @@
                         <button class="btn btn-sm btn-destructive is-disabled" disabled>Remove</button>
                         <span class="btn-state-tag">Disabled</span>
                       </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-sm btn-destructive">
-                          <svg class="btn-spinner" width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Removing...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
-                      </div>
                     </div>
                   </td>
                 </tr>
@@ -1385,52 +1400,32 @@
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-primary">Add to Cart</button>
+                        <button class="btn btn-md btn-primary">Call Now</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-primary is-hover">Add to Cart</button>
+                        <button class="btn btn-md btn-primary is-hover">Call Now</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-primary is-disabled" disabled>Add to Cart</button>
+                        <button class="btn btn-md btn-primary is-disabled" disabled>Call Now</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-md btn-primary">
-                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Adding...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-secondary">Contact Seller</button>
+                        <button class="btn btn-md btn-secondary">Get Best Price</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-secondary is-hover">Contact Seller</button>
+                        <button class="btn btn-md btn-secondary is-hover">Get Best Price</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-md btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <button class="btn btn-md btn-secondary is-disabled" disabled>Get Best Price</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-md btn-secondary">
-                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Sending...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
@@ -1448,16 +1443,6 @@
                         <button class="btn btn-md btn-ghost is-disabled" disabled>Save</button>
                         <span class="btn-state-tag">Disabled</span>
                       </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-md btn-ghost">
-                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Saving...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
-                      </div>
                     </div>
                   </td>
                   <td>
@@ -1474,16 +1459,6 @@
                         <button class="btn btn-md btn-destructive is-disabled" disabled>Remove</button>
                         <span class="btn-state-tag">Disabled</span>
                       </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-md btn-destructive">
-                          <svg class="btn-spinner" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Removing...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
-                      </div>
                     </div>
                   </td>
                 </tr>
@@ -1494,52 +1469,32 @@
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-primary">Add to Cart</button>
+                        <button class="btn btn-lg btn-primary">Call Now</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-primary is-hover">Add to Cart</button>
+                        <button class="btn btn-lg btn-primary is-hover">Call Now</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-primary is-disabled" disabled>Add to Cart</button>
+                        <button class="btn btn-lg btn-primary is-disabled" disabled>Call Now</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-primary">
-                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Adding...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="btn-cell">
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-secondary">Contact Seller</button>
+                        <button class="btn btn-lg btn-secondary">Get Best Price</button>
                         <span class="btn-state-tag">Default</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-secondary is-hover">Contact Seller</button>
+                        <button class="btn btn-lg btn-secondary is-hover">Get Best Price</button>
                         <span class="btn-state-tag">Hover</span>
                       </div>
                       <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-secondary is-disabled" disabled>Contact Seller</button>
+                        <button class="btn btn-lg btn-secondary is-disabled" disabled>Get Best Price</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-secondary">
-                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Sending...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
@@ -1557,16 +1512,6 @@
                         <button class="btn btn-lg btn-ghost is-disabled" disabled>Save</button>
                         <span class="btn-state-tag">Disabled</span>
                       </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-ghost">
-                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Saving...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
-                      </div>
                     </div>
                   </td>
                   <td>
@@ -1582,16 +1527,6 @@
                       <div class="btn-cell-item">
                         <button class="btn btn-lg btn-destructive is-disabled" disabled>Remove</button>
                         <span class="btn-state-tag">Disabled</span>
-                      </div>
-                      <div class="btn-cell-item">
-                        <button class="btn btn-lg btn-destructive">
-                          <svg class="btn-spinner" width="16" height="16" viewBox="0 0 14 14" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="5" opacity="0.3"/>
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2" stroke-dasharray="8" stroke-dashoffset="0"/>
-                          </svg>
-                          Removing...
-                        </button>
-                        <span class="btn-state-tag">Loading</span>
                       </div>
                     </div>
                   </td>
@@ -1625,7 +1560,7 @@
 
         <div class="ds-annotation">
           <span class="ds-annotation-label">Designer Note</span>
-          Badges communicate supplier trust level and inventory status. Use pill shape (<code>--radius-full</code>) with matching background tint. Never use badges as interactive elements — use Tags for clickable/filterable contexts.
+          Badges always use pill shape (<code>--radius-full: 9999px</code>) to visually distinguish them from buttons and CTAs, which use square-derived radii (<code>--radius-sm</code> through <code>--radius-xl</code>). This hard contrast in shape ensures users never mistake a status label for a tappable action. Badges communicate supplier trust level and inventory status — they are read-only. Never use badges as interactive elements; use Tags for clickable/filterable contexts.
         </div>
 
         <div class="showcase-canvas">
@@ -1887,10 +1822,10 @@
               <div class="sub-label" style="margin-bottom: 10px;">Input with Adornments</div>
               <div class="input-group">
                 <label class="input-label">Price Per Unit (INR)</label>
-                <div style="display: flex; align-items: center; gap: 0;">
-                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-right: none; border-radius: var(--radius-md) 0 0 var(--radius-md); font-size: var(--text-cta); color: var(--text-muted); font-family: var(--font-body);">&#8377;</span>
-                  <input type="text" class="input-field" placeholder="0.00" style="border-radius: 0; border-left: none;">
-                  <span style="height: 40px; padding: 0 10px; display: flex; align-items: center; background: var(--bg-subtle); border: 1.5px solid var(--border); border-left: none; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: var(--text-body-small); color: var(--text-muted); font-family: var(--font-body);">per unit</span>
+                <div class="input-adorn-group">
+                  <span class="input-adorn-prefix">&#8377;</span>
+                  <input type="text" class="input-field" placeholder="0.00">
+                  <span class="input-adorn-suffix">per unit</span>
                 </div>
                 <span class="input-helper">Ex-GST price for one unit</span>
               </div>
@@ -2278,7 +2213,6 @@
             </div>
 
             <div class="tooltip-wrap">
-              <div class="tooltip-box tooltip-dark tooltip-top">Share Listing</div>
               <button style="width: 36px; height: 36px; border-radius: var(--radius-full); border: 1.5px solid var(--border); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
@@ -2288,7 +2222,6 @@
             </div>
 
             <div class="tooltip-wrap">
-              <div class="tooltip-box tooltip-dark tooltip-top">Download Catalogue</div>
               <button style="width: 36px; height: 36px; border-radius: var(--radius-full); border: 1.5px solid var(--border); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>

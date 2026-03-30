@@ -13,7 +13,7 @@ designsystem/
 │   ├── nav.css                 ← Sticky top nav bar styles
 │   └── nav.js                  ← Theme toggle + mobile toggle logic
 ├── components/
-│   ├── foundations.html        ← Colors, type, spacing, shadows, radius
+│   ├── foundations.html        ← Colors, type, spacing (incl. 8pt grid demo), shadows, radius (incl. concentric rule)
 │   ├── atoms.html              ← Buttons, badges, inputs, toggles, avatars
 │   ├── molecules.html          ← Product cards, seller cards, search, filters
 │   └── organisms.html          ← Site headers, footer, filter bar, hero
@@ -121,21 +121,40 @@ designsystem/
 ### Typography (Purpose-Based)
 - **Font:** Inter only, both `--font-heading` and `--font-body`
 - **Desktop (24px max to 11px min):** Purpose-driven scale ordered by priority
-- **Mobile (18px max to 12px min):** Constrained scale, auto-applied at ≤768px
+- **Mobile (18px max to 12px min):** Constrained scale, auto-applied at ≤768px via `@media (max-width: 768px)` in `tokens.css`
+- **Naming rule:** Style names reflect **purpose, not HTML tag**. The same `<h2>` tag may correctly use `--text-heading-featured` on a listing page and `--text-product-name` on a hero. Choose the token by what the text *means*, not by what element renders it.
+- **Token coverage:** Every `font-size` across all 10 HTML files uses a CSS variable — no hardcoded `px` values anywhere.
 
-| Purpose | Desktop | Mobile | Use Case |
-|---------|---------|--------|----------|
-| `--text-product-name` | 24px | 18px | **Product/Company Name** – highest priority, most prominent text |
-| `--text-heading-featured` | 22px | 16px | **Non Hero Heading** – major page/section headers |
+| Token | Desktop | Mobile | Purpose (highest → lowest priority) |
+|-------|---------|--------|--------------------------------------|
+| `--text-product-name` | 24px | 18px | **Product / Company Name** |
+| `--text-heading-featured` | 22px | 16px | **Non Hero Heading** |
 | `--text-heading` | 20px | 14px | **Product Name / Hero Price / Section Heading** |
-| `--text-body-large` | 16px | 13px | **Text / Primary** – body text, main content paragraphs |
-| `--text-cta` | 14px | 12px | **Primary Text (CTAs)** – button labels, call-to-action |
-| `--text-body-small` | 13px | 12px | **Subtext** – descriptions, secondary information |
+| `--text-body-large` | 16px | 13px | **Text / Primary** |
+| `--text-cta` | 14px | 12px | **Primary Text (CTAs etc.)** |
+| `--text-body-small` | 13px | 12px | **Subtext** |
 | `--text-spec` | 12px | 12px | **Listing Spec / Seller Location / Fact Sheet / Pop-up** |
-| `--text-caption` | 11px | 12px | **Caption** – "Last Updated", timestamps, small notes |
+| `--text-caption` | 11px | 12px | **Caption / Small Textual Elements** |
 
 ### Border Radius
 `--radius-xs: 2px` · `--radius-sm: 4px` · `--radius-md: 6px` · `--radius-lg: 8px` · `--radius-xl: 12px` · `--radius-2xl: 16px` · `--radius-full: 9999px`
+
+#### Concentric Radius Rule (box inside a box)
+`inner radius = outer radius − gap`
+
+When a rounded element sits inside another, the inner radius must equal the outer radius minus the distance between them. This keeps both arcs concentric (same centre point) so the corridor between them is a uniform band.
+
+| Outer | Gap | Inner | Token |
+|-------|-----|-------|-------|
+| `--radius-2xl` 16px | `--space-2` 8px | 8px | `--radius-lg` |
+| `--radius-2xl` 16px | `--space-3` 12px | 4px | `--radius-sm` |
+| `--radius-2xl` 16px | `--space-4` 16px | 0 | sharp |
+| `--radius-xl` 12px | `--space-2` 8px | 4px | `--radius-sm` |
+| `--radius-xl` 12px | `--space-3` 12px | 0 | sharp |
+| `--radius-lg` 8px | `--space-1` 4px | 4px | `--radius-sm` |
+| `--radius-lg` 8px | `--space-2` 8px | 0 | sharp |
+
+If `gap ≥ outer radius`, use sharp corners or `--radius-xs` (2px) as the minimum. Never apply a negative result.
 
 ### Shadows
 - `--shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)`
@@ -168,7 +187,7 @@ designsystem/
 - `block-element-modifier`
 - Sizes: `-sm`, `-md`, `-lg`
 - States: `.active`, `.disabled`, `.checked` (modifier classes, not data attributes)
-- Variants: `-primary`, `-secondary`, `-ghost`, `-destructive`
+- Variants: `-primary`, `-secondary`, `-ghost` (displayed as "Tertiary" in showcase), `-destructive`
 
 ### Core Layout Classes
 ```css
@@ -211,11 +230,14 @@ designsystem/
 
 ### Buttons
 ```html
-<button class="btn btn-primary btn-md">Label</button>
-<button class="btn btn-secondary btn-sm">Label</button>
-<button class="btn btn-ghost btn-lg">Label</button>
+<button class="btn btn-primary btn-md">Call Now</button>
+<button class="btn btn-secondary btn-sm">Get Best Price</button>
+<button class="btn btn-ghost btn-lg">Save</button>
 <button class="btn btn-destructive btn-md">Delete</button>
 ```
+- Button matrix in atoms.html: **3 Sizes × 4 Variants — Default / Hover / Disabled** (no Loading state)
+- The third variant is displayed as **Tertiary** in the showcase column header, but the CSS class remains `btn-ghost`
+- Standard CTA labels: Primary → **Call Now**, Secondary → **Get Best Price**
 
 ### Badges
 ```html
@@ -226,6 +248,9 @@ designsystem/
 <span class="badge badge-new">New</span>
 <span class="badge badge-featured">Featured</span>
 ```
+- `.badge` always uses `--radius-full` (9999px) — this is intentional and must never be changed to a square-derived radius
+- Pill shape is the hard visual rule that differentiates badges (read-only status) from buttons/CTAs (interactive)
+- `.badge` includes `line-height: 1` for consistent vertical text centering
 
 ### Avatars
 ```html
@@ -253,10 +278,40 @@ designsystem/
     <div class="product-card-price">₹2,450 <span class="product-card-unit">/unit</span></div>
   </div>
   <div class="product-card-atc">
-    <button class="btn btn-primary btn-sm">Add to Cart</button>
+    <button class="btn btn-primary btn-sm">Call Now</button>
   </div>
 </div>
 ```
+
+### Input with Adornments (prefix + suffix)
+Use `.input-adorn-group` wrapper with `.input-adorn-prefix` and `.input-adorn-suffix` spans — never inline border styles on adornment elements. The group uses `:focus-within` to apply a uniform focus ring across all three parts.
+```html
+<div class="input-adorn-group">
+  <span class="input-adorn-prefix">&#8377;</span>
+  <input type="text" class="input-field" placeholder="0.00">
+  <span class="input-adorn-suffix">per unit</span>
+</div>
+```
+- `.input-adorn-group:focus-within` applies `box-shadow` to the whole group and `border-color: var(--color-primary)` to prefix, input, and suffix uniformly
+- `.input-adorn-group .input-field` suppresses its own `box-shadow` on focus (the group handles it)
+
+### Tooltips (In-Context Showcase Rule)
+In the "In Context — Icon Buttons with Tooltips" showcase, only **one** tooltip should be visible at a time. Having multiple `tooltip-top` tooltips visible simultaneously causes overlap. Remove `tooltip-box` from secondary and tertiary icon buttons in the group.
+
+## Design Guidelines (documented in foundations.html)
+
+### Spacing in Practice — 8pt Grid
+Every `padding`, `gap`, and `margin` value must use a `--space-*` token. Image heights should be multiples of 8px. Two spacing densities are defined for product cards:
+
+| Density | Padding | Internal gaps | Image height | Use when |
+|---------|---------|--------------|--------------|----------|
+| **Compact** | `--space-3` (12px) | `--space-2` (8px) between sections, `--space-3` before buttons | 128px (16 × 8pt) | Listing grids, category pages |
+| **Comfortable** | `--space-5` (20px) | `--space-3` (12px) between sections, `--space-4` before buttons | 160px (20 × 8pt) | Featured placements, detail views |
+
+Visual convention in foundations.html: **indigo strips** = padding zones, **amber strips** = gap zones.
+
+### Concentric Border Radius
+See Border Radius token section above. The rule is: `inner radius = outer radius − gap`. Always pick the nearest token; use `--radius-xs` (2px) as the minimum if the calculation goes to 0 or negative. Documented as Wrong vs Right comparison + three-level product card example in foundations.html.
 
 ## JavaScript (nav.js)
 
@@ -275,6 +330,8 @@ Five functions, IIFE pattern:
 - **No build step** — files are opened directly in browser
 - **Inter only** — DM Sans was removed; do not add other fonts
 - **No MOQ** — "Minimum Order Quantity" was removed sitewide; do not re-add
+- **No loading states** — Loading state was removed from the button matrix; do not re-add spinner/loading variants to the Buttons showcase
+- **No inline adornment borders** — Input prefix/suffix elements must use `.input-adorn-prefix` / `.input-adorn-suffix` classes, not inline border styles
 - **Inline styles** — page-specific CSS goes in `<style>` in `<head>`, not separate files
 - **Shared CSS** — only `tokens.css` and `nav.css` are shared; do not create more shared files
 - **Tab classes** — use canonical `.tab` / `.tab-bar` atoms; do not create custom tab variants
