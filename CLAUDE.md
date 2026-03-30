@@ -236,6 +236,7 @@ If `gap ≥ outer radius`, use sharp corners or `--radius-xs` (2px) as the minim
 <button class="btn btn-destructive btn-md">Delete</button>
 ```
 - Button matrix in atoms.html: **3 Sizes × 4 Variants — Default / Hover / Disabled** (no Loading state)
+- Button heights: SM = 32px, **MD = 42px**, LG = 48px
 - The third variant is displayed as **Tertiary** in the showcase column header, but the CSS class remains `btn-ghost`
 - Standard CTA labels: Primary → **Call Now**, Secondary → **Get Best Price**
 

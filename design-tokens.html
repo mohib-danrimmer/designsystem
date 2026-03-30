@@ -513,7 +513,8 @@
       font-family:   var(--font-body);
       font-size:     var(--text-cta);
       font-weight:   var(--font-weight-cta);
-      padding:       var(--space-3) var(--space-6);
+      height:        42px;
+      padding:       0 var(--space-6);
       border-radius: var(--radius-lg);
       border:        none;
       cursor:        pointer;
@@ -1337,7 +1338,7 @@ border-radius: var(--radius-lg);</code>
                     <tr><td>font-family</td><td><code>--font-body</code></td></tr>
                     <tr><td>font-size</td><td><code>--text-cta</code></td></tr>
                     <tr><td>font-weight</td><td><code>--font-weight-cta</code></td></tr>
-                    <tr><td>padding block</td><td><code>--space-3</code></td></tr>
+                    <tr><td>height (MD)</td><td>42px</td></tr>
                     <tr><td>padding inline</td><td><code>--space-6</code></td></tr>
                     <tr><td>border-radius</td><td><code>--radius-lg</code></td></tr>
                     <tr><td>box-shadow</td><td><code>--shadow-sm</code></td></tr>
@@ -1356,7 +1357,8 @@ border-radius: var(--radius-lg);</code>
   font-family:   var(--font-body);
   font-size:     var(--text-cta);
   font-weight:   var(--font-weight-cta);
-  padding:       var(--space-3) var(--space-6);
+  height:        42px; /* MD size */
+  padding:       0 var(--space-6);
   border-radius: var(--radius-lg);
   border:        none;
   cursor:        pointer;
@@ -1596,6 +1598,728 @@ border-radius: var(--radius-lg);</code>
             </div>
           </div>
 
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 04 — Badge / Status Chip
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-badge">
+            <div class="ex-block-header">
+              <span class="ex-block-num">04</span>
+              <div>
+                <div class="ex-block-title">Badge / Status Chip</div>
+                <div class="ex-block-desc">Read-only status labels for supplier trust level and inventory state. Always pill-shaped (<code style="font-size:var(--text-spec);font-family:monospace;">--radius-full</code>) — this is the hard visual rule that differentiates badges from buttons. Never use badges as interactive elements.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-3);">
+                  <div class="demo-badge-row">
+                    <span class="demo-badge demo-badge-primary">Verified Supplier</span>
+                    <span class="demo-badge demo-badge-success">In Stock</span>
+                    <span class="demo-badge demo-badge-warning">Low Stock</span>
+                  </div>
+                  <div class="demo-badge-row">
+                    <span class="demo-badge demo-badge-error">Out of Stock</span>
+                    <span class="demo-badge demo-badge-neutral">Unverified</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>padding inline</td><td><code>--space-3</code></td></tr>
+                    <tr><td>line-height</td><td>1 (explicit reset)</td></tr>
+                    <tr><td>bg + color (primary)</td><td><code>--color-primary-50</code> <code>--color-primary-700</code></td></tr>
+                    <tr><td>bg + color (success)</td><td><code>--color-success-bg</code> <code>--color-success</code></td></tr>
+                    <tr><td>bg + color (warning)</td><td><code>--color-warning-bg</code> <code>--color-warning</code></td></tr>
+                    <tr><td>bg + color (error)</td><td><code>--color-error-bg</code> <code>--color-error</code></td></tr>
+                    <tr><td>bg + color (neutral)</td><td><code>--bg-subtle</code> <code>--text-muted</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.badge {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           4px;
+  padding:       2px var(--space-3);
+  border-radius: var(--radius-full); /* always pill — never change */
+  font-size:     var(--text-spec);
+  font-weight:   500;
+  font-family:   var(--font-body);
+  line-height:   1;
+}
+
+/* Semantic variants */
+.badge-in-stock   { background: var(--color-success-bg); color: var(--color-success); }
+.badge-low-stock  { background: var(--color-warning-bg); color: var(--color-warning); }
+.badge-out-of-stock { background: var(--color-error-bg); color: var(--color-error); }
+.badge-verified   { background: var(--color-primary-50); color: var(--color-primary-700); }</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 05 — Tag (Filter)
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-tag">
+            <div class="ex-block-header">
+              <span class="ex-block-num">05</span>
+              <div>
+                <div class="ex-block-title">Tag — Category &amp; Filter</div>
+                <div class="ex-block-desc">Clickable/removable labels used for category browsing and active filter selections. Unlike badges, tags are interactive. Active state swaps to primary tint. Removable tags include an ×  close affordance.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-3);align-items:flex-start;">
+                  <div class="demo-tag-row">
+                    <span class="demo-tag">Capacitors</span>
+                    <span class="demo-tag is-active">Resistors</span>
+                    <span class="demo-tag">Inductors</span>
+                  </div>
+                  <div class="demo-tag-row">
+                    <span class="demo-tag is-active">Mumbai <span class="demo-tag-remove">×</span></span>
+                    <span class="demo-tag is-active">In Stock <span class="demo-tag-remove">×</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>padding block</td><td><code>--space-1</code></td></tr>
+                    <tr><td>padding inline</td><td><code>--space-3</code></td></tr>
+                    <tr><td>gap (icon spacing)</td><td><code>--space-2</code></td></tr>
+                    <tr><td>border (default)</td><td><code>--border</code></td></tr>
+                    <tr><td>background (default)</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>color (default)</td><td><code>--text-secondary</code></td></tr>
+                    <tr><td>background (active)</td><td><code>--color-primary-50</code></td></tr>
+                    <tr><td>border + color (active)</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.tag {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  padding:       var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size:     var(--text-spec);
+  font-family:   var(--font-body);
+  border:        1px solid var(--border);
+  background:    var(--bg-card);
+  color:         var(--text-secondary);
+  cursor:        pointer;
+  transition:    background     var(--transition-fast),
+                 border-color   var(--transition-fast),
+                 color          var(--transition-fast);
+}
+.tag.active {
+  background:    var(--color-primary-50);
+  border-color:  var(--color-primary);
+  color:         var(--color-primary);
+}</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 06 — Input Field
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-input">
+            <div class="ex-block-header">
+              <span class="ex-block-num">06</span>
+              <div>
+                <div class="ex-block-title">Input Field</div>
+                <div class="ex-block-desc">Text inputs used across forms — search, RFQ, seller onboarding. Focus ring uses a 3px primary tint (<code style="font-size:var(--text-spec);font-family:monospace;">rgba(46,49,146,0.12)</code>). Error state swaps border and ring to <code style="font-size:var(--text-spec);font-family:monospace;">--color-error</code>. Click the field below to see the focus ring.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area">
+                  <div class="demo-input-stack">
+                    <div class="demo-field">
+                      <label class="demo-field-label">Company Name</label>
+                      <input class="demo-input" type="text" placeholder="e.g. Shree Electricals">
+                      <span class="demo-field-helper">As registered with GST</span>
+                    </div>
+                    <div class="demo-field">
+                      <label class="demo-field-label">GST Number</label>
+                      <input class="demo-input is-error" type="text" value="27AABCU9603R1ZX">
+                      <span class="demo-field-error">Invalid GST format</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>height</td><td>40px (5 × 8pt grid)</td></tr>
+                    <tr><td>padding inline</td><td><code>--space-3</code></td></tr>
+                    <tr><td>border</td><td><code>--border</code></td></tr>
+                    <tr><td>border-radius</td><td><code>--radius-md</code></td></tr>
+                    <tr><td>background</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-cta</code></td></tr>
+                    <tr><td>color</td><td><code>--text-primary</code></td></tr>
+                    <tr><td>placeholder color</td><td><code>--text-muted</code></td></tr>
+                    <tr><td>focus border</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>focus ring</td><td><code>rgba(46,49,146,0.12)</code></td></tr>
+                    <tr><td>error border + ring</td><td><code>--color-error</code></td></tr>
+                    <tr><td>label font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>helper color</td><td><code>--text-muted</code></td></tr>
+                    <tr><td>error color</td><td><code>--color-error</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.input-field {
+  height:        40px;
+  padding:       0 var(--space-3);
+  background:    var(--bg-card);
+  border:        1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size:     var(--text-cta);
+  color:         var(--text-primary);
+  font-family:   var(--font-body);
+  transition:    border-color var(--transition-fast),
+                 box-shadow   var(--transition-fast);
+}
+.input-field::placeholder { color: var(--text-muted); }
+.input-field:focus {
+  outline:      none;
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px rgba(46,49,146,0.12);
+}
+.is-error .input-field {
+  border-color: var(--color-error);
+}
+.is-error .input-field:focus {
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.12);
+}
+.input-label  { font-size: var(--text-spec); color: var(--text-primary); }
+.input-helper { font-size: var(--text-spec); color: var(--text-muted); }
+.input-error  { font-size: var(--text-spec); color: var(--color-error); }</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 07 — Dropdown / Select
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-dropdown">
+            <div class="ex-block-header">
+              <span class="ex-block-num">07</span>
+              <div>
+                <div class="ex-block-title">Dropdown / Select</div>
+                <div class="ex-block-desc">Native <code style="font-size:var(--text-spec);font-family:monospace;">&lt;select&gt;</code> styled consistently with input fields — same height, radius, border, and focus treatment. The chevron icon is embedded as an SVG data URI. Reserve the custom dropdown for search or multi-select needs.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-3);">
+                  <select class="demo-select">
+                    <option>Select Category</option>
+                    <option>Electrical Components</option>
+                    <option>Passive Components</option>
+                    <option>Semiconductors</option>
+                  </select>
+                  <select class="demo-select">
+                    <option selected>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bengaluru</option>
+                    <option>Chennai</option>
+                  </select>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>height</td><td>40px (matches input fields)</td></tr>
+                    <tr><td>padding inline</td><td><code>--space-3</code></td></tr>
+                    <tr><td>border</td><td><code>--border</code></td></tr>
+                    <tr><td>border-radius</td><td><code>--radius-md</code></td></tr>
+                    <tr><td>background</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-cta</code></td></tr>
+                    <tr><td>color</td><td><code>--text-primary</code></td></tr>
+                    <tr><td>focus border + ring</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>chevron padding</td><td><code>--space-8</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.select-field {
+  height:             40px;
+  padding:            0 var(--space-8) 0 var(--space-3);
+  background:         var(--bg-card);
+  border:             1.5px solid var(--border);
+  border-radius:      var(--radius-md);
+  font-size:          var(--text-cta);
+  color:              var(--text-primary);
+  font-family:        var(--font-body);
+  appearance:         none;
+  background-image:   url("chevron-svg-data-uri");
+  background-repeat:  no-repeat;
+  background-position: right var(--space-3) center;
+  cursor:             pointer;
+  transition:         border-color var(--transition-fast),
+                      box-shadow   var(--transition-fast);
+}
+.select-field:focus {
+  outline:      none;
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px rgba(46,49,146,0.12);
+}</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 08 — Checkbox & Radio
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-checkbox">
+            <div class="ex-block-header">
+              <span class="ex-block-num">08</span>
+              <div>
+                <div class="ex-block-title">Checkbox &amp; Radio Button</div>
+                <div class="ex-block-desc">Selection controls for filter sidebars, preference forms, and RFQ multi-select. Both use <code style="font-size:var(--text-spec);font-family:monospace;">--color-primary</code> for checked state. Checkboxes use <code style="font-size:var(--text-spec);font-family:monospace;">--radius-sm</code> (square with soft corner). Radios use <code style="font-size:var(--text-spec);font-family:monospace;">--radius-full</code>. Disabled retains state at 45% opacity.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-5);align-items:flex-start;">
+                  <div class="demo-check-stack">
+                    <label class="demo-check-row">
+                      <span class="demo-check-box"></span> Unchecked
+                    </label>
+                    <label class="demo-check-row">
+                      <span class="demo-check-box is-checked">
+                        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span> Checked
+                    </label>
+                    <label class="demo-check-row">
+                      <span class="demo-check-box is-checked is-disabled">
+                        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span> Disabled
+                    </label>
+                  </div>
+                  <div class="demo-check-stack">
+                    <label class="demo-check-row">
+                      <span class="demo-radio-box"></span> Unselected
+                    </label>
+                    <label class="demo-check-row">
+                      <span class="demo-radio-box is-checked"><span class="demo-radio-dot"></span></span> Selected
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>checkbox border-radius</td><td><code>--radius-sm</code></td></tr>
+                    <tr><td>radio border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>border (unchecked)</td><td><code>--border</code></td></tr>
+                    <tr><td>background (unchecked)</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>bg + border (checked)</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>radio dot color</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>label font-size</td><td><code>--text-cta</code></td></tr>
+                    <tr><td>label color</td><td><code>--text-primary</code></td></tr>
+                    <tr><td>disabled opacity</td><td>0.45</td></tr>
+                    <tr><td>gap (icon + label)</td><td><code>--space-2</code></td></tr>
+                    <tr><td>transition</td><td><code>--transition-fast</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.checkbox-box {
+  width:         18px;
+  height:        18px;
+  border-radius: var(--radius-sm);
+  border:        1.5px solid var(--border);
+  background:    var(--bg-card);
+  transition:    background      var(--transition-fast),
+                 border-color    var(--transition-fast);
+}
+.checkbox-box.checked {
+  background:    var(--color-primary);
+  border-color:  var(--color-primary);
+}
+
+.radio-box {
+  width:         18px;
+  height:        18px;
+  border-radius: var(--radius-full);
+  border:        1.5px solid var(--border);
+  background:    var(--bg-card);
+  transition:    border-color var(--transition-fast);
+}
+.radio-box.checked { border-color: var(--color-primary); }
+.radio-dot {
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+}
+
+/* Disabled state */
+.checkbox-box.disabled,
+.radio-box.disabled { opacity: 0.45; cursor: not-allowed; }</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 09 — Toggle / Switch
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-toggle">
+            <div class="ex-block-header">
+              <span class="ex-block-num">09</span>
+              <div>
+                <div class="ex-block-title">Toggle / Switch</div>
+                <div class="ex-block-desc">Binary on/off controls for notification preferences and feature flags. The thumb slides using CSS <code style="font-size:var(--text-spec);font-family:monospace;">transform: translateX()</code> — no JS position changes. Off state uses neutral surface tokens; on state uses primary. Disabled retains current state at 45% opacity.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area">
+                  <div class="demo-toggle-stack">
+                    <div class="demo-toggle-row">
+                      <div class="demo-toggle-track"><div class="demo-toggle-thumb"></div></div>
+                      Off
+                    </div>
+                    <div class="demo-toggle-row">
+                      <div class="demo-toggle-track is-on"><div class="demo-toggle-thumb"></div></div>
+                      On
+                    </div>
+                    <div class="demo-toggle-row">
+                      <div class="demo-toggle-track is-on is-disabled"><div class="demo-toggle-thumb"></div></div>
+                      Disabled (on)
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>track border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>track bg (off)</td><td><code>--bg-subtle</code></td></tr>
+                    <tr><td>track border (off)</td><td><code>--border</code></td></tr>
+                    <tr><td>track bg + border (on)</td><td><code>--color-primary</code></td></tr>
+                    <tr><td>thumb border-radius</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>thumb shadow</td><td><code>--shadow-sm</code></td></tr>
+                    <tr><td>thumb color</td><td>#fff (always white)</td></tr>
+                    <tr><td>disabled opacity</td><td>0.45</td></tr>
+                    <tr><td>transition (track)</td><td><code>--transition-fast</code></td></tr>
+                    <tr><td>transition (thumb)</td><td><code>--transition-fast</code></td></tr>
+                    <tr><td>label font-size</td><td><code>--text-cta</code></td></tr>
+                    <tr><td>gap (track + label)</td><td><code>--space-3</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.toggle-track {
+  width:         44px;
+  height:        24px;
+  border-radius: var(--radius-full);
+  background:    var(--bg-subtle);
+  border:        1.5px solid var(--border);
+  position:      relative;
+  cursor:        pointer;
+  transition:    background      var(--transition-fast),
+                 border-color    var(--transition-fast);
+}
+.toggle-track.on {
+  background:   var(--color-primary);
+  border-color: var(--color-primary);
+}
+.toggle-track.disabled { opacity: 0.45; cursor: not-allowed; }
+
+.toggle-thumb {
+  width:         18px;
+  height:        18px;
+  border-radius: var(--radius-full);
+  background:    #fff;
+  position:      absolute;
+  top: 2px; left: 2px;
+  box-shadow:    var(--shadow-sm);
+  transition:    transform var(--transition-fast);
+}
+.toggle-track.on .toggle-thumb { transform: translateX(20px); }</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 10 — Avatar
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-avatar">
+            <div class="ex-block-header">
+              <span class="ex-block-num">10</span>
+              <div>
+                <div class="ex-block-title">Avatar</div>
+                <div class="ex-block-desc">User and company identity marks. Circular for people (<code style="font-size:var(--text-spec);font-family:monospace;">--radius-full</code>), rounded-square for company logos (<code style="font-size:var(--text-spec);font-family:monospace;">--radius-lg</code>). Fallback initials use a deterministic gradient derived from the name — never random, so colour stays consistent across sessions.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-5);">
+                  <div class="demo-avatar-row">
+                    <div class="demo-avatar demo-avatar-sm demo-avatar-circle demo-avatar-indigo">RK</div>
+                    <div class="demo-avatar demo-avatar-md demo-avatar-circle demo-avatar-indigo">SE</div>
+                    <div class="demo-avatar demo-avatar-lg demo-avatar-circle demo-avatar-indigo">AR</div>
+                    <div class="demo-avatar demo-avatar-lg demo-avatar-square demo-avatar-teal">EC</div>
+                  </div>
+                  <div class="demo-avatar-stack">
+                    <div class="demo-avatar demo-avatar-md demo-avatar-circle demo-avatar-indigo">A</div>
+                    <div class="demo-avatar demo-avatar-md demo-avatar-circle demo-avatar-teal">B</div>
+                    <div class="demo-avatar demo-avatar-md demo-avatar-circle demo-avatar-amber">C</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-radius (user)</td><td><code>--radius-full</code></td></tr>
+                    <tr><td>border-radius (company)</td><td><code>--radius-lg</code></td></tr>
+                    <tr><td>size SM</td><td>32px (4 × 8pt)</td></tr>
+                    <tr><td>size MD</td><td>40px (5 × 8pt)</td></tr>
+                    <tr><td>size LG</td><td>56px (7 × 8pt)</td></tr>
+                    <tr><td>font-size SM</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>font-size MD</td><td><code>--text-cta</code></td></tr>
+                    <tr><td>font-size LG</td><td><code>--text-body-large</code></td></tr>
+                    <tr><td>stack border</td><td><code>--bg-card</code> (2px ring)</td></tr>
+                    <tr><td>stack overlap</td><td>−10px margin-left</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.avatar {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-family:     var(--font-body);
+  font-weight:     600;
+  color:           #fff;
+  flex-shrink:     0;
+}
+
+/* Sizes (8pt grid) */
+.avatar-sm { width: 32px; height: 32px; font-size: var(--text-spec); }
+.avatar-md { width: 40px; height: 40px; font-size: var(--text-cta); }
+.avatar-lg { width: 56px; height: 56px; font-size: var(--text-body-large); }
+
+/* Shape */
+.avatar-circle { border-radius: var(--radius-full); }
+.avatar-square  { border-radius: var(--radius-lg); }
+
+/* Avatar stack */
+.avatar-stack .avatar {
+  border: 2px solid var(--bg-card);
+  margin-left: -10px;
+}
+.avatar-stack .avatar:first-child { margin-left: 0; }</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 11 — Tooltip
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-tooltip">
+            <div class="ex-block-header">
+              <span class="ex-block-num">11</span>
+              <div>
+                <div class="ex-block-title">Tooltip</div>
+                <div class="ex-block-desc">Non-interactive contextual labels that appear above icon buttons and truncated text. Two variants: dark (default, <code style="font-size:var(--text-spec);font-family:monospace;">#0f172a</code> background) and light (for use on dark surfaces). Always <code style="font-size:var(--text-spec);font-family:monospace;">pointer-events: none</code> and <code style="font-size:var(--text-spec);font-family:monospace;">z-index: var(--z-dropdown)</code>. Copy under 60 characters.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="gap:var(--space-8);">
+                  <div class="demo-tooltip-col">
+                    <div class="demo-tooltip-box demo-tooltip-dark">Verified by TradeNest</div>
+                    <div class="demo-tooltip-trigger">Dark ↑</div>
+                  </div>
+                  <div class="demo-tooltip-col">
+                    <div class="demo-tooltip-box demo-tooltip-light">View full profile</div>
+                    <div class="demo-tooltip-trigger">Light ↑</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-radius</td><td><code>--radius-md</code></td></tr>
+                    <tr><td>padding block</td><td><code>--space-2</code></td></tr>
+                    <tr><td>padding inline</td><td><code>--space-3</code></td></tr>
+                    <tr><td>font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>font-family</td><td><code>--font-body</code></td></tr>
+                    <tr><td>bg (dark variant)</td><td><code>--gray-900</code> (#0f172a)</td></tr>
+                    <tr><td>bg (light variant)</td><td><code>--bg-card</code></td></tr>
+                    <tr><td>border (light variant)</td><td><code>--border</code></td></tr>
+                    <tr><td>shadow (light variant)</td><td><code>--shadow-md</code></td></tr>
+                    <tr><td>z-index</td><td><code>--z-dropdown</code> (100)</td></tr>
+                    <tr><td>position offset</td><td>8px from trigger</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">.tooltip-wrap { position: relative; display: inline-block; }
+
+.tooltip-box {
+  position:       absolute;
+  bottom:         calc(100% + 8px);
+  left:           50%;
+  transform:      translateX(-50%);
+  padding:        var(--space-2) var(--space-3);
+  border-radius:  var(--radius-md);
+  font-size:      var(--text-spec);
+  font-family:    var(--font-body);
+  white-space:    nowrap;
+  pointer-events: none;
+  z-index:        var(--z-dropdown);
+}
+
+/* Dark variant (default) */
+.tooltip-dark  { background: #0f172a; color: #fff; }
+
+/* Light variant — for dark surfaces */
+.tooltip-light {
+  background: var(--bg-card);
+  color:      var(--text-primary);
+  border:     1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}</pre>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────────
+               EXAMPLE 12 — Divider
+               ───────────────────────────────────────── -->
+          <div class="ex-block" id="ex-divider">
+            <div class="ex-block-header">
+              <span class="ex-block-num">12</span>
+              <div>
+                <div class="ex-block-title">Divider</div>
+                <div class="ex-block-desc">Structural separators for form sections, content groups, and "or" junctions in auth flows. Always uses <code style="font-size:var(--text-spec);font-family:monospace;">--border</code> for the line colour. Three patterns: plain rule, centred label ("or"), and left-aligned section title. Use sparingly — over-dividing fragments the layout.</div>
+              </div>
+            </div>
+            <div class="ex-panels">
+              <div class="ex-preview-panel">
+                <div class="ex-preview-label">Live Preview</div>
+                <div class="ex-preview-area" style="flex-direction:column;gap:var(--space-5);width:100%;">
+                  <div class="demo-divider-stack">
+                    <hr class="demo-divider">
+                    <div class="demo-divider-labeled">
+                      <span class="demo-divider-label">or</span>
+                    </div>
+                    <div class="demo-divider-section">
+                      Company Details
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex-token-panel">
+                <div class="ex-preview-label">Tokens Used</div>
+                <table class="ex-map-table">
+                  <thead><tr><th>CSS Property</th><th>Token</th></tr></thead>
+                  <tbody>
+                    <tr><td>border-top color</td><td><code>--border</code></td></tr>
+                    <tr><td>label font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>label color</td><td><code>--text-muted</code></td></tr>
+                    <tr><td>section title font-size</td><td><code>--text-spec</code></td></tr>
+                    <tr><td>section title color</td><td><code>--text-muted</code></td></tr>
+                    <tr><td>section title weight</td><td>600 + uppercase</td></tr>
+                    <tr><td>gap (label spacing)</td><td><code>--space-3</code></td></tr>
+                    <tr><td>margin (block spacing)</td><td><code>--space-4</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ex-code-wrap">
+              <div class="ex-code-label">CSS</div>
+              <pre class="ex-code">/* Plain rule */
+.divider {
+  border:     none;
+  border-top: 1px solid var(--border);
+  margin:     var(--space-4) 0;
+}
+
+/* Centred label ("or") */
+.divider-labeled {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  margin:      var(--space-4) 0;
+}
+.divider-labeled::before,
+.divider-labeled::after {
+  content:    '';
+  flex:       1;
+  border-top: 1px solid var(--border);
+}
+.divider-label {
+  font-size:  var(--text-spec);
+  color:      var(--text-muted);
+}
+
+/* Section title */
+.divider-section {
+  display:        flex;
+  align-items:    center;
+  gap:            var(--space-2);
+  font-size:      var(--text-spec);
+  font-weight:    600;
+  color:          var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.divider-section::after {
+  content:    '';
+  flex:       1;
+  border-top: 1px solid var(--border);
+}</pre>
+            </div>
+          </div>
+
         </section>
 
       </div><!-- /page-content -->
@@ -1615,6 +2339,18 @@ border-radius: var(--radius-lg);</code>
         <a href="#section-transitions" class="toc-link">Transitions</a>
         <a href="#section-zindex" class="toc-link">Z-Index</a>
         <a href="#section-examples" class="toc-link">Token Usage Examples</a>
+        <a href="#ex-cta" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">01 — CTA Button</a>
+        <a href="#ex-tab" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">02 — Tab Bar</a>
+        <a href="#ex-product-card" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">03 — Product Card</a>
+        <a href="#ex-badge" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">04 — Badge</a>
+        <a href="#ex-tag" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">05 — Tag</a>
+        <a href="#ex-input" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">06 — Input Field</a>
+        <a href="#ex-dropdown" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">07 — Dropdown</a>
+        <a href="#ex-checkbox" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">08 — Checkbox &amp; Radio</a>
+        <a href="#ex-toggle" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">09 — Toggle</a>
+        <a href="#ex-avatar" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">10 — Avatar</a>
+        <a href="#ex-tooltip" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">11 — Tooltip</a>
+        <a href="#ex-divider" class="toc-link" style="padding-left:18px;font-size:var(--text-caption);">12 — Divider</a>
       </nav>
 
     </div><!-- /page-layout -->
