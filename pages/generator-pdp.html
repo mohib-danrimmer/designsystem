@@ -153,9 +153,11 @@
       padding: 0 var(--space-8);
     }
     .pdp-hero {
-      display: flex; gap: var(--space-10);
+      display: flex; flex-direction: column;
       padding: var(--space-8) 0 var(--space-6);
-      align-items: flex-start;
+    }
+    .pdp-hero-body {
+      display: flex; gap: var(--space-10); align-items: flex-start;
     }
 
     /* ── Gallery ── */
@@ -562,7 +564,7 @@
     .review-stars { color: #f59e0b; font-size: var(--text-cta); }
     .review-date { font-size: var(--text-spec); color: var(--text-muted); }
     .review-title { font-size: var(--text-cta); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2); }
-    .review-body { font-size: var(--text-body-small); color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-3); }
+    .review-body { font-size: var(--text-body-small); color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-3); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
     .review-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-spec); color: var(--text-muted); }
     .review-meta-sep { color: var(--border); }
     .review-verified { color: var(--color-success); font-weight: 600; }
@@ -611,31 +613,31 @@
     }
     .prod-card:hover .prod-card-img img { transform: scale(1.05); }
     .prod-card-body { padding: var(--space-4); }
-    .prod-card-brand {
-      font-size: var(--text-spec); font-weight: 500;
-      color: var(--color-primary); text-transform: uppercase;
-      letter-spacing: 0.06em; margin-bottom: var(--space-1);
-    }
     .prod-card-name {
-      font-size: var(--text-spec); font-weight: 500;
+      font-size: var(--text-cta); font-weight: 600;
       color: var(--text-primary); line-height: 1.4;
-      margin-bottom: var(--space-2);
+      margin-bottom: var(--space-1);
       display: -webkit-box; -webkit-line-clamp: 2;
       -webkit-box-orient: vertical; overflow: hidden;
     }
+    .prod-card-price { font-size: var(--text-heading); font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-1); }
+    .prod-card-price span { font-size: var(--text-spec); font-weight: 400; color: var(--text-muted); }
+    .prod-card-brand {
+      font-size: var(--text-spec); font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: var(--space-1);
+    }
     .prod-card-kva {
       font-size: var(--text-spec); color: var(--text-muted);
-      margin-bottom: var(--space-3);
+      margin-bottom: 0;
     }
-    .prod-card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: var(--space-3); border-top: 1px solid var(--divider);
-      gap: var(--space-2);
+    .prod-card-actions {
+      display: flex; gap: var(--space-2);
+      padding-top: var(--space-3); border-top: 1px solid var(--border);
+      margin-top: var(--space-3);
     }
-    .prod-card-price { font-size: var(--text-heading); font-weight: 700; color: var(--text-primary); }
-    .prod-card-price span { font-size: var(--text-spec); font-weight: 400; color: var(--text-muted); }
     .prod-card-cta {
-      height: 30px; padding: 0 var(--space-3);
+      flex: 1; height: 30px; padding: 0 var(--space-3);
       background: var(--color-primary); color: #fff;
       border: none; border-radius: var(--radius-md);
       font-size: var(--text-caption); font-weight: 600;
@@ -643,6 +645,15 @@
       transition: background var(--transition-fast);
     }
     .prod-card-cta:hover { background: var(--color-primary-700); }
+    .prod-card-cta-sec {
+      flex: 1; height: 30px; padding: 0 var(--space-3);
+      background: transparent; color: var(--color-primary);
+      border: 1.5px solid var(--color-primary); border-radius: var(--radius-md);
+      font-size: var(--text-caption); font-weight: 600;
+      font-family: var(--font-body); white-space: nowrap;
+      transition: background var(--transition-fast);
+    }
+    .prod-card-cta-sec:hover { background: var(--color-primary-50); }
 
     /* ══════════════════════════════════════════════════
        MOBILE STICKY CTA
@@ -664,10 +675,8 @@
 
     .surface-mobile .mobile-header { display: flex !important; }
 
-    .surface-mobile .pdp-hero {
-      flex-direction: column; gap: var(--space-4);
-      padding: var(--space-4) 0;
-    }
+    .surface-mobile .pdp-hero { padding: var(--space-4) 0; }
+    .surface-mobile .pdp-hero-body { flex-direction: column; gap: var(--space-4); }
     .surface-mobile .pdp-gallery { flex: none; }
     .surface-mobile .pdp-main-img { height: 300px; border-radius: var(--radius-xl); }
     .surface-mobile .pdp-container,
@@ -686,7 +695,7 @@
     .surface-mobile .section-heading { font-size: var(--text-heading); }
     .surface-mobile .seller-stat { display: none; }
 
-    .surface-mobile .sticky-cta { display: flex; }
+    .surface-mobile .sticky-cta { display: none; }
     .surface-mobile .pdp-actions .pdp-btn-icon { display: none; }
 
     .surface-mobile .pdp-price-block { padding: var(--space-3) var(--space-4); }
@@ -804,11 +813,33 @@
     <div class="pdp-container">
       <div class="pdp-hero">
 
+        <!-- Header: title/company/rating above gallery -->
+        <div class="pdp-hero-header">
+          <div class="pdp-badges-row">
+            <span class="pdp-badge-verified">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#1d4ed8" stroke-width="1.5"/><path d="M5 8L7 10L11 6" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified Supplier
+            </span>
+            <span class="pdp-badge-trustseal">★ TrustSeal Verified</span>
+          </div>
+
+          <h1 class="pdp-title">Powerol Silent Diesel Generator Set</h1>
+          <p class="pdp-subtitle">Dazzle Power Solutions</p>
+
+          <div class="pdp-rating-row">
+            <span class="pdp-stars">★★★★★</span>
+            <span class="pdp-rating-val">4.6</span>
+            <span class="pdp-review-count">(84 reviews)</span>
+          </div>
+        </div>
+
+        <!-- Body: gallery + info side by side -->
+        <div class="pdp-hero-body">
+
         <!-- Gallery -->
         <div class="pdp-gallery">
           <div class="pdp-main-img" id="pdp-main-img">
-            <img src="../references/primary_prod.webp" id="pdp-hero-img" alt="Powerol Silent Diesel Generator Set by Mahindra DAZZLE" />
-            <span class="pdp-img-badge">Sound Proof</span>
+            <img src="../references/primary_prod.webp" id="pdp-hero-img" alt="Powerol Silent Diesel Generator Set — DAZZLE Power Solutions" />
             <button class="pdp-img-share" aria-label="Share product">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
@@ -832,30 +863,10 @@
         <!-- Info Panel -->
         <div class="pdp-info">
 
-          <div class="pdp-badges-row">
-            <span class="pdp-badge-verified">
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#1d4ed8" stroke-width="1.5"/><path d="M5 8L7 10L11 6" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Verified Supplier
-            </span>
-            <span class="pdp-badge-trustseal">★ TrustSeal Verified</span>
-          </div>
-
-          <h1 class="pdp-title">Powerol Silent Diesel Generator Set</h1>
-          <p class="pdp-subtitle">By Mahindra &nbsp;·&nbsp; Distributed by DAZZLE Power Solutions</p>
-
-          <div class="pdp-rating-row">
-            <span class="pdp-stars">★★★★★</span>
-            <span class="pdp-rating-val">4.6</span>
-            <span class="pdp-review-count">(84 reviews)</span>
-            <span class="pdp-rating-sep">|</span>
-            <span class="pdp-sold-count">340+ units sold</span>
-          </div>
-
           <!-- Price block -->
           <div class="pdp-price-block">
-            <div class="pdp-price-label">Price Range</div>
-            <div class="pdp-price-main">₹4,20,000 <span class="pdp-price-unit">– ₹32,00,000 / Set</span></div>
-            <div class="pdp-price-gst">+ 18% GST applicable &nbsp;·&nbsp; Ex-works Mumbai</div>
+            <div class="pdp-price-label">Price</div>
+            <div class="pdp-price-main">₹4,20,000 <span class="pdp-price-unit">/ Set</span></div>
             <div class="pdp-price-specs">
               <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Power Rating</span><span class="pdp-price-spec-val">62.5 kVA to 500 kVA</span></div>
               <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Phase</span><span class="pdp-price-spec-val">3 Phase, 50 Hz</span></div>
@@ -887,6 +898,7 @@
           </p>
 
         </div><!-- /pdp-info -->
+        </div><!-- /pdp-hero-body -->
       </div><!-- /pdp-hero -->
     </div><!-- /pdp-container -->
 
@@ -933,7 +945,6 @@
       <div class="pdp-tab-bar tab-bar" id="pdp-tab-bar">
         <button class="tab active" onclick="switchTab('tab-overview', this)">Overview</button>
         <button class="tab" onclick="switchTab('tab-specs', this)">Specifications</button>
-        <button class="tab" onclick="switchTab('tab-delivery', this)">Packaging &amp; Delivery</button>
         <button class="tab" onclick="switchTab('tab-reviews', this)">Reviews (84)</button>
       </div>
 
@@ -1026,49 +1037,6 @@
         </table>
       </div>
 
-      <!-- ── Tab: Packaging & Delivery ── -->
-      <div class="pdp-tab-content" id="tab-delivery">
-        <div class="delivery-grid">
-          <div class="delivery-card">
-            <div class="delivery-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <div class="delivery-card-title">Delivery Timeline</div>
-            <div class="delivery-card-val">4–6 Weeks</div>
-            <div class="delivery-card-desc">After order confirmation and advance payment</div>
-          </div>
-          <div class="delivery-card">
-            <div class="delivery-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="delivery-card-title">Delivery Area</div>
-            <div class="delivery-card-val">Pan India</div>
-            <div class="delivery-card-desc">Road freight — Mumbai to your site</div>
-          </div>
-          <div class="delivery-card">
-            <div class="delivery-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="delivery-card-title">Packaging</div>
-            <div class="delivery-card-val">Wooden Crating</div>
-            <div class="delivery-card-desc">Export-grade packing with moisture protection</div>
-          </div>
-        </div>
-        <table class="specs-table">
-          <thead><tr><th colspan="2">Packaging &amp; Logistics Details</th></tr></thead>
-          <tbody>
-            <tr><td>Packaging Type</td><td>Wooden crate with metal strapping</td></tr>
-            <tr><td>Min Order Quantity</td><td>1 Set</td></tr>
-            <tr><td>Payment Terms</td><td>50% advance, 50% before dispatch</td></tr>
-            <tr><td>Payment Methods</td><td>RTGS / NEFT / Cheque / LC</td></tr>
-            <tr><td>Supply Ability</td><td>5 Sets / month</td></tr>
-            <tr><td>Port of Dispatch</td><td>Mumbai, Maharashtra</td></tr>
-            <tr><td>Installation</td><td>Available (chargeable, within Maharashtra)</td></tr>
-            <tr><td>Annual Maintenance</td><td>AMC available — contact for pricing</td></tr>
-          </tbody>
-        </table>
-      </div>
-
       <!-- ── Tab: Reviews ── -->
       <div class="pdp-tab-content" id="tab-reviews">
         <div class="reviews-layout">
@@ -1113,7 +1081,7 @@
                 <span class="review-date">Feb 2025</span>
               </div>
               <div class="review-title">Flawless performance at our Pune manufacturing unit</div>
-              <div class="review-body">We installed two 250 kVA units from DAZZLE at our auto parts factory in Pune. Both have been running 24/7 for 8 months without a single issue. AMF switchover is under 8 seconds — our CNC lines don't even notice the changeover. Service team from DAZZLE is extremely responsive. Highly recommended for industrial use.</div>
+              <div class="review-body">Two 250 kVA units running 24/7 for 8 months — zero issues. AMF switchover under 8 seconds, DAZZLE service team very responsive.</div>
               <div class="review-meta">
                 <span class="review-verified">✓ Verified Purchase</span>
                 <span class="review-meta-sep">·</span>
@@ -1128,7 +1096,7 @@
                 <span class="review-date">Jan 2025</span>
               </div>
               <div class="review-title">Reliable backup for our Navi Mumbai data centre</div>
-              <div class="review-body">Ordered a 500 kVA unit with full AMF panel and DEIF controller for our co-location data centre. Delivery was on time in 5 weeks. The DEIF panel gives us remote monitoring via Modbus — that was the key requirement. Noise levels are well within limits. Very satisfied with the product and DAZZLE's pre-sales support.</div>
+              <div class="review-body">500 kVA with DEIF controller delivered on time. Remote Modbus monitoring working perfectly, noise levels well within limits.</div>
               <div class="review-meta">
                 <span class="review-verified">✓ Verified Purchase</span>
                 <span class="review-meta-sep">·</span>
@@ -1143,7 +1111,7 @@
                 <span class="review-date">Dec 2024</span>
               </div>
               <div class="review-title">Good product, delivery took slightly longer than quoted</div>
-              <div class="review-body">125 kVA unit for our hospital in Nashik. Generator quality is excellent — Mahindra engine is rock solid. Minor issue: delivery was delayed by 10 days beyond the committed date due to monsoon transport issues. DAZZLE kept us informed throughout. After installation, the unit has been running perfectly for 4 months. Would buy again.</div>
+              <div class="review-body">125 kVA for our Nashik hospital — great engine quality, minor delay due to monsoon transport, running perfectly for 4 months now.</div>
               <div class="review-meta">
                 <span class="review-verified">✓ Verified Purchase</span>
                 <span class="review-meta-sep">·</span>
@@ -1172,12 +1140,13 @@
             <img src="../references/secondary_prod_1.webp" alt="Ashok Leyland Silent Generator" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">Ashok Leyland</div>
             <div class="prod-card-name">AL Silent DG Set — Sound Proof Enclosure</div>
+            <div class="prod-card-price">₹3,90,000 <span>onwards</span></div>
+            <div class="prod-card-brand">Ashok Leyland</div>
             <div class="prod-card-kva">62.5 kVA – 320 kVA · 3 Phase · 1500 RPM</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹3,90,000 <span>onwards</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1186,12 +1155,13 @@
             <img src="../references/secondary_prod_2.webp" alt="Cummins Silent Generator" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">Cummins</div>
             <div class="prod-card-name">Cummins Silent DG Set — C Series</div>
+            <div class="prod-card-price">₹6,20,000 <span>onwards</span></div>
+            <div class="prod-card-brand">Cummins</div>
             <div class="prod-card-kva">82.5 kVA – 500 kVA · 3 Phase · 1500 RPM</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹6,20,000 <span>onwards</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1200,12 +1170,13 @@
             <img src="../references/secondary_prod_3.webp" alt="KOEL Green Generator" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">Kirloskar (KOEL)</div>
             <div class="prod-card-name">KOEL Green Silent Generator — CPCB II</div>
+            <div class="prod-card-price">₹2,80,000 <span>onwards</span></div>
+            <div class="prod-card-brand">Kirloskar (KOEL)</div>
             <div class="prod-card-kva">30 kVA – 400 kVA · 3 Phase · 1500 RPM</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹2,80,000 <span>onwards</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1214,12 +1185,13 @@
             <img src="../references/primary_prod.webp" alt="Powerol Open Generator" style="object-position: center 30%;" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">Powerol (Mahindra)</div>
             <div class="prod-card-name">Powerol Open Frame DG Set — Heavy Duty</div>
+            <div class="prod-card-price">₹3,60,000 <span>onwards</span></div>
+            <div class="prod-card-brand">Powerol (Mahindra)</div>
             <div class="prod-card-kva">62.5 kVA – 500 kVA · 3 Phase · 1500 RPM</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹3,60,000 <span>onwards</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1240,12 +1212,13 @@
             <img src="../references/secondary_prod_1.webp" alt="Generator AMC Service" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">DAZZLE Service</div>
             <div class="prod-card-name">Annual Maintenance Contract — DG Sets</div>
+            <div class="prod-card-price">₹18,000 <span>/year</span></div>
+            <div class="prod-card-brand">DAZZLE Service</div>
             <div class="prod-card-kva">All brands · Mumbai &amp; MMR region</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹18,000 <span>/year</span></div>
-              <button class="prod-card-cta">Enquire</button>
+            <div class="prod-card-actions">
+              <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1254,12 +1227,13 @@
             <img src="../references/secondary_prod_3.webp" alt="Generator on Hire" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">DAZZLE Rentals</div>
             <div class="prod-card-name">DG Set on Hire — Short &amp; Long Term</div>
+            <div class="prod-card-price">₹1,800 <span>/day</span></div>
+            <div class="prod-card-brand">DAZZLE Rentals</div>
             <div class="prod-card-kva">62.5 kVA – 500 kVA · Daily / Monthly</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹1,800 <span>/day</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1268,12 +1242,13 @@
             <img src="../references/secondary_prod_2.webp" alt="Automatic Transfer Switch" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">DAZZLE Electrical</div>
             <div class="prod-card-name">Automatic Transfer Switch Panel — ATS</div>
+            <div class="prod-card-price">₹24,000 <span>onwards</span></div>
+            <div class="prod-card-brand">DAZZLE Electrical</div>
             <div class="prod-card-kva">100A – 2500A · 415V 3 Phase</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹24,000 <span>onwards</span></div>
+            <div class="prod-card-actions">
               <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>
@@ -1282,12 +1257,13 @@
             <img src="../references/primary_prod.webp" alt="Load Bank Testing" style="object-position: left center;" />
           </div>
           <div class="prod-card-body">
-            <div class="prod-card-brand">DAZZLE Service</div>
             <div class="prod-card-name">Load Bank Testing Service — On-site</div>
+            <div class="prod-card-price">₹8,500 <span>/test</span></div>
+            <div class="prod-card-brand">DAZZLE Service</div>
             <div class="prod-card-kva">Up to 1000 kW · Resistive / Inductive</div>
-            <div class="prod-card-footer">
-              <div class="prod-card-price">₹8,500 <span>/test</span></div>
-              <button class="prod-card-cta">Enquire</button>
+            <div class="prod-card-actions">
+              <button class="prod-card-cta">Call Now</button>
+              <button class="prod-card-cta-sec">Get Best Price</button>
             </div>
           </div>
         </div>

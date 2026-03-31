@@ -21,7 +21,8 @@ designsystem/
     ├── homepage.html           ← Full homepage, desktop + mobile toggle
     ├── pdp.html                ← SMD Capacitors 100µF product detail page
     ├── category.html           ← Electrical Components listing page
-    └── seller-profile.html     ← Shree Electricals Mumbai profile
+    ├── seller-profile.html     ← Shree Electricals Mumbai profile
+    └── generator-pdp.html      ← Powerol Silent DG Set — DAZZLE Power Solutions PDP
 ```
 
 ## Architecture Rules
