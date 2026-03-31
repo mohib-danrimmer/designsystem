@@ -18,15 +18,15 @@
     img { display: block; max-width: 100%; }
     button { font-family: var(--font-body); cursor: pointer; }
 
-    /* ── Page offset for ds-nav ─────────────────────── */
-    .ds-page { padding-top: 56px; }
+    /* ── Page offset for ds-nav (48px logo row + 44px links row = 92px) ── */
+    .ds-page { padding-top: 92px; }
 
     /* ══════════════════════════════════════════════════
        SITE HEADER
     ══════════════════════════════════════════════════ */
     .site-header {
       position: sticky;
-      top: 56px;
+      top: 92px;
       z-index: var(--z-sticky);
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
@@ -283,43 +283,21 @@
       font-size: var(--text-spec); color: var(--text-muted);
       margin-bottom: var(--space-4);
     }
-    .pdp-price-table {
-      width: 100%; border-collapse: collapse;
-      font-size: var(--text-spec); margin-top: var(--space-3);
+    .pdp-price-specs {
+      display: flex; flex-direction: column; gap: var(--space-1);
+      margin-top: var(--space-3);
     }
-    .pdp-price-table thead tr {
-      background: var(--color-primary-50);
-      border-bottom: 1px solid var(--color-primary-100);
+    .pdp-price-spec-row {
+      display: flex; gap: var(--space-2);
+      font-size: var(--text-spec); color: var(--text-secondary);
     }
-    [data-theme="dark"] .pdp-price-table thead tr { background: rgba(46,49,146,0.15); }
-    .pdp-price-table th {
-      padding: var(--space-2) var(--space-3);
-      text-align: left; font-size: var(--text-caption);
-      font-weight: 600; color: var(--color-primary);
-      text-transform: uppercase; letter-spacing: 0.06em;
+    .pdp-price-spec-key {
+      min-width: 110px; flex-shrink: 0;
     }
-    .pdp-price-table td {
-      padding: var(--space-2) var(--space-3);
-      border-bottom: 1px solid var(--divider);
-      color: var(--text-secondary);
-    }
-    .pdp-price-table tr:last-child td { border-bottom: none; }
-    .pdp-price-table tr:hover td { background: var(--bg-card); }
-    .pdp-price-table .price-val {
-      font-weight: 600; color: var(--text-primary);
+    .pdp-price-spec-val {
+      font-weight: 500; color: var(--text-primary);
     }
 
-    /* Location & stock */
-    .pdp-meta-row {
-      display: flex; align-items: center; gap: var(--space-4);
-      font-size: var(--text-spec); color: var(--text-secondary);
-      margin-bottom: var(--space-4);
-    }
-    .pdp-meta-item { display: flex; align-items: center; gap: 5px; }
-    .pdp-stock-dot {
-      width: 8px; height: 8px; border-radius: var(--radius-full);
-      background: var(--color-success); flex-shrink: 0;
-    }
 
     /* Action buttons */
     .pdp-actions {
@@ -356,19 +334,6 @@
     }
     .pdp-btn-icon:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
-    /* Quick specs */
-    .pdp-quick-specs {
-      display: flex; flex-wrap: wrap; gap: var(--space-2);
-      margin-bottom: var(--space-4);
-    }
-    .pdp-spec-pill {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: var(--space-1) var(--space-3);
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      font-size: var(--text-spec); color: var(--text-secondary);
-    }
-    .pdp-spec-pill strong { color: var(--text-primary); font-weight: 600; }
 
     .pdp-enquiry-note {
       font-size: var(--text-spec); color: var(--text-muted);
@@ -472,34 +437,27 @@
       font-size: var(--text-heading); font-weight: 700;
       color: var(--text-primary); margin-bottom: var(--space-3);
     }
-    .feature-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: var(--space-3); margin-bottom: var(--space-6);
-    }
-    .feature-item {
-      display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-3); background: var(--bg-subtle);
+    .overview-spec-list {
+      display: flex; flex-direction: column;
       border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin-bottom: var(--space-6);
     }
-    .feature-icon {
-      width: 32px; height: 32px; border-radius: var(--radius-md);
-      background: var(--color-primary-50); color: var(--color-primary);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+    .overview-spec-row {
+      display: flex; align-items: center;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-spec);
     }
-    [data-theme="dark"] .feature-icon { background: rgba(46,49,146,0.2); }
-    .feature-text-title { font-size: var(--text-spec); font-weight: 600; color: var(--text-primary); }
-    .feature-text-desc { font-size: var(--text-spec); color: var(--text-muted); margin-top: 2px; }
-
-    .certifications-row {
-      display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-4);
-    }
-    .cert-chip {
-      display: inline-flex; align-items: center; gap: var(--space-2);
+    .overview-spec-row:last-child { border-bottom: none; }
+    .overview-spec-key {
+      width: 140px; flex-shrink: 0;
       padding: var(--space-2) var(--space-3);
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      font-size: var(--text-spec); color: var(--text-secondary);
+      background: var(--bg-subtle);
+      color: var(--text-secondary); font-weight: 500;
+      border-right: 1px solid var(--border);
+    }
+    .overview-spec-val {
+      padding: var(--space-2) var(--space-3);
+      color: var(--text-primary);
     }
 
     /* Quick spec card (right rail) */
@@ -654,12 +612,12 @@
     .prod-card:hover .prod-card-img img { transform: scale(1.05); }
     .prod-card-body { padding: var(--space-4); }
     .prod-card-brand {
-      font-size: var(--text-caption); font-weight: 600;
+      font-size: var(--text-spec); font-weight: 500;
       color: var(--color-primary); text-transform: uppercase;
       letter-spacing: 0.06em; margin-bottom: var(--space-1);
     }
     .prod-card-name {
-      font-size: var(--text-body-small); font-weight: 600;
+      font-size: var(--text-spec); font-weight: 500;
       color: var(--text-primary); line-height: 1.4;
       margin-bottom: var(--space-2);
       display: -webkit-box; -webkit-line-clamp: 2;
@@ -674,8 +632,8 @@
       padding-top: var(--space-3); border-top: 1px solid var(--divider);
       gap: var(--space-2);
     }
-    .prod-card-price { font-size: var(--text-spec); font-weight: 700; color: var(--text-primary); }
-    .prod-card-price span { font-size: var(--text-caption); font-weight: 400; color: var(--text-muted); }
+    .prod-card-price { font-size: var(--text-heading); font-weight: 700; color: var(--text-primary); }
+    .prod-card-price span { font-size: var(--text-spec); font-weight: 400; color: var(--text-muted); }
     .prod-card-cta {
       height: 30px; padding: 0 var(--space-3);
       background: var(--color-primary); color: #fff;
@@ -719,7 +677,6 @@
     .surface-mobile .breadcrumb-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
 
     .surface-mobile .overview-layout { grid-template-columns: 1fr; }
-    .surface-mobile .feature-grid { grid-template-columns: 1fr; }
     .surface-mobile .delivery-grid { grid-template-columns: 1fr 1fr; }
     .surface-mobile .reviews-layout { grid-template-columns: 1fr; }
 
@@ -732,7 +689,6 @@
     .surface-mobile .sticky-cta { display: flex; }
     .surface-mobile .pdp-actions .pdp-btn-icon { display: none; }
 
-    .surface-mobile .pdp-price-table { display: none; }
     .surface-mobile .pdp-price-block { padding: var(--space-3) var(--space-4); }
 
     .surface-mobile .quick-spec-card { display: none; }
@@ -900,54 +856,15 @@
             <div class="pdp-price-label">Price Range</div>
             <div class="pdp-price-main">₹4,20,000 <span class="pdp-price-unit">– ₹32,00,000 / Set</span></div>
             <div class="pdp-price-gst">+ 18% GST applicable &nbsp;·&nbsp; Ex-works Mumbai</div>
-            <table class="pdp-price-table">
-              <thead>
-                <tr>
-                  <th>kVA Rating</th>
-                  <th>Base Price</th>
-                  <th>With AMF Panel</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>62.5 kVA</td>
-                  <td class="price-val">₹4,20,000</td>
-                  <td class="price-val">₹4,85,000</td>
-                </tr>
-                <tr>
-                  <td>125 kVA</td>
-                  <td class="price-val">₹8,50,000</td>
-                  <td class="price-val">₹9,40,000</td>
-                </tr>
-                <tr>
-                  <td>250 kVA</td>
-                  <td class="price-val">₹16,50,000</td>
-                  <td class="price-val">₹17,80,000</td>
-                </tr>
-                <tr>
-                  <td>500 kVA</td>
-                  <td class="price-val">₹32,00,000</td>
-                  <td class="price-val">₹34,50,000</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="pdp-price-specs">
+              <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Power Rating</span><span class="pdp-price-spec-val">62.5 kVA to 500 kVA</span></div>
+              <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Phase</span><span class="pdp-price-spec-val">3 Phase, 50 Hz</span></div>
+              <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Fuel Type</span><span class="pdp-price-spec-val">Diesel</span></div>
+              <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Enclosure</span><span class="pdp-price-spec-val">Sound Proof / Silent</span></div>
+              <div class="pdp-price-spec-row"><span class="pdp-price-spec-key">Brand</span><span class="pdp-price-spec-val">Powerol (Mahindra)</span></div>
+            </div>
           </div>
 
-          <!-- Location & stock -->
-          <div class="pdp-meta-row">
-            <div class="pdp-meta-item">
-              <span class="pdp-stock-dot"></span>
-              <span style="color:var(--color-success);font-weight:600;">In Stock</span>
-            </div>
-            <div class="pdp-meta-item">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Mumbai, Maharashtra
-            </div>
-            <div class="pdp-meta-item">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              Delivery: 4–6 weeks
-            </div>
-          </div>
 
           <!-- CTA Buttons -->
           <div class="pdp-actions">
@@ -964,15 +881,6 @@
             </button>
           </div>
 
-          <!-- Quick specs -->
-          <div class="pdp-quick-specs">
-            <span class="pdp-spec-pill">Brand: <strong>Powerol (Mahindra)</strong></span>
-            <span class="pdp-spec-pill">Capacity: <strong>62.5–500 kVA</strong></span>
-            <span class="pdp-spec-pill">Phase: <strong>3 Phase</strong></span>
-            <span class="pdp-spec-pill">RPM: <strong>1500</strong></span>
-            <span class="pdp-spec-pill">Fuel: <strong>Diesel</strong></span>
-            <span class="pdp-spec-pill">Cooling: <strong>Water Cooled</strong></span>
-          </div>
 
           <p class="pdp-enquiry-note">
             Need a custom kVA or rental? <a href="#">Submit an RFQ</a> and we'll respond within 4 hours.
@@ -1041,90 +949,18 @@
               The Powerol Silent Series features a heavy-duty acoustic enclosure that brings noise levels below 75 dB(A) at 1 metre — making it suitable for noise-sensitive environments. Equipped with Mahindra's fuel-efficient BSVI-compliant engines and an Auto Mains Failure (AMF) panel, these sets deliver seamless power transfer within seconds of a grid outage.
             </p>
 
-            <h3 class="overview-heading">Key Features</h3>
-            <div class="feature-grid">
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">AMF Panel Standard</div>
-                  <div class="feature-text-desc">Auto Mains Failure — sub-10s switchover</div>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">≤ 75 dB(A) Noise</div>
-                  <div class="feature-text-desc">Acoustic enclosure, rated at 1 metre distance</div>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">BIS &amp; ISO Certified</div>
-                  <div class="feature-text-desc">ISO 9001:2015, BIS Mark, BSVI Compliant</div>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">DEIF Digital Controller</div>
-                  <div class="feature-text-desc">Remote monitoring, fault logging, auto-restart</div>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">Brushless Alternator</div>
-                  <div class="feature-text-desc">Self-exciting, 4-pole, AVR regulated output</div>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
-                </div>
-                <div>
-                  <div class="feature-text-title">24/7 Continuous Duty</div>
-                  <div class="feature-text-desc">Rated for standby &amp; prime power applications</div>
-                </div>
-              </div>
-            </div>
-
-            <h3 class="overview-heading">Applications</h3>
-            <div class="certifications-row">
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
-                Manufacturing Plants
-              </span>
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                IT Parks &amp; Data Centres
-              </span>
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                Commercial Buildings
-              </span>
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                Hospitals &amp; Healthcare
-              </span>
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                Telecom Towers
-              </span>
-              <span class="cert-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                Infrastructure Projects
-              </span>
+            <h3 class="overview-heading">Product Specifications</h3>
+            <div class="overview-spec-list">
+              <div class="overview-spec-row"><span class="overview-spec-key">Brand</span><span class="overview-spec-val">Powerol (Mahindra)</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Power Rating</span><span class="overview-spec-val">62.5 kVA to 500 kVA</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Phase</span><span class="overview-spec-val">3 Phase, 4 Wire, 50 Hz</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Voltage</span><span class="overview-spec-val">415V ± 5%</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Speed</span><span class="overview-spec-val">1500 RPM</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Fuel Type</span><span class="overview-spec-val">High Speed Diesel (HSD)</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Enclosure</span><span class="overview-spec-val">Sound Proof / Acoustic</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Noise Level</span><span class="overview-spec-val">≤ 75 dB(A) at 1 metre</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Control Panel</span><span class="overview-spec-val">AMF with DEIF Digital Controller</span></div>
+              <div class="overview-spec-row"><span class="overview-spec-key">Certifications</span><span class="overview-spec-val">BIS Mark, ISO 9001:2015, BSVI</span></div>
             </div>
           </div>
 
